@@ -7,6 +7,11 @@
   {% if target == null %}
     {% assign target = site.labs | where:"permalink",include.href | first %}
   {% endif %}
+
+  {% comment %} Public site won't have the assignments or labs, just _data/unreleased.csv. {% endcomment %}
+  {% if target == null %}
+    {% assign target = site.data.unreleased | where:"permalink",include.href | first %}
+  {% endif %}
 {% endif %}
 
 {% if target.unreleased %}
