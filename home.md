@@ -7,12 +7,27 @@ show_on_index: true
 ### Welcome to the Spring 2016 offering of CS107e!
 
 CS107 is the third course in Stanford's introductory programming sequence.
-CS106 provides students with a solid foundation in programming methodology and
-abstractions, and CS107 follows on to give you the skills needed to build
-computer systems. The course will start with the microprocessor and move up to
-the C programming language, without skipping anything in between. The goal is
-to build a solid understanding of all aspects of how modern computers execute
-programs and how program development tools work.
+CS106 provides students 
+with a solid foundation in programming methodology and abstractions,
+and CS107 follows on to give you the skills needed to build computer systems.
+There are two major learning goals for the course.
+First, to understand how computers 
+represent information, execute programs, and control peripherals.
+Second, to master command-line programming tools
+and the C programming language.
+The course builds understanding from the ground up
+using bare metal programming on the Raspberry Pi.
+Bare metal programming uses no operating system
+and few external libraries.
+Students will receive a Raspberry Pi and a kit of parts,
+and all assignments will run on the Raspberry Pi.
+Assignments build upon each other
+by adding more and more functionality to a core library.
+They culminate in a simple personal computer shell
+using a keyboard and display.
+Finally, students do a project of their choosing 
+where they build a complete hardware-software system.
+
 
 ### Announcements
 
@@ -49,6 +64,3 @@ to Stanford students via
 
 Please read the assigned readings before attending lecture and lab.
 You should also read the [guides](/guides/) for each week.
-
-Note that the schedule includes a guest lecture, Quinn Dunki,
-tentatively scheduled for Mon Mar 7th.
