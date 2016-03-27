@@ -4,7 +4,7 @@ title: Home
 show_on_index: true
 ---
 
-### Welcome to the Winter 2016 offering of CS107e!
+### Welcome to the Spring 2016 offering of CS107e!
 
 CS107 is the third course in Stanford's introductory programming sequence.
 CS106 provides students with a solid foundation in programming methodology and
@@ -17,26 +17,26 @@ programs and how program development tools work.
 ### Announcements
 
 All class announcements will be posted on
-[Piazza](http://piazza.com/stanford/winter2016/cs107e).
+[Piazza](http://piazza.com/stanford/spring2016/cs107e).
 
 ### Course Info
 
-  -   **Lectures:** Mon & Fri 1:30-2:50 pm, [Room 200-305]
+  -   **Lectures:** Mon & Fri 1:30-2:50 pm, [Room 160-124]
   -   **Lab**: Tue or Wed 7:00-9:00 pm, Gates 325
-  -   **Lecturers**: Dawson Engler, Pat Hanrahan, Julie Zelenski
-  -   **CAs**: Sergio Benitez, Ngoc Bui, Isabel Bush, Omar Rizwan
+  -   **Lecturers**: Dawson Engler, Pat Hanrahan, Phil Levis
+  -   **CAs**: Isabel Bush, Jane E, Omar Rizwan, Anna Zeng
 
-[Room 200-305]: https://campus-map.stanford.edu/?id=01-200&lat=37.42832452750049&lng=-122.17104196554779&zoom=17&srch=200-305
+[Room 160-124]: https://campus-map.stanford.edu/?id=01-160&lat=37.42826984660001&lng=-122.16601794932134&zoom=17&srch=160-124
 
 ### Office Hours
 
-  -   **Hanrahan**: Gates 370, Mon 4:00-5:30 pm
+  -   **Hanrahan**: Gates 370, TBA
   -   **Engler**: Gates 314
-  -   **Zelenski**: Gates 188, Wed 10:00-11:30am (time change for Wed Mar 9th)
-  -   **Sergio**: Gates 288, Tue 5:30pm - 7pm
-  -   **Isabel**: Gates 325, Mon 5-6:30pm
-  -   **Ngoc**: Old Union Couches, Thu 5pm-6pm
-  -   **Omar**: Gates 325, Fri 12:30-1:20pm
+  -   **Levis**: TBA
+  -   **Isabel**: TBA
+  -   **Jane**: TBA
+  -   **Omar**: Gates 325, TBA
+  -   **Anna**: TBA
 
 ### Schedule
 
