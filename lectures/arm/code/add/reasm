@@ -1,0 +1,17 @@
+# assembly
+arm-none-eabi-as add.s -o add.o
+arm-none-eabi-objcopy add.o -O binary add.bin
+
+# default is 16-bits, use -g to output bytes
+xxd -g 1 add.bin add.hex
+
+# reassmble
+sed s/01/02/ add.hex > add2.hex
+xxd -g 1 -r add2.hex add2.bin
+
+arm-none-eabi-objdump -m arm -b binary -D add2.bin
+
+
+
+
+

@@ -1,0 +1,18 @@
+{% capture cache %}
+
+{% if include.target %}
+  {% assign target = include.target %}
+{% elsif include.href %}
+  {% assign target = site.assignments | where:"permalink",include.href | first %}
+  {% if target == null %}
+    {% assign target = site.labs | where:"permalink",include.href | first %}
+  {% endif %}
+{% endif %}
+
+{% if target.unreleased %}
+  {{ target.title }}
+{% else %}
+  <a href="{{ target.permalink }}">{{ target.title }}</a>
+{% endif %}
+
+{% endcapture %}{{ cache | strip_newlines }}
