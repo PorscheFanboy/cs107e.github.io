@@ -31,10 +31,11 @@ programming means you will not run an operating system on the Raspberry Pi and
 will make minimal use of libraries. This course also serves as a short
 introduction to embedded systems.
 
-This class is organized by weeks. Each week consists of two lectures on Fri and
-Mon, a lab on Tue evening, and a programming assignment which is due the
-following Mon at 12 midnight. Lecture and lab attendance is mandatory. There
-will be a short final project, but no exams.
+This class is organized by weeks. Each week consists of two lectures
+on Fri and Mon, a lab offered on Tue or Wed evening, and a programming
+assignment which is due the following Tue at 7PM (before the Tue
+lab). Lecture and lab attendance is mandatory. There will be a short
+final project, but no exams.
 
 Readings will be assigned from a variety of sources, including *The C
 Programming Language*, Kernighan and Ritchie.
