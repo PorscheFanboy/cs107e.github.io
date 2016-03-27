@@ -30,7 +30,7 @@ void gl_init(unsigned width, unsigned height, unsigned mode);
 
 typedef unsigned color;
 
-color gl_color( unsigned char r, unsigned char g, unsigned char b );
+color gl_color(unsigned char r, unsigned char g, unsigned char b);
 
 unsigned gl_get_width(void);
 unsigned gl_get_height(void);
@@ -41,13 +41,13 @@ void gl_draw_pixel(int x, int y, color c);
 
 void gl_draw_char(int x, int y, char letter, color c);
 
-void gl_draw_string( int x, int y, char* string, color c);
+void gl_draw_string(int x, int y, char* string, color c);
 
 unsigned gl_get_char_height(void);
 unsigned gl_get_char_width(void);
 
-void gl_draw_line( int x1, int y1, int x2, int y2, color c);
-void gl_draw_triangle( int x1, int y1, int x2, int y2, int x3, int y3, color c);
+void gl_draw_line(int x1, int y1, int x2, int y2, color c);
+void gl_draw_triangle(int x1, int y1, int x2, int y2, int x3, int y3, color c);
 
 void gl_draw_rect(int x1, int y1, int width, int height, color c);
 

@@ -100,9 +100,9 @@ typedef struct {
 } property_t;
 
 
-extern void property_init( void );
-extern void property_add( tag_t tag, ... );
-extern property_t* property_get( tag_t tag );
-extern int property_request( void );
+extern void property_init(void);
+extern void property_add(tag_t tag, ...);
+extern property_t* property_get(tag_t tag);
+extern int property_request(void);
 
 #endif

@@ -10,7 +10,7 @@
 #define MMU_PAGE_ACCESS_R    0x00800
 #define MMU_PAGE_ACCESS_RW   0x00C00
 
-extern void mmu_section ( unsigned base, unsigned vadd, unsigned padd, unsigned flags );
-extern void mmu_init( unsigned base );
+extern void mmu_section(unsigned base, unsigned vadd, unsigned padd, unsigned flags);
+extern void mmu_init(unsigned base);
 
 #endif

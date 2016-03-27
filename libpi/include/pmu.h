@@ -9,7 +9,7 @@
 // Paul Drongowski
 //http://sandsoftwaresound.net/raspberry-pi/raspberry-pi-gen-1/memory-hierarchy/
 //
- 
+
 #ifndef PMU_H
 #define PMU_H
 
@@ -17,7 +17,7 @@
 #ifndef NULL
 #define NULL 0
 #endif
- 
+
 #define ARMV6_EVENT_ICACHE_MISS             0x00
 #define ARMV6_EVENT_ISTALL                  0x01
 #define ARMV6_EVENT_DATA_DEPENDENT_STALL    0x02
@@ -37,7 +37,7 @@
 #define ARMV6_EVENT_WRITEBUFFER_DRAINED_DSB 0x12
 #define ARMV6_EVENT_NOP                     0x20
 #define ARMV6_EVENT_CPU_CYCLES              0xFF
- 
+
 //
 // Only the ARM1176 supports the following four events
 //
@@ -45,65 +45,63 @@
 #define ARMV6_EVENT_RETURN_EXECUTED        0x24
 #define ARMV6_EVENT_RETURN_PREDICT         0x25
 #define ARMV6_EVENT_RETURN_MISPREDICT      0x26
- 
- 
+
+
 enum armv6_counters {
-        ARMV6_CYCLE_COUNTER = 0,
-        ARMV6_COUNTER0,
-        ARMV6_COUNTER1,
+    ARMV6_CYCLE_COUNTER = 0,
+    ARMV6_COUNTER0,
+    ARMV6_COUNTER1,
 };
- 
+
 //
 // Read the Performance Monitor Control Register and return its value.
 //
 static inline uint32_t
-armv6_pmcr_read(void)
-{
-        uint32_t val;
-        __asm__ volatile("mrc   p15, 0, %0, c15, c12, 0" : "=r"(val));
-        return val;
+armv6_pmcr_read(void) {
+    uint32_t val;
+    __asm__ volatile("mrc   p15, 0, %0, c15, c12, 0" : "=r"(val));
+    return val;
 }
- 
+
 //
 // Write the Performance Monitor Control Register using the specified value.
 //
 static inline void
-armv6_pmcr_write(uint32_t val)
-{
-        __asm__ volatile("mcr   p15, 0, %0, c15, c12, 0" : : "r"(val));
+armv6_pmcr_write(uint32_t val) {
+    __asm__ volatile("mcr   p15, 0, %0, c15, c12, 0" : : "r"(val));
 }
- 
+
 //
 // Read the specified Performance Monitor counter and return its value.
 //
 static inline uint32_t
-armv6pmu_read_counter(int counter)
-{
-        unsigned long value = 0;
- 
-        if (ARMV6_CYCLE_COUNTER == counter)
-                __asm__ volatile("mrc   p15, 0, %0, c15, c12, 1" : "=r"(value));
-        else if (ARMV6_COUNTER0 == counter)
-                __asm__ volatile("mrc   p15, 0, %0, c15, c12, 2" : "=r"(value));
-        else if (ARMV6_COUNTER1 == counter)
-                __asm__ volatile("mrc   p15, 0, %0, c15, c12, 3" : "=r"(value));
- 
-        return value;
+armv6pmu_read_counter(int counter) {
+    unsigned long value = 0;
+
+    if (ARMV6_CYCLE_COUNTER == counter) {
+        __asm__ volatile("mrc   p15, 0, %0, c15, c12, 1" : "=r"(value));
+    } else if (ARMV6_COUNTER0 == counter) {
+        __asm__ volatile("mrc   p15, 0, %0, c15, c12, 2" : "=r"(value));
+    } else if (ARMV6_COUNTER1 == counter) {
+        __asm__ volatile("mrc   p15, 0, %0, c15, c12, 3" : "=r"(value));
+    }
+
+    return value;
 }
- 
+
 //
 // Write a value into the  specified Performance Monitor counter.
 //
 static inline void
 armv6pmu_write_counter(int counter,
-                       uint32_t value)
-{
-        if (ARMV6_CYCLE_COUNTER == counter)
-                __asm__ volatile("mcr   p15, 0, %0, c15, c12, 1" : : "r"(value));
-        else if (ARMV6_COUNTER0 == counter)
-                __asm__ volatile("mcr   p15, 0, %0, c15, c12, 2" : : "r"(value));
-        else if (ARMV6_COUNTER1 == counter)
-                __asm__ volatile("mcr   p15, 0, %0, c15, c12, 3" : : "r"(value));
+                       uint32_t value) {
+    if (ARMV6_CYCLE_COUNTER == counter) {
+        __asm__ volatile("mcr   p15, 0, %0, c15, c12, 1" : : "r"(value));
+    } else if (ARMV6_COUNTER0 == counter) {
+        __asm__ volatile("mcr   p15, 0, %0, c15, c12, 2" : : "r"(value));
+    } else if (ARMV6_COUNTER1 == counter) {
+        __asm__ volatile("mcr   p15, 0, %0, c15, c12, 3" : : "r"(value));
+    }
 }
 
 //
@@ -123,37 +121,35 @@ armv6pmu_write_counter(int counter,
 #define ARMV6_PMCR_EVT_COUNT0_MASK      (0xFF << ARMV6_PMCR_EVT_COUNT0_SHIFT)
 #define ARMV6_PMCR_EVT_COUNT1_SHIFT     12
 #define ARMV6_PMCR_EVT_COUNT1_MASK      (0xFF << ARMV6_PMCR_EVT_COUNT1_SHIFT)
- 
+
 extern int event0;
 extern int event1;
 
 //
 // Clear the performance counters and start counting.
 //
-static inline void pmu_start_counting(int clearcounters, int clearoverflows)
-{
-  uint32_t pmcr = ARMV6_PMCR_ENABLE |
-                  ARMV6_PMCR_CCOUNT_DIV |
-                  (event0 << ARMV6_PMCR_EVT_COUNT0_SHIFT) |
-                  (event1 << ARMV6_PMCR_EVT_COUNT1_SHIFT) ;
+static inline void pmu_start_counting(int clearcounters, int clearoverflows) {
+    uint32_t pmcr = ARMV6_PMCR_ENABLE |
+                    ARMV6_PMCR_CCOUNT_DIV |
+                    (event0 << ARMV6_PMCR_EVT_COUNT0_SHIFT) |
+                    (event1 << ARMV6_PMCR_EVT_COUNT1_SHIFT) ;
 
-  if( clearcounters )
-      pmcr |= ARMV6_PMCR_CCOUNT_RESET |
-              ARMV6_PMCR_CTR01_RESET;
+    if (clearcounters)
+        pmcr |= ARMV6_PMCR_CCOUNT_RESET |
+                ARMV6_PMCR_CTR01_RESET;
 
-  if( clearoverflows )
-      pmcr |= ARMV6_PMCR_CCOUNT_OVERFLOW |
-              ARMV6_PMCR_COUNT0_OVERFLOW |
-              ARMV6_PMCR_COUNT1_OVERFLOW ;
+    if (clearoverflows)
+        pmcr |= ARMV6_PMCR_CCOUNT_OVERFLOW |
+                ARMV6_PMCR_COUNT0_OVERFLOW |
+                ARMV6_PMCR_COUNT1_OVERFLOW ;
 
-  armv6_pmcr_write(pmcr);
+    armv6_pmcr_write(pmcr);
 }
 
-static inline void pmu_stop_counting(void)
-{
-  armv6_pmcr_write(0) ;
+static inline void pmu_stop_counting(void) {
+    armv6_pmcr_write(0) ;
 }
- 
+
 extern void pmu_set_events(int evt0, int evt1) ;
 extern uint32_t pmu_get_counter(int event, int *overflow);
 

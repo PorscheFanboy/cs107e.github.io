@@ -74,9 +74,9 @@
 extern void interrupts_enable(unsigned n);
 extern void interrupts_disable(unsigned n);
 
-/** 
+/**
  ** @brief Bits in the Basic register to enable various interrupts.
- **       See the BCM2835 ARM Peripherals manual, section 7.5 
+ **       See the BCM2835 ARM Peripherals manual, section 7.5
  */
 #define ARM_IRQ0_BASE                  64
 #define INTERRUPTS_ARM_TIMER            (ARM_IRQ0_BASE + 0)

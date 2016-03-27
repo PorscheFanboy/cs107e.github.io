@@ -18,7 +18,7 @@ typedef enum {
     MAILBOX_TAGS_VC_TO_ARM,
 } mailbox_channel_t;
 
-extern void mailbox_write ( unsigned channel, unsigned addr );
-extern unsigned mailbox_read ( unsigned channel );
+extern void mailbox_write(unsigned channel, unsigned addr);
+extern unsigned mailbox_read(unsigned channel);
 
 #endif

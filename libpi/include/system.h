@@ -39,10 +39,10 @@ extern void system_invalidate_tlb(void);
 
 // access not allowed
 #define SYSTEM_DOMAIN_NO_ACCESS       0b00
-// user and priv access permission check 
-#define SYSTEM_DOMAIN_CHECK_ACCESS    0b01 
+// user and priv access permission check
+#define SYSTEM_DOMAIN_CHECK_ACCESS    0b01
 // user access permission check, priv permission access not checked
-#define SYSTEM_DOMAIN_NO_CHECK_ACCESS 0b11 
+#define SYSTEM_DOMAIN_NO_CHECK_ACCESS 0b11
 extern void system_set_domain(unsigned reg);
 
 extern void system_set_tlb_base(unsigned base);
@@ -75,7 +75,7 @@ extern void system_stop_mmu(void);
 /*
  * Data memory barrier
  *
- * No memory access after the DMB can run until 
+ * No memory access after the DMB can run until
  * all memory accesses before it have completed
  */
 #define dmb() __asm__ volatile \
@@ -85,7 +85,7 @@ extern void system_stop_mmu(void);
 /*
  * Data synchronisation barrier
  *
- * No instruction after the DSB can run until 
+ * No instruction after the DSB can run until
  * all instructions before it have completed
  */
 #define dsb() __asm__ volatile \
