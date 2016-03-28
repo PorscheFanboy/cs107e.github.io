@@ -14,7 +14,7 @@ Are you familiar with the following commands?
 1. Do you know how to login and logout? Do you know how to open a terminal
    window that is running a *shell*?
 2. What are the commands for changing directories and listing files in a
-   directory. Do you know how the filesystem is organized in linux?
+   directory. Do you know how the filesystem is organized in unix?
 3. Do you know how to create, move, rename, and delete files and directories
    from the command line?
 4. Do you know how to create a text file using an editor such as vi or emacs?
@@ -25,6 +25,8 @@ Are you familiar with the following commands?
    should learn one of these editors. Stanford has good tutorials on both
    [emacs](http://web.stanford.edu/class/cs107/guide_emacs.html) and
    [vi](http://web.stanford.edu/class/cs107/guide_vim.html)
+7. Do you know about environment variables such as `PATH`. 
+   Do you know the purpose of `PATH`. Do you know how to change `PATH`?
 
 If you don't know how to do all these things, you will need to learn these skills.
 
