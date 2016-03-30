@@ -2,10 +2,10 @@
 #define FONT_H
 
 /*
- * Header file for functions that provide bitmaps of ASCII
+ * Functions that provide bitmaps of ASCII
  * characters. Each character is font_get_height() rows of
  * font_get_width() columns, with each pixel being font_get_depth()
- * bytes. The pixels are 32-bits (RGBA), so get_depth() is always 4, *
+ * bytes. The pixels are 32-bits (RGBA), so get_depth() is always 4,
  * with 0xFFFFFFFF being a white pixel and 0x00000000 being a black
  * pixel.
  *
