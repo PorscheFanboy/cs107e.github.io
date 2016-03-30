@@ -44,9 +44,9 @@ All class announcements will be posted on
 ### Course Info
 
   -   **Lectures:** Mon & Fri 1:30-2:50 pm, [Room 160-124]
-  -   **Lab**: Tue or Wed 7:00-9:00 pm, Gates 325
-  -   **Lecturers**: Dawson Engler, Pat Hanrahan, Phil Levis
-  -   **CAs**: Isabel Bush, Jane E, Omar Rizwan, Anna Zeng
+  -   **Lab**: Tue 7:00-9:00 pm or Wed 6:30-8:30 pm, Gates 325
+  -   **Lecturers**: Dawson Engler, Pat Hanrahan, and Philip Levis
+  -   **CAs**: Isabel Bush, Jane E, Omar Rizwan, and Anna Zeng
 
 [Room 160-124]: https://campus-map.stanford.edu/?id=01-160&lat=37.42826984660001&lng=-122.16601794932134&zoom=17&srch=160-124
 
@@ -54,7 +54,7 @@ All class announcements will be posted on
 
   -   **Hanrahan**: Gates 370, TBA
   -   **Engler**: Gates 314
-  -   **Levis**: TBA
+  -   **Levis**: Gates 409, Mon 11-12
   -   **Isabel**: TBA
   -   **Jane**: TBA
   -   **Omar**: Gates 325, TBA
