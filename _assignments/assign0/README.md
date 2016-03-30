@@ -171,7 +171,7 @@ lab.txt
 We'll have two lab sections this quarter:
 
 - Every Tuesday, 7-9 PM
-- Every Wednesday, 7-9 PM
+- Every Wednesday, 6:30-8:30 PM
 
 Open lab.txt in a text editor. Replace its contents with one of these
 four options. Make sure you use the exact same text (your submission
