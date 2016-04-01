@@ -95,30 +95,43 @@ Please incorporate our feedback into future assignments;
 it will improve your grade and more importantly your coding style.
 
 Assignments will have a basic part and various extensions. 
-You are expected to do the basic part of each assignment.
+You are expected to do the basic part of each assignment,
+and some of the extensions.
+Each part, basic and extension, is worth 5 points.
+You can do as many extensions as you want to accumulate more points.
+
+As mentioned above, the assignments build on each other.
+If you do not complete the basic part of an assignment,
+you may have trouble completing the next assignment.
+To help you in these situation, we have written
+reference implementations all the libraries you need.
+If your version doesn't work,
+you can always use our version.
+
+To encourage you to complete all the assignments,
+we will let you fix buggy parts of previous assignments.
+The last assignment requires you to use code from
+many of the previous assignments.
+If you hand-in the last assignment using only your own code,
+we will give you 5 bonus points.
 
 Grades will be assigned using the following criteria:
 
 **A.** All laboratories and basic part of assignments must be completed.
+and be fully functional.
+You also need to get the 5 point bonus for using all your own code.
 Your code quality grades should average somewhere 
 between the [ok] and [+] buckets.
 In addition, you must do at least 3 extensions and your final 
 project must be outstanding.
 
-**B.** All laboratories and basic part of assignments must be completed.
+**B.** All laboratories and basic part of assignments must be completed
+and functional.
 Your final project should be excellent.
-Your code quality grades should average in the [ok] bucket.
+Your code quality grades should average in the [ok] bucket,
+and you must complete a good final project.
 
 **C and below.** All work is not completed satisfactorily.
-
-
-**What about extra credit?**
-
-This is still a new course, so we are always trying to improve it.
-We will give extra credit for any work that we deem will make the next version
-of the course better. This could include a creative variation of
-an assignment that might be usable in the future; or written documentation,
-guides, or FAQs on the hardware and software used in the course.
 
 **What is the final project?**
 
