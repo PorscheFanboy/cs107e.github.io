@@ -57,7 +57,7 @@ All class announcements will be posted on
   -   **Levis**: Gates 409, Mon 11-12
   -   **Isabel**: TBA
   -   **Jane**: TBA
-  -   **Omar**: Gates 325, TBA
+  -   **Omar**: Gates 325, Tue 3:00-4:30 pm
   -   **Anna**: TBA
 
 ### Schedule
