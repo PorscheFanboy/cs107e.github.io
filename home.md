@@ -55,9 +55,9 @@ All class announcements will be posted on
   -   **Hanrahan**: Gates 370, TBA
   -   **Engler**: Gates 314
   -   **Levis**: Gates 409, Mon 11-12
-  -   **Isabel**: TBA
+  -   **Isabel**: Gates 325, Mon 4:30-6
   -   **Jane**: TBA
-  -   **Omar**: Gates 325, Tue 3:00-4:30 pm
+  -   **Omar**: Gates 325, Tue 3:00-4:30
   -   **Anna**: TBA
 
 ### Schedule
