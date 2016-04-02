@@ -52,7 +52,7 @@ All class announcements will be posted on
 
 ### Office Hours
 
-  -   **Hanrahan**: Gates 370, TBA
+  -   **Hanrahan**: Gates 370, Fri 3-4:30 pm
   -   **Engler**: Gates 314
   -   **Levis**: Gates 409, Mon 11-12
   -   **Isabel**: Gates 325, Mon 4:30-6
