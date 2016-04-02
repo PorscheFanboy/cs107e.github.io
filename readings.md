@@ -30,6 +30,12 @@ which is documented in [ARMv6 Architecture Manual](../readings/armv6.pdf).
 The following [excerpt](../readings/armisa.pdf)
 describes just the instructions.
 
+
+* ARM System-on-Chip Architecture (2nd Edition), Steve Furber.
+Steve Furber was the principal design of the first ARM processor.
+The diagrams of the ARM architecture are based on the diagrams
+in Chapter 4: ARM Organization and Implementation.
+
 * ARM System Developer's Guide: Designing and Optimizing System Software (The Morgan Kaufmann Series in Computer Architecture and Design), Andrew Sloss, Dominic Symes, and Chris Wright, 2004. This book is a bit dated, but still provides an excellent overview of low-level ARM programming.
 
 * Excellent [slides](http://twins.ee.nctu.edu.tw/courses/ip_core_02/handout_pdf/Chapter_2.pdf) by Prof. Yen at NCTU on the ARM processor core and instruction sets.
