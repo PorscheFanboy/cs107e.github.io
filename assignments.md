@@ -81,15 +81,14 @@ Consult assignment 0 for information about how to use `git`.
 **How are assignments graded?**
 
 Each assignment will have a clear specification of what the program should do.
-If there are multiple features, 
-it will be clear how much of your grade depends on each feature.
 
 We will also look at your code and assess the code quality.
+Good code should be decomposed into small, clear, well-named functions so that 
+no code is repeated and it is easy to follow the intent of each function.
 Code quality will be graded on a bucket system where code that needs 
 improvement falls in the [-] bucket, code that meets our expectations is in the 
 [ok] bucket, and exceptional code falls in the [+] bucket.
-In rare cases when the assignment was not sufficiently attempted, 
-we will use a [- -] bucket. We will also provide comments throughout your code 
+We will also provide comments throughout your code 
 to help you improve your code quality.
 Please incorporate our feedback into future assignments;
 it will improve your grade and more importantly your coding style.
@@ -103,21 +102,20 @@ You can do as many extensions as you want to accumulate more points.
 As mentioned above, the assignments build on each other.
 If you do not complete the basic part of an assignment,
 you may have trouble completing the next assignment.
-To help you in these situation, we have written
-reference implementations all the libraries you need.
+To help you in these situations, we have written
+reference implementations of the libraries you need.
 If your version doesn't work,
-you can always use our version.
+you can fall back on our version.
 
-To encourage you to complete all the assignments,
-we will let you fix buggy parts of previous assignments.
 The last assignment requires you to use code from
 many of the previous assignments.
-If you hand-in the last assignment using only your own code,
+To encourage you to complete all assignments and fix any bugs within them,
+if you hand-in the last assignment using only your own code,
 we will give you 5 bonus points.
 
 Grades will be assigned using the following criteria:
 
-**A.** All laboratories and basic part of assignments must be completed.
+**A.** All laboratories and basic part of assignments must be completed
 and be fully functional.
 You also need to get the 5 point bonus for using all your own code.
 Your code quality grades should average somewhere 
@@ -127,13 +125,13 @@ project must be outstanding.
 
 **B.** All laboratories and basic part of assignments must be completed
 and functional.
-Your final project should be excellent.
 Your code quality grades should average in the [ok] bucket,
 and you must complete a good final project.
 
 **C and below.** All work is not completed satisfactorily.
 
+<!---
 **What is the final project?**
 
 See the [Final Project](project) page.
-
+-->
