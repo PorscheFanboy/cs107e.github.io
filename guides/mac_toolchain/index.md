@@ -74,7 +74,7 @@ to install a few things. These instructions will guide you through those steps.
 1.  Install the CP210x USB to UART Drivers
 
     [Download Version
-    3.1](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx)
+    4](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx)
     of the drivers. Clicking on the download link will download the file
     `Mac_OSX_VCP_Driver.zip`. Opening this file will uncompress and you will
     see a new file, `SiLabsUSBDriverDisk.dmg`. Opening the dmg file, will mount
@@ -82,7 +82,7 @@ to install a few things. These instructions will guide you through those steps.
 
     You should see a volume named "Silicon Labs VCP Driver Install Disk" in the
     finder under devices. Going to that folder, you will see an installed named
-    "Silicon Labs VCP Driver Installer." Opening that file will launch the
+    "Silicon Labs VCP Driver." Opening that file will launch the
     installer. Follow the instructions to complete the installation. You will need
     to restart the computer after the installation.
 
@@ -110,5 +110,8 @@ $ brew install rpi-install
 
     ```
 $ rpi-install.py
-usage: /usr/local/bin/rpi-install.py tty bin
+usage: rpi-install.py [-p] [port] file
+ -p   ..... print output from the Pi
+ port ..... serial port (optional)
+ file ..... binary file to upload
     ```
