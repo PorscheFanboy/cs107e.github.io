@@ -52,13 +52,7 @@ All class announcements will be posted on
 
 ### Office Hours
 
-  -   **Hanrahan**: Gates 370, Fri 3-4:30 pm
-  -   **Engler**: Gates 314
-  -   **Levis**: Gates 409, Mon 11-12 pm
-  -   **Isabel**: Gates 325, Mon 4:30-6 pm
-  -   **Jane**: Gates 325, Thurs 1:30-3 pm
-  -   **Omar**: Gates 325, Tue 3-4:30 pm
-  -   **Anna**: Gates 325, Mon 3-4:30 pm
+<iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=2v2vsft4r6n68nd5n3hsiv0qjg%40group.calendar.google.com&amp;color=%235F6B02&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="800" height="400" frameborder="0" scrolling="no"></iframe>
 
 ### Schedule
 
