@@ -58,7 +58,7 @@ All class announcements will be posted on
   -   **Isabel**: Gates 325, Mon 4:30-6
   -   **Jane**: TBA
   -   **Omar**: Gates 325, Tue 3:00-4:30
-  -   **Anna**: TBA
+  -   **Anna**: Gates 325, Mon 3-4:30
 
 ### Schedule
 
