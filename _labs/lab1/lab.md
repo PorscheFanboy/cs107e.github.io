@@ -93,6 +93,7 @@ the following two lines, and check for responses like this example:
     $ git --version
     git version 1.9.3
 
+Note: After typing in `arm-none-eabi-as --version` and seeing the output be sure to press `Ctrl-C` or `Ctrl-D` to return to the shell.
 If this doesn't work, don't worry. We will help you get set up in lab.
 
 We will use the following hand tools during this lab:
@@ -369,13 +370,25 @@ Now notice that we've given you two additional programs,
 `blink-onboard.bin` first, which blinks the on-board activity (ACT)
 LED.
 
-Copy these files onto your SD card. (You can use either the Terminal
-or the Finder for this.) Then, once on your SD card, rename the copy
+Next, follow these steps in the following order:
+
+1. Copy these files onto your SD card. (You can use either the Terminal
+or the Finder for this.)
+
+2. Once on your SD card, rename the copy
 of `blink-onboard.bin` to `kernel.img`. Now the Pi should run our
 blink-onboard program after we put the card in!
 
-Go to the Finder and click on the Eject icon next to the file name.
+3. Go to the Finder and click on the Eject icon next to the file name.
 You can now remove the SD card safely.
+
+4. Insert the SD card into the Raspberry Pi.
+
+5. Power it up. 
+The on-board activity (ACT) LED on the Raspberry Pi board 
+should start blinking.
+
+Hoorah!
 
 **If you have trouble,
 check out the troubleshooting part of the
@@ -383,13 +396,6 @@ check out the troubleshooting part of the
 This part has been written assuming you have a Mac,
 there are also instructions in this guide for 
 how to do this process using linux.**
-
-Insert the SD card into the Raspberry Pi.
-Power it up. 
-The on-board activity (ACT) LED on the Raspberry Pi board 
-should start blinking.
-
-Hoorah!
 
 Keep this procedure in the back of your mind.
 If you ever think your Pi is not working because of a hardware problem,
