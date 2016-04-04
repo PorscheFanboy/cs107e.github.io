@@ -1,6 +1,15 @@
 #ifndef PS2_H
 #define PS2_H
 
+/*
+ * Scan codes of a PS/2 keyboard.
+ *
+ * Author: Philip Levis <pal@cs.stanford.edu>
+ *         Pat Hanrahan <hanrahan@cs.stanford.edu>
+ * Date: Mar 10, 2016
+ */
+
+
 #define KEYBOARD_CODE_RELEASE         0xF0
 #define KEYBOARD_CODE_VAR_IGNORE      0xE0
 #define KEYBOARD_CODE_SHIFTL          0x12

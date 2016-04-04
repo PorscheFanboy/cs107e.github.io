@@ -83,8 +83,13 @@ git.
 Before coming to lab, you should be able to open a Terminal, type
 the following two lines, and check for responses like this example:
 
-    $ arm-none-eabi-as -v
-    GNU assembler version 2.24 (arm-none-eabi) using BFD version (GNU Binutils) 2.24
+    $ arm-none-eabi-as --version
+    GNU assembler (GNU Tools for ARM Embedded Processors) 2.24.0.20150604
+    Copyright 2013 Free Software Foundation, Inc.
+    This program is free software; you may redistribute it under the terms of
+    the GNU General Public License version 3 or later.
+    This program has absolutely no warranty.
+    This assembler was configured for a target of `arm-none-eabi'.
     $ git --version
     git version 1.9.3
 

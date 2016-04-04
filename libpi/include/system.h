@@ -1,6 +1,13 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
+/*
+ * Hardware abstractions for caches and other memory features
+ * of the Raspberry Pi processor.
+ *
+ * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
+ * Date: Mar 1, 2016
+ */
 extern unsigned system_get_cache_type(void);
 
 #define SYSTEM_MMU_ENABLE                (1<<0)

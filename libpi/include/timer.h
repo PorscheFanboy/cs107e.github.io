@@ -1,9 +1,12 @@
 #ifndef TIMER_H
 #define TIMER_H
 
-/* Hardware abstraction functions for a Raspberry Pi timer.
+/*
+ * Hardware abstractions for a Raspberry Pi timer.
+ *
  * Author: Philip Levis <pal@cs.stanford.edu>
- * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
+ *         Pat Hanrahan <hanrahan@cs.stanford.edu>
+ * Date: Jan 24, 2016
  */
 
 void timer_init(void);

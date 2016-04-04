@@ -1,6 +1,15 @@
 #ifndef PWM_H
 #define PWM_H
 
+
+/*
+ * Hardware abstractions for pulse width modulation (PWM) of
+ * digital signals.
+ *
+ * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
+ * Date: Feb 15, 2016
+ */
+
 extern void pwm_clock(int frequency);
 
 #define PWM_SIGMADELTA 0
