@@ -4,13 +4,40 @@ title: Resources
 permalink: /resources/
 ---
 
-### Raspberry Pi Hardware
+## Demos & Interactive Resources
+
+* An interactive demo of how the
+[ARM assembler's immediate value encoder](https://alisdair.mcdiarmid.org/arm-immediate-value-encoding/#play-with-it) works.
+
+* [VisUAL](http://salmanarif.bitbucket.org/visual/index.html)
+emulates the ARM instruction set and allows you to step through an assembly program.
+Pat used this tool in lecture.
+
+* Matt Godbolt's [Compiler Explorer](http://gcc.godbolt.org/) lets you
+  quickly see how C source code maps to compiled assembly. (Be sure to
+  choose the compiler "ARM gcc 4.8.2", which is close to what we use
+  for the course. Check out the colorize option, too.)
+
+* [cdecl.org](http://cdecl.org/) converts "C gibberish" to and from
+English.
+
+* [Repl](https://repl.it/languages/c) can run C code for you.
+This can be handy when you need to test something brief or small!
+
+* This virtual [Seven Segment Display](http://www.uize.com/examples/seven-segment-display.html)
+will come in handy in a future lab. This demo teaches you to link bits to characters on a seven-segment-display.
+
+* A [demonstration](http://pgbovine.net/rosetta/c-demo.html) of nifty pointer use to reverse a string.
+
+## Informational Resources
+
+#### Raspberry Pi Hardware
 
 We are using the Raspberry Pi A+ in class. The A+ is similar to the B+.
 
 * [Raspberry Pi Board Schematics](https://github.com/raspberrypi/documentation/blob/master/hardware/raspberrypi/schematics/README.md)
 
-### ARM
+#### ARM
 
 The Raspberry Pi A+ uses a Broadcom BCM2835 chip. 
 Inside the chip is an ARM1176JFZ-S processor 
@@ -40,7 +67,7 @@ in Chapter 4: ARM Organization and Implementation.
 
 * Excellent [slides](http://twins.ee.nctu.edu.tw/courses/ip_core_02/handout_pdf/Chapter_2.pdf) by Prof. Yen at NCTU on the ARM processor core and instruction sets.
 
-### ARM Assembly Language
+#### ARM Assembly Language
 
 * Carl Burch's [Introduction to ARM Assembly Language](http://www.toves.org/books/arm/) is highly recommended starting point.
 
@@ -50,7 +77,7 @@ in Chapter 4: ARM Organization and Implementation.
 
 * [Thinkingeek ARM Assembler for the Raspberry Pi](http://thinkingeek.com/2013/01/09/arm-assembler-raspberry-pi-chapter-1/).
 
-### Bare Metal Programming
+#### Bare Metal Programming
 
 * David Welch's excellent set of [bare metal programming examples](https://github.com/dwelch67/raspberrypi).
 
@@ -60,17 +87,9 @@ in Chapter 4: ARM Organization and Implementation.
 
 * The [Raspberry Pi Bare Metal Forum](http://www.raspberrypi.org/forums/viewforum.php?f=72) has lots of information from experienced developers. Venturing into the forum is a great way to learn advanced techniques. 
 
-### C Programming Language
+#### C Programming Language
 
 * [EssentialC](http://cslibrary.stanford.edu/101)
-
-* Matt Godbolt's [Compiler Explorer](http://gcc.godbolt.org/) lets you
-  quickly see how C source code maps to compiled assembly. (Be sure to
-  choose the compiler "ARM gcc 4.8.2", which is close to what we use
-  for the course. Check out the colorize option, too.)
-
-* [cdecl.org](http://cdecl.org/) converts "C gibberish" to and from
-English.
 
 * *The C Programming Language, 2nd Ed.*, B. Kernighan and D. Ritchie.
 A digital copy of K&R is available to Stanford students via 
