@@ -105,6 +105,11 @@ $ sudo pip install xmodem
 $ brew install rpi-install
     ```
 
+    If `sudo pip install xmodem` complains `OSError: [Errno 1]
+    Operation not permitted:
+    '/System/Library/Frameworks/Python.framework/Versions/2.7/doc'`,
+    don't worry: just keep going with the `brew install rpi-install`.
+
 5.  Check that everything is working by running `rpi-install.py`. You should
     see the output below:
 
