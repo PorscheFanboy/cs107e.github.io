@@ -86,8 +86,9 @@ to install a few things. These instructions will guide you through those steps.
     installer. Follow the instructions to complete the installation. You will need
     to restart the computer after the installation.
 
-2.  Plug the USB breakout board into a USB port on your laptop. Check whether
-    the serial port exists by looking for the device file:
+2.  If you are in lab and got your kit, plug the USB breakout board
+    into a USB port on your laptop. Check whether the serial port
+    exists by looking for the device file:
 
     ```
 $ ls /dev/tty.SLAB_USBtoUART
