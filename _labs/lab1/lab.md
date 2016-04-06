@@ -93,7 +93,6 @@ the following two lines, and check for responses like this example:
     $ git --version
     git version 1.9.3
 
-Note: After typing in `arm-none-eabi-as --version` and seeing the output be sure to press `Ctrl-C` or `Ctrl-D` to return to the shell.
 If this doesn't work, don't worry. We will help you get set up in lab.
 
 We will use the following hand tools during this lab:
@@ -181,9 +180,15 @@ The next step is to wire up your breadboard.
 It is a little hard to describe this process in writing.
 You may want to find someone in the lab who has done it before
 and watch what they do.
-When wiring a breadboard cut your wires to the proper length,
-and arrange them neatly.
-Take your time and check your work.
+When wiring a breadboard be sure to choose (or cut) wires of the 
+proper length and arrange them neatly. Use different colors of
+wires to annotate what they are for. If they're neat, it's easier
+to see if everything is set up correctly.
+Take your time and check your work. A little bit of care at each
+step will save you a lot of time later, because, when your system
+has a bug, the set of things that you have to check is much smaller.
+
+![Wiring diagram][wiring]
 
 To begin, make sure you understand how breadboards work.
 What holes are connected to what holes?
@@ -272,7 +277,7 @@ The pin configurations along the outer edge of the board are
     4  5V
     6  GND
 
-(Note that pins 2 and 4 are connected together.)
+(Note that pins 2 and 4 are on the same circuit.)
 
 Here is a detailed diagram of all the GPIO pins.
 Find all the GNDs and power pins (both 3.3V and 5V).
@@ -697,6 +702,7 @@ successfully completed this lab.
   [video]: https://www.youtube.com/watch?v=Yzfk0t0HfZc#t=225
   [Breadboard]: images/ch00ftech.jpg
   [1]: images/breadboard.jpg
+  [wiring]: images/protowire2.jpg
   [LED]: images/led.jpg
   [GPIO]: images/gpio.jpg
   [Pi LED]: images/piled.jpg
