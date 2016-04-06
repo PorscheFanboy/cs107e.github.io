@@ -151,7 +151,7 @@ The kit comes in a plastic sandwich box, and contains the following parts:
 
 -   Raspberry Pi A+
 -   4GB SDHC card
--   USB serial cable with jumpers
+-   USB serial dongle with jumpers
 -   Breadboard
 -   8 LEDs
 -   4 pushbuttons and colored caps
@@ -169,6 +169,8 @@ The kit comes in a plastic sandwich box, and contains the following parts:
 
 Take a moment to identify and inventory all the parts.
 Make sure your kit is complete.
+
+Note: Don't worry about the HDMI cable in the image above -- it will come in handy later in the course, so we will bother with that later.
 
 #### 3. Wire and power your breadboard
 
@@ -205,7 +207,7 @@ and complete the circuit by connecting the cathode to GND.
 
 To check that the LEDs are working, you need a power source.
 We will draw power from your laptop
-using the *USB to Serial Cable*.
+using the *USB to Serial Dongle*.
 This is the small black breakout board with a USB connector
 on one side and a 6-pin header on the other side.
 The USB connector is inserted into a USB port on your laptop,
