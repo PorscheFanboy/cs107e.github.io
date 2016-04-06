@@ -93,7 +93,9 @@ to install a few things. These instructions will guide you through those steps.
     ```
 $ ls /dev/tty.SLAB_USBtoUART
 /dev/tty.SLAB_USBtoUART
+
     ```
+    ![USB breakout board](../images/usb.breakout.board.JPG)
 
 3.  Ensure you have `pip`, a Python package manager, installed. If you do not,
     run `sudo easy_install pip`.
