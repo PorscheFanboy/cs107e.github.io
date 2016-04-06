@@ -23,3 +23,4 @@ menu_item: true
 1. [binutils](binutils)
 2. [Bare metal programming using gcc](gcc) 
 3. [Using gdb in simulation mode](gdb)
+4. [Automated checker](ci)

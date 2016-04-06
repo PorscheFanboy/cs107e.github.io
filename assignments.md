@@ -99,6 +99,11 @@ and some of the extensions.
 Each part, basic and extension, is worth 5 points.
 You can do as many extensions as you want to accumulate more points.
 
+If we are unable to compile your assignment as is, through some fault
+of yours (for example, if your assignment fails to compile on CI and
+you should have fixed it), **we will automatically deduct 1 point**
+from the basic part of your grade from that assignment.
+
 As mentioned above, the assignments build on each other.
 If you do not complete the basic part of an assignment,
 you may have trouble completing the next assignment.
