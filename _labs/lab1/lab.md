@@ -586,7 +586,16 @@ Do the following exercises:
     Find the first occurence in the file of `e3`. What is the byte offset of `e3`
     relative to the start of the file?
 
--   Change the program such that the blink rate slows down by a factor of 2.
+-   Change the program such that the blink rate slows down by a factor
+of 2.
+
+    Note that changing the program is a multiple-step process. First
+    you need to edit `blink.s` in a text editor, then go through the
+    commands in step 1 again to make `blink.bin` from it, and then
+    finally unplug and replug the Pi and run `rpi-install.py` again to
+    actually run your new `blink.bin` on it. Make sure you understand why
+    these steps are all necessary.
+    
     Now perform experiments to determine how many instructions per second the
     Raspberry Pi executes.
 
