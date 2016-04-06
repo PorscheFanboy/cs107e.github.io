@@ -400,6 +400,7 @@ blink-onboard program after we put the card in!
 
 3. Go to the Finder and click on the Eject icon next to the file name.
 You can now remove the SD card safely.
+(If the Terminal prevents you from ejecting, type in `cd ..` to move to the parent folder.)
 
 4. Insert the SD card into the Raspberry Pi.
 
@@ -466,6 +467,7 @@ You will learn to love the bootloader.
 
 To install the bootloader,
 mount the SD card and copy `bootloader.bin` to the SD as `kernel.img`.
+Eject the SD card and insert it into the raspberry pi.
 Now, when the Raspberry Pi powers up, the bootloader is run.
 
 The bootloader listens on the serial port for commands 
@@ -502,8 +504,7 @@ Starting at the top left corner, we have
 You have already connected 5V and GND.
 Now connect the TX and RX pins on your Pi 
 to the RX and TX pins on the USB breakout board.
-
-**By convention, one device's TX should connect to the other's RX
+**Note: By convention, one device's TX should connect to the other's RX
 , and vice versa.**
 
 _Make sure you do **not** connect TX to TX and RX to RX!_
