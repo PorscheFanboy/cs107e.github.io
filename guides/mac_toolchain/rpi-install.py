@@ -42,10 +42,6 @@ else:
     # common serial ports
     portname = None
     if portname is None:
-        name = "/dev/tty0"
-        if exists(name): 
-            portname = name
-    if portname is None:
         name = "/dev/tty.SLAB_USBtoUART"
         if exists(name): 
             portname = name

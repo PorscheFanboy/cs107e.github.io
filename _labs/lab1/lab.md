@@ -161,7 +161,8 @@ The kit comes in a plastic sandwich box, and contains the following parts:
 -   20 20cm female-male jumpers
 -   10 10 cm (short) female-female jumpers
 -   10 20 cm female-female jumpers
--   20 male-male jumpers in various sizes
+-   20 male-male jumpers in various sizes (you may need to get these
+    from the course staff separately in lab, if they're not in your kit)
 
 (Recall that a [resistor](https://learn.sparkfun.com/tutorials/resistors)'s colors tell its resistance: in this case,
 10K or 1K ohms. Check out this [chart and calculator](http://www.digikey.com/en/resources/conversion-calculators/conversion-calculator-resistor-color-code-4-band).)
@@ -345,9 +346,19 @@ You can change the name if you wish.
 Now, we'll use the Raspberry Pi firmware, which is also in our 
 [GitHub repository](https://github.com/cs107e/cs107e.github.io/tree/master/firmware).
 
-There should be 5 files there.
+Right now, you might be in the `blink` folder from step 1. If so, then
+change your shell's current directory to the
+`cs107e.github.io/firmware` folder.
 
-    $ cd firmware
+    $ pwd
+    /Users/[USERNAME]/cs107e.github.io/_labs/lab1/code/blink
+    $ cd /Users/[USERNAME]/cs107e.github.io/firmware
+
+(The part of that path before `cs107e.github.io` might be different
+depending on where exactly you ran `git clone` in the beginning.)
+
+There should be 5 files in that `firmware` folder.
+
     $ ls
     blink-onboard.bin   bootloader.bin  start.elf
     bootcode.bin    config.txt
@@ -366,9 +377,10 @@ own programs to take its place, and put one of them in under the name
 `kernel.img` instead.
 
 Now notice that we've given you two additional programs,
-`blink-onboard.bin` and `bootloader.bin`. We will run
-`blink-onboard.bin` first, which blinks the on-board activity (ACT)
-LED.
+`blink-onboard.bin` and `bootloader.bin`.
+
+We will run `blink-onboard.bin` first, which blinks the activity (ACT)
+LED on the Raspberry Pi itself (the 'onboard' LED).
 
 Next, follow these steps in the following order:
 
@@ -384,8 +396,7 @@ You can now remove the SD card safely.
 
 4. Insert the SD card into the Raspberry Pi.
 
-5. Power it up. 
-The on-board activity (ACT) LED on the Raspberry Pi board 
+5. Power it up.  The on-board activity (ACT) LED, on the Raspberry Pi,
 should start blinking.
 
 Hoorah!
