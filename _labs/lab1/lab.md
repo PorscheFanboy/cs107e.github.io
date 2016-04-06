@@ -581,7 +581,8 @@ ask questions of your partner and others.
 
 Do the following exercises:
 
--   Do a `hexdump` on the `blink.bin` you assembled earlier.
+-   Look at the bytes in the `blink.bin` you assembled earlier by
+    running `hexdump blink.bin` at a shell in the `blink` folder.
     Find the first occurence in the file of `e3`. What is the byte offset of `e3`
     relative to the start of the file?
 
