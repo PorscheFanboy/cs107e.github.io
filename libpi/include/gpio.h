@@ -4,11 +4,11 @@
 #define GPIO_MAX 54
 
 /*
- * Functions for Raspberry Pi GPIO. 
+ * Functions for Raspberry Pi GPIO.
  *
  * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
  *         Philip Levis <pal@cs.stanford.edu>
- *         
+ *
  * Date: Jan 24, 2016
  */
 enum {

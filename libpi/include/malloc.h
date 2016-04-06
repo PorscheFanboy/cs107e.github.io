@@ -5,7 +5,7 @@
  * Dynamic memory allocation.
  *
  * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
- *         
+ *
  * Date: Feb 27, 2016
  */
 

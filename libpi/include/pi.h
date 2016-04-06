@@ -7,7 +7,7 @@
  * Names of the on-board Raspberry Pi LEDs.
  *
  * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
- *         
+ *
  * Date: Mar 10, 2016
  */
 

@@ -6,7 +6,7 @@
  *
  * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
  *         Philip Levis <pal@cs.stanford.edu>
- *         
+ *
  * Date: Mar 10, 2016
  */
 #include <stdarg.h>

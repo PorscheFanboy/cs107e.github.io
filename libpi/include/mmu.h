@@ -6,7 +6,7 @@
  * Fields for BCM2835 memory management unit (MMU).
  *
  * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
- *         
+ *
  * Date: Mar 10, 2016
  */
 

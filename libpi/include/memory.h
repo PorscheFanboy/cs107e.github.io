@@ -5,7 +5,7 @@
  * Macros for explicit memory reads and writes.
  *
  * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
- *         
+ *
  * Date: Jan 24, 2016
  */
 extern unsigned GET32(unsigned addr);
