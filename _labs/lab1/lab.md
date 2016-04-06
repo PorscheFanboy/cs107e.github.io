@@ -93,6 +93,7 @@ the following two lines, and check for responses like this example:
     $ git --version
     git version 1.9.3
 
+Note: After typing in `arm-none-eabi-as --version` and seeing the output be sure to press `Ctrl-C` or `Ctrl-D` to return to the shell.
 If this doesn't work, don't worry. We will help you get set up in lab.
 
 We will use the following hand tools during this lab:
@@ -180,15 +181,9 @@ The next step is to wire up your breadboard.
 It is a little hard to describe this process in writing.
 You may want to find someone in the lab who has done it before
 and watch what they do.
-When wiring a breadboard be sure to choose (or cut) wires of the 
-proper length and arrange them neatly. Use different colors of
-wires to annotate what they are for. If they're neat, it's easier
-to see if everything is set up correctly.
-Take your time and check your work. A little bit of care at each
-step will save you a lot of time later, because, when your system
-has a bug, the set of things that you have to check is much smaller.
-
-![Wiring diagram][wiring]
+When wiring a breadboard cut your wires to the proper length,
+and arrange them neatly.
+Take your time and check your work.
 
 To begin, make sure you understand how breadboards work.
 What holes are connected to what holes?
@@ -277,7 +272,7 @@ The pin configurations along the outer edge of the board are
     4  5V
     6  GND
 
-(Note that pins 2 and 4 are on the same circuit.)
+(Note that pins 2 and 4 are connected together.)
 
 Here is a detailed diagram of all the GPIO pins.
 Find all the GNDs and power pins (both 3.3V and 5V).
@@ -399,7 +394,8 @@ of `blink-onboard.bin` to `kernel.img`. Now the Pi should run our
 blink-onboard program after we put the card in!
 
 3. Go to the Finder and click on the Eject icon next to the file name.
-You can now remove the SD card safely.
+You can now remove the SD card safely. 
+(If the Terminal prevents you from ejecting, type in `cd ..` to move to the parent folder.)
 
 4. Insert the SD card into the Raspberry Pi.
 
@@ -466,6 +462,7 @@ You will learn to love the bootloader.
 
 To install the bootloader,
 mount the SD card and copy `bootloader.bin` to the SD as `kernel.img`.
+Eject the SD card and insert it into the raspberry pi.
 Now, when the Raspberry Pi powers up, the bootloader is run.
 
 The bootloader listens on the serial port for commands 
@@ -502,8 +499,7 @@ Starting at the top left corner, we have
 You have already connected 5V and GND.
 Now connect the TX and RX pins on your Pi 
 to the RX and TX pins on the USB breakout board.
-
-**By convention, one device's TX should connect to the other's RX
+**Note: By convention, one device's TX should connect to the other's RX
 , and vice versa.**
 
 _Make sure you do **not** connect TX to TX and RX to RX!_
@@ -702,7 +698,6 @@ successfully completed this lab.
   [video]: https://www.youtube.com/watch?v=Yzfk0t0HfZc#t=225
   [Breadboard]: images/ch00ftech.jpg
   [1]: images/breadboard.jpg
-  [wiring]: images/protowire2.jpg
   [LED]: images/led.jpg
   [GPIO]: images/gpio.jpg
   [Pi LED]: images/piled.jpg
