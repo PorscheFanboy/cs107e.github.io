@@ -348,7 +348,7 @@ Now, we'll use the Raspberry Pi firmware, which is also in our
 There should be 5 files there.
 
     $ cd firmware
-    $ ls firmware
+    $ ls
     blink-onboard.bin   bootloader.bin  start.elf
     bootcode.bin    config.txt
 
