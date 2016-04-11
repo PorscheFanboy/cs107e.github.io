@@ -115,13 +115,13 @@ you need to specify linker paths and libraries explicitly with -L and -l.
 One of the standard libraries that is not linked in when
 using `-nostdlib` and `-nodefaultlibs`
 is `libgcc.a`, a runtime library implementing 
-functions that are needed to compile C.
+functions that are needed to compile certain C code.
 For example, the ARM processor does not include a division instruction. 
 `libgcc.a` includes functions to perform division.
 If you do not provide an implementation of these functions,
-the program will not run.
+a program with code that includes division by a variable will not run.
 
-If you use `-nostdlib`, 
+In this case, if you use `-nostdlib`, 
 then you need to explicitly link with `libgcc.a` (`-lgcc`)
 
 ### Start files
