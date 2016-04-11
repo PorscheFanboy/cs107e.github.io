@@ -11,6 +11,6 @@
 
 #define F_AUDIO 1000000
 
-extern void tone(int freq);
+void tone(int freq);
 
 #endif

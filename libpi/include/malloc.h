@@ -15,6 +15,6 @@
 
 typedef unsigned long size_t;
 
-extern void* malloc(size_t n);
+void* malloc(size_t n);
 
 #endif

@@ -8,6 +8,6 @@
  * Date: Mar 1, 2016
  */
 
-extern void reboot(void);
+void reboot(void);
 
 #endif

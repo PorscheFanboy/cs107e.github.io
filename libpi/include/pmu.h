@@ -150,7 +150,7 @@ static inline void pmu_stop_counting(void) {
     armv6_pmcr_write(0) ;
 }
 
-extern void pmu_set_events(int evt0, int evt1) ;
-extern uint32_t pmu_get_counter(int event, int *overflow);
+void pmu_set_events(int evt0, int evt1) ;
+uint32_t pmu_get_counter(int event, int *overflow);
 
 #endif

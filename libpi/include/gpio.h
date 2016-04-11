@@ -1,6 +1,10 @@
 #ifndef GPIO_H
 #define GPIO_H
 
+#include "bcm.h"
+
+#define GPIO_BASE (BCM_BASE+0x200000)
+
 #define GPIO_MAX 54
 
 /*
@@ -84,41 +88,11 @@ enum {
     GPIO_FUNC_ALT5    = 2,
     GPIO_FUNC_INVALID = 8 // Only returned for invalid pins
 };
-extern void gpio_set_function(unsigned pin, unsigned func);
-extern unsigned gpio_get_function(unsigned pin);
+void gpio_set_function(unsigned pin, unsigned func);
+unsigned gpio_get_function(unsigned pin);
 
-extern void gpio_set_input(unsigned pin);
-extern void gpio_set_output(unsigned pin);
-
-enum {
-    GPIO_PUD_DISABLE  = 0,
-    GPIO_PUD_PULLDOWN = 1,
-    GPIO_PUD_PULLUP   = 2,
-};
-extern void gpio_set_pud(unsigned pin, unsigned pud);
-extern void gpio_set_pullup(unsigned pin);
-extern void gpio_set_pulldown(unsigned pin);
-
-enum {
-    GPIO_RISING_EDGE        = 0,
-    GPIO_FALLING_EDGE       = 1,
-    GPIO_ASYNC_RISING_EDGE  = 2,
-    GPIO_ASYNC_FALLING_EDGE = 3,
-    GPIO_HIGH_LEVEL         = 4,
-    GPIO_LOW_LEVEL          = 5
-};
-extern void gpio_detect_falling_edge(unsigned pin);
-extern void gpio_detect_rising_edge(unsigned pin);
-extern void gpio_detect_async_rising_edge(unsigned pin);
-extern void gpio_detect_async_falling_edge(unsigned pin);
-extern void gpio_detect_high_level(unsigned pin);
-extern void gpio_detect_low_level(unsigned pin);
-extern unsigned gpio_check_event(unsigned pin);
-extern void gpio_clear_event(unsigned pin);
-extern unsigned gpio_check_and_clear_event(unsigned pin);
-
-extern void gpio_write(unsigned pin, unsigned val);
-extern unsigned gpio_read(unsigned pin);
+void gpio_write(unsigned pin, unsigned val);
+unsigned gpio_read(unsigned pin);
 
 #define GPIO_TX 14
 #define GPIO_RX 15

@@ -71,8 +71,8 @@
 #define INTERRUPTS_VC_ARASANSDIO        (ARM_IRQ2_BASE + 30)
 #define INTERRUPTS_AVSPMON              (ARM_IRQ2_BASE + 31)
 
-extern void interrupts_enable(unsigned n);
-extern void interrupts_disable(unsigned n);
+void interrupts_enable(unsigned n);
+void interrupts_disable(unsigned n);
 
 /**
  ** @brief Bits in the Basic register to enable various interrupts.
@@ -109,7 +109,7 @@ extern void interrupts_disable(unsigned n);
 #define INTERRUPTS_BASIC_GPU_1_HALTED_IRQ      (1 << 5)
 #define INTERRUPTS_BASIC_ACCESS_ERROR_1_IRQ    (1 << 6)
 #define INTERRUPTS_BASIC_ACCESS_ERROR_0_IRQ    (1 << 7)
-extern void interrupts_enable_basic(unsigned mask);
-extern void interrupts_disable_basic(unsigned mask);
+void interrupts_enable_basic(unsigned mask);
+void interrupts_disable_basic(unsigned mask);
 
 #endif

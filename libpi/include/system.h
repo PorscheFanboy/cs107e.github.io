@@ -8,7 +8,7 @@
  * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
  * Date: Mar 1, 2016
  */
-extern unsigned system_get_cache_type(void);
+unsigned system_get_cache_type(void);
 
 #define SYSTEM_MMU_ENABLE                (1<<0)
 #define SYSTEM_DCACHE_ENABLE             (1<<2)
@@ -16,33 +16,33 @@ extern unsigned system_get_cache_type(void);
 #define SYSTEM_BRANCH_PREDICTION_ENABLE  (1<<11)
 #define SYSTEM_ICACHE_ENABLE             (1<<12)
 #define SYSTEM_ROUND_ROBIN_ENABLE        (1<<14)
-extern void system_set_cache_control(unsigned reg);
-extern unsigned system_get_cache_control(void);
+void system_set_cache_control(unsigned reg);
+unsigned system_get_cache_control(void);
 
-extern void system_enable_cache(void);
-extern void system_disable_cache(void);
-extern void system_enable_dcache(void);
-extern void system_disable_dcache(void);
-extern void system_enable_icache(void);
-extern void system_disable_icache(void);
+void system_enable_cache(void);
+void system_disable_cache(void);
+void system_enable_dcache(void);
+void system_disable_dcache(void);
+void system_enable_icache(void);
+void system_disable_icache(void);
 
-extern void system_invalidate_cache(void);
-extern void system_clean_cache(void);
-extern void system_clean_invalidate_cache(void);
+void system_invalidate_cache(void);
+void system_clean_cache(void);
+void system_clean_invalidate_cache(void);
 
-extern void system_invalidate_dcache(void);
-extern void system_clean_dcache(void);
-extern void system_clean_invalidate_dcache(void);
+void system_invalidate_dcache(void);
+void system_clean_dcache(void);
+void system_clean_invalidate_dcache(void);
 
-extern void system_invalidate_icache(void);
+void system_invalidate_icache(void);
 
-extern void system_enable_write_buffer(void);
-extern void system_disable_write_buffer(void);
+void system_enable_write_buffer(void);
+void system_disable_write_buffer(void);
 
-extern void system_enable_branch_prediction(void);
-extern void system_disable_branch_prediction(void);
+void system_enable_branch_prediction(void);
+void system_disable_branch_prediction(void);
 
-extern void system_invalidate_tlb(void);
+void system_invalidate_tlb(void);
 
 // access not allowed
 #define SYSTEM_DOMAIN_NO_ACCESS       0b00
@@ -50,12 +50,12 @@ extern void system_invalidate_tlb(void);
 #define SYSTEM_DOMAIN_CHECK_ACCESS    0b01
 // user access permission check, priv permission access not checked
 #define SYSTEM_DOMAIN_NO_CHECK_ACCESS 0b11
-extern void system_set_domain(unsigned reg);
+void system_set_domain(unsigned reg);
 
-extern void system_set_tlb_base(unsigned base);
+void system_set_tlb_base(unsigned base);
 
-extern void system_start_mmu(unsigned base, unsigned flags);
-extern void system_stop_mmu(void);
+void system_start_mmu(unsigned base, unsigned flags);
+void system_stop_mmu(void);
 
 /**
  * @fn void dmb(void)

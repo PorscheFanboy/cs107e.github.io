@@ -7,7 +7,7 @@
  * Author: Philip Levis <pal@cs.stanford.edu>
  * Date: Mar 23 2016
  */
-extern void debounce_init(int pin);
-extern int debounce(int pin);
+void debounce_init(int pin);
+int debounce(int pin);
 
 #endif
