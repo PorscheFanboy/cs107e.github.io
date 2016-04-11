@@ -1,7 +1,5 @@
-
-
-void gpio_set_input(unsigned pin);
-void gpio_set_output(unsigned pin);
+#ifndef GPIOEXTRA_H
+#define GPIOEXTRA_H
 
 enum {
     GPIO_PUD_DISABLE  = 0,
@@ -11,3 +9,5 @@ enum {
 void gpio_set_pud(unsigned pin, unsigned pud);
 void gpio_set_pullup(unsigned pin);
 void gpio_set_pulldown(unsigned pin);
+
+#endif

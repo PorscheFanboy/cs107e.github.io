@@ -1,3 +1,5 @@
+#ifndef GPIOEVENT_H
+#define GPIOEVENT_H
 
 enum {
     GPIO_RISING_EDGE        = 0,
@@ -16,3 +18,5 @@ void gpio_detect_low_level(unsigned pin);
 unsigned gpio_check_event(unsigned pin);
 void gpio_clear_event(unsigned pin);
 unsigned gpio_check_and_clear_event(unsigned pin);
+
+#endif

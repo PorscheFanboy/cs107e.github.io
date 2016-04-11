@@ -91,6 +91,9 @@ enum {
 void gpio_set_function(unsigned pin, unsigned func);
 unsigned gpio_get_function(unsigned pin);
 
+void gpio_set_input(unsigned pin);
+void gpio_set_output(unsigned pin);
+
 void gpio_write(unsigned pin, unsigned val);
 unsigned gpio_read(unsigned pin);
 
