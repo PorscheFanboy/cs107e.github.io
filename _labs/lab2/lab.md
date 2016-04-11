@@ -38,7 +38,8 @@ programming on the Raspberry Pi.
 on setting up makefiles for cross-development
 on the Pi.
 
-3 Skim the section in this writeup on setting up your display.
+3 Read section 2.1 in this writeup on the theory of operation
+for 7-segment displays. Also, skim the rest of section 2.
 
 To start this lab, find the `cs107e.github.io/_labs/lab2/code` directory.
 You may need to pull from the `cs107e.github.io` repository
@@ -114,7 +115,14 @@ slightly different output) to find out!
 
 Your next assignment will be to build a simple clock
 using a 4-digit 7-segment display.
-For parts 2.1, 2.2, and 2.3, feel free to use jumpers for ease of debugging!
+
+This lab has been deliberately designed to step you 
+through process and to *test as you go*.
+We start simple,
+test it to make sure you understand how the display works,
+and then add more functionality.
+For parts 2.2, and 2.3, feel free to use jumpers for ease of debugging!
+
 
 #### 2.1 How it works
 
@@ -213,7 +221,7 @@ Find three short male-male jumpers.
 Wire the top of the resistor to the red power rail 
 using an orange jumper (since orange indicates 3.3V),
 and the bottom of the resistor to A (Pin 11) using a green jumper.
-Then wire the D1 (Pin 12) to Ground using a black jumper.
+Then wire D1 (Pin 12) to Ground using a black jumper.
 You may want to refer to the diagram above
 that shows the pins of the display labeled.
 When you apply power to your Raspberry Pi,
@@ -224,8 +232,8 @@ you should see the result shown below.
 Now experiment.
 After you light up segment A of digit 1,
 light up segment B of digit 1.
-Then rewire it so that you Light up segment B of digit 2.
-Finally, light up segment A and B of digit 1 and 2.
+Then rewire it so that you light up segment B of digit 2.
+Finally, light up segment A and B of digit 1 **and** 2.
 Note that you cannot simultaneously display 
 different segments on different digits: Why?
 
@@ -235,7 +243,7 @@ Let's always use the convention
 that the left-most resistor controls segment A,
 and the right-most controls segment DP.
 After you insert the resistors, test your circuit.
-Apply power to various segments and create the pattern "1   ".
+Apply power to various segments and create the pattern `"1 1 "`.
 Here a space means that the digit is blank (no segments turned on).
 
 ![Wired breadboard with components](images/jumper2.jpg)
@@ -249,7 +257,6 @@ by grounding the digit pin.
 We will eventually want to control which segments and digits 
 are turned on using the Raspberry Pi GPIO pins,
 so we need an electronic switch that can be controlled using these pins.
-To do this we need an electroniclly controlled switch.
 To do this we will use bipolar-junction transistors, or BJTs. 
 
 A transistor has 3 terminals,
@@ -257,9 +264,10 @@ called the collector, emitter, and base.
 The base controls 
 the amount of current flowing from the collector to the emitter.
 Normally the tranistor is open and no current flows from collector to emitter.
-However, if you apply 3.3V to the base, the transistor switch will close. 
-The collector will be connected to the emitter,
-and current will flow.
+This condition is an open circuit.
+However, if you apply 3.3V to the base, 
+the collector will be connected to the emitter and current will flow.
+This is equivalent to closing the switch.
 
 We will be using 2N3904 transistors.
 The following diagram identifies which
@@ -274,7 +282,9 @@ The left most leg will be the emitter (E).
 When you wire up a BJT,
 you need to use a current limiting resistor
 between the base and the control voltage.
-Now wire the collector of the left-most transistor to D1.
+Now wire the collector of the left-most transistor to D1
+(remember the collector is the right-most pin if the flat
+side is facing you).
 And apply power to the base of the transistor.
 We should see the "1   " on the display.
 
@@ -298,6 +308,11 @@ And here is what it should look like when it is wired up.
 ![Wired breadboard with components 1](images/wire1.jpg)
 
 ![Wired breadboard with components 2](images/wire2.jpg)
+
+You will see some buttons in the photo. 
+There is no need to add those buttons during lab.
+The buttons are used for the extension to Assignment 2.
+
 
 #### 2.5. Connect the display to the Raspberry Pi
 
