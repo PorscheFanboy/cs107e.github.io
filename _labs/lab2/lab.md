@@ -150,7 +150,7 @@ the cathodes are all connected together.
 Such a display is called a *common cathode* display.
 
 To create a number, you need to turn on some of the segments.
-What segments do you need to turn on to make a '1', a '0', an 'A"?
+What segments do you need to turn on to make a '1', a '0', an 'A'?
 
 Here is a
 [nice online simulation of a 7-segment display](http://www.uize.com/examples/seven-segment-display.html).
@@ -286,7 +286,7 @@ Now wire the collector of the left-most transistor to D1
 (remember the collector is the right-most pin if the flat
 side is facing you).
 And apply power to the base of the transistor.
-We should see the `"1   "` on the display.
+We should see the `"1 ‍ ‍ ‍ "` on the display.
 
 ![Wired breadboard with components](images/jumper3.jpg)
 
