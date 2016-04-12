@@ -155,8 +155,8 @@ What segments do you need to turn on to make a '1', a '0', an 'A"?
 Here is a
 [nice online simulation of a 7-segment display](http://www.uize.com/examples/seven-segment-display.html).
 
-Your clock will display hours and minutes.
-We will need 2 digits for the hour and 2 digits for the minutes,
+Your clock will display minutes and seconds.
+We will need 2 digits for the minutes and 2 digits for the seconds,
 for a total of 4 digits.
 We will be using a display with 4 7-segment displays,
 all integrated into a single unit.
