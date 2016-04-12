@@ -276,8 +276,8 @@ pins on the 2N3904 are collector, base, and emitter.
 ![2n3904](images/2n3904.jpg)
 
 Note the the transistors have a flat side and a rounded side.
-If you are looking at the flat side,
-The left most leg will be the emitter (E).
+If you are looking at the flat side with the text upright,
+the leftmost leg will be the emitter (E).
 
 When you wire up a BJT,
 you need to use a current limiting resistor
@@ -286,7 +286,7 @@ Now wire the collector of the left-most transistor to D1
 (remember the collector is the right-most pin if the flat
 side is facing you).
 And apply power to the base of the transistor.
-We should see the "1   " on the display.
+We should see the `"1   "` on the display.
 
 ![Wired breadboard with components](images/jumper3.jpg)
 
