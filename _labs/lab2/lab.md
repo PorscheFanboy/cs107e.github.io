@@ -212,15 +212,15 @@ since after you insert the display into the breadboard
 you can't see the pins.
 
 Second, place a single 1K resistor on the board.
-Install the resistor so that it spans
-the top and bottom vertical columns of 5 holes on the breadboard.
+Install the resistor so that it crosses over the middle of the breadboard.
 
 Hook up the power and ground rails of the breadboard
 to the 3.3V and Ground pins on your Raspberry Pi.
 Find three short male-male jumpers.
 Wire the top of the resistor to the red power rail 
 using an orange jumper (since orange indicates 3.3V),
-and the bottom of the resistor to A (Pin 11) using a green jumper.
+and the bottom of the resistor to A (Pin 11 - if you aligned pin 1 to
+column 50 as described above, this is at column 51) using a green jumper.
 Then wire D1 (Pin 12) to Ground using a black jumper.
 You may want to refer to the diagram above
 that shows the pins of the display labeled.
