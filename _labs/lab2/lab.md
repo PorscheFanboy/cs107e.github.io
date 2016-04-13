@@ -319,7 +319,7 @@ The buttons are used for the extension to Assignment 2.
 The final step is to connect our display to the Raspberry Pi.
 After we connect the Pi to the display, 
 we can control the display with a program.
-We will outline the process in the next few paragraph.s
+We will outline the process in the next few paragraphs.
 However, there is no need to do this in lab.
 You should be able to do this on your own outside of lab.
 
