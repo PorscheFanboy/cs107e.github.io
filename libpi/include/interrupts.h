@@ -1,6 +1,10 @@
 #ifndef INTERRUPTS_H
 #define INTERRUPTS_H
 
+// Implemented in assembly in registers.s
+void system_enable_interrupts();
+void system_disable_interrupts();
+
 // From the linux header
 //   https://github.com/raspberrypi/linux/blob/rpi-3.6.y/arch/arm/mach-bcm2708/include/mach/platform.h
 #define ARM_IRQ1_BASE                  0

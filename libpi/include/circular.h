@@ -3,7 +3,7 @@
 
 int cir_empty(void);
 int cir_full(void);
-int cir_push(int x);
-int cir_pop(void);
+int cir_enqueue(int x);
+int cir_dequeue(void);
 
 #endif
