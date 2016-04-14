@@ -33,7 +33,7 @@ introduction to embedded systems.
 
 This class is organized by weeks. Each week consists of two lectures
 on Fri and Mon, a lab offered on Tue or Wed evening, and a programming
-assignment which is due the following Tue at 7PM (before the Tue
+assignment which is due the following Tue at 6PM (an hour before the Tue
 lab). Lecture and lab attendance is mandatory. There will be a short
 final project, but no exams.
 
@@ -44,8 +44,8 @@ Programming Language*, Kernighan and Ritchie.
 
 **Lectures:** Mon & Fri 1:30-2:50pm, Rm 160-319
 
-**Lab:** Tue or Wed 7:00-9:00 pm
+**Lab:** Tue 7:00-9:00pm, Wed 6:30-8:30pm
 
-**Lecturers:** Dawson Engler, Pat Hanrahan, Julie Zelenski
+**Lecturers:** Dawson Engler, Pat Hanrahan, and Philip Levis
 
-**CAs:** Sergio Benitez, Isabel Bush, Ngoc Bui, Omar Rizwan
+**CAs:** Isabel Bush, Jane E, Omar Rizwan, and Anna Zeng
