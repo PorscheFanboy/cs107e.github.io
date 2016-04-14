@@ -69,15 +69,20 @@ there dumbfounded when an executing program does not behave as expected!
 Change to the `codegen` directory. Review the C code in the `codegen.c`
 and `ptrs.c` source files.
 
-Whenever you want to see the ARM assembly code which the C compiler
-generates from `codegen.c`, run `make codegen.list` in that folder,
-then open `codegen.list` in your text editor. Similarly, if you want
-to see the assembly generated from `ptrs.c`, run `make
-ptrs.list`.
-
-You'll probably want to run this once on the original C files, and
-then again if you change the C code, so you can see how the generated
+You'll probably want to run `make` once on the original C files, and
+then run `make` again if you change the C code, so you can see how the generated
 assembly changes.
+
+Running `make` is set to both try to generate `codegen.bin`, and
+generate `codegen.list`. To produce `codegen.bin`, we need to
+_compile_ `codegen.c` to `codegen.o`, then _link_ that `.o` with some
+other object files to form `codegen.elf`, then strip that down to
+`codegen.bin`. We will learn more about linking later.
+
+Even if the linking step fails and `codegen.bin` isn't made, as long
+as the compile of the individual C file works, you should still get a
+`codegen.list` you can look at. This will come in handy when we get
+link errors in parts (c) and (e) of `codegen.c`.
 
 ##### Work
 
@@ -381,11 +386,14 @@ Break into pairs and read the following Makefile.
         rm -f *.o *.bin *.list
 ```
 
-Discuss and document all the various features and syntactical constructs used
-in this Makefile. You may use the 
-[CS107 Guide to Makefiles](http://web.stanford.edu/class/cs107/guide_make.html) 
+Discuss and document all the various features and syntactical
+constructs used in this Makefile. Check out
+[a Makefile tutorial](http://www.opussoftware.com/tutorial/TutMakefile.htm),
+[another Makefile tutorial](http://www.delorie.com/djgpp/doc/ug/larger/makefiles.html)
+the
+[CS107 Guide to Makefiles](http://web.stanford.edu/class/cs107/guide_make.html)
 and the
-[GNU Documentation about Compiler Options](https://gcc.gnu.org/onlinedocs/gcc-4.2.2/gcc/C-Dialect-Options.html)
+[GNU Documentation about Compiler Options](https://gcc.gnu.org/onlinedocs/gcc-4.2.2/gcc/C-Dialect-Options.html).
 
  - What do each of the CFLAGS do?
  - What happens if you just type `make`? Which commands will execute?
@@ -393,10 +401,6 @@ and the
 What part of each target indicates the prerequisites? (A prerequisite means 
 that if that file changes, then the target is stale and must be rebuilt)
  - What do the symbols `$<` and `$@` mean?
-
-For more information about makefiles,
-read the 
-[CS107 Guide to Makefiles](http://web.stanford.edu/class/cs107/guide_make.html)
 
 Now that you understand this simple Makefile, take a look at the one in the
 `codegen` directory. That is an example of a more complete Makefile and is the

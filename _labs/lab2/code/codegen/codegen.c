@@ -158,8 +158,9 @@ int discrete_log_alt(int n)
 // Part (e): division
 // These are various division functions. Go through them, uncomment
 // stuff as we indicate below. Some will build successfully, some will
-// not. Make `codegen.list` and look at the generated ASM. Can you find a
-// pattern in what division usages come out OK?
+// not. Run `make` and look at the generated ASM. Don't worry too much
+// about the exact tricks the compiler may use for division. Can you
+// find a pattern in what division usages come out OK?
 int divide_by_2(int n)
 {
     return n / 2;

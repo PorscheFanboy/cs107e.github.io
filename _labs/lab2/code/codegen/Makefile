@@ -23,7 +23,8 @@ LDFLAGS = -nostdlib -T memmap
 # The first target listed in the makefile is the default product built when
 # make is invoked with no argument. By default, this makefile builds two 
 # executables and dumps the generated assembly into text files for review
-all : codegen.bin codegen.list ptrs.bin ptrs.list
+# We build .list before .bin so that we get the .list even if the link fails.
+all : codegen.list codegen.bin ptrs.list ptrs.bin
 
 # This pattern rule creates binary 'name.bin' by extracting raw instructions 
 # from executable 'name.elf'
