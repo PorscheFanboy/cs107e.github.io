@@ -15,8 +15,9 @@ menu_item: true
 1. [Powering the Pi](power)
 2. [Working with SD cards](sd)
 3. [Installing the development tools on a Mac](mac_toolchain)
-4. [Installing a Ubuntu virtual machine on Windows](vmware).
+4. [Installing a Ubuntu virtual machine on Windows](vmware)
 5. [Using the console cable and bootloader](bootloader)
+6. [Installing a reset button](reset-button)
 
 ## Tools
 
