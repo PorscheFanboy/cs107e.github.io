@@ -1,0 +1,11 @@
+echo "Checking that your application and libpi don't conflict."
+arm-none-eabi-nm $1 | grep " T " | sed "s/[0-9a-f]* T \([a-z_]*\)/\1/g" | sort > libsyms.txt
+arm-none-eabi-nm $2 | grep " T " | sed "s/[0-9a-f]* T \([a-z_]*\)/\1/g"  | sort > appsyms.txt
+echo "WARNING: The Reference and student modules both define the following symbols." > warning.txt
+echo "This means you are including reference implementations of code that you" >> warning.txt
+echo "have implemented, so you might think your code works when it doesn't, or" >> warning.txt
+echo "this might break your code. Be sure that, for each .o file, you list it in" >> warning.txt
+echo "LIBPI_REFERENCE_MODULES or LIBPI_STUDENT_MODULES but not both:" >> warning.txt
+comm -1 -2 libsyms.txt appsyms.txt > common.txt
+if test -s common.txt; then tput bold; tput setaf 1;cat warning.txt common.txt;tput sgr0; fi
+rm libsyms.txt appsyms.txt warning.txt common.txt
