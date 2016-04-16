@@ -3,17 +3,17 @@
 #include "uart.h"
 
 struct UART {
-    int data; // I/O Data
-    int ier;  // Interupt enable
-    int iir;  // Interupt identify and fifo enables/clears
-    int lcr;  // line control register
-    int mcr;  // modem control register
-    int lsr;  // line status register
-    int msr;  // modem status register
-    int scratch;
-    int cntl; // control register
-    int stat; // status register
-    int baud; // baud rate register
+    unsigned data; // I/O Data
+    unsigned ier;  // Interrupt enable
+    unsigned iir;  // Interrupt identify and fifo enables/clears
+    unsigned lcr;  // line control register
+    unsigned mcr;  // modem control register
+    unsigned lsr;  // line status register
+    unsigned msr;  // modem status register
+    unsigned scratch;
+    unsigned cntl; // control register
+    unsigned stat; // status register
+    unsigned baud; // baud rate register
 } ;
 
 // AUX bits
