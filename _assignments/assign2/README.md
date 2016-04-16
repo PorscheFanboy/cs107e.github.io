@@ -19,30 +19,31 @@ The goals of this assignment are:
 
 ### Set up your assignment
 
-1 For this assignment, we are introducing `libpi`, which contains header files and (binary) 
+1. For this assignment, we are introducing `libpi`, which contains header files and (binary) 
 reference implementations of the code you will be writing throughout the quarter.
 You will be creating your own `libpi` library through the course assignments.
 Go to the folder where your cloned `cs107e.github.io` repo resides and run `git pull`.
 This should give you a `libpi` directory with the relevant files.
 
-2 From there, go to the parent directory (if you `ls`, you should see the `cs107e.github.io` folder) 
+2. From there, go to the parent directory (if you `ls`, you should see the `cs107e.github.io` folder) 
 and then clone the `assign2` branch from your 107e assignment repo to get the starter code:
 
-```
-git clone -b assign2 https://github.com/cs107e/[YOUR-GITHUB-USERNAME]-assignments assign2
-```
+   ```
+   $ git clone -b assign2 https://github.com/cs107e/[YOUR-GITHUB-USERNAME]-assignments assign2
+   ```
 
-For this and future assignments, it will be important that you clone this branch at this location.
-This means if you are in your `assign2` directory, the new `libpi` folder should live at `../cs107e.github.io/libpi/`.
-To check, cd into the `assign2` folder and try:
-```
-ls ../cs107e.github.io/libpi/
-```
+   For this and future assignments, it will be important that you clone this branch at this location.
+   This means if you are in your `assign2` directory, the new `libpi` folder should live at `../cs107e.github.io/libpi/`.
+   To check, cd into the `assign2` folder and try:
 
-Note: If you see `-bash: cd: ../libpi/: No such file or directory` then something is wrong.
+   ```
+   $ ls ../cs107e.github.io/libpi/
+   ```
 
-3 Familiarize yourself with the starter code. Take a look at the provided Makefile. 
-You'll notice that the include depends on the relative path described above.
+   Note: If you see `-bash: cd: ../libpi/: No such file or directory` then something is wrong.
+
+3. Familiarize yourself with the starter code. Take a look at the provided Makefile. 
+   You'll notice that the include depends on the relative path described above.
 
 ### Modules
 
@@ -80,6 +81,14 @@ Each C file is meant to serve as a discrete module in a library of
 reusable Raspberry Pi functions that you will build up during the
 quarter.
 
+We have given you a file `main.c` which just calls `clock_init` and
+`clock_run`. When you `make` and boot your program on the Pi normally
+(as opposed to `make test`), it will enter `main()` in `main.c`, which
+then calls into the `clock` module.
+
+You should not have to modify `main.c` at all, because you will
+implement all functionality in the `clock` module.
+
 ### Testing
 
 Now that you're writing larger programs, we want to introduce you to
@@ -97,7 +106,7 @@ If a test fails, the red LED on the Pi will blink. By the time you're
 done with this assignment, all the tests should pass.
 
 You can add your own tests here as well. Just make sure that your changes to
-`test.c` are not needed for the current tests to pass (in other words all 
+`test.c` are not needed for the current tests to pass (in other words, all 
 functional code should live in the modules).
 
 ### Basic part: a simple clock
@@ -242,7 +251,7 @@ functional code should live in the modules).
     program began or the time was set (for the extension).
 
     The current time will be represented with three numbers -- minutes,
-    seconds, and milliseconds -- that should be initialized in `clock_init` 
+    seconds, and milliseconds -- that should be initialized
     to zero when the program begins. The inner loop in `clock_run` should perform 
     one refresh cycle of the 4-digit display using the current time, and then increment 
     the time by the length of time needed to perform the refresh. Make sure to test that 
