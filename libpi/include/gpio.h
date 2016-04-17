@@ -5,7 +5,7 @@
 
 #define GPIO_BASE (BCM_BASE+0x200000)
 
-#define GPIO_MAX 54
+#define GPIO_MAX 53
 
 /*
  * Functions for Raspberry Pi GPIO.
@@ -71,8 +71,7 @@ enum {
     GPIO_PIN51 = 51,
     GPIO_PIN52 = 52,
     GPIO_PIN53 = 53,
-    GPIO_PIN54 = 54,
-    GPIO_PIN_LAST =  54
+    GPIO_PIN_LAST =  53
 };
 
 void gpio_init(void);
