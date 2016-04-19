@@ -105,16 +105,16 @@ Let's set a breakpoint at `_start`.
 Note that `gdb` knows about the source file and line numbers.
 
     (gdb) list
-    1   .global _start
-    2   
-    3   _start:
-    4   
-    5   // configure GPIO 20 for output
-    6   ldr r0, =0x20200008
-    7   mov r1, #1
-    8   str r1, [r0]
-    9   
-    10  mov r1, #(1<<20)
+    1	.globl _start
+    2	_start:
+    3	
+    4	// configure GPIO 20 for output
+    5	ldr r0, =0x20200008
+    6	mov r1, #1
+    7	str r1, [r0]
+    8	
+    9	mov r1, #(1<<20)
+    10	
 
 Now run it
 
@@ -157,7 +157,7 @@ Success, we loaded 0x20200008 into register 0!
 Now let's step one instructionn, and inspect the registers again.
 
     (gdb) stepi
-    8   str r1, [r0]
+    7   str r1, [r0]
 
 Again, success. We loaded 1 into r1.
 The next instruction to be executed is the store instruction.
