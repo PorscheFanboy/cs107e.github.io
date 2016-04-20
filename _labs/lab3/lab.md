@@ -123,15 +123,20 @@ Type the following.
     (gdb) print y
     $4 = 5
     (gdb) step
+    (gdb) step
     (gdb) print y
     $5 = 5
+    (gdb) step
     (gdb) step
     (gdb) print y
     $6 = 7
 
 Does each printed value make sense with respect to the code that
 you're paused at then? (Don't forget that if you're paused at a line,
-you're paused *before* that line has executed.)
+you're paused *before* that line has executed.) I've done some steps
+without looking at `y` here because `y` stays the same while you're
+still stepping within those functions (and then changes when you get
+out).
 
 To exit `gdb`, type `quit`.
 
