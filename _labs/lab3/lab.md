@@ -302,7 +302,11 @@ This causes characters sent out to be echoed back.
 We will use `screen` to send and receive characters over the tty port.
 The command
 
+    Mac:
     $ screen /dev/tty.SLAB_USBtoUART 115200
+
+    Linux:
+    $ screen /dev/ttyUSB0 115200
 
 establishes a connection to the USB-serial breakout 
 at the baud rate of 115200.
@@ -312,7 +316,7 @@ in the upper left hand corner.
 Type in some characters.  What happens?
 What happens if you push return on your keyboard?
 
-To exit screen, type `Ctrl-A` followed by `Ctrl-K`.
+To exit screen, type `Ctrl-A` followed by `k`.
 You should see the following message.
 
     Really kill this window? [y/n]
