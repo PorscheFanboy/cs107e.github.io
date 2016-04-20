@@ -15,7 +15,7 @@ Simulation mode is also a good way to learn more about
 how the ARM processor executes instructions.
 
 2. Learn how to use `screen` with the USB-serial breakout board.
-Also understand how the UART peripheral on the Raspberry Pi.
+Also understand how the UART peripheral works on the Raspberry Pi.
 
 To complete the lab, you must answer the questions in the
 [checklist](checklist).
