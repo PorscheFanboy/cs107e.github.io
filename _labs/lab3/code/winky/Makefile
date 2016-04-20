@@ -5,10 +5,10 @@ CFLAGS += -g
 all: winky.list
 
 winky.list: winky.elf
-	arm-none-eabi-objdump winky.exe -d > winky.list
+	arm-none-eabi-objdump winky.elf -d > winky.list
 
 winky.elf: winky.c start.s Makefile
-	arm-none-eabi-gcc $(CFLAGS) start.s winky.c -o winky.exe
+	arm-none-eabi-gcc $(CFLAGS) start.s winky.c -o winky.elf
 
 clean :
 	rm -f *.exe
