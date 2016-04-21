@@ -250,12 +250,12 @@ functional code should live in the modules).
     The clock will display the minutes and seconds that have passed since the 
     program began or the time was set (for the extension).
 
-    The current time will be represented with three numbers -- minutes,
-    seconds, and milliseconds -- that should be initialized
-    to zero when the program begins. The inner loop in `clock_run` should perform 
-    one refresh cycle of the 4-digit display using the current time, and then increment 
-    the time by the length of time needed to perform the refresh. Make sure to test that 
-    the timer is calibrated correctly so the clock is running at the right rate.
+    The current time should be initialized to zero when the program
+    begins. The inner loop in `clock_run` should perform one refresh
+    cycle of the 4-digit display using the current time, and then
+    increment the time by the length of time needed to perform the
+    refresh. Make sure to test that the timer is calibrated correctly
+    so the clock is running at the right rate.
 
 ### Extension
 
