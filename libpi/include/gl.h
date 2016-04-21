@@ -37,6 +37,10 @@ void gl_swap_buffer(void);
 
 void gl_draw_pixel(int x, int y, color c);
 
+#define GL_FONT_DEFAULT 0
+#define GL_FONT_ALT1    1
+#define GL_FONT_ALT2    2
+void gl_select_font(int font);
 void gl_draw_char(int x, int y, char letter, color c);
 void gl_draw_string(int x, int y, char* string, color c);
 unsigned gl_get_char_height(void);

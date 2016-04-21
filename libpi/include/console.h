@@ -10,9 +10,14 @@
  * Date: 3/24/16
  */
 
+#define CONSOLE_FONT_DEFAULT 0
+#define CONSOLE_FONT_ALT1    1
+#define CONSOLE_FONT_ALT2    2
+#define CONSOLE_FONT_ALT3    3
 
 
 void console_init(unsigned nrows, unsigned ncols);
+void console_select_font(int font);
 void console_putc(int ch);
 void console_printf(const char *format, ...);
 char console_get_char(const unsigned row, unsigned col);
