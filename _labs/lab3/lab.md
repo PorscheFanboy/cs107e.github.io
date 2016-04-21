@@ -264,7 +264,7 @@ It is a great way to learn ARM assembly language,
 as well as track down bugs in your program.
 It also lets you look at both the C and the assembly language source.
 
-Answer the questions in [checklist](checklist).
+Answer the first question in the [checklist](checklist).
 
 #### Serial communication
 
