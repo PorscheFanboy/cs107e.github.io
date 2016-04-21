@@ -6,6 +6,10 @@ permalink: /resources/
 
 ## Demos & Interactive Resources
 
+* [Raspberry Pi GPIO Pinout](https://pinout.xyz/) website. Nice way to see alternate
+  functions by clicking each pin. Also, click Ground and you see all the
+  other Ground pins.
+
 * An interactive demo of how the
 [ARM assembler's immediate value encoder](https://alisdair.mcdiarmid.org/arm-immediate-value-encoding/#play-with-it) works.
 
