@@ -92,6 +92,12 @@ functions. However, remember that to get the bonus 5 points at the end
 of the class, you need to use all of your own modules in your final
 assignment.
 
+In your conversions, you will likely need to do some
+division. The starter Makefile links the `libgcc` library into your
+compiled program, which includes the division routine that you
+were missing in lab. (Check out the `main.bin` and `test.bin` targets
+in the Makefile.)
+
 ### Requirements
 
 For the basic part of this assignment, you must implement functions
@@ -132,12 +138,6 @@ For the extension, you should implement `strtoul` in `strtol.c`.
      converting to a binary or hexadecimal string, treat the value as
      unsigned.
 
-     In your conversions, you will likely need to do some
-     division. The starter Makefile links the `libgcc` library into your
-     compiled program, which includes the division routine that you
-     were missing in lab. (Check out the `main.bin` and `test.bin` targets
-     in the Makefile.)
-
      The `width` is the minimum number of characters the caller wants written into `buf`. 
      If `width` is more characters than needed to fit the formatted value, pad the 
      string with zeros on the left so that it has length `width`. If `width` is 
@@ -145,24 +145,25 @@ For the extension, you should implement `strtoul` in `strtol.c`.
      parameter. The minus sign, for a negative signed decimal, should
      precede the zero padding.
 
-     `n` is a hard upper limit on how much room you have; if `n` is
-     too small to fit your output, even if `width` says you should go
-     past it, you must cut your output off. (Otherwise, you would be
-     trashing some other memory past the end of the buffer.)
-
      You should null-terminate what you write into `buf`; all valid C
      strings are null-terminated, and there is no other way for the
-     caller to know where your output stops. The null terminator, like
-     all your other output, is subject to the `n` upper bound.
+     caller to know where your output stops.
+
+     `n` is a hard upper limit on how much room you have; if `n` is
+     too small to fit your output, even if `width` says you should go
+     past it, you must cut your output off and make `buf[n - 1]` (your
+     n-th character output) a null terminator. (Otherwise, you would be
+     trashing some other memory past the end of the buffer.)
 
      These functions should return the number of characters written to
      `buf` if there is room to fit them all. If not, it should return
      the number of characters that would have been written if there
      were room. This count excludes the null terminator.
 
-     You may assume, when writing your functions, that no caller will
-     ask for a value and width that require you to print more than
-     1000 characters.
+     For example, if `inttodec` is given `n` of `5`, `width` of `6`,
+     and `val` of `-1234`, it should put `"-012\0"` (`'\0'` being
+     the null terminator) as the first 5 bytes of `buf`, and return
+     `6`.
 
      Remember that it is easier to debug small steps than large changes, 
      so make sure these functions are working before you move on.
