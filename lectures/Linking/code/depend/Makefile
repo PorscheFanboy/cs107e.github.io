@@ -35,4 +35,4 @@ clean:
 
 # include dependency info
 #  "-" suppresses errors
--include $(OBJECTS:.o=.d)
+-include $(NAME).d $(OBJECTS:.o=.d)
