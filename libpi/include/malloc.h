@@ -16,19 +16,19 @@ typedef unsigned long size_t;
 
 // The redzone allocation header.
 struct rz_header {
-  size_t alloc_size;
-  const char *file;
-  int line;
-  const char *func;
+    size_t alloc_size;
+    const char *file;
+    int line;
+    const char *func;
 };
 
 #ifdef REDZONE_MALLOC
-  #define malloc(n) _rzmalloc(n, __FILE__, __LINE__, __func__)
-  void *_rzmalloc(size_t n, const char *file, int line, const char *func);
-  int rz_check();
+#define malloc(n) _rzmalloc(n, __FILE__, __LINE__, __func__)
+void *_rzmalloc(size_t n, const char *file, int line, const char *func);
+int rz_check();
 #else
-  #define malloc(n) _malloc(n)
-  void *_malloc(size_t n);
+#define malloc(n) _malloc(n)
+void *_malloc(size_t n);
 #endif
 
 #endif /* !MALLOC_H */

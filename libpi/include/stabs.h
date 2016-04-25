@@ -35,11 +35,11 @@
 
 // Entries in the STABS table are formatted as follows.
 struct __attribute__((__packed__)) Stab {
-  unsigned int n_strx;     // index into string table of name
-  unsigned char n_type;    // type of symbol
-  unsigned char n_other;   // misc info (usually empty)
-  unsigned short n_desc;   // description field
-  unsigned int n_value;    // value of symbol
+    unsigned int n_strx;     // index into string table of name
+    unsigned char n_type;    // type of symbol
+    unsigned char n_other;   // misc info (usually empty)
+    unsigned short n_desc;   // description field
+    unsigned int n_value;    // value of symbol
 };
 
 #endif /* !STAB_H */
