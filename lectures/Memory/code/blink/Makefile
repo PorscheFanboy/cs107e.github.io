@@ -30,6 +30,9 @@ $(NAME).exe: $(NAME).o $(OBJECTS)
 clean:
 	rm -f *.bin *.exe *.o *.d *.list *~
 
+install:
+	rpi-install.py $(NAME).bin
+
 # Targets that aren't filename of build product should be declared "phony" 
 .PHONY: all clean
 
