@@ -10,7 +10,7 @@ OBJECTS = start.o cstart.o sbrk.o
 
 all : $(NAME).bin
 
-$(NAME).exe: $(NAME).o $(OBJECTS)
+$(NAME).exe: $(OBJECTS) $(NAME).o
 	arm-none-eabi-ld $(LDFLAGS)  $^ -o $@ -lpi
 	arm-none-eabi-objdump -d --no-show-raw-insn $@ > $@.list
 
@@ -30,17 +30,9 @@ $(NAME).exe: $(NAME).o $(OBJECTS)
 clean:
 	rm -f *.bin *.exe *.o *.d *.list *~
 
-headers: $(NAME).exe
-	arm-none-eabi-readelf --h $(NAME).exe
+install:
+	rpi-install.py $(NAME).bin
 
-symbols:
-	arm-none-eabi-readelf --symbols $(NAME).exe
-
-sections:
-	arm-none-eabi-readelf ---sections $(NAME).exe
-
-segments:
-	arm-none-eabi-readelf --segments $(NAME).exe
 
 # Targets that aren't filename of build product should be declared "phony" 
 .PHONY: all clean

@@ -10,7 +10,7 @@ OBJECTS = start.o cstart.o
 
 all : $(NAME).bin
 
-$(NAME).exe: $(NAME).o $(OBJECTS)
+$(NAME).exe: $(OBJECTS) $(NAME).o
 	arm-none-eabi-ld $(LDFLAGS)  $^ -o $@ -lpi
 	arm-none-eabi-objdump -d --no-show-raw-insn $@ > $@.list
 
@@ -32,6 +32,7 @@ clean:
 
 install:
 	rpi-install.py $(NAME).bin
+
 
 # Targets that aren't filename of build product should be declared "phony" 
 .PHONY: all clean
