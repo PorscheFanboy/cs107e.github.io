@@ -4,7 +4,7 @@
 /*
  * Interface to a text console printed on the screen.
  *
- * You implement this interface in assignment 5.
+ * You implement this interface in assignment 6.
  *
  * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
  * Date: 3/24/16
@@ -18,8 +18,8 @@
 
 void console_init(unsigned nrows, unsigned ncols);
 void console_select_font(int font);
-void console_putc(int ch);
-void console_printf(const char *format, ...);
+void console_putc(unsigned ch);
+int  console_printf(const char *format, ...);
 char console_get_char(const unsigned row, unsigned col);
 
 /*

@@ -3,7 +3,7 @@
 
 /*
  * High-level interface to reading ASCII bytes from a keyboard.
- * You implement this interface in assignments 6 and 7.
+ * You implement this interface in assignments 5 and 7.
 
  * Author: Philip Levis <pal@cs.stanford.edu>
  *

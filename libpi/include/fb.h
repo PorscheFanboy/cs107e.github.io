@@ -8,7 +8,7 @@
  * that a graphics library can then use to provide useful drawing
  * primitives.
  *
- * In assignment 5 youa are given a single-buffered implementation
+ * In assignment 6 you are given a single-buffered implementation
  * of this module and extend it to provide double-buffering.
  *
  * Author: Philip Levis <pal@cs.stanford.edu>
