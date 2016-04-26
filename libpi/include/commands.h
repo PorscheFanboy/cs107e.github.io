@@ -9,7 +9,10 @@ typedef struct _command_struct {
 
 int cmd_echo(int argc, const char *argv[]);
 int cmd_help(int argc, const char *argv[]);
-
+int cmd_reboot(int argc, const char* argv[]);
+int cmd_clear(int argc, const char* argv[]);
+int cmd_peek(int argc, const char* argv[]);
+int cmd_poke(int argc, const char* argv[]);
 /*
  * Copyright (c) 2016 Stanford University.
  * All rights reserved.
