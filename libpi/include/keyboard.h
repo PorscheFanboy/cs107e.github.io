@@ -17,8 +17,11 @@ void keyboard_init(void);
 // non-text characters unless they are translated into the text stream
 // (e..g, control-G is \f). For example, keyboard_read_char should not
 // return arrow key presses.
-char keyboard_read_char(void);
+//
 
+#define KEYBOARD_DOWN 0x82
+#define KEYBOARD_UP   0x88
+char keyboard_read_char(void);
 
 // You do not have to implement right control or right alt: these keys
 // are in the extended (0xE0) key set; they're included here for
