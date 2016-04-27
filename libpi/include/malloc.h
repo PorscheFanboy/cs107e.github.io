@@ -13,13 +13,17 @@ typedef unsigned long size_t;
 #define roundup(x,n) (((x)+((n)-1))&(~((n)-1)))
 #define REDZONE_SIZE  2
 #define REDZONE_VALUE 0xDEADBEEF
-
+#define REDZONE_EXTENSION_SIZE 8
 // The redzone allocation header.
+// If you want to add additional fields to the
+// header, you can use the 8 bytes of memory
+// allocated do the extensions field.
 struct rz_header {
     size_t alloc_size;
     const char *file;
     int line;
     const char *func;
+    unsigned char extensions[REDZONE_EXTENSION_SIZE];
 };
 
 #ifdef REDZONE_MALLOC
