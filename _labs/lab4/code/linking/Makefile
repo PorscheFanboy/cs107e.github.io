@@ -12,7 +12,7 @@ all : $(NAME).bin
 
 $(NAME).elf: $(NAME).o $(OBJECTS)
 	arm-none-eabi-ld $(LDFLAGS)  $^ -o $@ 
-	arm-none-eabi-objdump -d --no-show-raw-insn $@ > $@.list
+	arm-none-eabi-objdump -D $@ > $@.list
 
 %.bin: %.elf
 	arm-none-eabi-objcopy $< -O binary $@
@@ -25,7 +25,7 @@ $(NAME).elf: $(NAME).o $(OBJECTS)
 	cpp -P $< | arm-none-eabi-as $(ASFLAGS) -o $@
 
 %.list: %.o
-	arm-none-eabi-objdump -d --no-show-raw-insn $< > $@
+	arm-none-eabi-objdump -D --no-show-raw-insn $< > $@
 
 clean:
 	rm -f *.bin *.elf *.o *.d *.list *~
