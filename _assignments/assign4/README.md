@@ -78,7 +78,7 @@ started.
 For this part of the assignment, you'll be implementing the `bt()` function in
 `bt.c`. To implement the function, you'll need to inspect the current stack
 frame, which is pointed to by the `fp` register, print the address of the
-calling function and the stack frame number, and then proceed recursively to
+calling function and the stack frame number, and then proceed to
 the previous stack frame until `fp` is `0`. It may be helpful to reread the
 [lab 3 stack section](/labs/lab3), which includes a figure of two stack frames.
 
