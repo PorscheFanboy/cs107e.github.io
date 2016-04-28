@@ -28,6 +28,7 @@ unsigned gl_get_height(void);
 #define GL_RED   0xFF0000FF
 #define GL_GREEN 0xFF00FF00
 #define GL_BLUE  0xFFFF0000
+#define GL_AMBER 0xFF00BFFF
 
 typedef unsigned color;
 color gl_color(unsigned char r, unsigned char g, unsigned char b);
