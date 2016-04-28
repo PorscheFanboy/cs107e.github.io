@@ -32,13 +32,13 @@ clean :
 
 install: libpi.a
 	cp libpi.a ../lib
-	cp *.o ../modules
 
 libpi.a: ${OBJS} 
 	$(AR) r libpi.a ${OBJS}
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $*.o
+	$(CC) $(CFLAGS) -DLIBPI_INTERNAL -c $< -o $*.o
+	$(CC) $(CFLAGS) -c $< -o ../modules/$*.o
 	$(CC) -MM $(CPPFLAGS) $(CFLAGS) -c $< > $*.d
 
 %.o: %.s

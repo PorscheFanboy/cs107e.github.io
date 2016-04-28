@@ -19,8 +19,10 @@ void keyboard_init(void);
 // return arrow key presses.
 //
 
-#define KEYBOARD_DOWN 0x82
-#define KEYBOARD_UP   0x88
+#define KEYBOARD_DOWN  0x82
+#define KEYBOARD_UP    0x88
+#define KEYBOARD_LEFT  0x84
+#define KEYBOARD_RIGHT 0x86
 char keyboard_read_char(void);
 
 // You do not have to implement right control or right alt: these keys
