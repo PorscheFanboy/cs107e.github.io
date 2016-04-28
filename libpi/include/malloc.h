@@ -11,7 +11,7 @@ typedef unsigned long size_t;
 
 // Simple roundup function: works for powers of two.
 #define roundup(x,n) (((x)+((n)-1))&(~((n)-1)))
-#define REDZONE_SIZE  16
+#define REDZONE_SIZE  8   // In bytes, value % 8 must be 0
 #define REDZONE_VALUE 0xDEADBEEF
 #define REDZONE_EXTENSION_SIZE 8
 // The redzone allocation header.
