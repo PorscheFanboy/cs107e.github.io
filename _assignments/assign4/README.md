@@ -80,7 +80,9 @@ For this part of the assignment, you'll be implementing the `bt()` function in
 frame, which is pointed to by the `fp` register, print the address of the
 calling function and the stack frame number, and then proceed to
 the previous stack frame until `fp` is `0`. It may be helpful to reread the
-[lab 3 stack section](/labs/lab3), which includes a figure of two stack frames.
+[lab 3 stack section](/labs/lab3) and to study this figure of two stack frames.
+
+![Stack Diagram](images/stack_frame.png)
 
 To retrieve the current value of a register without calling out to assembly
 code, you can insert variations of the following snippet into your C code:
