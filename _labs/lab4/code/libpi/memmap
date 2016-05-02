@@ -1,7 +1,7 @@
 MEMORY
 {
     ram : ORIGIN = 0x8000,
-          LENGTH = 0x1000
+          LENGTH = 0x08000000
 }
 
 SECTIONS
@@ -9,14 +9,14 @@ SECTIONS
     .text : {
         start.o (.text)
         *(.text*)
+        __text_end__ = .;
     } > ram
     .data : { *(.data*) } > ram
     .rodata : { *(.rodata*) } > ram
     __bss_start__ = .;
     .bss : {
-        *(.bss) *(COMMON)
+        *(.bss*)
     } > ram
-    . = ALIGN(4);
+    . = ALIGN(8);
     __bss_end__ = .;
- 
 }

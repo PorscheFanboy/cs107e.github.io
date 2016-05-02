@@ -1,6 +1,7 @@
 MEMORY
 {
-    ram : ORIGIN = 0x8000, LENGTH = 0x10000
+    ram : ORIGIN = 0x8000,
+          LENGTH = 0x08000000
 }
 
 SECTIONS
@@ -12,14 +13,12 @@ SECTIONS
     } > ram
     .data : { *(.data*) } > ram
     .rodata : { *(.rodata*) } > ram
+    __bss_start__ = .;
     .bss : {
-        __bss_start__ = .;
         *(.bss*)
-      	*(COMMON)
-        . = ALIGN(4);
-        __bss_end__ = .;
-	. = ALIGN(32);
-        __heap_start__ = .;
     } > ram
-	__text_end__ = .;
+    . = ALIGN(8);
+    __bss_end__ = .;
+    . = ALIGN(32);
+    __heap_start__ = .;
 }
