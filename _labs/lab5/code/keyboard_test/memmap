@@ -19,6 +19,5 @@ SECTIONS
     } > ram
     . = ALIGN(8);
     __bss_end__ = .;
-    . = ALIGN(32);
-    __heap_start__ = .;
+
 }
