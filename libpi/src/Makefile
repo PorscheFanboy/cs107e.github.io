@@ -30,8 +30,9 @@ clean :
 	rm -f *.a
 	rm -f *~
 
-install: libpi.a
+install: libpi.a keyboard-blocking.o
 	cp libpi.a ../lib
+	cp *.o ../modules
 
 libpi.a: ${OBJS} 
 	$(AR) r libpi.a ${OBJS}
