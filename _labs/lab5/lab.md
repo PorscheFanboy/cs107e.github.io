@@ -271,8 +271,12 @@ In your assignment, you will also check the parity and stop bits, but
 you don't need to do this for lab.
 
 If something is wrong with the data you're getting over the line (just
-a wrong start bit, for this lab), you can return 0. Notice how
-`main.c` will try again if it gets a 0 scancode.
+a wrong start bit, for this lab), your code should restart at
+the beginning of a scancode. It shouldn't return until it correctly
+reads in a scancode. So, if the start bit is not 0, then
+your code wait for a start bit again. Think about how you might want
+to structure your code such that if the parity bit is wrong you can
+easily wait for a start bit again. 
 
 As you're implementing your function, notice how having 
 `wait_for_falling_clock_edge` makes the code simpler than putting
