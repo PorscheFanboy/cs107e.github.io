@@ -56,6 +56,8 @@ the pins from each side are on different sides of the board.
 Look at the breadboard so the PS/2 port side with the green printed
 circuit board is facing you.
 
+![PS/2 port pinout](images/pinout-diagram.jpg)
+
 The leftmost pin of the pins closer to you is the clock line.
 
 The other three pins are on the pins further away from you. The
