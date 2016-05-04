@@ -36,7 +36,7 @@ $(NAME).elf: $(OBJECTS)
 
 # The install target uploads freshly made binary image to rpi bootloader
 install: $(NAME).bin
-	rpi-install $<
+	rpi-install.py $<
 
 # This pattern rule creates binary 'name.bin' by extracting raw instructions
 # from executable 'name.elf'

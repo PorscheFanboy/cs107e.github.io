@@ -18,7 +18,7 @@ them into ASCII characters.  This will allow you to type text that
 your Raspberry Pi can process.  The goal of the lab is to setup the
 keyboard so that you can immediately start on the assignment.
 
-To complete the lab, you must complete the [check list](checklist.md).
+To complete the lab, you must complete the [check list](checklist).
 
 ### Lab exercises
 
