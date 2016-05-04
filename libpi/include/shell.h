@@ -11,9 +11,9 @@
  */
 
 /* Pass 0 if the shell should use the serial port,
-   pass 1 if it should use the keyboard screen (implemented
+   pass 1 if it should use an HDMI graphical monitor (implemented
    in assignment 6). */
-int shell_init(int screen);
+int shell_init(int graphical);
 void shell_run();
 
 /*
