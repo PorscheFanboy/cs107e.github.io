@@ -158,12 +158,10 @@ In this assignment, you will
     allow you to type in and execute commands. You'll do this in
     `shell.c`. There are two functions, `shell_init` and `shell_run`.
 
-    `shell_init` takes two parameters, which specify what its input
-    and output should be. For this assignment, you can ignore the output
-    parameter and always have it output to the serial port. For the
-    input parameter, there are two options, `INPUT_SERIAL` for reading
-    from the serial port and `INPUT_KEYBOARD` for reading from the
-    keyboard.
+    `shell_init` takes one parameter, which specify whether it should
+    output to the serial port or screen.  For this assignment, you can
+    ignore the output parameter and always have it output to the
+    serial port.
 
     `shell_run` takes no parameters. It reads commands from the input,
     echoes them to the output, and prints output from commands to the
@@ -175,7 +173,8 @@ In this assignment, you will
     empty. (Note that just printing `\b` to serial will only move the
     cursor backwards on `screen`.)
 
-    When Enter is pressed, you should execute the command the user has typed in.
+    When Enter is pressed, you should execute the command the user has
+    typed in.
 
     Executing a command entails interpreting the line as a command,
     creating the inputs to the function corresponding to the command,
