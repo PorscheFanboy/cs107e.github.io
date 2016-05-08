@@ -28,10 +28,10 @@ all : $(NAME).bin
 	$(CC) $(CFLAGS) -c $< 
 	$(CC) -MM $(CFLAGS) -c $< > $*.d
 
-%.exe: start.o cstart.o $(SRCS:.c=.o)
+%.elf: start.o cstart.o $(SRCS:.c=.o)
 	$(LD) $(LDFLAGS) $^ $(LDLIBS) -o $@ 
 
-%.bin: %.exe
+%.bin: %.elf
 	$(OBJCOPY) $< -O binary $@
 
 %.list: %.o
@@ -39,7 +39,7 @@ all : $(NAME).bin
 
 clean :
 	rm -f *.bin
-	rm -f *.exe
+	rm -f *.elf
 	rm -f *.o
 	rm -f *.d
 	rm -f *.list
@@ -50,7 +50,7 @@ install: $(NAME).bin
 
 .PHONY : all clean
 
-.PRECIOUS: %.exe %.o
+.PRECIOUS: %.elf %.o
 
 # include dependency info 
 #  "-" suppresses errors

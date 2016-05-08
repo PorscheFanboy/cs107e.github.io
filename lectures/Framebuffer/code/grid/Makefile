@@ -21,10 +21,10 @@ SRCS = $(NAME).c
 
 all : $(NAME).bin
 
-%.bin: %.exe
+%.bin: %.elf
 	$(OBJCOPY) $< -O binary $@
 
-%.exe: start.o cstart.o $(SRCS:.c=.o)
+%.elf: start.o cstart.o $(SRCS:.c=.o)
 	$(LD) $(LDFLAGS) $^ $(LDLIBS) -o $@ 
 
 %.list: %.o
@@ -45,7 +45,7 @@ install: $(NAME).bin
 
 clean :
 	rm -f *.bin
-	rm -f *.exe
+	rm -f *.elf
 	rm -f *.o
 	rm -f *.d
 	rm -f *.list
@@ -53,7 +53,7 @@ clean :
 # Targets that aren't filename of build product should be declared "phony"
 .PHONY : all clean
 
-.PRECIOUS: %.exe %.o
+.PRECIOUS: %.elf %.o
 
 # include dependency info 
 #  "-" suppresses errors

@@ -223,7 +223,7 @@ int is_char[] = {
 };
 
 
-static const char shift_char_from_scan[] = {
+const char shift_char_from_scan[] = {
     ' ', // 0x00
     ' ',
     ' ',
@@ -354,7 +354,7 @@ static const char shift_char_from_scan[] = {
     ' '
 };
 
-static const char char_from_scan[] = {
+const char char_from_scan[] = {
     ' ', // 0x00
     ' ',
     ' ',

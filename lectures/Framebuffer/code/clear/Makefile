@@ -16,7 +16,7 @@ LDLIBS = -lpi -lgcc
 
 .SUFFIXES: 
 
-NAME = clear2d
+NAME = clear
 SRCS = $(NAME).c 
 OBJS = $(SRCS:.c=.o)
 
@@ -31,10 +31,10 @@ start.o: start.s
 	$(CC) $(CFLAGS) -c $< 
 	$(CC) -MM $(CFLAGS) -c $< > $*.d
 
-%.exe: start.o cstart.o $(OBJS)
+%.elf: start.o cstart.o $(OBJS)
 	$(LD) $(LDFLAGS) $^ $(LDLIBS) -o $@ 
 
-%.bin: %.exe
+%.bin: %.elf
 	$(OBJCOPY) $< -O binary $@
 
 %.list: %.o
@@ -42,7 +42,7 @@ start.o: start.s
 
 clean :
 	rm -f *.bin
-	rm -f *.exe
+	rm -f *.elf
 	rm -f *.o
 	rm -f *.d
 	rm -f *.list
@@ -52,7 +52,7 @@ install: $(NAME).bin
 
 .PHONY : all clean
 
-.PRECIOUS: %.exe %.o
+.PRECIOUS: %.elf %.o
 
 # include dependency info 
 #  "-" suppresses errors
