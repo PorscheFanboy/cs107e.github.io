@@ -1,20 +1,20 @@
-.globl SET_CPSR
-SET_CPSR:
+.globl SETCPSR
+SETCPSR:
     msr cpsr, r0
     bx lr
 
-.globl SET_SPSR
-SET_SPSR:
+.globl SETSPSR
+SETSPSR:
     msr spsr, r0
     bx lr
 
-.globl GET_CPSR
-GET_CPSR:
+.globl GETCPSR
+GETCPSR:
     mrs r0, cpsr
     bx lr
 
-.globl GET_SPSR
-GET_SPSR:
+.globl GETSPSR
+GETSPSR:
     mrs r0, spsr
     bx lr
 
