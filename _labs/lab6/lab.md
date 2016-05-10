@@ -272,8 +272,13 @@ since you will use it in the next assignment.
 
 ### Extension: Exploring Type Conversions
 
-In this exploratory extension, you will be inspecting various integer types within `gdb`.
-`cd` into `code/types`.
+In this exploratory extension,
+you will be inspecting various integer types within `gdb`.
+This material was only partially covered in the lecture
+on computer arithmetic. 
+You may want to review the last slides from that lecture.
+
+To start, `cd` into `code/types`.
 
 Before we get started, here are the `gdb` commands you'll need to know:
 
@@ -293,8 +298,14 @@ Inspect each of the `*.gdb` files.
 This shouldn't take too long,
 so once you're done start up `gdb` with the above command.
 Use `source` to run `gdb` commands for each of the integer types.
+Remember that on the arm 32-bit architecture
+a `char` is 8-bits,
+a `short` is 16-bits,
+an `int` (same as `long`) is 32-bits,
+and a `long long` is 64-bits.
 
-The resulting are summarized in the following table.
+The type of the result of a binary operational
+involving two types is summarized in the following table.
 The headers show the two operand types,
 and the cells show the resulting type.
 
