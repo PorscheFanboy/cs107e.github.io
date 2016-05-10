@@ -282,7 +282,12 @@ Before we get started, here are the `gdb` commands you'll need to know:
 * `source i8.gdb` runs all the gdb commands in the named file
     * `source -v i8.gdb` ensures all commands, along with their results, are printed
 
-Outside of `gdb`, you can type in the following to run `gdb` commands from the get-go:
+Outside of `gdb`, you can type in either of the following commands
+to run `gdb` commands from the get-go:
+
+    $ arm-none-eabi-gdb -x start.gdb types.elf
+
+    --OR--
 
     $ arm-none-eabi-gdb --command=start.gdb types.elf
 
