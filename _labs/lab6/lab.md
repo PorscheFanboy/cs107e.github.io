@@ -317,8 +317,11 @@ Do these type conversions make sense?
 
 * Why is the result of combining an `int32_t` and an `int64_t` an `int64_t`?
 
-* Why is the result of combining an `uint32_t` and an `int32_t` an `uint32_t`?
+* Why is the result of a comparison operator like `<` or `==` an `int`?
+For example, `whatis u8<u32` is an `int`.
 
+* Any ideas why C defines the result of 
+combining an `uint32_t` and an `int32_t` to be a `uint32_t`?
 
 Now try this:
 
