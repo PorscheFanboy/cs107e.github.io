@@ -9,7 +9,7 @@ void print(uint32_t a, uint32_t b)
 {
     uint32_t c = sub32(a, b);
     uint32_t flags = GETCPSR();
-    printf("%08x - %08x = %08x: ", a, b, c );
+    printf("%08x-%08x=%08x+%08x+1=%08x ", a, b, a, ~b, c );
     printf("N=%d, V=%d\n", !!(flags&CPSR_N), !!(flags&CPSR_V));
 }
 

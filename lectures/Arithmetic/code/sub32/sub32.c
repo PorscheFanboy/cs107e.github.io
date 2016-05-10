@@ -1,5 +1,6 @@
 #include <stdint.h>
 
+#include "register.h"
 #include "printf.h"
 
 extern uint32_t sub32(uint32_t a, uint32_t b);
@@ -7,10 +8,9 @@ extern uint32_t sub32(uint32_t a, uint32_t b);
 void print(uint32_t a, uint32_t b)
 {
     uint32_t c = sub32(a, b);
-    //uint32_t flags = GETCPSR();
-    uint32_t negb = ~b + 1;
-    printf("%08x-%08x = %08x+%08x = %08x\n", a, b, a, negb, c );
-    //printf("Z=%d, C=%d\n", !!(flags&CPSR_Z), !!(flags&CPSR_C));
+    uint32_t flags = GETCPSR();
+    printf("%08x-%08x = %08x+%08x+1 = %08x", a, b, a, ~b, c );
+    printf(" Z=%d, C=%d\n", !!(flags&CPSR_Z), !!(flags&CPSR_C));
 }
 
 void main(void)
