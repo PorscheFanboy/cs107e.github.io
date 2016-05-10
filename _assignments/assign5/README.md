@@ -263,12 +263,12 @@ In this assignment, you will
     the `n` bytes, in hex, that are currently at address `address`. If `n` is
     not supplied, it prints a single byte.
 
-    Example (assume 0xFFFF contains the number 0x12345678):
+    Example (assume 0xFFFC contains the number 0x12345678):
 
-        peek 0xFFFF
+        peek 0xFFFC
         78
 
-        peek 0xFFFF 4
+        peek 0xFFFC 4
         78 56 34 12
 
     Note the little endian storage. You should use `strtoul` to convert a numeric 
