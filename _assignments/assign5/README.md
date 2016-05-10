@@ -286,19 +286,19 @@ In this assignment, you will
     is a required address, and the second a required number. It sets
     the 4 bytes in memory at `address` to be the 32-bit `value`.
 
-    Example (assume 0xFFFF contains the number 0x12345678):
+    Example (assume 0xFFFC contains the number 0x12345678):
 
-        peek 0xFFFF 4
+        peek 0xFFFC 4
         78 56 34 12
 
-        poke 0xFFFF 12345678
+        poke 0xFFFC 12345678
 
-        peek 0xFFFF 4
+        peek 0xFFFC 4
         4e 61 bc 00
 
-        poke 0xFFFF 0
+        poke 0xFFFC 0
 
-        peek 0xFFFF 4
+        peek 0xFFFC 4
         00 00 00 00
 
     You should use `strtoul` to implement this command as well. Print an error
