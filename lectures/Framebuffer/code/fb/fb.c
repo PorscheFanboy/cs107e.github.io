@@ -15,9 +15,9 @@ typedef struct {
     unsigned int y_offset;    // y of the upper left corner of the virtual fb
     unsigned int framebuffer; // pointer to the start of the framebuffer
     unsigned int size;        // number of bytes in the framebuffer
-} fb_t;
+} fb_config_t;
 
-static volatile fb_t fb __attribute__((aligned(16)));
+static volatile fb_config_t fb __attribute__((aligned(16)));
 
 const int WIDTH = 640;
 const int HEIGHT = 480;
