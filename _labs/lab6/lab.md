@@ -289,11 +289,25 @@ to run `gdb` commands from the get-go:
     --OR--
     $ arm-none-eabi-gdb --command=start.gdb types.elf
 
-Inspect each of the `*.gdb` files. This shouldn't take too long, so once you're done
-start up `gdb` with the above command.
+Inspect each of the `*.gdb` files.
+This shouldn't take too long,
+so once you're done start up `gdb` with the above command.
 Use `source` to run `gdb` commands for each of the integer types.
+
+The resulting are summarized in the following table.
+The headers show the two operand types,
+and the cells show the resulting type.
+
+![Binary Conversion](images/binary.conversion.png)
+
 Do these type conversions make sense?
-See if you can explain them -- or better yet, draw a diagram that explains them all!
+
+* Why is the result of combining an `int16_t` and an `int8_t` an `int32_t`?
+
+* Why is the result of combining an `int32_t` and an `int64_t` an `int64_t`?
+
+* Why is the result of combining an `uint32_t` and an `int32_t` an `uint32_t`?
+
 
 Now try this:
 
