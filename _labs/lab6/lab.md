@@ -121,10 +121,13 @@ and then turn in the checklist to the CA at the end of the lab.
    1. Why does the code need each of the checks whether the mailbox is EMPTY
       or FULL? What might go wrong if the code didn't perform these checks?
 
-   2. What happens if `fb_config_t fb` is not tagged as `volatile`? Hint: compare the
+   2. What happens if `fb_config_t fb` is not tagged as `volatile`?
+      Generate and compare the
       assembly generated when it is volatile and when it is not.
 
    3. What happens if `mailbox_t mailbox` isn't tagged as volatile?
+      Generate and compare the
+      assembly generated when it is volatile and when it is not.
 
    4. Why can we add the `addr` and `channel` in `mailbox_write`?
       Could we also `|` them together?
@@ -266,6 +269,32 @@ The key function is `font_get_char()` which copies a single character
 from the font image into a buffer. It transforms the bits into
 pixels of the specified color. Read this function carefully,
 since you will use it in the next assignment.
+
+### Extension: Exploring Type Conversions
+
+In this exploratory extension, you will be inspecting various integer types within `gdb`.
+'cd' into 'code/types'.
+
+Before we get started, here are the `gdb` commands you'll need to know:
+
+* `ptype i8` prints the type of a variable
+* `whatis i8 + u8` prints the resulting type of an expression
+* `source i8.gdb` runs all the gdb commands in the named file
+    * `source -v i8.gdb` ensures all commands, along with their results, are printed
+
+Outside of `gdb`, you can type in the following to run `gdb` commands from the get-go:
+
+    $ arm-none-eabi-gdb --command=start.gdb types.elf
+
+Quickly inspect each of the `*.gdb` files before starting up `gdb` with the above command,
+and using `source` to run `gdb` commands for the integer types.
+See if you can explain these conversions -- or better yet, draw a diagram that explains it all!
+
+Now try this:
+
+    (gdb) source -v uhoh.gdb
+
+What in the world happened here?!
 
 ## Check off with TA
 
