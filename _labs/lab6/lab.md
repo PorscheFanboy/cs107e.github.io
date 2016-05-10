@@ -273,7 +273,7 @@ since you will use it in the next assignment.
 ### Extension: Exploring Type Conversions
 
 In this exploratory extension, you will be inspecting various integer types within `gdb`.
-'cd' into 'code/types'.
+`cd` into `code/types`.
 
 Before we get started, here are the `gdb` commands you'll need to know:
 
@@ -286,14 +286,14 @@ Outside of `gdb`, you can type in either of the following commands
 to run `gdb` commands from the get-go:
 
     $ arm-none-eabi-gdb -x start.gdb types.elf
-
     --OR--
-
     $ arm-none-eabi-gdb --command=start.gdb types.elf
 
-Quickly inspect each of the `*.gdb` files before starting up `gdb` with the above command,
-and using `source` to run `gdb` commands for the integer types.
-See if you can explain these conversions -- or better yet, draw a diagram that explains it all!
+Inspect each of the `*.gdb` files. This shouldn't take too long, so once you're done
+start up `gdb` with the above command.
+Use `source` to run `gdb` commands for each of the integer types.
+Do these type conversions make sense?
+See if you can explain them -- or better yet, draw a diagram that explains them all!
 
 Now try this:
 
