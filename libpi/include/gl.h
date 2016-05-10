@@ -38,7 +38,7 @@ void gl_clear(color c);
 void gl_swap_buffer(void);
 
 void gl_draw_pixel(int x, int y, color c);
-color gl_get_pixel(int x, int y);
+color gl_read_pixel(int x, int y);
 
 #define GL_FONT_DEFAULT 0
 #define GL_FONT_ALT1    1
