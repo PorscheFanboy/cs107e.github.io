@@ -12,6 +12,7 @@ exclude:
   - README.md
   - vendor/
   - vnu/
+  - libpi/tests
   - vnu.zip
 sass:
   sass_dir: noita/_scss
