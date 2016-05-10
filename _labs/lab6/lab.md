@@ -309,7 +309,7 @@ involving two types is summarized in the following table.
 The headers show the two operand types,
 and the cells show the resulting type.
 
-![Binary Conversion](images/binary.conversion.png)
+![Binary Conversion](images/binary-conversion.png)
 
 Do these type conversions make sense?
 
