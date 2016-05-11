@@ -6,8 +6,8 @@ permalink: /labs/lab6/checklist/
 
 #### Mailbox
 
-1. What happens if `fb_config_t fb` is not tagged as `volatile`?
-      What about `mailbox_t mailbox`?
+1. In `fb-buggy.c`, what happens if `fb_config_t fb` and `mailbox_t mailbox`?
+   are not tagged as `volatile`?
 
 2. Why can we add the `addr` and `channel` in `mailbox_write`?
       Could we also `|` them together?

@@ -113,21 +113,22 @@ function configures the `fb_config_t` structure (the framebuffer configuration
 message), and sends it to the GPU using `mailbox_write` and `mailbox_read`.
 These mailbox functions are defined in `mailbox.c`.
 
-Read and discuss the code in `fb.c` , `mailbox.h`, and `mailbox.c` with your lab
-neighbors. Discuss each of these questions as a group, and have one person
-in your group record your answers to each question on your checklist,
-and then turn in the checklist to the CA at the end of the lab.
+Read and discuss the code in `fb.c` , `mailbox.h`, and `mailbox.c`
+with your lab neighbors. Discuss each of these questions as a group,
+and have one person in your group record your answers to each question
+on your checklist, and then turn in the checklist to the CA at the end
+of the lab.
 
    1. Why does the code need each of the checks whether the mailbox is EMPTY
       or FULL? What might go wrong if the code didn't perform these checks?
 
-   2. What happens if `fb_config_t fb` is not tagged as `volatile`?
-      Generate and compare the
-      assembly generated when it is volatile and when it is not.
+   2. What might happen happen if `fb_config_t fb` is not tagged as `volatile`?
+      Can you imagine an optimization the compiler might make that would
+      cause this code to run incorrectly?
 
    3. What happens if `mailbox_t mailbox` isn't tagged as volatile?
-      Generate and compare the
-      assembly generated when it is volatile and when it is not.
+      Can you imagine an optimization the compiler might make that would cause
+      this code to run incorrectly?
 
    4. Why can we add the `addr` and `channel` in `mailbox_write`?
       Could we also `|` them together?
@@ -140,6 +141,17 @@ and then turn in the checklist to the CA at the end of the lab.
       clearly mark where the CPU, GPU, and memory are.
 
    6. Suppose the code did not use GPU_NOCACHE -- what might go wrong?
+
+   7. Go to the directory `code/volatile`. This contains a slightly
+   different of the framebuffer initialization code that integrates
+   the mailbox and framebuffer operations. Make the object
+   `fb-buggy.o`, disassemble it, and save the assembly to a text
+   file. Modify `fb-buggy.c` so that neither the mailbox or
+   framebuffer structures are volatile, recompile, and disassemble the
+   new `fb-buggy.o`, saving the assembly to another text file.
+   Compare the assembly for the two implementations. How do they
+   differ?
+
 
 #### 3 Multidimensional pointers (30 min)
 
