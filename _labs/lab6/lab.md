@@ -122,7 +122,7 @@ of the lab.
    1. Why does the code need each of the checks whether the mailbox is EMPTY
       or FULL? What might go wrong if the code didn't perform these checks?
 
-   2. What might happen happen if `fb_config_t fb` is not tagged as `volatile`?
+   2. What might happen if `fb_config_t fb` is not tagged as `volatile`?
       Can you imagine an optimization the compiler might make that would
       cause this code to run incorrectly?
 
@@ -134,13 +134,17 @@ of the lab.
       Could we also `|` them together?
       What bit positions are used for the `addr` and what for the `channel`?
 
-   5. Who owns the addresses/memory where `fb`, `mailbox`, and the framebuffer itself sit,
-      respectively? The CPU like any of our normal data structures? The GPU?
-      Which of these can we move around, and which of these are given to us?
-      Create a diagram of where these entities live and how they interact with each other;
-      clearly mark where the CPU, GPU, and memory are.
+   5. Who owns the addresses/memory where `fb`, `mailbox`, and the framebuffer itself
+      sit, respectively? The CPU, like any other variable? The GPU? Which of these
+      data structures can we choose where to allocate, and which are given to us?
+      Draw a memory map diagram of where these entities live and how they interact with each
+      other; clearly mark where the CPU's memory and GPU's memory are, as well as
+      non-RAM device registers.
 
    6. Suppose the code did not use GPU_NOCACHE -- what might go wrong?
+      This [question](http://superuser.com/questions/292302/what-is-a-processor-cache)
+      and this [Wikipedia article on caches](https://en.wikipedia.org/wiki/Cache_(computing))
+      may help if you're not sure what a 'cache' is.
 
    7. Go to the directory `code/volatile`. This contains a slightly
    different of the framebuffer initialization code that integrates
