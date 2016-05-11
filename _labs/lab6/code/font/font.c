@@ -217,38 +217,38 @@ int font_get_size() {
    array. */
 
 int font_get_char(char ch, char* buf, int buflen) {
-  if (buflen != font_get_size() ||
-      ch < ' ' || // Too low
-      ch > '~') { // Too high
+  int char_x_start = ((ch - '!') * font_get_width()); 
+  if (buflen != font_get_size()) {
     return 0;
-  }
-
-  if (ch == ' ') { // Handle space specially
+  } else if (ch < ' ') { // Too low
+    return 0;
+  } else if (ch == ' ') { // Handle space specially
     for (int i = 0; i < buflen; i++) {
       buf[i] = 0;
     }
-    return 1;
-  }
-
-  // Only if this is true: ' ' < ch <= '~'
-  int char_x_start = ((ch - '!') * font_get_width());
-  for (int y = 0; y < font_get_height(); y++) {
-    for (int x = 0; x < font_get_width(); x++) {
-      int bit_index = y * font.width;
-      bit_index += (x + char_x_start);
-      int bit_start = (bit_index * font.bits_per_pixel) / 8;
-      int bit_offset = bit_index % 8;
-      int val = font.pixel_data[bit_start] & (1 << (7 - bit_offset));
-
-      for(int index = 0; index < 4; index++) {
-        if(val) {
-          buf[index] = 0xFF;
+  } else if (ch <= '~') {
+    int index = 0;
+    for (int y = 0; y < font_get_height(); y++) {
+      for (int x = 0; x < font_get_width(); x++) {
+        int bit_index = y * font.width;
+        bit_index += (x + char_x_start);
+        int bit_start = (bit_index * font.bits_per_pixel) / 8;
+        int bit_offset = bit_index % 8;
+        int val = font.pixel_data[bit_start] & (1 << (7 - bit_offset));
+        if (val) {
+          buf[index++] = 0xFF;
+          buf[index++] = 0xFF;
+          buf[index++] = 0xFF;
+          buf[index++] = 0xFF;
         } else {
-          buf[index] = 0x00;
+          buf[index++] = 0x00;
+          buf[index++] = 0x00;
+          buf[index++] = 0x00;
+          buf[index++] = 0x00;
         }
       }
-
     }
-  }
-  return 1;
+    return 1;
+  } else {} // Too high
+  return 0; // Have return 0 here due to gcc warning
 }
