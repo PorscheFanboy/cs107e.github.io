@@ -148,14 +148,13 @@ of the lab.
 
    7. Go to the directory `code/volatile`. This contains a slightly
    different of the framebuffer initialization code that integrates
-   the mailbox and framebuffer operations. Make the object
-   `fb-buggy.o`, disassemble it, and save the assembly to a text
-   file. Modify `fb-buggy.c` so that neither the mailbox or
-   framebuffer structures are volatile, recompile, and disassemble the
-   new `fb-buggy.o`, saving the assembly to another text file.
-   Compare the assembly for the two implementations. How do they
-   differ?
-
+   the mailbox and framebuffer operations. The Makefile builds assembly
+   code for two version of the code in `fb-example.c`, one of which marks 
+   the mailbox and frambuffer configuration structures volatile 
+   (`fb-volatile.s`) and one which does not make them volatile 
+   (`fb-nvolatile.s`). Compare the assembly for the two implementations. 
+   How do they differ? Pay particular attention to the branches for
+   the loops that check whether flags have updated.
 
 #### 3 Multidimensional pointers (30 min)
 

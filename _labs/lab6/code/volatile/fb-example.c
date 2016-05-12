@@ -16,9 +16,12 @@ typedef struct {
   unsigned int size;        // number of bytes in the framebuffer
 } fb_config_t;
 
-// Why is fb volatile?
 // Why is it aligned to a multiple of 16?
+#ifdef NVOLATILE
 volatile fb_config_t fb __attribute__ ((aligned(16)));
+#else // NVOLATILE
+fb_config_t fb __attribute__ ((aligned(16)));
+#endif // NVOLATILE
 
 #define MAILBOX_BASE   0x2000B880
 #define MAILBOX_FULL   (1<<31)
@@ -34,23 +37,20 @@ typedef struct {
   unsigned int write;
 } mailbox_t;
 
+static void fb_init_struct(unsigned width, unsigned height, unsigned depth) __attribute__ ((noinline));
 
-void fb_init(unsigned width, unsigned height, unsigned depth) {
-  fb.width = width;
-  fb.virtual_width = width;
-  fb.height = height;
-  fb.virtual_height = height;
-  fb.depth = depth * 8; // convert number of bytes to number of bits
-  fb.x_offset = 0;
-  fb.y_offset = 0;
 
-  // the manual requires we to set these value to 0
-  // the GPU will return new values
-  fb.pitch = 0;
+void fb_init(unsigned width, unsigned height, unsigned depth, unsigned doublebuffer) {
+
+  fb_init_struct(width, height, depth);
   fb.framebuffer = 0;
-  fb.size = 0;
 
+
+#ifdef NVOLATILE
+  mailbox_t* mailbox = (mailbox_t*)MAILBOX_BASE;
+#else // NVOLATILE
   volatile mailbox_t* mailbox = (volatile mailbox_t*)MAILBOX_BASE;
+#endif // NVOLATILE
   while (mailbox->status & MAILBOX_FULL);
   mailbox->write = ((unsigned)&fb) + MAILBOX_FRAMEBUFFER;
 
@@ -72,3 +72,17 @@ void fb_init(unsigned width, unsigned height, unsigned depth) {
   return;
 }
 
+void fb_init_struct(unsigned width, unsigned height, unsigned depth) {
+  fb.width = width;
+  fb.virtual_width = width;
+  fb.height = height;
+  fb.virtual_height = height;
+  fb.depth = depth * 8; // convert number of bytes to number of bits
+  fb.x_offset = 0;
+  fb.y_offset = 0;
+
+  // the manual requires we to set these value to 0
+  // the GPU will return new values
+  fb.pitch = 0;
+  fb.size = 0;
+}
