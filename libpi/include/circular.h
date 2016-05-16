@@ -7,7 +7,7 @@ cir_t *cir_new();
 
 int cir_empty(cir_t *cir);
 int cir_full(cir_t *cir);
-int cir_enqueue(cir_t *cir, int x);
+int cir_enqueue(cir_t *cir, int elem);
 int cir_dequeue(cir_t *cir);
 
 #endif
