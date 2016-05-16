@@ -44,7 +44,7 @@ system_enable_interrupts:
     bx lr
 
 .global system_disable_interrupts
-system_disble_interrupts:
+system_disable_interrupts:
     mrs r0,cpsr
     orr r0,r0,#0x80 // I=1 enables interrupts
     msr cpsr_c,r0
