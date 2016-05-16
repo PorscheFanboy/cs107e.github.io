@@ -21,8 +21,6 @@ typedef struct {
   int left;
 } mouse_event_t;
 
-int mouse_has_event();
-
 mouse_event_t mouse_read_event();
 
 int mouse_read_scancode();
