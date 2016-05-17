@@ -10,15 +10,15 @@
 void mouse_init(void);
 
 typedef struct {
-  int y_overflow;
-  int x_overflow;
+    int y_overflow;
+    int x_overflow;
 
-  int dx;
-  int dy;
+    int dx;
+    int dy;
 
-  int middle;
-  int right;
-  int left;
+    int middle;
+    int right;
+    int left;
 } mouse_event_t;
 
 mouse_event_t mouse_read_event();
