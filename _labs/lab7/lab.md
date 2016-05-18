@@ -107,9 +107,10 @@ that a falling edge on GPIO pin 21 will trigger an interrupt. We've already
 written this code for you in `setup_interrupts`: you simply need to call it.
 Ensure you understand what every line does and why it's necessary.
 
-In the interrupt handler `int_handler`, increment the counter
-`cnt`. In `main`, write an infinite loop that just displays the value
-of `cnt` on each iteration using `printf`.
+Make a static counter named `cnt` in your `lab7.c`. How should you declare that
+counter for the compiler? In the interrupt handler `int_handler`, increment the
+counter `cnt`. In `main`, write an infinite loop that just displays the value of
+`cnt` on each iteration using `printf`.
 
 Compile and run your program. Ensure that it works as expected. That
 is, that the counter increments ~once per button press and that the
@@ -153,7 +154,7 @@ falling or rising edge of either pin -- that is, whenever the state of a button
 changes.
 
 In the interrupt handler, clear any pending events and use `gpio_pin_read` to
-check the state of each button. Maintain a counter for each button.
+check the state of each button. Now maintain a separate counter for each button.
 For each time a button is pressed or released, increase its counter by 1.
 
 Display the counters on your screen in your main loop. When you're done, we
@@ -163,7 +164,7 @@ have a few questions for you!
 release?  Does this number seem higher or lower than the actual number
 of times you pressed buttons?
 
-2. Why does releasing the buttons causes your counters to
+2. Why does releasing the buttons cause your counters to
    increase? Suggest a reason why it might not match up with how many times
    you press or release the buttons.
 
