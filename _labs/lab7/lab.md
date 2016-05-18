@@ -100,7 +100,8 @@ you're done, answer the following questions.
 
 #### Write an interrupt handler! (30 min)
 
-Remove the call to `button_test` in `main`.
+Remove the call to `button_test` in `main`. Make sure you're still setting the
+pin as input and setting the pullup resistor somewhere.
 
 Before being able to handle interrupts, you'll need to configure your Pi so
 that a falling edge on GPIO pin 21 will trigger an interrupt. We've already
