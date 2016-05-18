@@ -106,7 +106,7 @@ pin as input and setting the pullup resistor somewhere.
 Before being able to handle interrupts, you'll need to configure your Pi so
 that a falling edge on GPIO pin 21 will trigger an interrupt. We've already
 written this code for you in `setup_interrupts`: you simply need to call it.
-Ensure you understand what every line does and why it's necessary.
+Ensure you understand what every line does and why it's necessary. 
 
 Make a static counter named `cnt` in your `lab7.c`. How should you declare that
 counter for the compiler? In the interrupt handler `int_handler`, increment the
@@ -119,6 +119,7 @@ counter is printed when it is incremented by the interrupt handler.
 
 Now, comment out the `gpio_check_and_clear_event` call in `int_handler`.
 Compile, run, and test this program by pressing the button. What happens? Why?
+Take a look at `gpioevent.h`.
 
 Uncomment the `gpio_check_and_clear_event` call. Compile and run your program,
 and ensure that it works again. When you're done, go through the following questions.
@@ -129,7 +130,7 @@ and ensure that it works again. When you're done, go through the following quest
 2. What happens if the interrupt event is not cleared before returning from the
    handler?
 
-You are now ~60% through the lab! Keep going! 👏
+You are now ~60% through the lab! Keep going!
 
 #### Use push/pop in interrupt handler. (10 min)
 
@@ -140,7 +141,8 @@ functions to push and pop from a circular buffer of integers.
 
 Instead of simply incrementing a counter in the interrupt handler, call
 `cir_enqueue` with the counter's value. Then, in `main`, instead of reading the
-counter directly, call `cir_dequeue` to get the last counter's value. Recompile and
+counter directly, call `cir_dequeue` to get the last counter's value.
+Read `circular.h` to understand how this function works. Recompile and
 ensure that your code works exactly as before. Note that `cir_new` uses
 `malloc`, so you'll need to copy your `malloc.c`. When you're done, answer the following:
 
