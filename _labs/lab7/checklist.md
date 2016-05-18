@@ -29,8 +29,8 @@ permalink: /labs/lab7/checklist/
 
 ## Part 4 ##
 
-1. Why might you want to push/pop instead of using arbitrary logic in the interrupt
-   handler?
+1. Why might you want to enqueue/dequeue and then return instead of just doing
+   arbitrary logic (like drawing on the screen) in the interrupt handler?
 
 ## Part 5 ##
 

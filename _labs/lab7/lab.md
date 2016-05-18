@@ -130,11 +130,11 @@ and ensure that it works again. When you're done, go through the following quest
 2. What happens if the interrupt event is not cleared before returning from the
    handler?
 
-You are now ~60% through the lab! Keep going!
+You are now ~60% through the lab! Keep going! 👏
 
-#### Use push/pop in interrupt handler. (10 min)
+#### Use circular buffer in interrupt handler. (10 min)
 
-The Makefile links in the reference implementaiton of circular buffer code in 
+The Makefile links in the reference implementation of circular buffer code in
 `libpi/modules/circular.o` so that you can use the `cir_enqueue` and `cir_dequeue` 
 functions to push and pop from a circular buffer of integers. 
 `libpi/include/circular.h` file declares these functions.
@@ -142,12 +142,13 @@ functions to push and pop from a circular buffer of integers.
 Instead of simply incrementing a counter in the interrupt handler, call
 `cir_enqueue` with the counter's value. Then, in `main`, instead of reading the
 counter directly, call `cir_dequeue` to get the last counter's value.
-Read `circular.h` to understand how this function works. Recompile and
-ensure that your code works exactly as before. Note that `cir_new` uses
-`malloc`, so you'll need to copy your `malloc.c`. When you're done, answer the following:
+Read `circular.h` to understand how this function works.
 
-1. Why might you want to push/pop instead of using arbitrary logic in the interrupt
-   handler?
+Recompile and ensure that your code works exactly as before. When you're done,
+answer the following:
+
+1. Why might you want to enqueue/dequeue and then return instead of just doing
+   arbitrary logic (like drawing on the screen) in the interrupt handler?
 
 #### Add a separate button and display interrupts. (15 min)
 
@@ -156,9 +157,15 @@ different GPIO pins. Configure your Pi so it has an interrupt on either a
 falling or rising edge of either pin -- that is, whenever the state of a button
 changes.
 
-In the interrupt handler, clear any pending events and use `gpio_pin_read` to
-check the state of each button. Now maintain a separate counter for each button.
-For each time a button is pressed or released, increase its counter by 1.
+In the interrupt handler, clear any pending events and handle the event from
+each button if `gpio_check_and_clear_event` returns 1 for that pin. Now maintain
+a separate counter for each button. For each time a button is pressed or
+released, increase its counter by 1.
+
+If you use two circular queues, be careful: don't forget that `cir_dequeue`
+blocks until there's something available on that queue. Why would this be a
+problem if, in your main loop, you called `cir_dequeue` on one queue, then
+`cir_dequeue` on the other queue?
 
 Display the counters on your screen in your main loop. When you're done, we
 have a few questions for you!
