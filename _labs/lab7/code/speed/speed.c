@@ -8,6 +8,7 @@
 #include "memory.h"
 #include "timer.h"
 #include "assert.h"
+#include "reboot.h"
 
 // string of this length will be copied during time trial
 #define COPYLEN (1 << 12)
@@ -76,6 +77,8 @@ int main()
     // TODO: Add more TIME_TRIAL calls here for your sped-up
     // versions: TIME_TRIAL(strcpy2), TIME_TRIAL(strcpy3), etc.
 
-    printf("Done.\n");
+    printf("Done. Rebooting.\n");
+    reboot();
+
     return 0;
 }
