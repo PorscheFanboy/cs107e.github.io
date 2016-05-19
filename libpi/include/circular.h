@@ -32,9 +32,9 @@ int cir_full(cir_t *cir);
 // Puts elem at the back of the queue.
 void cir_enqueue(cir_t *cir, int elem);
 
-// Returns value at the front of the queue.
-// If cir is empty, then this call will block (wait to return) until the writer
-// enqueues something.
+// Returns an element from the front of the queue; if there
+// is no element in the queue, spins and waits  (blocks) 
+// until one is enqueued, then returns it
 int cir_dequeue(cir_t *cir);
 
 #endif
