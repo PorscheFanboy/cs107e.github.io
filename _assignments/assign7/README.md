@@ -155,14 +155,15 @@ and add an additional command to your shell.
 `gprof.h` includes the profiling function that you will need to implement in 
 `gprof.c`.
 The interface and implementation to set up timer interrupts is provided in the 
-libpi `armtimer` module. You can set up a timer interrupt to fire at the interval
+libpi `armtimer` module (See the libpi header file [`armtimer.h`](https://github.com/cs107e/cs107e.github.io/blob/master/libpi/include/armtimer.h)). 
+You can set up a timer interrupt to fire at the interval
 defined in `gprof.h`.
 You will need to implement a timer interrupt handler that records the current PC
 in the profiler. Call this handler when there is a timer interrupt. To do
 so, you will need to differentiate between GPIO and timer interrupts in
 `interrupt_vector` in `interrupt_handlers.c`.
 
-The `gprof_init` function from `grof.c` should allocate space to store counts for each
+The `gprof_init` function from `gprof.c` should allocate space to store counts for each
 address in the text (code) segment. Each time there is a timer interrupt, the count 
 for the current program counter should be incremented.
 `gprof_dump` should print the counts to the console using the print format given 
