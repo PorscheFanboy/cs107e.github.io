@@ -7,10 +7,10 @@
 #define DATA GPIO_PIN24
 #define MAX_CHAR 255
 
-#define BIT_TIME_US 33 //15kHz clock
-#define SCANCODE_DELAY_US 100
+#define BIT_TIME_US 26 //19kHz clock
+#define SCANCODE_DELAY_US 1000
 #define AUTOREPEAT_DELAY_US 50000
-#define KEY_DELAY_US 50000
+#define KEY_DELAY_US 100000
 
 void keyboard_emulator_init() {
     gpio_set_output(CLK);
@@ -20,7 +20,6 @@ void keyboard_emulator_init() {
 void keyboard_write(char *char_seq) {
     for (char* ch = char_seq; *ch; ch++) {
         keyboard_write_char(*ch);
-        delay_us(KEY_DELAY_US);
     }
 }
 
@@ -44,6 +43,7 @@ void keyboard_write_char(char ch) {
 
     keyboard_write_event(scancode, 1);
     keyboard_write_event(scancode, 0);
+    delay_us(KEY_DELAY_US);
 }
 
 void keyboard_hold_key(unsigned scancode, unsigned time_us) {
@@ -53,6 +53,16 @@ void keyboard_hold_key(unsigned scancode, unsigned time_us) {
         delay_us(AUTOREPEAT_DELAY_US);
     }
     keyboard_write_event(scancode, 0);
+    delay_us(KEY_DELAY_US);
+}
+
+void keyboard_press_extended_key(unsigned scancode) {
+    keyboard_write_scancode(PS2_CODE_EXTEND);
+    keyboard_write_event(scancode, 1);
+    
+    keyboard_write_scancode(PS2_CODE_EXTEND);
+    keyboard_write_event(scancode, 0);
+    delay_us(KEY_DELAY_US);
 }
 
 void keyboard_write_event(unsigned scancode, int down) {
@@ -60,10 +70,8 @@ void keyboard_write_event(unsigned scancode, int down) {
         keyboard_write_scancode(scancode);
     } else {
         keyboard_write_scancode(PS2_CODE_RELEASE);
-        delay_us(SCANCODE_DELAY_US);
         keyboard_write_scancode(scancode);
     }
-    delay_us(SCANCODE_DELAY_US);
 }
 
 static void toggle_clock() {
@@ -96,4 +104,5 @@ void keyboard_write_scancode(unsigned scancode) {
     // Stop bit
     gpio_write(DATA, 1);
     toggle_clock();
+    delay_us(SCANCODE_DELAY_US);
 }
