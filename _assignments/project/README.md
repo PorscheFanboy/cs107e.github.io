@@ -103,19 +103,12 @@ The Raspberry Pi has on-board SPI and I2C controllers, which you can use to
 communicate with many kinds of sensors and devices that speak those protocols.
 For example, if you want to have analog input, we have an analog-to-digital
 converter, the MCP3008, which would communicate over a SPI interface with your Pi.
+You are welcome to write your own SPI or I2C driver for your device as part of your
+project. However, if 
+you would like to use an existing implementation, there are versions in libpi that 
+you are free to use (make sure to cite that you used these implementations).
 
-libpi contains a
-[SPI driver](https://github.com/cs107e/cs107e.github.io/blob/master/libpi/src/spi.c)
-([header file](https://github.com/cs107e/cs107e.github.io/blob/master/libpi/include/spi.h))
-and an
-[I2C driver](https://github.com/cs107e/cs107e.github.io/blob/master/libpi/src/i2c.c)
-([header file](https://github.com/cs107e/cs107e.github.io/blob/master/libpi/include/i2c.h))
-providing a high-level C interface to the device registers for those
-controllers. Feel free to use these for your project.
-
-libpi also contains an experimental
-[filesystem interface](https://github.com/cs107e/cs107e.github.io/blob/master/libpi/src/fs.c)
-([header file](https://github.com/cs107e/cs107e.github.io/blob/master/libpi/include/fs.h))
+libpi also contains an experimental filesystem interface
 which you can use to interact with the files on the SD card. This enables you to
 do operating-system-like things, like maybe run programs off the card,
 or store large data files without having to copy them over the
