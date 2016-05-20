@@ -93,7 +93,7 @@ materials which you can use in the final project.
 ### Sensors
 
 We have
-[a number of different hardware sensors](https://docs.google.com/document/d/16D0wGRi7qUQamM8YR5XpcijSIifN1kzOvFWOoB_UHyk/pub)
+[a number of different hardware sensors](sensors)
 which you could use for your project; they're available for you to
 check out in lab. Let us know if you'd like to use one of them.
 
