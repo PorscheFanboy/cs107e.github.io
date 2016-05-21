@@ -1,0 +1,25 @@
+images/gpio.jpg
+
+pin layout:
+	images/lsm-pins.jpg
+
+package:
+	images/package.jpg
+	~/class/master.2016.spr/staff/libpi/tests/i2c_tests
+
+where do we go?
+	p23
+what are 
+	CTRL9_XL
+	CTRL_1_XL
+	CTRL_10_C
+	CTRL2_G
+
+	p8.
+
+	what are the units?
+	what are the rest of these names?
+
+
+where do we get the scale?
+	[pulled from arduino code from manufacturer's site.]
