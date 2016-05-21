@@ -24,12 +24,12 @@ hardware heuristics:
 	- hardware bugs = nothing happens.
 		look for stupid stuff first.
 			e.g., put wires where you don't have to count.
-		hardware is not eternal like 0,1: differential to check 
-			broken.
+		hardware is not eternal like 0,1: use differential
+		analysis to check if broken
 
-			swap sensor.
-			* swap pi --- if you don't have protection, can work
-			initially, then fry.
+			- swap sensor.
+			- swap pi --- if you don't have protection, can work
+			  initially, then fry.
 
 		natural to partition project.  don't for device.
 		easy to misunderstand.  have partner do too without talking
