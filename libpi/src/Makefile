@@ -9,7 +9,7 @@ OBJDUMP = $(ARMGNU)-objdump
 #ARCHFLAGS = -mfloat-abi=hard -march=armv6
 CPPFLAGS = -I../include
 ARCHFLAGS = -march=armv6
-CFLAGS = -std=c99 -Wall -g -Og -nostdlib -nostartfiles -ffreestanding 
+CFLAGS = -std=c99 -DREDZONE_MALLOC -Wall -g -Og -nostdlib -nostartfiles -ffreestanding 
 CFLAGS += -mapcs-frame -fno-omit-frame-pointer
 CFLAGS += -ffunction-sections -fdata-sections
 # keep clang happy
