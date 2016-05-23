@@ -166,11 +166,11 @@ efficiently.
 
     When processing characters, interpret the following special characters:
 
-    * `'\n'`: move to the next line and return to the beginning of the line
+    * `'\n'`: move to the next line
 
     * `'\r'`: return to the beginning of the line
 
-    * `'\b'`: back space
+    * `'\b'`: back space (deletes last character)
 
     * `'\f'`: form feed, clear the console and set the cursor at the home position
 
