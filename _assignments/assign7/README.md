@@ -121,13 +121,13 @@ Congratulations!
     that the indices are always within the buffer.
 
 6.  **Push keyboard scancodes onto circular buffer.** Modify your interrupt handler
-    to push a scancode into the circular buffer when it receives a full byte with
+    to enqueue a scancode into the circular buffer when it receives a full byte with
     valid parity and stop bits. Adapt your prior test program so that it
     removes scancodes from the circular buffer and displays them on the screen.
 
 7.  **Process PS/2 scan codes.** Almost there! Modify your `keyboard_read_scancode`
-    function to pop bytes from the circular buffer until it removes a
-    full scancode. Test out typing on your keyboard. Once you get this working,
+    function to dequeue a byte from the circular buffer.
+    Test out typing on your keyboard. Once you get this working,
     you should be able to run your shell program on the monitor just as in
     assignment 6, except this time you should never miss a key!
 
@@ -166,7 +166,7 @@ so, you will need to differentiate between GPIO and timer interrupts in
 The `gprof_init` function from `gprof.c` should allocate space to store counts for each
 address in the text (code) segment. Each time there is a timer interrupt, the count 
 for the current program counter should be incremented.
-`gprof_dump` should print the counts to the console using the print format given 
+`gprof_dump` should print the non-zero counts to the console using the print format given 
 in the comment.
 
 Once this is working, add the command `profile [on | off | status | results]` to
