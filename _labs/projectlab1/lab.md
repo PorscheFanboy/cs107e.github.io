@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 'Project Lab 1: What's your project?'
+title: 'Project Lab 1: What is Your Project?'
 permalink: /labs/projectlab1/
 ---
 
