@@ -48,7 +48,7 @@ Your Makefile should have at least these modules in
 LIBPI_STUDENT_MODULES:
 
 ```
-LIBPI_STUDENT_MODULES = printf.o gpio.o timer.o fb.o malloc.o gl.o console.o
+LIBPI_STUDENT_MODULES = gpio.o timer.o printf.o malloc.o shell.o fb.o gl.o console.o
 ```
 
 If you do have all these modules there, then we will automatically consider your
