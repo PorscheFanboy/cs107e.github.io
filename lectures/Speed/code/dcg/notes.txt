@@ -1,0 +1,90 @@
+just do a simple example.
+
+  31       28   26 25       21 20      16          12
+   +---------+----+--+--------+--+-------+-----------+------------------+
+   | cond    | 00 | 1| opcode | S|   Rn  |       Rd  |   opearand 2      |
+   +---------+----+--+--------+--+-------+-----------+------------------+
+      4        2   1     4     1     4         4           12
+
+struct alu_inst { 
+	unsigned cond:4,
+	         imm_op:3,
+		 opcode:4,
+		 S:1,
+		 Rn:4
+		 Rd:4,
+		 operand:12;
+};
+
+cond = condition field.  (1110 = always execute)
+opcode = (add = 0100)
+S  = set condition codes (0)
+Rn = first operation register  (R0=0)
+Rd = destination register  (R0=0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  31       28   26 25       21 20        16          12
+   +---------+----+--+--------+--+-------+-----------+------------------+
+   | 1110    | 00 | 1| 0100   | 0|  0000 |   0000    |   0000 0000 0001 |
+   +---------+----+--+--------+--+-------+-----------+------------------+
+
+p/x 0b11100010100000000000000000000001
+0xe2800001 
+
+       struct alu_inst {
+                unsigned
+                        operand:12,
+                        Rd:4,
+                        Rn:4,
+                        S:1,
+                        opcode:4,
+                        imm_op:3,
+                        cond:4;
+        } add;
+
+       	add.cond = 0b1110;
+        add.imm_op = 0b001;
+        add.opcode = 0b0100;
+        add.S = 0;
+        add.Rn = 0;
+        add.Rd = 0;
+        add.operand=1;
+        printf("%x\n", *(unsigned *)&add);
+
+* can actually just run the code directly; don't need to generate.
+
+    mov	    r0,	#0 // first value.
+    add	    r1, r15, #-12
+    ldr     r2, [r1]
+    add	    r2, r2, #1
+    str     r2, [r1]
+    bx lr
