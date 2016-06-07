@@ -166,7 +166,7 @@ so, you will need to differentiate between GPIO and timer interrupts in
 The `gprof_init` function from `gprof.c` should allocate space to store counts for each
 address in the text (code) segment. Each time there is a timer interrupt, the count 
 for the current program counter should be incremented.
-`gprof_dump` should print the non-zero counts to the console using the print format given 
+`gprof_dump` should print the highest 10 counts to the console using the print format given 
 in the comment.
 
 Once this is working, add the command `profile [on | off | status | results]` to
