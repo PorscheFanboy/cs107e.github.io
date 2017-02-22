@@ -13,7 +13,7 @@ title: Labs
 
 ### Lab schedule
 
-Labs are Tue evening from 7:00-9:00 pm, or Wed evening from 6:30-8:30 pm.
+TBA
 
 ### Lab FAQ
 

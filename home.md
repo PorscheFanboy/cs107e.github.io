@@ -4,7 +4,7 @@ title: Home
 show_on_index: true
 ---
 
-### Welcome to the Spring 2016 offering of CS107e!
+### Welcome to the Spring 2017 offering of CS107e!
 
 CS107 is the third course in Stanford's introductory programming sequence.
 CS106 provides students 
@@ -39,16 +39,14 @@ where they build a complete hardware-software system.
 ### Announcements
 
 All class announcements will be posted on
-[Piazza](http://piazza.com/stanford/spring2016/cs107e).
+[Piazza](http://piazza.com/stanford/spring2017/cs107e).
 
 ### Course Info
 
-  -   **Lectures:** Mon & Fri 1:30-2:50 pm, [Room 160-124]
-  -   **Lab**: Tue 7:00-9:00 pm or Wed 6:30-8:30 pm, Gates 325
-  -   **Lecturers**: Dawson Engler, Pat Hanrahan, and Philip Levis
-  -   **CAs**: Isabel Bush, Jane E, Omar Rizwan, and Anna Zeng
-
-[Room 160-124]: https://campus-map.stanford.edu/?id=01-160&lat=37.42826984660001&lng=-122.16601794932134&zoom=17&srch=160-124
+  -   **Lectures:** Mon & Fri 11:00 AM-12:20 PM, room TBA
+  -   **Lab**: TBA
+  -   **Lecturers**: Julie Zelenski, Pat Hanrahan, and Philip Levis
+  -   **CAs**: TBA
 
 ### Office Hours
 
@@ -65,3 +63,5 @@ to Stanford students via
 
 Please read the assigned readings before attending lecture and lab.
 You should also read the [guides](/guides/) for each week.
+
+_This schedule is based on last year's and is subject to change._

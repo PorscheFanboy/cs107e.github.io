@@ -39,13 +39,3 @@ final project, but no exams.
 
 Readings will be assigned from a variety of sources, including *The C
 Programming Language*, Kernighan and Ritchie.
-
-**Prerequisite:** 106B or X, and consent of instructor.
-
-**Lectures:** Mon & Fri 1:30-2:50pm, Rm 160-319
-
-**Lab:** Tue 7:00-9:00pm, Wed 6:30-8:30pm
-
-**Lecturers:** Dawson Engler, Pat Hanrahan, and Philip Levis
-
-**CAs:** Isabel Bush, Jane E, Omar Rizwan, and Anna Zeng

@@ -4,9 +4,9 @@ title: 'Assignment 0: Choose Lab Section, Learn Git'
 permalink: /assignments/assign0/
 ---
 
-**Part 1 [Google form](https://docs.google.com/forms/d/1p4D5ip4xt3qvTJIXA-LD_aOWfSInPGPm2WsxS6ZLyjM/viewform) deadline:** Friday, April 1, 2016, 1:30 PM (start of class)
+**Part 1 [Google form](https://docs.google.com/forms/d/e/1FAIpQLSeScayF4MtLYUW5MoyKZODJejWTbWuxNynLPp03Zivux6eEHw/viewform) deadline:** Friday, April 7, 2017 at 11:00 AM (start of class)
 
-**Part 2 deadline:** Sunday, April 3, 2016, 11:59 PM
+**Part 2 deadline:** Sunday, April 9, 2017 at 11:59 PM
 
 *(No late days can be used on this assignment.)*
 
@@ -110,7 +110,7 @@ assignments from there and later push your solutions back up.
 
 If you don't have an account already,
 [sign up now](https://github.com). Then fill in
-[our Google form](https://docs.google.com/forms/d/1p4D5ip4xt3qvTJIXA-LD_aOWfSInPGPm2WsxS6ZLyjM/viewform)
+[our Google form](https://docs.google.com/forms/d/e/1FAIpQLSeScayF4MtLYUW5MoyKZODJejWTbWuxNynLPp03Zivux6eEHw/viewform)
 so we know what your GitHub username is. **You should do this by class
 on Friday of week 1.**
 
