@@ -17,6 +17,11 @@ permalink: /resources/
 emulates the ARM instruction set and allows you to step through an assembly program.
 Pat used this tool in lecture.
 
+  *Note that VisUAL uses a
+  [slightly different ARM assembly syntax](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0773a/chr1383143764305.html)
+  from the GNU syntax we use in the course -- for example, you don't
+  put colons after labels in VisUAL.*
+
 * Matt Godbolt's [Compiler Explorer](http://gcc.godbolt.org/) lets you
   quickly see how C source code maps to compiled assembly. (Be sure to
   choose the compiler "ARM gcc 4.8.2", which is close to what we use
@@ -73,7 +78,13 @@ in Chapter 4: ARM Organization and Implementation.
 
 #### ARM Assembly Language
 
-* Carl Burch's [Introduction to ARM Assembly Language](http://www.toves.org/books/arm/) is highly recommended starting point.
+* Carl Burch's
+  [Introduction to ARM Assembly Language](http://www.toves.org/books/arm/)
+  is highly recommended starting point.
+
+  *Like VisUAL above, Burch's introduction uses the
+  [older ARM syntax](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0773a/chr1383143764305.html)
+  instead of the GNU syntax we use.*
 
 * [Worldwind Tour of ARM Assembly](http://www.coranac.com/tonc/text/asm.htm) from the TONC Guide to programming the Nintendo Game Boy Advance (which uses am ARM processor).
 
