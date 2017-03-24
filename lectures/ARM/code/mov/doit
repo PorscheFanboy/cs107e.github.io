@@ -1,6 +1,0 @@
-# assembly
-echo mov.s
-arm-none-eabi-as mov.s -o mov.o
-arm-none-eabi-objcopy mov.o -O binary mov.bin
-xxd -g 1 mov.bin
-

@@ -16,3 +16,19 @@ permalink,title,unreleased
 "/labs/lab7/","Lab 7: Raspberry Pi, Interrupted",true
 "/labs/projectlab1/","Project Lab 1: What is Your Project?",true
 "/labs/projectlab2/","Project Lab 2: How are you doing?",true
+"","ARM Processor and Memory Architecture Lecture",true
+"","ARM Processor and Memory Architecture Lecture",true
+"","Computer Arithmetic: Signed and unsigned numbers",true
+"","C1: C and Assembly Language",true
+"","C2: Pointers and Arrays",true
+"","",true
+"","Functions",true
+"","Interrupts and Concurrency",true
+"","",true
+"","I/O: External Peripherals, SPI, PS/2, and PWM",true
+"","Modules and Libraries: Linking",true
+"","Memory Management: Loading, Starting and Allocating",true
+"","Sensors",true
+"","Communication: Serial protocols and ASCII",true
+"","Performance",true
+"","Wrap Up",true
