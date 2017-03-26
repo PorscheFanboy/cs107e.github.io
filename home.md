@@ -46,7 +46,7 @@ All class announcements will be posted on
   -   **Lectures:** Mon & Fri 11:00 AM-12:20 PM, room TBA
   -   **Lab**: TBA
   -   **Lecturers**: Julie Zelenski, Pat Hanrahan, and Philip Levis
-  -   **CAs**: TBA
+  -   **CAs**: Omar Rizwan, Will Crichton, Anna Zeng, Michelle Park
 
 ### Office Hours
 
