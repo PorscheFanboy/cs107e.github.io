@@ -1,0 +1,18 @@
+# generate a listing when assembling
+arm-none-eabi-as add.s -o add.o -a
+arm-none-eabi-objcopy add.o -O binary add.bin
+
+# disassemble an object file
+#  -d -- disassemble executable parts of the program
+arm-none-eabi-objdump -d add.o
+
+# disassemble a binary file
+#   -b binary -- this file is a binary
+#   -m arm -- contains arm instructions
+#   -D -- disassemble everything
+arm-none-eabi-objdump -b binary -m arm -D add.bin
+
+
+
+
+

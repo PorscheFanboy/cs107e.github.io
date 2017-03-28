@@ -1,0 +1,12 @@
+# Demonstrate different versions of hexdump
+
+# hexdump
+hexdump add.bin
+
+# xxd - '-g 1' means 1 byte at a time
+xxd -g 1 add.bin
+
+# hd
+hd add.bin
+
+

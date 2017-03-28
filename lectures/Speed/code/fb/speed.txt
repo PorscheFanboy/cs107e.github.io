@@ -1,0 +1,133 @@
+---------------------------------------------------------------------------
+the big picture
+
+- every time you run a program you are doing science.  the more precise
+  your hypothesis is, the more you can be surprised.  surprise is good.
+
+        e.g.,: 
+                code should not crash vs
+                should produce the correct output
+
+                same experiment: much more bang.
+
+                should speed up.
+                will double in speed since i removed 1/2 the instructions.
+                the first will hide all sorts of naive assumptions.
+                the second can find crazy hardware.
+                
+- we've already seen big difference between what the C code looks like and
+  what the machine generates
+        C model: each statement your program executes in its entirety,
+        in order
+
+        compiler produces: massive reordering.  elimination of operations.
+
+  * "machine code" is not the lowest level.  it's the C model for the
+    machine.  what the actual hardware does below can easily be even
+    more extreme than what the compiler does.  (and likely is)
+
+     everyone:
+        - caches everywhere.
+        - instructions reordered.
+        - multiple instructions in flight, overlapping pipeline stages
+
+        - noise.  cache conflicts.  subtle timing differences if the
+          instructions are on different boundaries.   differences if
+          certain types of instructions are clustered together.
+
+     many:
+        often instructions are not low-level, but viewed as high level and
+        rewritten internally into micro-ops (e.g., x86)
+
+        speculation: do an operation speculatively, kill it before it commits
+        (writes its registers / memory) if the spec was wrong.
+
+   a good way to see this is to have a hypothesis of how long your code should
+   take, and then measure it.  machine craziness will often = you were wrong.
+
+- doing optimizations in different order can give different speedups.
+        ahmdahl
+        also: synergy.
+
+---------------------------------------------------------------------------
+i love optimization.
+possibly wouldn't be in CS without it.
+
+but: generally you shouldn't do it.
+hard to get code right.
+optimization, esp low level / space opt, often makes it more complex 
+	[caveat: often simpler code will run faster.  so i'm all for this.]
+get it right first.
+in the rare case it is slow, profile.
+you probably don't know where it spends time.
+	this is a cliche.
+	it's amusing.
+	but it's true.
+
+	hindsight is not 20/20.  run a program of any complexity.  you won't
+	know where it spends its time.
+
+---------------------------------------------------------------------------
+- show the slow one.
+- ask them optimize.
+
+- optimize
+- get rid of function calls.
+- get rid of volatile
+- get rid of char assigns.
+- make it a long long
+- unroll
+- stm
+
+* enable caches.  do this probably earlier.
+* pretty early, define the TIME macro.
+----------------------------------------------------------------------------
+
+do delay with and without cache.
+	what's going on?
+
+	- instruction cache on, data not.  the stores are naturally
+	  slower.
+
+show them the code.
+ask them to figure out ways to speed it up.
+
+big ones:
+	unroll.
+	cache.
+	slr
+
+	compile with optimization
+	try align?
+
+- add volatile and see how much it slows.
+
+- use macro.
+
+some simple macro tricks: these are helpful.
+	debug
+	assert
+	assertnow
+
+ahmdah's law.
+	speed up by X
+	as rest of program goes to 0, speedup goes to X.
+
+	slow down by X
+	as rest of program goes to inf, slowdown goes to 0.
+
+	so: if rest of program takes 90%, then slowdown of 10% x 10x = 2x.
+
+r0-r3 are the argument and scratch registers; r0-r1 are also the result registers
+r4-r8 are callee-save registers
+r9 might be a callee-save register or not (on some variants of AAPCS it is a special register)
+r10-r11 are callee-save registers
+r12-r15 are special registers
+
+one program: can use bitfields vs chars and measure the speed.
+another:  put the fields far away.
+
+what about dcg (since the cache is disabled, there should be a big win
+from burning the constants in the code)
+
+structure size != power of two.
