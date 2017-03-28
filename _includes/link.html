@@ -14,7 +14,7 @@
   {% endif %}
 {% endif %}
 
-{% if target.unreleased %}
+{% if target.released != true %}
   {{ target.title }}
 {% else %}
   <a href="{{ target.permalink }}">{{ target.title }}</a>

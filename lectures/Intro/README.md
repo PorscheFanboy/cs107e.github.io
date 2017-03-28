@@ -1,5 +1,0 @@
----
-unreleased: true
----
-
-Introductory lecture.
