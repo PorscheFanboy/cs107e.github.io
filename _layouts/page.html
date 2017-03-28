@@ -4,24 +4,6 @@ layout: default
 
 <div class="row">
   <div class="medium-12 columns">
-    {% if page.released != true %}
-      <div>
-        <strong>This page is unreleased until later in the quarter.</strong>
-      </div>
-      <div class="unreleased-content" style="display: none">
-        {{ content }}
-      </div>
-
-      <script>
-        if (window.location.href.endsWith('?peek')) {
-          document.querySelector('.unreleased-content').style.display = '';
-        }
-      </script>
-
-    {% else %}
-      <div class="released-content">
-        {{ content }}
-      </div>
-    {% endif %}
+    {{ content }}
   </div>
 </div>
