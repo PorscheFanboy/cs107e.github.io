@@ -3,9 +3,9 @@ layout: page
 title: Binary and Hexadecimal Numbers
 ---
 
-Everyone is familiar with decimal numbers. However, with computers it is often
-much more convenient to work with binary and hexadecimal numbers. We also need
-to learn how to deal with bits, and bitwise operators.
+Everyone is familiar with decimal numbers.
+However, computers use binary and hexadecimal representations of numbers.
+We also need to learn how to deal with bits, and bitwise operators.
 
 Do you know the answers to the following questions?
 
@@ -16,9 +16,11 @@ Do you know the answers to the following questions?
   5. What does 0b01 + 0b10 equal?
   6. What is 0x01 AND 0x02? 0x01 OR 0x2? 0x01 EOR (XOR) 0x02?
   7. What is the value of 0x01 bitwise shifted left by 2?
+  8. Suppose you are given a number x. How would you return a new number y
+  which is equal to x buth with its least significant bit equal to 0?
 
-If you don't know the answers to these questions, we recommend that you review
-the following material.
+If you don't know the answers to these questions,
+we recommend that you review the following material.
 
 * [Number Systems](https://www.khanacademy.org/math/pre-algebra/applying-math-reasoning-topic/alternate-number-bases/v/number-systems-introduction)
 * [Binary Numbers](http://en.wikipedia.org/wiki/Binary_number)
