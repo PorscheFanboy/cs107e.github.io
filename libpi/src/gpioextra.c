@@ -20,17 +20,18 @@ void gpio_set_pud(unsigned pin, unsigned pud) {
     if (pin < 0 || pin >= GPIO_MAX) {
         return;
     }
-
-    PUT32(GPIO_PUD, pud & 3);
+    volatile unsigned* reg_pud = (volatile unsigned*)GPIO_PUD;
+    *reg_pud = pud & 3;
     delay_us(5) ;
 
-    PUT32(GPPUDCLK0, 1 << (pin & 31)) ;
+    volatile unsigned* reg_clk = (volatile unsigned*)GPPUDCLK0;
+    *reg_clk = 1 << (pin & 31);
     delay_us(5) ;
 
-    PUT32(GPIO_PUD, 0);
+    *reg_pud = 0;    
     delay_us(5) ;
 
-    PUT32(GPPUDCLK0, 0) ;
+    *reg_clk = 0;
     delay_us(5) ;
 }
 

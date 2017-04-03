@@ -16,11 +16,12 @@ void gpio_detect_falling_edge(unsigned pin) {
     }
 
     unsigned addr = GPIO_FALLING_EDGE_ENABLE + 4 * (pin / 32);
+    volatile unsigned* reg = (volatile unsigned*)addr;
     unsigned shift = pin % 32;
 
-    unsigned val = GET32(addr);
+    unsigned val = *reg;
     val |= 1 << shift;
-    PUT32(addr, val);
+    *reg = val;
 }
 
 void gpio_detect_rising_edge(unsigned pin) {
@@ -29,11 +30,12 @@ void gpio_detect_rising_edge(unsigned pin) {
     }
 
     unsigned addr = GPIO_RISING_EDGE_ENABLE + 4 * (pin / 32);
+    volatile unsigned* reg = (volatile unsigned*)addr;
     unsigned shift = pin % 32;
 
-    unsigned val = GET32(addr);
+    unsigned val = *reg;
     val |= 1 << shift;
-    PUT32(addr, val);
+    *reg = val;
 }
 
 void gpio_detect_async_rising_edge(unsigned pin) {
@@ -42,11 +44,12 @@ void gpio_detect_async_rising_edge(unsigned pin) {
     }
 
     unsigned addr = GPIO_ASYNC_RISING_EDGE_ENABLE + 4 * (pin / 32);
+    volatile unsigned* reg = (volatile unsigned*)addr;
     unsigned shift = pin % 32;
 
-    unsigned val = GET32(addr);
+    unsigned val = *reg;
     val |= 1 << shift;
-    PUT32(addr, val);
+    *reg = val;
 }
 
 void gpio_detect_async_falling_edge(unsigned pin) {
@@ -55,11 +58,12 @@ void gpio_detect_async_falling_edge(unsigned pin) {
     }
 
     unsigned addr = GPIO_ASYNC_FALLING_EDGE_ENABLE + 4 * (pin / 32);
+    volatile unsigned* reg = (volatile unsigned*)addr;
     unsigned shift = pin % 32;
 
-    unsigned val = GET32(addr);
+    unsigned val = *reg;
     val |= 1 << shift;
-    PUT32(addr, val);
+    *reg = val;
 }
 
 void gpio_detect_high_level(unsigned pin) {
@@ -68,11 +72,12 @@ void gpio_detect_high_level(unsigned pin) {
     }
 
     unsigned addr = GPIO_HIGH_LEVEL_ENABLE + 4 * (pin / 32);
+    volatile unsigned* reg = (volatile unsigned*)addr;
     unsigned shift = pin % 32;
 
-    unsigned val = GET32(addr);
+    unsigned val = *reg;
     val |= 1 << shift;
-    PUT32(addr, val);
+    *reg = val;
 }
 
 void gpio_detect_low_level(unsigned pin) {
@@ -81,11 +86,12 @@ void gpio_detect_low_level(unsigned pin) {
     }
 
     unsigned addr = GPIO_HIGH_LEVEL_ENABLE + 4 * (pin / 32);
+    volatile unsigned* reg = (volatile unsigned*)addr;
     unsigned shift = pin % 32;
 
-    unsigned val = GET32(addr);
+    unsigned val = *reg;
     val |= 1 << shift;
-    PUT32(addr, val);
+    *reg = val;
 }
 
 void gpio_detect_event(unsigned pin, unsigned event) {
@@ -120,9 +126,10 @@ unsigned gpio_check_event(unsigned pin) {
     }
 
     unsigned addr = GPIO_EVENT_DETECT_STATUS + 4 * (pin / 32);
+    volatile unsigned* reg = (volatile unsigned*)addr;
     unsigned shift = pin % 32;
 
-    unsigned val = GET32(addr);
+    unsigned val = *reg;
     return (val & (1 << shift)) ? 1 : 0;
 }
 
@@ -132,9 +139,10 @@ void gpio_clear_event(unsigned pin) {
     }
 
     unsigned addr = GPIO_EVENT_DETECT_STATUS + 4 * (pin / 32);
+    volatile unsigned* reg = (volatile unsigned*)addr;
     unsigned shift = pin % 32;
 
-    PUT32(addr, 1 << shift);
+    *reg = 1 << shift;
 }
 
 unsigned gpio_check_and_clear_event(unsigned pin) {
