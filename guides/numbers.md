@@ -17,7 +17,7 @@ Do you know the answers to the following questions?
   6. What is 0x01 AND 0x02? 0x01 OR 0x2? 0x01 EOR (XOR) 0x02?
   7. What is the value of 0x01 bitwise shifted left by 2?
   8. Suppose you are given a number x. How would you return a new number y
-  which is equal to x buth with its least significant bit equal to 0?
+  which is equal to x but with its least significant bit equal to 0?
 
 If you don't know the answers to these questions,
 we recommend that you review the following material.
