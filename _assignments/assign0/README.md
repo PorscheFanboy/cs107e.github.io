@@ -5,6 +5,10 @@ permalink: /assignments/assign0/
 released: true
 ---
 
+<!-- FIXME (osnr 2017-04-07): should probably be due the midnight before -->
+<!-- the second class, so all repos are ready in time for class.  -->
+<!-- Or bundle into form where students confirm they want to enroll. -->
+
 **Part 1 [Google form](https://docs.google.com/forms/d/e/1FAIpQLSeScayF4MtLYUW5MoyKZODJejWTbWuxNynLPp03Zivux6eEHw/viewform) deadline:** Friday, April 7, 2017 at 11:00 AM (start of class)
 
 **Part 2 deadline:** Sunday, April 9, 2017 at 11:59 PM
