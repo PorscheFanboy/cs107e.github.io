@@ -12,8 +12,8 @@ title: Labs
 {% endfor %}
 
 ### Lab schedule
-
-TBA
+Tuesday, 6-8pm
+Wednesday, 6-8pm
 
 ### Lab FAQ
 
