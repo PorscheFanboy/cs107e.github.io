@@ -13,6 +13,7 @@ title: Labs
 
 ### Lab schedule
 Tuesday, 6-8pm
+
 Wednesday, 6-8pm
 
 ### Lab FAQ
