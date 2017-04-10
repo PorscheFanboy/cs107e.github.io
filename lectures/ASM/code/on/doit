@@ -1,0 +1,11 @@
+# -P -- no line numbers
+cpp -P on.s | arm-none-eabi-as -o on.o
+
+arm-none-eabi-objcopy on.o -O binary on.bin
+
+hexdump on.bin
+
+
+
+
+

@@ -1,0 +1,12 @@
+# disassemble an object file
+arm-none-eabi-objdump -d add.o
+
+# disassemble a binary file
+#   -b binary -- this file is binary
+#   -m arm -- file contains arm instructions
+#arm-none-eabi-objdump -b binary -m arm -D add.bin
+
+
+
+
+
