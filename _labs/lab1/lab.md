@@ -152,10 +152,11 @@ The kit comes in a plastic sandwich box, and contains the following parts:
 ![Kit]
 
 -   Raspberry Pi A+
--   SD card
 -   USB serial dongle
+-   SD card
 -   Breadboard
 -   8 LEDs
+-   1 4-digit seven-segment display
 -   4 pushbuttons and colored caps
 -   4 10K resistors (for push buttons)
 -   20 1K resistors (for leds, 4-digit display, transistors)
@@ -171,8 +172,6 @@ The kit comes in a plastic sandwich box, and contains the following parts:
 
 Take a moment to identify and inventory all the parts.
 Make sure your kit is complete.
-
-Note: Don't worry about the HDMI cable in the image above -- it will come in handy later in the course, so we will bother with that later.
 
 #### 3. Wire and power your breadboard
 
