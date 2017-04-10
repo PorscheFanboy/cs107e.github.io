@@ -225,8 +225,8 @@ Generally, we will use the following conventions.
 -   Black (GND)
 -   Red (5V)
 -   Orange (3.3V)
--   Blue (output)
--   Green (input)
+-   Green (host output)
+-   Blue (host input)
 
 For now, you will need just red and black jumpers.
 
