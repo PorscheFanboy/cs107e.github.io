@@ -65,10 +65,10 @@ may have pins in different positions. Don't just follow the picture blindly!
 
 ![Console cable](/images/console.cable.zoom.jpg)
 
-In this configuration, the yellow wire connects
-the RX header pin on the usb serial breakout board
+In this configuration, the green wire connects
+the RX header pin on the USB serial breakout board
 to the TX GPIO Pin 8 on the Pi's header.
-The orange wire connects the TX header pin
+The blue wire connects the TX header pin
 to the RX GPIO Pin 10.
 
 ### Installing the CP2102 virtual serial port drivers
