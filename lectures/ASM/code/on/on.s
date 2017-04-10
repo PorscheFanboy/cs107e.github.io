@@ -1,5 +1,5 @@
 #define FSEL0 0x20200000
-#define FSEL1 0x20200001
+#define FSEL1 0x20200004
 #define FSEL2 0x20200008
 #define SET0  0x2020001C
 #define SET1  0x20200020

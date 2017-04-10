@@ -1,6 +1,3 @@
-.globl start
-start:
-
 #define FSEL2 0x20200008
 #define SET0  0x2020001C
 #define CLR0  0x20200028
