@@ -63,5 +63,3 @@ to Stanford students via
 
 Please read the assigned readings before attending lecture and lab.
 You should also read the [guides](/guides/) for each week.
-
-_This schedule is based on last year's and is subject to change._
