@@ -33,7 +33,7 @@ introduction to embedded systems.
 
 This class is organized by weeks. Each week consists of two lectures
 on Fri and Mon, a lab offered on Tue or Wed evening, and a programming
-assignment which is due the following Tue at 6PM (an hour before the Tue
+assignment which is due the following Tue at 5 PM (an hour before the Tue
 lab). Lecture and lab attendance is mandatory. There will be a short
 final project, but no exams.
 

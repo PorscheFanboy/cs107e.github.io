@@ -19,9 +19,9 @@ Hofstadter's Law into account."
 
 The rules:
 
-1.  The cutoff for on-time submission is **6PM** of the due date. Late
-    days are counted in 24-hour periods. Submitting one minute past 6
-    until 6PM of the next day is one day late, and so on. We use the
+1.  The cutoff for on-time submission is **5 PM** of the due date. Late
+    days are counted in 24-hour periods. Submitting anytime between 5 PM
+    and 5 PM of the next day is one day late, and so on. We use the
     timestamp of your final git commit as the the time you submitted
     your assignment.
 

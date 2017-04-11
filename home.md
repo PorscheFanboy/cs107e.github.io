@@ -44,7 +44,7 @@ All class announcements will be posted on
 ### Course Info
 
   -   **Lectures:** Mon & Fri 11:00 AM-12:20 PM, Room Y2E2 111
-  -   **Labs**: Tue & Wed 6pm-8pm, Gates B21
+  -   **Labs**: Tue & Wed 6:00 PM-8:00 PM, Gates B21
   -   **Lecturers**: Julie Zelenski, Pat Hanrahan, and Philip Levis
   -   **CAs**: Omar Rizwan, Will Crichton, Anna Zeng, Michelle Park
 
