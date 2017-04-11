@@ -17,16 +17,16 @@ loop:
 	ldr r0, =0x20200034
 	ldr r1, [r0] 
 	tst r1, r2
-	bne off // when the button is pressed (goes LOW), turn on LED
+	beq on // when the button is pressed (goes LOW), turn on LED
+        
+        // set GPIO 20 low
+    off:
+        ldr r0, =0x20200028
+        str r3, [r0]
+        b loop
 
-	// set GPIO 20 high
-	on:
-		ldr r0, =0x2020001C
-		str r3, [r0] 
-		b loop
-
-	// set GPIO 20 low
-	off:
-		ldr r0, =0x20200028
-		str r3, [r0] 
-		b loop
+        // set GPIO 20 high
+    on:
+        ldr r0, =0x2020001C
+        str r3, [r0]
+        b loop

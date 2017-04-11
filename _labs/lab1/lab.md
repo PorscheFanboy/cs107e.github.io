@@ -175,7 +175,7 @@ Make sure your kit is complete.
 
 #### 3. Wire and power your breadboard
 
-The next step is to wire up your breadboard.
+The next step is to wire up your breadboard. In this section, we will focus on the LED set-up.
 
 ![Breadboard][1]
 
@@ -632,7 +632,13 @@ whether the button is pressed.
         ldr r0, =0x20200034
         ldr r1, [r0]
         tst r1, r2
-        bne off
+        beq on
+        
+        // set GPIO 20 low
+    off:
+        ldr r0, =0x20200028
+        str r3, [r0]
+        b loop
 
         // set GPIO 20 high
     on:
@@ -640,18 +646,15 @@ whether the button is pressed.
         str r3, [r0]
         b loop
 
-        // set GPIO 20 low
-    off:
-        ldr r0, =0x20200028
-        str r3, [r0]
 
-    b loop
 
 To run this program, connect the button to GPIO 10 (pin 19). Make sure the jumper is
 connected to the right pin on the Raspberry Pi.
 Also, make sure the pull-up resistor is properly installed on the breadboard.
 
-Study this program.
+Challenge yourself to understand
+what each line of code accomplishes and why it works as expected.
+Feel free to add your own code annotations if that helps.
 
 Here are a few questions to test your knowledge.
 To answer these questions you will have to read the
@@ -659,9 +662,11 @@ Broadcom peripheral manual, or ask someone who knows the answer.
 
 -   Why don't we need to configure GPIO 10?
 
+-   What does the peripheral register with the address 0x20200034 return?
+
 -   Why does the input value go to 0 (LOW) when the button is pressed?
 
--   What does the peripheral register with the address 0x20200034 return?
+-   How does the Pi know which branch to jump to when it reaches `beq on`?
 
 
 ### Hand in your checklist to a TA
