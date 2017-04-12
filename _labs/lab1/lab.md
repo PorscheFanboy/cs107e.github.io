@@ -175,11 +175,14 @@ Make sure your kit is complete.
 
 #### 3. Wire and power your breadboard
 
-The next step is to wire up your breadboard. In this section, we will focus on the LED set-up.
+The next step is to wire up your breadboard.
+Below is an example of a breadboard with clean wiring;
+notice how hard it is to find any bare wires! This breadboard's components
+have their wires cut to just the right length.
 
 ![Breadboard][1]
 
-When wiring a breadboard be sure to choose (or cut) wires of the 
+When you wire your breadboard, be sure to choose (or cut) wires of the
 proper length and arrange them neatly. Use different colors of
 wires to annotate what they are for. If they're neat, it's easier
 to see if everything is set up correctly.
