@@ -323,7 +323,7 @@ and then insert the holder into your laptop's SD card slot.
 **Some laptops do not contain a SD card slot.
 If your laptop does not contain an SD card slot,
 we recommend you mount the SD card and copy files
-using using your partner's laptop.**
+using your partner's laptop.**
 
 When you insert the SDHC card it should mount automatically.
 You should see it show up in your file explorer.
@@ -331,13 +331,21 @@ You should see it show up in your file explorer.
 <img title="SD Finder" src="/images/mac.finder.jpg" width="500">
 
 Another way to cerify that the card is mounted is to list 
-the mounted Volumes.
+the mounted Volumes. If you're on a Mac:
 
     $ ls /Volumes
     Macintosh HD    NO NAME
 
 By default, the SD card volume is named `NO NAME`.
 You can change the name if you wish.
+
+**If you're on Windows and using the VM, you may need to conscript a
+labmate or get a USB SD card reader for the next couple parts of this
+lab -- even if your laptop has an SD card slot, the VM may not support
+using it inside Linux.**
+
+**Don't worry, though: you shouldn't need to modify the SD card after
+this lab, because you can just use the bootloader shown in Part 7.**
 
 Now, we'll use the Raspberry Pi firmware, which is also in our 
 [GitHub repository](https://github.com/cs107e/cs107e.github.io/tree/master/firmware).
@@ -356,7 +364,7 @@ depending on where exactly you ran `git clone` in the beginning.)
 There should be 5 files in that `firmware` folder.
 
     $ ls
-    blink-onboard.bin   bootloader.bin  start.elf
+    blink-onpi.bin   bootloader.bin  start.elf
     bootcode.bin    config.txt
 
 `bootcode.bin` is the code that boots the GPU,
@@ -373,10 +381,10 @@ own programs to take its place, and put one of them in under the name
 `kernel.img` instead.
 
 Now notice that we've given you two additional programs,
-`blink-onboard.bin` and `bootloader.bin`.
+`blink-onpi.bin` and `bootloader.bin`.
 
-We will run `blink-onboard.bin` first, which blinks the activity (ACT)
-LED on the Raspberry Pi itself (the 'onboard' LED).
+We will run `blink-onpi.bin` first, which blinks the activity (ACT)
+LED on the Raspberry Pi itself (the 'onpi' LED).
 
 Next, follow these steps in the following order:
 
@@ -384,8 +392,8 @@ Next, follow these steps in the following order:
 or the Finder for this.)    
 
 2. Once on your SD card, rename the copy
-of `blink-onboard.bin` to `kernel.img`. After we put the card in, the Pi should now run our
-blink-onboard program!
+of `blink-onpi.bin` to `kernel.img`. After we put the card in, the Pi should now run our
+blink-onpi program!
 
 3. Check that you have the required files on your SD card.
 
@@ -431,11 +439,11 @@ To do this, start by wiring the LED on your breadboard to GPIO 20 (pin 38).
 Mount the SD card again. Delete the `kernel.img` we put there before.
 
 This time, copy your assembled `blink.bin` file 
-(the one you created in lab step 1)
+(**the one you created way back in lab step 1**)
 to your SD card and rename it `kernel.img`.
 
 You've basically replaced the `kernel.img` you put in there before (which
-was a copy of `blink-onboard.bin`).
+was a copy of `blink-onpi.bin`).
 
 Eject the SD card and insert it into the Raspberry Pi.
 
@@ -513,6 +521,13 @@ to the RX GPIO Pin 10.
 
 We have created a Python program that sends binary files to the bootloader.
 
+**Make sure you're prepared to run the bootloader now.**
+
+**If you are on a Mac, make sure you installed the CP2102 drivers and
+the `rpi-install.py` tool, as described in the
+[Mac toolchain guide](/guides/mac_toolchain).  On Windows or Linux,
+you don't need to do anything special here.**
+
 Let's try the bootloader. In some Terminal shell, change back to the
 directory where you assembled `blink.bin` in step 1. That's
 `cs107e.github.io/_labs/lab1/code/blink/`.
@@ -523,10 +538,6 @@ Now to load and run `blink.bin`, simply type:
     Sent True
 
 After a few seconds, you should see the LED blinking.
-
-**If you are on a Mac, make sure you installed the CP2102 drivers,
-as described in the [Mac toolchain guide](/guides/mac_toolchain).
-On Windows or Linux, you don't need to do anything special here.**
 
 If you change your program and wish to reload it onto the Pi, 
 you must power cycle the Pi.
@@ -579,7 +590,12 @@ ask questions of your partner and others.
 Do the following exercises:
 
 -   Look at the bytes in the `blink.bin` you assembled earlier by
-    running `hexdump blink.bin` at a shell in the `blink` folder.
+    running `xxd -g 1 blink.bin` at a shell in the `blink` folder.
+
+    (`xxd` is a command that prints the bytes in a file in a
+    human-readable form. You can run `man xxd` to learn more. What are
+    the numbers at the beginning of each line `xxd` outputs?)
+
     Find the first occurence of `e3`. What is the byte offset of `e3`
     relative to the start of the file?
 
