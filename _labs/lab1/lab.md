@@ -379,9 +379,10 @@ plus an additional file, named `kernel.img`. But notice that we don't
 give you a `kernel.img` here!
 
 Normally, `kernel.img` is the operating system kernel you want to run
-on the Pi, like Linux or Windows. In this course, we will write our
-own programs to take its place, and put one of them in under the name
-`kernel.img` instead.
+on the Pi, like Linux or Windows.
+
+In this course, we will write our own programs to take its place, and
+put one of them in under the name `kernel.img` instead.
 
 Now notice that we've given you two additional programs,
 `blink-onpi.bin` and `bootloader.bin`.
@@ -473,14 +474,19 @@ There is a better way: use a bootloader.
 The bootloader avoids having 
 to move your SD card back and forth 
 between your laptop and the Raspberry Pi.
-You will learn to love the bootloader.
+You will learn to love the bootloader!
 
-To install the bootloader,
-mount the SD card and copy `bootloader.bin` to the SD as `kernel.img`.
-Eject the SD card and insert it into the Raspberry Pi.
-Now, when the Raspberry Pi powers up, the bootloader is run.
+1. To install the bootloader, mount the SD card and copy
+   `bootloader.bin` to the SD as `kernel.img`, replacing the program
+   you had there before.
 
-The bootloader listens on the serial port for commands 
+2. Eject the SD card and insert it into the Raspberry Pi. Now, when
+   the Raspberry Pi powers up, the bootloader is run.
+
+Next, let's actually send the bootloader a program from your
+laptop. It's waiting.
+
+The bootloader listens on the TX and RX pins for commands 
 to load a program into memory on the Pi. 
 A program on your laptop sends the bytes 
 contained in a binary (`.bin`) file to the bootloader 
@@ -542,13 +548,15 @@ Now to load and run `blink.bin`, simply type:
 
 After a few seconds, you should see the LED blinking.
 
-If you change your program and wish to reload it onto the Pi, 
-you must power cycle the Pi.
-One way to do this is to unplug the USB-serial breakout board
+If you change your program and wish to reload it onto the Pi, you must
+power cycle the Pi. Why can't you just run `rpi-install.py` again
+after the bootloader's already loaded a program?
+
+One way to power cycle the Pi is to unplug the USB-serial breakout board
 from the USB slot on your laptop,
 and then plug it in again.
-The Pi will reboot into the bootloader 
-and which will be ready to load the new version of the program.
+The Pi will reboot into the bootloader, ready to load the new version of the program.
+
 Retype the above `rpi-install.py` command, 
 and the new version will be downloaded and run.
 
