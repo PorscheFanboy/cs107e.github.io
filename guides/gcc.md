@@ -5,143 +5,61 @@ title: Guide to Bare Metal Programming with GCC
 
 *Written by Pat Hanrahan*
 
-Compiling programs that run bare metal is different than compiling
-programs that run under an operating system and use
-standard libraries. `gcc` is configured by default to
-assume you are using an operating system and the standard libraries,
-which is how most programs are developed. 
-Therefore, in order to compile bare metal programs
-we need to provide the appropriate options.
+### Hosted versus non-hosted (standalone) environments
+A typical program is compiled for a _hosted_ system where it has access to the standard libraries and facilities provided by the operating system layer. In hosted mode, the program runs at the pleasure of the host operating system.
+In contrast, a bare metal program is non-hosted; it does not stand on top of an operating system or library; it runs entirely standalone. The program has the freedom to do whatever it wants, without any pesky interference from a overbearing OS, but cannot count on any facilities other than what it provides for itself.
 
-For example,
+The `gcc` default is to compile assuming a hosted environment, as this is the common case. To properly compile a bare metal program, we need to set the appropriate compiler and linker options to ensure the program is configured to run standalone.
 
-     % arm-none-eabi-gcc -ffreesstanding -nostdlib -nostartfiles -c blink.c
+### Compiler options -ffreestanding
+This `gcc` option directs the compiler to limit this program to only those features available in the freestanding environment. 
 
-### Freestanding
+	% arm-none-eabi-gcc -ffreestanding -c blink.c
 
-The option `--freestanding` instructs `gcc` to compile
-the program without an operating system or standard libraries.
-The program does not *stand* on top of an operating system or library.
-It is *on its own* and free to do whatever it wants.
-Operating systems and libraries will not get in its way.
-The opposite of freestanding is hosted.
-In hosted mode, the program runs at the pleasure of the host operating system.
+In freestanding mode, the only standard header files are: `<float.h>`, `<iso646.h>`, `<limits.h>`, `<stdarg.h>`, 
+`<stdbool.h>`, `<stddef.h>`, and `<stdint.h>` (C99 standard 4.6).
+These headers define the types appropriate for the machine being used, as well as useful constants such as the minimum and maximum values for different types. The other standard header files (`stdio.h`, `string.h` and so on) are not to be used.
 
-In freestanding mode only the following header files
-are included: float.h, iso646.h, limits.h, stdarg.h, 
-stdbool.h, stddef.h, stdint.h (C99 standard 4.6).
-These headers define the types appropriate for the machine
-being used, as well as useful constants such as
-the minimum and maximum values for different types.
+In hosted mode, the `main` function must adhere to a rigid specification. Execution begins at the function named `main` and its signature must typically match:
 
-The `-ffreestanding` option directs the compiler to not assume that
-standard functions have their usual definition. 
+    int main(int argv, char *argv[], char *env[])
 
-Freestanding mode does not associate any special semantics to the function main.
-Normally, main is predeclared as follows:
+The compiler will issue warnings if you define `main` differently for a hosted program.
 
-    int main(int argv, char *argv, char **env)
-
-and the compiler will issue warnings if you define main differently.
-In freestanding mode, main can have any type signature.
-For example, in freestanding mode `main` may be called
-without any input arguments, and will return anything.
-In freestanding mode, you can define main as
+Freestanding mode removes the special semantics for the `main` function. In the standalone world, `main` can have any type signature and it is configurable whether it is `main` or some other function that starts the program. A typical main signature for a freestanding program is simply:
 
     void main(void)
-    
-Freestanding mode does not change the linking behaviour.
-For that, you need to use the `-nostdlib` option, 
-or possibly `-nostartfiles` or `-nodefaultlibs`.
 
-`gcc` normally performs many optimizations.
-For example, in a hosted environment,
-`gcc` can assume that there is a complete library available 
-that meets the specification of the language standard being used 
-(the default for C is gnu90, the GNU extension to the ISO C90 standard).
-That means, for example, it can transform `printf("hi\n")` into `puts("hi")`
-because it *knows* from the definition of the
-standard IO library that these two functions are equivalent.
-When `-ffreestanding` is used, `gcc` does not assume
-that you are using a standard library environment.
-In freestanding mode, you could define your own `puts`
-function and your version of `puts` 
-could act completely differently than
-the standard puts function.
+The `-ffreestanding` option also directs the compiler to not assume that standard functions have their usual definitions. This will prevent the compiler from making optimizations based on assumptions about the behaviors of the standard libraries. For example, in a hosted environment,`gcc` is assured that the available library meets the specification of the language standard. It can transform `printf("hi\n")` into `puts("hi")` because it *knows* from the definition of the standard IO library that these two functions are equivalent. In freestanding mode, you could define your own `puts` function and your version of `puts` could act completely differently than the standard `puts` function, making such a substitution invalid. Thus when `-ffreestanding` is used, `gcc` does not assume a standard library environment and will not make such optimizations. 
 
-In a freestanding environment 
-(in which C program execution may take place 
-without any benefit of an operating system),
-the name and type of the function called 
-at program startup are implementation-defined.
-Any library facilities available to a freestanding program,
-other than the minimal set required by clause 4, are implementation-defined.
 
-### Standard libraries and include files
+### Linker options for default libraries and start files
+The linker option 
 
-`gcc` accepts several flags that control the use of standard
-libraries and include files.
+	-nostdlib
 
-Options include
+is used to link a program intended to run standalone. `-nostdlib' implies the individual options `-nodefaultlibs` and `-nostartfiles`. Below we discuss the two options separately, but the most typical use is just `nostdlib` for one-stop shopping.
 
-    -nostdinc 
-   
-This option sets the include path so that the 
-standard C include directories cannot be found.
-If you try to include a standard header file,
-the compiler will issue an error.
+When linking a hosted program, standard system libraries such as `libc` are linked by default, giving the program access to all standard functions ((printf`, `strlen` and friends).  The linker option
 
-    -nodefaultlibs
+	-nodefaultlibs
 
-Instructs the compiler to not use the standard system libraries when linking. 
-Only the libraries you specify will be passed to the linker.
-Examples of standard libraries are `libc` and `libm`.
+prevents that automatic link, the only libraries linked are exactly those that you explicitly name to the linker using the `-l` flag.
 
-    -nostdlib
+`libgcc.a` is a standard library (linked by default, excluded by `-nodefaultlibs`) that provides internal subroutines to overcome shortcomings of particular machines.  For example, the ARM processor does not include a division instruction.  The ARM version of `libgcc.a` includes a division function and the compiler emits calls to that function where needed If you do not provide an implementation of these functions, a program with code that includes division by a variable will not link. You can explicitly link with `libgcc.a` (`-lgcc`)
 
-Instructs the compiler to not link to the standard system library,
-as well as to not link to the standard system startup library. 
-No startup files and only the libraries you specify are passed to the linker.
+A similar issue arises in certain contexts where the compiler generates calls to `memcmp`, `memset`, `memcpy` and `memmove` expecting them to be resolved by the function definitions in `libc`. These entry points should be supplied through some other mechanism when `-nodefaultlibs` is used.
 
-If the program is being compiled in hosted mode,
-the compiler may generate calls to `memcmp`, `memset`, `memcpy` and `memmove`.
-These entries are usually resolved by entries in `libc`.
-These entry points should be supplied through some other mechanism 
-when this `-nostdlib` is specified.
-
-If you use `-nostdlib` and want to include libraries,
-you need to specify linker paths and libraries explicitly with -L and -l.
-
-One of the standard libraries that is not linked in when
-using `-nostdlib` and `-nodefaultlibs`
-is `libgcc.a`, a runtime library implementing 
-functions that are needed to compile certain C code.
-For example, the ARM processor does not include a division instruction. 
-`libgcc.a` includes functions to perform division.
-If you do not provide an implementation of these functions,
-a program with code that includes division by a variable will not run.
-
-In this case, if you use `-nostdlib`, 
-then you need to explicitly link with `libgcc.a` (`-lgcc`)
-
-### Start files
-
-Normally, when a program begins to run,
-a start function is called.
-This function sets up the machine to run the program.
-The most common task performed by start functions are
-to initialize default values for any variables in your program.
+Normally, when a program begins to run, the standard start function is called. This function sets up the machine to run the program.
+The most common task performed by start is to initialize default values for any variables in your program and call the `main` function.
 
 The option
 
-    - nostartfiles
+    -nostartfiles
 
-instructs the compiler to not call the 
-standard system startup functions and to not link to the
-libraries containing those functions.
+instructs the linker to not use the standard system startup functions nor link the code containing those functions.
 
-If you don't link to a start function,
-program variables may not be properly initialized.
-You may need to provide your own start function
-when running in freestanding mode.
+If you don't link to a start function, program variables may not be properly initialized. You may need to provide your own start function when running in standalone mode.
+
+
 
