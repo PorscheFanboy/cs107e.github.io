@@ -11,14 +11,14 @@ In contrast, a bare metal program is non-hosted; it does not stand on top of an 
 
 The `gcc` default is to compile assuming a hosted environment, as this is the common case. To properly compile a bare metal program, we need to set the appropriate compiler and linker options to ensure the program is configured to run standalone.
 
-### Compiler options -ffreestanding
+### Compiler option -ffreestanding
 This `gcc` option directs the compiler to limit this program to only those features available in the freestanding environment. 
 
 	% arm-none-eabi-gcc -ffreestanding -c blink.c
 
-In freestanding mode, the only standard header files are: `<float.h>`, `<iso646.h>`, `<limits.h>`, `<stdarg.h>`, 
+In freestanding mode, the only available standard header files are: `<float.h>`, `<iso646.h>`, `<limits.h>`, `<stdarg.h>`, 
 `<stdbool.h>`, `<stddef.h>`, and `<stdint.h>` (C99 standard 4.6).
-These headers define the types appropriate for the machine being used, as well as useful constants such as the minimum and maximum values for different types. The other standard header files (`stdio.h`, `string.h` and so on) are not to be used.
+These headers define the types appropriate for the machine being used, as well as useful constants such as the minimum and maximum values for different types. The other standard header files (`<stdio.h>`, `<string.h>` and so on) are not to be used.
 
 In hosted mode, the `main` function must adhere to a rigid specification. Execution begins at the function named `main` and its signature must typically match:
 
@@ -38,9 +38,9 @@ The linker option
 
 	-nostdlib
 
-is used to link a program intended to run standalone. `-nostdlib' implies the individual options `-nodefaultlibs` and `-nostartfiles`. Below we discuss the two options separately, but the most typical use is just `nostdlib` for one-stop shopping.
+is used to link a program intended to run standalone. `-nostdlib` implies the individual options `-nodefaultlibs` and `-nostartfiles`. Below we discuss the two options separately, but the most typical use is just `nostdlib` for one-stop shopping.
 
-When linking a hosted program, standard system libraries such as `libc` are linked by default, giving the program access to all standard functions ((printf`, `strlen` and friends).  The linker option
+When linking a hosted program, standard system libraries such as `libc` are linked by default, giving the program access to all standard functions (`printf`, `strlen` and friends).  The linker option
 
 	-nodefaultlibs
 
