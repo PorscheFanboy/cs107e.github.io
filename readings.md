@@ -13,7 +13,7 @@ permalink: /resources/
 * An interactive demo of how the
 [ARM assembler's immediate value encoder](https://alisdair.mcdiarmid.org/arm-immediate-value-encoding/#play-with-it) works.
 
-* [VisUAL](http://salmanarif.bitbucket.org/visual/index.html)
+* [VisUAL](http://salmanarif.bitbucket.io/visual/index.html)
 emulates the ARM instruction set and allows you to step through an assembly program.
 Pat used this tool in lecture.
 
