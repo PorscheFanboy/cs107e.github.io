@@ -180,6 +180,12 @@ Below is an example of a breadboard with clean wiring;
 notice how hard it is to find any bare wires! This breadboard's components
 have their wires cut to just the right length.
 
+<!-- TODO: Replace this with a picture of actual breadboard. Students -->
+<!-- were stopping reading here and trying to wire this up. -->
+
+<!-- TODO: Maybe add a schematic / wire schematic picture for students -->
+<!-- who don't know how rows/columns/rails wire up on breadboard? -->
+
 ![Breadboard][1]
 
 When you wire your breadboard, be sure to choose (or cut) wires of the
@@ -275,6 +281,9 @@ and also have it provide power to the breadboard.
 Start by looking at the 40-pin GPIO header on the side of the Raspberry Pi A+.
 These pins match this detailed diagram of all the GPIO pins.
 Note all the GNDs and power pins on your Pi (both 3.3V and 5V).
+
+<!-- TODO: Use the same pinout that Julie has as a poster on our wall -->
+<!-- in B21. -->
 
 ![GPIO](images/gpio.jpg)
 
