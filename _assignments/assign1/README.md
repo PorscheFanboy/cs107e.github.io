@@ -71,7 +71,8 @@ pin-27) LED.
    Then you will need to sequentially turn LEDs on and off.
 
    Make sure you handle the left and right sides properly
-   (that is, the left-most and right-most LED should be on for only one cycle).
+   (that is, the left-most and right-most LED should be each on for the
+   same amount of time that a middle LED would be on).
    You should write the program without any function calls
    (because we haven't taught you how to create and call functions
    in assembly language yet). Although you cannot use functions, you can still
