@@ -9,7 +9,7 @@ title: Guide to Bare Metal Programming with GCC
 A typical program is compiled for a _hosted_ system where it has access to the standard libraries and facilities provided by the operating system layer. In hosted mode, the program runs at the pleasure of the host operating system.
 In contrast, a bare metal program is non-hosted; it does not stand on top of an operating system or library; it runs entirely standalone. The program has the freedom to do whatever it wants, without any pesky interference from a overbearing OS, but cannot count on any facilities other than what it provides for itself.
 
-The `gcc` default is to compile assuming a hosted environment, as this is the common case. To properly compile a bare metal program, we need to set the appropriate compiler and linker options to ensure the program is configured to run standalone.
+By default, `gcc` compiles assuming a hosted environment, since this is the common case. To properly compile a bare metal program, we need to set the appropriate compiler and linker options to ensure the program is configured to run standalone.
 
 ### Compiler option -ffreestanding
 This `gcc` option directs the compiler to limit this program to only those features available in the freestanding environment. 
