@@ -46,7 +46,7 @@ When linking a hosted program, standard system libraries such as `libc` are link
 
 prevents that automatic link, the only libraries linked are exactly those that you explicitly name to the linker using the `-l` flag.
 
-`libgcc.a` is a standard library (linked by default, excluded by `-nodefaultlibs`) that provides internal subroutines to overcome shortcomings of particular machines.  For example, the ARM processor does not include a division instruction.  The ARM version of `libgcc.a` includes a division function and the compiler emits calls to that function where needed If you do not provide an implementation of these functions, a program with code that includes division by a variable will not link. You can explicitly link with `libgcc.a` (`-lgcc`)
+`libgcc.a` is a standard library (linked by default, excluded by `-nodefaultlibs`) that provides internal subroutines to overcome shortcomings of particular machines.  For example, the ARM processor does not include a division instruction.  The ARM version of `libgcc.a` includes a division function and the compiler emits calls to that function where needed. If you do not provide an implementation of these functions, a program with code that includes division by a variable will not link. You can explicitly link with `libgcc.a` (`-lgcc`)
 
 A similar issue arises in certain contexts where the compiler generates calls to `memcmp`, `memset`, `memcpy` and `memmove` expecting them to be resolved by the function definitions in `libc`. These entry points should be supplied through some other mechanism when `-nodefaultlibs` is used.
 
