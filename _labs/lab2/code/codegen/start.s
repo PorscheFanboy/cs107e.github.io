@@ -2,5 +2,5 @@
 .global _start
 _start:
     mov sp,#0x8000000  // set up stack pointer
-    bl main         	// call main()
-hang: b hang        	// after main returns, go into infinite loop
+    bl _cstart        	// call _cstart
+hang: b hang        	// after _cstartreturns, go into infinite loop
