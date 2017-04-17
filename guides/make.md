@@ -3,7 +3,12 @@ layout: page
 title: Guide to Make for ARM cross-development
 ---
 
-*Written for CS107E by Pat Hanrahan*
+*Written for CS107E by Pat Hanrahan & Anna Zeng*
+
+Make is a tool that automates building executable programs;
+a makefile is a file that tells Make what to do in order to build
+the programs you want. As you will see soon enough, they make life
+as a computer science student a whole lot smoother!
 
 This guide is about using makefiles
 for cross-development for the ARM.
@@ -15,75 +20,145 @@ read the
 Below is a simple makefile that can be used
 to build a binary for the ARM processor.
 
-    # create a variable that is the name of the program
-    #
     NAME = blink
 
-    # The CFLAGS variable sets compile flags for gcc: 
-    #
+    CFLAGS  = --std=c99 -Og -g -Wall 
+    CFLAGS += -ffreestanding
+
+    all: $(NAME).bin
+
+    %.bin: %.o
+        $(ARM)-objcopy $< -O binary $@
+
+    %.o: %.c
+        $(ARM)-gcc $(CFLAGS) -o $< $@
+
+    %.o: %.s
+        $(ARM)-as $(CFLAGS) -o $< $@
+
+    %.list: %.o
+        $(ARM)-objdump -d $< > $@
+
+    install: $(NAME).bin
+        rpi-install.py $<
+
+    clean:
+        rm -f *.o *.bin *.list
+
+Now, this Makefile may look a bit cryptic at first! Let's try breaking it down and see if this makes sense.
+
+### Makefile Basics: Flags & Rules
+
+From lecture, we were introduced to Makefiles as an improvement on the `doit` script,
+and it looked a little something like:
+    
+    all: button.bin
+    
+    button.bin: button.c
+        arm-none-eabi-gcc -Og -g -Wall --std=c99 -ffreestanding button.c -c -o button.o
+        arm-none-eabi-objcopy button.o -O binary button.bin
+        arm-none-eabi-objdump button.o -d > button.list
+    
+    clean: 
+        rm -f *.list *.bin *.o
+
+__Rules__ are written in terms of "you require files on the right-hand-side
+to satisfy the need for something on the left-hand-side." Here, we indicate: by default, make all;
+to do that, make `button.bin`.
+    
+    all: button.bin
+
+This brings us to the next rule, which tells us how to make `button.bin`. You may interpret this as
+requiring certain ingredients (on the right-hand-side) to create the thing you want (on the left-hand-side).
+
+    button.bin: button.c
+
+The commands that run `gcc`and more, which immediately follow the line above,
+are commands necessary to turn the ingredients (`button.c` in this case)
+into the final product (`button.bin` in this case).
+We also throw in a comment to explain the additional flags included with our call to `arm-none-eabi-gcc`.
+
+    # Here, we set compile flags for gcc:
     #  --std=c99 use the c99 standard
     #  -Og       generate optimized code designed for debugging
     #  -g        add debugging information
-    #  -Wall     give warnings about *all* issues 
-    #
-    # these options are required for bare metal code
-    #
+    #  -Wall     give warnings about *all* issues
     #  -ffreestanding generate code assuming no operating system
-    #  -nostartfiles do not call or link to startup code
-    #  -nostdlib do not link against standard libraries
-    #
-    # note how we can append options using +=
-    #
-    CFLAGS  = --std=c99 -Og -g -Wall 
-    CFLAGS += -ffreestanding -nostdlib -nostartfiles
 
-    #
-    # By default, make all. This will make blink.bin.
-    #
-    # Note that $(NAME) means the value of NAME.
-    # We needto use a $ to indicate that it is a variable.
-    # We also enclose NAME in parenthesis so we can concatenate strings.
-    #
+    button.bin: button.c
+        arm-none-eabi-gcc -Og -g -Wall --std=c99 -ffreestanding button.c -c -o button.o
+        arm-none-eabi-objcopy button.o -O binary button.bin
+        arm-none-eabi-objdump button.o -d > button.list
+
+The line below indicates what should happen when we `make clean`; the keyword `clean` tells Make to run the command below.
+
+    clean: 
+        rm -f *.list *.bin *.o
+
+
+### Makefile Magic: Rules & Macros
+
+After copy-pasting and editing every Makefile each time a new program is created,
+we have finally decided that it's time to channel a little Dawson Engler and become more efficient.
+After all, Makefiles are written for convenience!
+
+    NAME = blink
+    ARM = arm-none-eabi
+
+    CFLAGS  = --std=c99 -Og -g -Wall 
+    CFLAGS += -ffreestanding
+
     all: $(NAME).bin
 
-    # 
-    # This is predefined rule to creating a *.bin file from a *.o file,
-    # in this case, blink.bin from blink.o
-    #
-    # Note the special variables:
-    #
-    #  $@ is the left part of the rule, blink.bin
-    #  $< is the right part of the rule, blink.o
-    #
-    %.bin: %.o
-        arm-none-objcopy $< -O binary $@
+    $(NAME).bin: $(NAME).c
+        $(ARM)-gcc $(CFLAGS) $(NAME).c -c -o $(NAME).o
+        $(ARM)-objcopy $(NAME).o -O binary $(NAME).bin
+        $(ARM)-objdump $(NAME).o -d > $(NAME).list
+    
+    clean: 
+        rm -f *.list *.bin *.o
 
-    # 
+So we've just added three __macros__ up top. They're similar to variables
+in that they put text in where you expect them to go.
+Be sure to use the `$(<macro_name>)`
+syntax to access the value of the macro and allow string concatenation.
+(Did you see what we did there with the `ARM` macro?)
+Phew, this saves us a lot of visual space!
+
+Now, let's introduce a few special rules here to replace our one rule for `blink.bin`.
+
     # This is the rule for compiling a C program to make an object file.
-    #
     %.o: %.c
-        arm-none-eabi-gcc $(CFLAGS) -o $< on.c
+        $(ARM)-gcc $(CFLAGS) -o $< $@
 
-    # 
     # This is the rule for converting an assembly language program
     # to machine code in an object file.
-    #
     %.o: %.s
-        arm-none-eabi-as $(CFLAGS) -o $< on.c
+        $(ARM)-as $(CFLAGS) -o $< $@
 
-    # 
+    # This is predefined rule to creating a *.bin file from a *.o file,
+    # in this case, blink.bin from blink.o
+    %.bin: %.o
+        $(ARM)-objcopy $< -O binary $@
+
     # This is the rule for disassembling the object file
     # to make a listing
-    #
     %.list: %.o
-        arm-none-objdump -d $< > $@
+        $(ARM)-objdump -d $< > $@
+
+The key to figuring out what they do is to know:
+
+    * `%` is a wildcard symbol when used in a rule
+    * `$@` refers to the left part of the rule, before the `:`
+    * `$<` refers to the right part of the rule, after the `:`
+
+So, really, you can think of the makefile as a fancy recipe for the program you wish to create in the end.
+
+Perhaps, for convenience, we can throw in another rule so we don't have to type in `rpi-install.py blink.bin`
+every time we want to run our program on the Pi.
 
     # The install target uploads freshly made binary image to rpi bootloader
     install: $(NAME).bin
         rpi-install.py $<
 
-    # The clean target removes previous build products,
-    # will force build a-new on next make
-    clean:
-        rm -f *.o *.bin *.list
-
+Congratulations! You are now a makefile wizard!✨
