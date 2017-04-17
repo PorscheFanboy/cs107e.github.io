@@ -31,14 +31,14 @@ all : codegen.list codegen.bin
 # This pattern rule creates elf executable 'name.elf' by linking 'name.o' 
 # and custom start.o (used in place of default start files). Invoke gcc
 # to drive the link rather than raw ld.
-%.elf: start.o %.o
+%.elf: %.o start.o cstart.o
 	arm-none-eabi-gcc $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 # These 2 pattern rules not truly necessary, just make explicit what was implicit...
 %.o: %.c
 	arm-none-eabi-gcc $(CFLAGS) -c $< -o $@
 %.o: %.s
-	arm-none-eabi-as $(ASFLAGS) $< -o $@
+	arm-none-eabi-as $< -o $@
 
 # This pattern rule produces 'name.list' assembly listing by disassembling 'name.o'
 # This is an optional product you can make to review the assembly
@@ -51,3 +51,6 @@ clean:
 
 # Targets that aren't filename of build product should be declared "phony" 
 .PHONY: all clean
+
+# Mark these intermediate files to be saved, rather than discarded after final build
+.PRECIOUS: %.o %.elf
