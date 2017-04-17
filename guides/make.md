@@ -49,8 +49,8 @@ Now, this Makefile may look a bit cryptic at first! Let's try breaking it down a
 
 ### Makefile Basics: Flags & Rules
 
-From lecture, we were introduced to Makefiles as an improvement on the `doit` script,
-and it looked a little something like:
+From lecture, we were introduced to Makefiles as an improvement on the `doit` script;
+our first Makefile looked a little something like:
     
     all: button.bin
     
