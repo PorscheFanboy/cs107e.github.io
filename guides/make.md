@@ -148,7 +148,7 @@ Now, let's introduce a few special rules here to replace our one rule for `blink
 
 The key to figuring out what they do is to know:
 
-    * `%` is a wildcard symbol when used in a rule
+    * `%` is a wildcard symbol when used in a rule; `%.o` for example matches any file that ends with `.o`
     * `$@` refers to the left part of the rule, before the `:`
     * `$<` refers to the right part of the rule, after the `:`
 
