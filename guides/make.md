@@ -47,7 +47,7 @@ to build a binary for the ARM processor.
 
 Now, this Makefile may look a bit cryptic at first! Let's try breaking it down and see if this makes sense.
 
-### Makefile Basics: Flags & Rules
+### Makefile Basics: Rules
 
 From lecture, we were introduced to Makefiles as an improvement on the `doit` script;
 our first Makefile looked a little something like:
@@ -62,18 +62,19 @@ our first Makefile looked a little something like:
     clean: 
         rm -f *.list *.bin *.o
 
-__Rules__ are written in terms of "you require files on the right-hand-side
-to satisfy the need for something on the left-hand-side." Here, we indicate: by default, make all;
+__Rules__ are written in terms of "you require __dependencies__ on the right-hand-side
+to satisfy the need for our __target__ on the left-hand-side." Here, we indicate: by default, make all;
 to do that, make `button.bin`.
     
     all: button.bin
 
 This brings us to the next rule, which tells us how to make `button.bin`. You may interpret this as
-requiring certain ingredients (on the right-hand-side) to create the thing you want (on the left-hand-side).
+requiring certain ingredients (dependencies on the right-hand-side)
+to create the thing you want (target on the left-hand-side).
 
     button.bin: button.c
 
-The commands that run `gcc`and more, which immediately follow the line above,
+The text which immediately follow the rule, or __recipe__ for the rule,
 are commands necessary to turn the ingredients (`button.c` in this case)
 into the final product (`button.bin` in this case).
 We also throw in a comment to explain the additional flags included with our call to `arm-none-eabi-gcc`.
@@ -96,7 +97,7 @@ The line below indicates what should happen when we `make clean`; the keyword `c
         rm -f *.list *.bin *.o
 
 
-### Makefile Magic: Rules & Macros
+### Makefile Magic: Macros & More Rules
 
 After copy-pasting and editing every Makefile each time a new program is created,
 we have finally decided that it's time to channel a little Dawson Engler and become more efficient.
@@ -152,9 +153,9 @@ The key to figuring out what they do is to know:
 * `$@` refers to the left part of the rule, before the `:`
 * `$<` refers to the right part of the rule, after the `:`
 
-So, really, you can think of the makefile as a fancy recipe for the program you wish to create in the end.
+So, really, you can think of the makefile as a big cookbook that culminates in the program you ultimately wish to create.
 
-Perhaps, for convenience, we can throw in another rule so we don't have to type in `rpi-install.py blink.bin`
+For convenience, we can also throw in another rule so we don't have to type in `rpi-install.py blink.bin`
 every time we want to run our program on the Pi.
 
     # The install target uploads freshly made binary image to rpi bootloader
