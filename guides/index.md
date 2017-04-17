@@ -23,5 +23,6 @@ menu_item: true
 
 1. [binutils](binutils)
 2. [Bare metal programming using gcc](gcc) 
-3. [Using gdb in simulation mode](gdb)
-4. [Automated checker](ci)
+3. [Using Make for ARM cross-development](make)
+4. [Using gdb in simulation mode](gdb)
+5. [Automated checker](ci)
