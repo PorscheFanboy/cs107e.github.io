@@ -48,9 +48,5 @@ void main() {
     assert(!is_prime(4));
     assert(is_prime(97));
 
-    // Turn the green ACT LED on when we get to the end. We want some
-    // signal that the program _finished_ without failing an
-    // assertion; otherwise, we can't tell the difference between the
-    // program freezing and the program finishing successfully!
-    success();
+    // See cstart.c to find out what happens when main() returns.
 }

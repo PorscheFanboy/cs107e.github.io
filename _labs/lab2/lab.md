@@ -160,7 +160,9 @@ Let's walk through a simple example with tests.
 Go to the `testing` directory. Look at `testing.c`, `assert.h`, and
 `abort.c`. In particular, notice the simple unit tests in `main()` in
 `testing.c`. The things we pass to `assert()` should always be true if
-our program is written properly.
+our program is written properly. Next, look at `cstart.c` and
+determine what will happen if your program finishes running `main()`
+without an assertion failure.
 
 Now run `make`.
 
@@ -185,8 +187,8 @@ itself will have a bug!), so we can run the program and watch the bug
 in action.
 
 Before we run the program, let's think about what we expect to
-happen. Sure, the `assert` macro (in `assert.h`) will call `abort` (in
-`abort.c`) if its argument evaluates to false; but what does `abort` do?
+happen. The `assert` macro (in `assert.h`) will call `abort` (in
+`abort.c`) if its argument evaluates to false; what does `abort` do?
 
 __If `is_prime()` has a bug, what would you expect to see on the Pi? In
 contrast, what would you expect to see on the Pi if `is_prime()` worked
@@ -209,9 +211,10 @@ libgcc provides? Now run `make` and run `rpi-install.py testing.bin`.
 
 Everything should work now!
 
-Phew, typing out `rpi-install.py testing.bin` so many times was incredibly taxing
-on your poor fingers! Try writing the rule `make install` in your Makefile to make testing
-programs on your Pi a one-line command.
+Phew, typing out `rpi-install.py testing.bin` so many times was
+incredibly taxing on your poor fingers! Try writing a rule for
+`install` in your Makefile to make testing programs on your Pi a
+one-line command, `make install`.
 
 Oh, one last thing -- you can also try adding a test that you expect to
 fail. Think of something that shouldn't work and assert it, and make
