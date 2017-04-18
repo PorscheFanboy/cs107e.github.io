@@ -149,7 +149,7 @@ The key to figuring out what they do is to know:
 
 * `%` is a wildcard symbol when used in a rule; `%.o` for example matches any file that ends with `.o`
 * `$@` refers to the left part of the rule, before the `:`
-* `$<` refers to the right part of the rule, after the `:`
+* `$<` refers to the first element in the right part of the rule, after the `:`
 
 So, really, you can think of the makefile as a big cookbook that culminates in the program you ultimately wish to create.
 
