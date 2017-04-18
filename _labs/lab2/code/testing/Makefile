@@ -21,7 +21,7 @@ LDLIBS =
 # make is invoked with no argument. By default, this makefile builds one
 # executable and dumps the generated assembly into a text file for review
 # We build .list before .bin so that we get the .list even if the link fails.
-all : codegen.list codegen.bin 
+all : testing.list testing.bin 
 
 # This pattern rule creates binary 'name.bin' by extracting raw instructions 
 # from executable 'name.elf'
@@ -31,7 +31,7 @@ all : codegen.list codegen.bin
 # This pattern rule creates elf executable 'name.elf' by linking 'name.o' 
 # and custom start.o (used in place of default start files). Invoke gcc
 # to drive the link rather than raw ld.
-%.elf: %.o start.o cstart.o
+%.elf: abort.o %.o start.o cstart.o
 	arm-none-eabi-gcc $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 # These 2 pattern rules not truly necessary, just make explicit what was implicit...
