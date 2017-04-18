@@ -48,10 +48,9 @@ void main() {
     assert(!is_prime(4));
     assert(is_prime(97));
 
-    // Turn the power LED _off_ if we get to the end.  We want some
+    // Turn the green ACT LED on when we get to the end. We want some
     // signal that the program _finished_ without failing an
     // assertion; otherwise, we can't tell the difference between the
     // program freezing and the program finishing successfully!
-    *((unsigned int*)0x2020000c) = (1 << (3*5));
-    *((unsigned int*)0x2020002c) = (1 << (35-32));
+    success();
 }
