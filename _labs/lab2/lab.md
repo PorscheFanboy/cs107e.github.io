@@ -160,9 +160,12 @@ Let's walk through a simple example with tests.
 Go to the `testing` directory. Look at `testing.c`, `assert.h`, and
 `abort.c`. In particular, notice the simple unit tests in `main()` in
 `testing.c`. The things we pass to `assert()` should always be true if
-our program is written properly. Next, look at `cstart.c` and
-determine what will happen if your program finishes running `main()`
-without an assertion failure.
+our program is written properly.
+
+Next, look at `cstart.c` and determine what will happen if your
+program returns from `main()` without an assertion failure (i.e., what
+will happen if the program works!). Don't worry about the `bss` stuff
+for now: we will talk about that in class soon.
 
 Now run `make`.
 
