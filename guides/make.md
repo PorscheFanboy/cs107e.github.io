@@ -6,7 +6,7 @@ title: Guide to Make for ARM cross-development
 *Written for CS107E by Pat Hanrahan & Anna Zeng*
 
 Make is a tool that automates building executable programs;
-a makefile is a file that tells Make what to do in order to build
+a makefile is a file that tells `make` what to do in order to build
 the programs you want. As you will see soon enough, they make life
 as a computer science student a whole lot smoother!
 
@@ -22,8 +22,7 @@ to build a binary for the ARM processor.
 
     NAME = blink
 
-    CFLAGS  = --std=c99 -Og -g -Wall 
-    CFLAGS += -ffreestanding
+    CFLAGS  = -std=c99 -Og -g -Wall -ffreestanding
 
     all: $(NAME).bin
 
@@ -31,7 +30,7 @@ to build a binary for the ARM processor.
         $(ARM)-objcopy $< -O binary $@
 
     %.o: %.c
-        $(ARM)-gcc $(CFLAGS) -o $< $@
+        $(ARM)-gcc $(CFLAGS) -c $< -o $@
 
     %.o: %.s
         $(ARM)-as $(CFLAGS) -o $< $@
@@ -55,7 +54,7 @@ our first Makefile looked a little something like:
     all: button.bin
     
     button.bin: button.c
-        arm-none-eabi-gcc -Og -g -Wall --std=c99 -ffreestanding button.c -c -o button.o
+        arm-none-eabi-gcc -Og -g -Wall -std=c99 -ffreestanding -c button.c -o button.o
         arm-none-eabi-objcopy button.o -O binary button.bin
         arm-none-eabi-objdump button.o -d > button.list
     
@@ -80,14 +79,14 @@ into the final product (`button.bin` in this case).
 We also throw in a comment to explain the additional flags included with our call to `arm-none-eabi-gcc`.
 
     # Here, we set compile flags for gcc:
-    #  --std=c99 use the c99 standard
+    #  -std=c99 use the c99 standard
     #  -Og       generate optimized code designed for debugging
     #  -g        add debugging information
     #  -Wall     give warnings about *all* issues
     #  -ffreestanding generate code assuming no operating system
 
     button.bin: button.c
-        arm-none-eabi-gcc -Og -g -Wall --std=c99 -ffreestanding button.c -c -o button.o
+        arm-none-eabi-gcc -Og -g -Wall -std=c99 -ffreestanding -c button.c -o button.o
         arm-none-eabi-objcopy button.o -O binary button.bin
         arm-none-eabi-objdump button.o -d > button.list
 
@@ -106,13 +105,12 @@ After all, Makefiles are written for convenience!
     NAME = blink
     ARM = arm-none-eabi
 
-    CFLAGS  = --std=c99 -Og -g -Wall 
-    CFLAGS += -ffreestanding
+    CFLAGS  = -std=c99 -Og -g -Wall -ffreestanding
 
     all: $(NAME).bin
 
     $(NAME).bin: $(NAME).c
-        $(ARM)-gcc $(CFLAGS) $(NAME).c -c -o $(NAME).o
+        $(ARM)-gcc $(CFLAGS) -c $(NAME).c -o $(NAME).o
         $(ARM)-objcopy $(NAME).o -O binary $(NAME).bin
         $(ARM)-objdump $(NAME).o -d > $(NAME).list
     
@@ -130,7 +128,7 @@ Now, let's introduce a few special rules here to replace our one rule for `blink
 
     # This is the rule for compiling a C program to make an object file.
     %.o: %.c
-        $(ARM)-gcc $(CFLAGS) -o $< $@
+        $(ARM)-gcc $(CFLAGS) -c $< -o $@
 
     # This is the rule for converting an assembly language program
     # to machine code in an object file.
