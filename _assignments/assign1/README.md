@@ -65,7 +65,8 @@ GitHub assignment repo, like you did `assign0` earlier:
 
 4. Right now, `larson.s` in the starter code is simply a copy of `blink.s`
 from lab. Add code to scan back and forth from the pin-20 LED to the pin-23 (or
-pin-27) LED.
+pin-27) LED. Exactly one LED should be on at any given time, so it
+looks like the light is 'moving' between LEDs.
 
    You will first need to initialize all the GPIO pins.
    Then you will need to sequentially turn LEDs on and off.
@@ -79,6 +80,11 @@ pin-27) LED.
    strive for simplicity by using some clever loops. We will be grading your code
    quality, so try to block out your code, pick good label names, and add comments
    where necessary.
+
+   A rule of thumb for style is that if your code is well-designed, it
+   should take no additional code to extend it from 4 to 8 LEDs. If
+   you find a lot of copying and pasting in your solution, that's a
+   bad sign!
 
    Note that we have also included a file called `Makefile` in the starter code. This script
    is similar to the `doit` scripts you saw in class&mdash;it will use the `as` and `objcopy` utilities
@@ -122,8 +128,14 @@ and the ones on the edge are dimmer.
 How would you dim an LED?
 Implement a scanner with LEDs dimmed
 in a way that would please Glen Larson.
-It should look very similar to the
+
+You should have a central, full-brightness light that scans just like
+in the basic version of the assignment, but you should visibly dim the
+neighbors of that central light as it moves. It should look similar to
+the
 [Larson Scanner Kit Demo](https://www.youtube.com/watch?v=yYawDGDsmjk).
+
+Try to have at least three distinct levels of brightness.
 
 If you choose to implement the extension, just submit that
 implementation as your `larson.s` in your repo: you don't need to also

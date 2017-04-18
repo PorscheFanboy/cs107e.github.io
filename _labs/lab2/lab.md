@@ -17,7 +17,7 @@ During this lab you will:
 
 1. Understand the assembly language produced by ```gcc``` when compiling a C program.
 
-2. Understand basic ```Makefiles```
+2. Understand basic ```Makefile```s.
 
 3. Learn how to unit test your C program.
 
@@ -78,7 +78,7 @@ for now, take it on faith that the first four parameters are placed
 in r0, r1, r2, and r3, the return value is to be written to r0, and
 the ARM instructions `bl` and `bx` direct control to/from a subroutine.
 
-The comments in `codegen.c` guide you through four concepts:
+The comments in `codegen.c` guide you through a few concepts:
 
 (a) if/else,
 
