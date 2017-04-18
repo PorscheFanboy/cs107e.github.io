@@ -152,8 +152,9 @@ that if that file changes, then the target is stale and must be rebuilt)
 #### 3. Testing (15 min)
 
 As you write more complicated programs, you'll want to test
-them. Starting with assignment 2, we'll provide you with a few
-automated tests, as well as tools you can use to write your own tests.
+them; keeping track of what parts of the program work and what parts don't is essential
+to debugging effecitvely. Starting with assignment 2, we'll provide you with a few
+automated tests and tools you can use to write your own tests.
 Let's walk through a simple example with tests.
 
 Go to the `testing` directory. Look at `testing.c`, `assert.h`, and
@@ -183,20 +184,20 @@ But your `make` just now should have worked (although the program
 itself will have a bug!), so we can run the program and watch the bug
 in action.
 
-_Before we run the program, let's think about what we expect to
-happen._ The `assert` macro (in `assert.h`) will call `abort` (in
-`abort.c`) if its argument evaluates to false. What does `abort` do?
+Before we run the program, let's think about what we expect to
+happen. Sure, the `assert` macro (in `assert.h`) will call `abort` (in
+`abort.c`) if its argument evaluates to false; but what does `abort` do?
 
-_If `is_prime()` has a bug, what would you expect to see on the Pi? In
-contrast, what would you expect to see on the Pi if `is_prime` worked
-properly?_
+__If `is_prime()` has a bug, what would you expect to see on the Pi? In
+contrast, what would you expect to see on the Pi if `is_prime()` worked
+properly?__
 
-Run `rpi-install.py testing.bin`. Did our tests pass? Read the comment
-above `is_prime()`. What went wrong?
+Run `rpi-install.py testing.bin`. Did the tests pass? Why?
+(Reading the comment above `is_prime()` will be helpful here.)
 
 Initialize the variable and run `make` again. Does it work?
 
-No? We need a division routine! Add `-lgcc` to the `LDLIBS` in the
+No -- we need a division routine! Add `-lgcc` to the `LDLIBS` in the
 Makefile:
 
 ```
@@ -208,9 +209,13 @@ libgcc provides? Now run `make` and run `rpi-install.py testing.bin`.
 
 Everything should work now!
 
-One last thing you might try is adding a test that you expect to
+Phew, typing out `rpi-install.py testing.bin` so many times was incredibly taxing
+on your poor fingers! Try writing the rule `make install` in your Makefile to make testing
+programs on your Pi a one-line command.
+
+Oh, one last thing -- you can also try adding a test that you expect to
 fail. Think of something that shouldn't work and assert it, and make
-sure you do get the assertion failure.
+sure you get the assertion failure you expected.
 
 #### 4. Setup up a 4-digit 7-segment display (70 min)
 
