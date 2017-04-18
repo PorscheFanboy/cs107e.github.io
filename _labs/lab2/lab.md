@@ -401,7 +401,11 @@ Now wire the collector of the left-most transistor to D1
 (remember the collector is the right-most pin if the flat
 side is facing you).
 And apply power to the base of the transistor.
-We should see the `"1 ‍ ‍ ‍ "` on the display.
+You should see `"1 ‍ ‍ ‍ "` on the display.
+
+Here's a board where we've connected _both_ D1 and D3 to the
+collectors of transistors, and then applied power to the bases of
+those two transistors, so we see `"1 1 "` on the display.
 
 ![Wired breadboard with components](images/jumper3.jpg)
 
