@@ -6,11 +6,11 @@
 
 // Part (a): if/else
 // This function has a simple if/else. This could be implemented in
-// assembly as two distinct code paths and a control flow which
+// assembly as two distinct code paths and a control flow that
 // routes to one arm or the other using branch. Alternatively,
 // it could expressed as one combined sequence of conditionally 
 // executed instructions. Try generating at varying levels of
-// optimization (e.g. -O0 versus -02) to see some of the possibilities.
+// optimization (e.g. -O0 versus -O2) to see some of the possibilities.
 // Note there is no arm arithmetic negate instrution -- what does 
 // the compiler use instead?
 int abs(int val)
@@ -28,7 +28,7 @@ int abs(int val)
 // body, incr).  Now look at the generated ARM to see how the compiler 
 // arranged it. It may help to print out the listing and annotate 
 // which section corresponds to init/test/body/incr.
-// We recommend -Og as your optimization level which generates
+// We recommend -Og as your optimization level, since generates
 // clean assembly that is fairly easy to follow.
 int sum(int n)
 {
@@ -44,7 +44,7 @@ int sum(int n)
 // down the string. When you look at the two, do you suspect that
 // one formulation is more efficient than the other?  Which one?
 // Copy/paste this pair into Compiler Explorer and compare their 
-// generated assembly at -Og and and again at -02. What do you
+// generated assembly at -Og and and again at -O2. What do you
 // observe?  Now review the code and consider in terms of readability--
 // which would you rather be in charge of maintaining and why?
 int strlen_arr(const char str[])
