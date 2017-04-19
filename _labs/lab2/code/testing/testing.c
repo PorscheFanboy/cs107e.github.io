@@ -18,7 +18,7 @@
 
 int is_odd(int n)
 {
-    return (n & 0x1) != 0;  // OOPS buggy!
+    return (n & 0x2) != 0;  // OOPS buggy!
 }
 
 void main(void) {
