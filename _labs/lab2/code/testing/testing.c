@@ -4,49 +4,28 @@
 
 #include "assert.h"
 
-// The is_prime function is buggy due to a missing initialization and furthermore
-// it uses integer division/mod (not available in the ARM instruction set!). 
-//
-// Surprisingly, the code as-is builds without error, executes without
-// incident, and always returns false, failing some of the test cases
-// in main(). Let's look at the ARM to figure out why.
-//
-// The local variable has_factor is intended to track whether a divisor has
-// been found. The value of a local is unreliable until set. The oh-so-clever
-// compiler realizes that loop might set the value to 1 but otherwise, its
-// value is left indeterminate. Use of an uninitialized value is an undefined
-// behavior for C, so the compiler has latitude to handle in any way it chooses.
-//
-// In this case, the compiler chooses to pretend that the unset value would
-// be a 1. This conveniently means that the value will be 1 before,
-// during, and after the loop, no matter what happens in the loop at all!
-//
-// The function always returns 0; the compiler can eliminate the rest of the
-// function body as it has no effect whatsoever. Wow -- what an optimization!
-//
-// Correct the code by making an initial assignment of has_factor to
-// 0. Now try to rebuild.
-//
-// Explain what must be true for a division expression in C to compile
-// and execute correctly, despite the lack of a ARM divide
-// instruction. What is the result of attempting to compile a true
-// division that cannot be so transformed, if we don't have libgcc?
+// The is_odd function is intended to return a true/false value
+// that reports whether its argument is odd. But oops-- the code as 
+// written below is buggy!  Something this simple we could validate
+// "by inspection" but we are going to use this as an opportunity
+// to try out our support for simple unittests. The assert() function
+// can be used to run a test case against a function and validate
+// whether the result is as expected.  It uses the LEDs on the Pi 
+// to give a simple status indication. If the test fails, it will 
+// blink the red LED. If all tests passed, when the program finishes
+// executing, it turns on the green LED. If you get the red LED of doom, 
+// you then know you are failing at least one test.
 
- __attribute__((optimize("-O2")))    // GCC directive to ask for level 2 optimization
-int is_prime(int n)
+int is_odd(int n)
 {
-    int has_factor;     // BUG: missing initialization
-    for (int i = n/2; i > 1; i--) {
-        if ((n % i) == 0) has_factor = 1;
-    }
-    return !has_factor;
+    return (n & 0x2) != 0;  // OOPS buggy!
 }
 
-
-void main() {
-    assert(is_prime(3));
-    assert(!is_prime(4));
-    assert(is_prime(97));
-
-    // See cstart.c to find out what happens when main() returns.
+void main(void) {
+	assert(is_odd(107));
+	assert(is_odd(5));
+	assert(is_odd(-1));
+	assert(!is_odd(4));
+	assert(!is_odd(10));
+	// See cstart.c to find out what happens when main() returns.
 }

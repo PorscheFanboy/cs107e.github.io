@@ -160,7 +160,7 @@ You should be able to answer the [first checklist question](checklist) now.
 
 As you write more complicated programs, you'll want to test
 them; keeping track of what parts of the program work and what parts don't is essential
-to debugging effecitvely. Starting with assignment 2, we'll provide you with a few
+to debugging effectively. Starting with assignment 2, we'll provide you with a few
 automated tests and tools you can use to write your own tests.
 Let's walk through a simple example with tests.
 
@@ -205,31 +205,23 @@ in action.
 ##### What do you expect?
 
 Before we run the program, let's think about what we expect to
-happen. The `assert` macro (in `assert.h`) will call `abort` (in
-`abort.c`) if its argument evaluates to false; what does `abort` do?
+happen. The `assert` macro (in `assert.h`) will call `abort` if its 
+argument evaluates to false., but what does `abort` do? (hint: look in `abort.c`)
 
-__If `is_prime()` has a bug, what would you expect to see on the Pi? In
-contrast, what would you expect to see on the Pi if `is_prime()` worked
+__If `is_odd()` has a bug, what would you expect to see on the Pi? In
+contrast, what would you expect to see on the Pi if `is_odd()` worked
 properly?__
 
 ##### Run the program
 
-Run `rpi-install.py testing.bin`. Did the tests pass? Why?
-(Reading the comment above `is_prime()` will be helpful here.)
+Run `rpi-install.py testing.bin`. You should get the blinking red
+LED of doom. You now know at least one test failed, but which one?
+The strategy from here is to iterate, selectively commenting in/out 
+test cases and re-running to narrow in on which specific cases fail. 
+How many of the test cases pass? How many fail?  
 
-Initialize the variable and run `make` again. Does it work?
-
-No -- we need a division routine! Add `-lgcc` to the `LDLIBS` in the
-Makefile:
-
-```
-LDLIBS = -lgcc
-```
-
-Why might this fix the problem? What function are we missing that
-libgcc provides? Now run `make` and run `rpi-install.py testing.bin`.
-
-Everything should work now!
+Use this information to identify what is wrong and fix the bug in `is_odd`. 
+Uncomment all test cases, rebuild, re-run, and bask in the glow of the green light of happiness!
 
 ##### Bonus tasks
 
