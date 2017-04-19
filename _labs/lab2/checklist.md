@@ -4,9 +4,13 @@ title: 'Lab 2: Checklist'
 permalink: /labs/lab2/checklist/
 ---
 
-1. Using the sample Makefile, trace what happens when you issue `make`
-   with no arguments: what does it try to build? How does it determine
-   what actions to take?
+Before leaving the lab, check in with a TA and tell them you and your
+partner's answers to these questions.
+
+1. Using the sample Makefile in the lab writeup (not the codegen or
+   testing Makefile), trace what happens when you issue `make` with no
+   command-line arguments: what does `make` try to build? How does it
+   determine what actions to take?
 
 2. If `is_prime()` is implemented and works correctly (i.e. division
    is available and so on), what should you see the Pi doing if you
