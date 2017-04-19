@@ -12,9 +12,8 @@ partner's answers to these questions.
    command-line arguments: what does `make` try to build? How does it
    determine what actions to take?
 
-2. If `is_prime()` is implemented and works correctly (i.e. division
-   is available and so on), what should you see the Pi doing if you
-   `assert(is_prime(10))`? Why?
+2. Does your corrected version of `is_odd()` work properly for negative numbers? What test cases
+	could you add to `main` to verify that?
 
 3. There are 7 segments on a 7-segment display
    labeled A, B, C, D, E, F, G.

@@ -18,13 +18,13 @@
 
 int is_odd(int n)
 {
-    return (n & 0x2) != 0;  // OOPS buggy!
+    return (n & 0x1) != 0;  // OOPS buggy!
 }
 
 void main(void) {
+	assert(is_odd(0));
 	assert(is_odd(107));
 	assert(is_odd(5));
-	assert(is_odd(-1));
 	assert(!is_odd(4));
 	assert(!is_odd(10));
 	// See cstart.c to find out what happens when main() returns.
