@@ -62,36 +62,7 @@ int strlen_ptr(const char *str)
     return cur-str;
 }
 
-
-// Part (d): GPIO pointers/bits
-// Look at the generated ARM for this function and compare to
-// the hand-written ARM from your larson scanner. Despite the C
-// showing several uses of the div/mod operators, the generated ARM
-// doesn't contain any references to a (non-existent) ARM divide.
-// Why not?
-// For set_pin_on, the "pin" argument is expected to
-// be a number from 0 to 54. Remember there are two separate SET registers--
-// how does this code handle (or not) switching between SET0 and SET1?
-// Are all pins from 0 to 54 correctly set?  Now trace through
-// to understand the consequence if the function is called with a 
-// pin number completely outside the valid range, such as -1 or 150. 
-// Hmmm... might it be better for the function to ignore/halt on invalid 
-// request than blunder on and cause unknown havoc?
-// Although such a call is in fact client error, anticipating
-// that possibility and writing your code defensively can preempt future 
-// heartache and headache!
-
-#define GPIO_SET  ((unsigned int *)0x2020001C)
-#define WORD_SIZE 32
-
-void set_pin_on(int pin)
-{
-     int index = pin/WORD_SIZE;
-     int pos = pin%WORD_SIZE;
-     GPIO_SET[index] = 1 << pos;
-}
-
-// Part (e): if/else versus switch
+// Part (d): if/else versus switch
 // The pair of functions below choose a path from a set of options by
 // comparing to compile-time constants. Both functions do the same 
 // computation, but one is expressed as if-else, and the other as a switch.
@@ -124,7 +95,7 @@ int choice_switch(int n)
     }
 }
 
-// Follow-up to part (a): this pair of functions adds a few more options
+// Follow-up to part (d): this pair of functions adds a few more options
 // to the choices and the constants are grouped within a narrow range.
 // Copy and paste this pair of functions into Compiler Explorer.
 // This time, the generated ARM is quite different. It generated the

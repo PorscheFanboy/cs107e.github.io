@@ -105,9 +105,8 @@ from `codegen.c` in, one by one, and see if you can figure out what
 the generated assembly is doing.
 
 During lab time, we'd like you and your partner to work through the
-first four parts (a)-(d), and (e) if possible.  Use the comments in
-the C source as your guide. If time is running short, leave later
-parts for completion on your own.
+first three parts (a)-(c), and put off (d) for another time.  Use the comments in
+the C source as your guide. 
 
 Keep in mind that a great way to learn how a system works is by trying
 things. Let your curiosity be your guide!
