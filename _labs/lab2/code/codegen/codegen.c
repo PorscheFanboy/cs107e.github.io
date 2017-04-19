@@ -38,7 +38,32 @@ int sum(int n)
     return sum;
 }
 
-// Part (c): GPIO pointers/bits
+// Part (c): arrays and pointers
+// Review the generated ARM for the two strlen functions below.
+// One accesses the chars using array notation, the other walks a pointer
+// down the string. When you look at the two, do you suspect that
+// one formulation is more efficient than the other?  Which one?
+// Copy/paste this pair into Compiler Explorer and compare their 
+// generated assembly at -Og and and again at -O2. What do you
+// observe?  Now review the code and consider in terms of readability--
+// which would you rather be in charge of maintaining and why?
+int strlen_arr(const char str[])
+{
+    int n;
+    for (n = 0; str[n] != '\0'; n++) ;
+    return n;
+}
+
+int strlen_ptr(const char *str)
+{
+    const char *cur = str;
+    while (*cur) 
+        cur++;
+    return cur-str;
+}
+
+
+// Part (d): GPIO pointers/bits
 // Look at the generated ARM for this function and compare to
 // the hand-written ARM from your larson scanner. Despite the C
 // showing several uses of the div/mod operators, the generated ARM
@@ -66,7 +91,7 @@ void set_pin_on(int pin)
      GPIO_SET[index] = 1 << pos;
 }
 
-// Part (d): if/else versus switch
+// Part (e): if/else versus switch
 // The pair of functions below choose a path from a set of options by
 // comparing to compile-time constants. Both functions do the same 
 // computation, but one is expressed as if-else, and the other as a switch.
