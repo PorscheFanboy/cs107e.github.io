@@ -77,9 +77,11 @@ online Compiler Explorer soon).
 The code is decomposed into a number of functions, each of which explores 
 a particular issue for code generation. You will have to wait until
 Friday's lecture to hear about the operation of C function call/return, so 
-for now, take it on faith that the first four parameters are placed
-in r0, r1, r2, and r3, the return value is to be written to r0, and
-the ARM instructions `bl` and `bx` direct control to/from a subroutine.
+for now, take it on faith that:
+
+- the first four parameters are placed in r0, r1, r2, and r3,
+- the return value is to be written to r0, and
+- the ARM instructions `bl` and `bx` direct control to/from a subroutine.
 
 The comments in `codegen.c` guide you through a few concepts:
 
