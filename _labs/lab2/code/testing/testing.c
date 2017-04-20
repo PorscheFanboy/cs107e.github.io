@@ -22,10 +22,10 @@ int is_odd(int n)
 }
 
 void main(void) {
-	assert(is_odd(0));
-	assert(is_odd(107));
-	assert(is_odd(5));
-	assert(!is_odd(4));
-	assert(!is_odd(10));
+    assert(!is_odd(0));
+    assert(is_odd(107));
+    assert(is_odd(5));
+    assert(!is_odd(4));
+    assert(!is_odd(10));
 	// See cstart.c to find out what happens when main() returns.
 }
