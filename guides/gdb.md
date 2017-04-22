@@ -12,8 +12,8 @@ Be aware, however, that simulation is not the same
 as running the real program.
 The simulator does not know about the peripheral
 registers such as GPIO on the Raspberry Pi.
-Not only doesn't it know about the registers,
-but it doesn't know what the registers do.
+Not only does it not know about the registers,
+but it also doesn't know what the registers do.
 For example, if you turn on an LED in simulation mode, nothing happens.
 There are definitely things you can not debug in simulation mode.
 
@@ -60,11 +60,11 @@ in debug mode which causes the assembler to place debugging information
 such as symbol tables and line numbers in the `.o` file.
 
     % arm-none-eabi-as -g blink.s -o blink.o
-    % arm-none-eabi-ld blink.o -o blink.exe
+    % arm-none-eabi-ld blink.o -o blink.elf
 
-We can now run `blink.exe` using the simulator in `gdb`.
+We can now run `blink.elf` using the simulator in `gdb`.
 
-    % arm-none-eabi-gdb blink.exe
+    % arm-none-eabi-gdb blink.elf
     GNU gdb (GDB) 7.8.1
     Copyright (C) 2014 Free Software Foundation, Inc.
     License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -87,7 +87,7 @@ The first thing we need to do is configure `gdb` to use a simulator.
     (gdb) target sim
     Connected to the simulator
 
-Then load the program
+Then load the program:
 
     (gdb) load
     Loading section .text, size 0x48 vma 0x8000
@@ -97,7 +97,7 @@ Then load the program
 `gdb` prints the size of the program (48 bytes) and
 the start address (0x8000).
 
-Let's set a breakpoint at `_start`.
+Let's set a breakpoint at `_start`:
 
     (gdb) break _start
     Breakpoint 1, _start () at blink.s:6
@@ -116,10 +116,10 @@ Note that `gdb` knows about the source file and line numbers.
     9	mov r1, #(1<<20)
     10	
 
-Now run it
+Now run it:
 
     (gdb) run
-    Starting program: blink.exe
+    Starting program: blink.elf
     Breakpoint 1, _start () at blink.s:6
     6   mov r1, #1
 
@@ -154,7 +154,7 @@ or a single value register 0, `$r0`.
 Success, we loaded 0x20200008 into register 0!
 `print/x` says to print in hexadecimal format.
 
-Now let's step one instructionn, and inspect the registers again.
+Now let's step one instruction, and inspect the registers again.
 
     (gdb) stepi
     7   str r1, [r0]
@@ -183,7 +183,7 @@ What value does CPSR have when `bne` returns to `wait1`?
 What values does CPSR have when `bne` does not branch
 and the loop is exited?
 
-### Useful setup.
+### Useful setup
 
 GDB can ask a lot of annoying questions and not recall previous commands
 by default.  I put the following in a ".gdbinit" file in my home directory
@@ -213,7 +213,7 @@ Here is a list of useful `gdb` commands.
 |:------|:---:|:----------|
 |run|r|start program|
 |quit|q|quit gdb|
-|<up-arrow>||scroll up through already executed commands (down-arrow goes down)|
+|⬆️||scroll up through already executed commands (down-arrow goes down)|
 |cont|c|continue execution after a break|
 |break [addr]|b [addr]|set breakpoint to addr|
 |delete [n]|d [n]|removes n'th breakpoint|
@@ -238,7 +238,7 @@ Here is a list of useful `gdb` commands.
 |undisplay [n]||undisplay 1 remove an automatic display|
 
 
-### Random examples
+### GDB Macros
 
 Most people don't know about gdb macros, but they can be nice.  Suppose we
 want to see which instructions in our code modify the cpsr register.
@@ -295,10 +295,11 @@ GDB will now be in:
 	%  ls ~/bin/arm-none-eabi/bin/
 	arm-none-eabi-gdb*  arm-none-eabi-run*
 
-Note that if you are missing packages this depends on, it can fail in mysterious ways.    My distribution was missing makeinfo and screen manipulation routines.
-I am on Ubuntu so a package install:
+Note that if you are missing packages this depends on, it can fail in mysterious ways.
+My distribution was missing `makeinfo` and screen manipulation routines.
+I am on Ubuntu, so a package install...
 
 	sudo apt-get install texinfo
 	sudo apt-get install libncurses5-dev
 
-fixed the problem.  There are guides for installing on Window/Mac under the "guides" section.
+...fixed the problem.  There are guides for installing on Windows or Mac in the "guides" section.

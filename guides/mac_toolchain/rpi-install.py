@@ -53,6 +53,10 @@ else:
         name = "/dev/ttyUSB1"
         if exists(name):
             portname = name
+    if portname is None:
+        name = "/dev/ttyS4"
+        if exists(name):
+            portname = name
 
     filename = args[0]
 
