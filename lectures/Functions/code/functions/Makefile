@@ -1,6 +1,9 @@
+# A simple makefile for building program composed of C/asm source files.
+# Builds for ARM target using cross-development toolchain. 
+# Refer to CS107E guide to Make for more information on makefiles
 
-CFLAGS = -Og -Wall -g -std=c99 -ffreestanding 
-LDFLAGS = -nostdlib
+CFLAGS = -g -Wall -Og -std=c99 -ffreestanding 
+LDFLAGS = -nostdlib -T memmap
 LDLIBS = 
 
 all : example.bin framed.bin example.list framed.list
@@ -8,25 +11,26 @@ all : example.bin framed.bin example.list framed.list
 %.bin: %.elf
 	arm-none-eabi-objcopy $< -O binary $@
 
-%.elf: %.o cstart.o start.o
+%.elf: %.o start.o cstart.o
 	arm-none-eabi-gcc $(LDFLAGS) $^ $(LDLIBS) -o $@
 
-framed.o: CFLAGS += -fno-omit-frame-pointer
+framed.o: CFLAGS += -mapcs-frame -fno-omit-frame-pointer
 
 %.o: %.c
 	arm-none-eabi-gcc $(CFLAGS) -c $< -o $@
+
 %.o: %.s
 	arm-none-eabi-as $< -o $@
 
 %.list: %.o
-	arm-none-eabi-objdump -d $< > $@
+	arm-none-eabi-objdump -d --no-show-raw-insn $< > $@
 
-# The clean target removes previous build products, will force build a-new on next make
+install: $(NAME).bin
+	rpi-install.py $<
+
 clean:
-	rm -f *.o *.bin *.elf *.list
+	rm -f *.o *.bin *.elf *.list *~
 
-# Targets that aren't filename of build product should be declared "phony" 
 .PHONY: all clean
 
-# Mark these intermediate files to be saved, rather than discarded after final build
 .PRECIOUS: %.o %.elf
