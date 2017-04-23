@@ -5,6 +5,8 @@ permalink: /assignments/assign1/
 released: true
 ---
 
+*Written by Pat Hanrahan*
+
 **Due: Tuesday, April 18, 2017 at 5:00 PM**
 
 [Glen A. Larson](http://en.wikipedia.org/wiki/Glen_A._Larson),

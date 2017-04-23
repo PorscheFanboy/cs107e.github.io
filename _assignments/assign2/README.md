@@ -5,6 +5,8 @@ permalink: /assignments/assign2/
 released: true
 ---
 
+*Written by Pat Hanrahan; edited by Omar Rizwan*
+
 **Due: Tuesday, April 25, 2017 at 5:00 PM**
 
 This assignment involves building a 'clock' using a 4-digit 7-segment
@@ -214,7 +216,9 @@ functional code should live in the modules).
 
     Then you will implement another function, `gpio_read`. This is
     used by the testing framework to test whether your `gpio_write`
-    works.
+    works. Check the
+    [Broadcom BCM2835 peripheral manual](https://cs107e.github.io/readings/BCM2835-ARM-Peripherals.pdf#page=90):
+    which device register should you read?
 
         unsigned int gpio_read(unsigned int pin);
 
@@ -227,20 +231,24 @@ functional code should live in the modules).
 4.  **Implement the logic for displaying a numerical digit on a 7-segment
     display.**
 
-    Create an array with 16 entries, one for each hexadecimal value between 0
-    and 15. Each entry in the array should be a byte (8-bits). Bit 0 (the least significant) will
-    represent segment A, bit 1 segment B, and so on. If a bit is set, then that
+    In `clock.c`, create an array with 16 entries, one for each
+    hexadecimal value between 0 and 15. Each entry in the array should
+    be a byte (8-bits). Bit 0 (the least significant) will represent
+    segment A, bit 1 segment B, and so on. If a bit is set, then that
     segment should be lit. For example, the bit pattern for `0` is:
-    `0b00111111`. (`0b` is what you put in front of a binary number literal,
-    just as you'd put `0x` in front of a hexadecimal literal.)
+    `0b00111111`. (`0b` is what you put in front of a binary number
+    literal, just as you'd put `0x` in front of a hexadecimal
+    literal.)
 
     Bit 7 (the most significant) will be used to represent `DP`, the dot. Since we won't be
     using the dot in this assignment, bit 7 should always be 0.
 
-    Create patterns for all the digits 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C,
-    D, E, F. You won't need A-F for this assignment, but they may be useful in
-    the future. Test this part by writing a program that displays a number on
-    the display.
+    Create patterns for all the digits 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+    A, B, C, D, E, F. You won't need A-F for this assignment, but they
+    may be useful in the future. Test this part by writing a
+    `clock_run()` that displays a number on the display for now. Run
+    `make install` (instead of `make test`) to run main, which calls
+    `clock_init()` and `clock_run()` for you.
 
 5.  **Implement a C library to access the Pi's system timer.**
 
@@ -279,8 +287,9 @@ functional code should live in the modules).
     `delay_us` that uses `timer_get_time` to wait for the desired number of
     microseconds.
 
-    Implement the display refresh loop. Loop though all four digits, turning
-    each on for 2500 microseconds (2.5 milliseconds). Do you see any flicker?
+    Implement the display refresh loop in `clock.c`. Loop though all
+    four digits, turning each on for 2500 microseconds (2.5
+    milliseconds). Do you see any flicker?
 
 7.  **Finally, implement the clock.**
 

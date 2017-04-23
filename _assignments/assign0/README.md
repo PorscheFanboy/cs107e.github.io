@@ -5,6 +5,8 @@ permalink: /assignments/assign0/
 released: true
 ---
 
+*Written by Omar Rizwan*
+
 <!-- FIXME (osnr 2017-04-07): should probably be due the midnight before -->
 <!-- the second class, so all repos are ready in time for class.  -->
 <!-- Or bundle into form where students confirm they want to enroll. -->
