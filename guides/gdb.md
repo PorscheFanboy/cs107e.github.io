@@ -287,13 +287,14 @@ The value of cpsr will be printed after each executed instruction.
 ### Tui mode
 By default, gdb operates in plain-text mode with a single command window. There is also a simple graphical mode that can split your window into various panes. If I use the gdb command `layout asm` followed by `layout reg`, I get the following split window. 
 
+<img title="Tui split-screen" src="/guides/images/tui.png">
 
 The upper pane displays current values for all registers, the middle pane is my assembly instructions, the bottom pane is my normal gdb command window. If I single-step with `si`, the register values will update automatically (those values that changed are highlighted) and middle pane will follow instruction control flow. This is a super-convenient view of what is happening at the machine level -- try it out!
 
 ### More GDB resources
 CS107 has a nice introduction in their [GDB guide](http://web.stanford.edu/class/cs107/guide_gdb.html).
 Looking to learn some fancier tricks? See these articles Julie wrote for a 
-programming journal: [Breakpoint Tricks](/http://web.stanford.edu/class/cs107/gdb_coredump1.pdf) 
+programming journal: [Breakpoint Tricks](http://web.stanford.edu/class/cs107/gdb_coredump1.pdf) 
 and [gdb's Greatest Hits](http://web.stanford.edu/class/cs107/gdb_coredump2.pdf). 
 There's also the full online gdb manual to learn all the ins and outs: 
 [http://sourceware.org/gdb/current/onlinedocs/gdb/index.html](http://sourceware.org/gdb/current/onlinedocs/gdb/index.html).
