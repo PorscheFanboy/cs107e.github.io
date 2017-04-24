@@ -3,9 +3,9 @@ layout: page
 title: Guide to using GDB in simulation mode
 ---
 
-The 'gdb' debugger is a superb tool for observing and manipulating a
+The GDB debugger is a superb tool for observing and manipulating a
 running program. Becoming facile with a full-featured debugger such as
-gdb adds a critical superpower to your effectiveness as a software engineer. 
+`gdb` adds a critical superpower to your effectiveness as a software engineer. 
 
 In our bare metal world, the options for debugging are more
 limited than they would be in a hosted environment. We are not able to
@@ -211,17 +211,17 @@ Whenever you start gdb, the commands from your ~/.gdbinit configuration
 file are read and executed. These defaults are useful in general for any
 run of gdb.  
 
-You might also want to avoid having to repeatedly set the target and load the program f
-when running in simulation mode. For this, you can put a local .gdbinit 
-configuration file in your project directory:
+For a program that only is run in simulation mode, you might want to
+avoid having to repeatedly set the target and load the program. For this, 
+put a local .gdbinit configuration file in the project directory:
 
 	% cat ./.gdbinit
 	target sim
 	load
 
-Whenever you start gdb in this directory, it will use the commands from this
-.gdbinit file to always set the the simulator target and load the program
-without you have to ask for it.
+Whenever you start gdb in this directory, the commands from this
+.gdbinit file will set the the simulator target and load the program
+automatically.
 
 ### Commands
 
@@ -233,7 +233,7 @@ Here is a list of useful `gdb` commands.
 |quit|q|quit gdb|
 |⬆️||scroll up through already executed commands (down-arrow goes down)|
 |cont|c|continue execution after a break|
-|break [where]|b [where]|set breakpoint, where can be function name/line number/address of instruction|
+|break [where]|b [where]|set breakpoint, [where] can be function name/line number/address of instruction|
 |delete [n]|d [n]|removes n'th breakpoint|
 |delete|d|removes all breakpoints|
 |info break|i b|lists all breakpoints|
@@ -250,11 +250,11 @@ Here is a list of useful `gdb` commands.
 |print/d [expr]|p/d [expr]|print expression in decimal|
 |print/x [expr]|p/x [expr]|print expression in hex|
 |print/t [expr]|p/t [expr]|print expression in binary|
-|x/HOW [addr]||Examine contents of memory in given format, HOw is repeat count, format, size|
+|x/HOW [addr]||Examine contents of memory in given format, HOW is 3 letters for repeatcount, format, size|
 |display [expr]||automatically print the expression each time the program is halted|
 |info display||show list of automatically displays|
 |undisplay [n]||undisplay 1 remove an automatic display|
-[help [command]|h| get help for any gdb command]
+|help [cmdname]|h| get help for gdb command
 
 
 ### GDB Macros
@@ -285,10 +285,18 @@ Run it a bit:
 The value of cpsr will be printed after each executed instruction.
 
 ### Tui mode
-By default, gdb operates in plain-text mode with a single command window. There is also a simple graphical mode that can split your window into various panes. If I use the gdb command "layout asm" followed by `layout reg`, I get the following split window. 
+By default, gdb operates in plain-text mode with a single command window. There is also a simple graphical mode that can split your window into various panes. If I use the gdb command `layout asm` followed by `layout reg`, I get the following split window. 
 
 
 The upper pane displays current values for all registers, the middle pane is my assembly instructions, the bottom pane is my normal gdb command window. If I single-step with `si`, the register values will update automatically (those values that changed are highlighted) and middle pane will follow instruction control flow. This is a super-convenient view of what is happening at the machine level -- try it out!
+
+### More GDB resources
+CS107 has a nice introduction in their [GDB guide](http://web.stanford.edu/class/cs107/guide_gdb.html).
+Looking to learn some fancier tricks? See these articles Julie wrote for a 
+programming journal: [Breakpoint Tricks](/http://web.stanford.edu/class/cs107/gdb_coredump1.pdf) 
+and [gdb's Greatest Hits](http://web.stanford.edu/class/cs107/gdb_coredump2.pdf). 
+There's also the full online gdb manual to learn all the ins and outs: 
+[http://sourceware.org/gdb/current/onlinedocs/gdb/index.html](http://sourceware.org/gdb/current/onlinedocs/gdb/index.html).
 
 
 ### Installing GDB
