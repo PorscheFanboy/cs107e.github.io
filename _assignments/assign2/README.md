@@ -257,14 +257,18 @@ functional code should live in the modules).
     peripheral that is initialized to zero when the Pi powers up and then is 
     continuously incremented once every microsecond behind the scenes.
 
-    Implement the `timer_get_time` function in `timer.c` that fetches the
-    current system time from the Raspberry Pi. Chapter 12 of the [Broadcom
-    BCM2835 Peripherals
-    Manual](http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf)
-    contains the documentation for the system timer peripheral, and the
-    function's description is in `timer.c` above its declaration. Note that,
-    for this assignment, we only care about the lower 32-bits of the system
-    timer.
+    Implement the `timer_get_time` function in `timer.c` that fetches
+    the current system time from the Raspberry Pi. Chapter 12 of the
+    [Broadcom BCM2835 Peripherals Manual](http://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf)
+    contains the documentation for the system timer peripheral, and
+    the function's description is in `timer.c` above its
+    declaration.
+
+    Note that, for this assignment, we only care about the lower
+    32-bits of the system timer. Don't forget that we use
+    [ARM physical addresses](https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf#page=6),
+    not bus addresses (0x7E... for peripherals), so you'll need to
+    change the 0x7E... prefix in any peripheral address to 0x20.
 
     Now you can uncomment the call `test_timer()` in `test.c`. You
     should be passing all our library tests now -- super! Now you're ready to implement the clock.
