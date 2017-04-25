@@ -19,3 +19,5 @@ partner's answers to these questions.
    labeled A, B, C, D, E, F, G.
    What segments would you turn on
    to generate a "0", a "1", an "A"?
+
+Don't forget to return all tools to the shelves & leave your workspace as clean as you left it!

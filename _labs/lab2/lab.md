@@ -141,13 +141,7 @@ Break into pairs and read the following Makefile.
 ```
 
 Discuss and document all the various features and syntactical
-constructs used in this Makefile. Check out
-[a Makefile tutorial](http://www.opussoftware.com/tutorial/TutMakefile.htm),
-[another Makefile tutorial](http://www.delorie.com/djgpp/doc/ug/larger/makefiles.html),
-the
-[CS107 Guide to Makefiles](http://web.stanford.edu/class/cs107/guide_make.html),
-and the
-[GNU Documentation about Compiler Options](https://gcc.gnu.org/onlinedocs/gcc-4.2.2/gcc/C-Dialect-Options.html).
+constructs used in this Makefile.
 
  - What do each of the CFLAGS do?
  - What happens if you just type `make`? Which commands will execute?

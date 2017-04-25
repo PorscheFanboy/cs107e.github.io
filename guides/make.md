@@ -3,21 +3,22 @@ layout: page
 title: Guide to Make for ARM cross-development
 ---
 
-*Written for CS107E by Pat Hanrahan & Anna Zeng*
+*Written for CS107E by Anna Zeng*
 
 Make is a tool that automates building executable programs;
 a makefile is a file that tells `make` what to do in order to build
 the programs you want. As you will see soon enough, they make life
 as a computer science student a whole lot smoother!
 
-This guide is about using makefiles
-for cross-development for the ARM.
+In this guide, we'll learn about using makefiles
+for cross-development on the ARM architecture.
 We will briefly review makefile syntax and usage.
 For more information about makefiles,
-read the 
-[CS107 Guide to Makefiles](http://web.stanford.edu/class/cs107/guide_make.html).
+check out the 
+[CS107 Guide to Makefiles](http://web.stanford.edu/class/cs107/guide_make.html)
+and other resources on the bottom of the page.
 
-Below is a simple makefile that can be used
+Below is a simple makefile used
 to build a binary for the ARM processor.
 
     NAME = blink
@@ -79,11 +80,11 @@ into the final product (`button.bin` in this case).
 We also throw in a comment to explain the additional flags included with our call to `arm-none-eabi-gcc`.
 
     # Here, we set compile flags for gcc:
-    #  -std=c99 use the c99 standard
-    #  -Og       generate optimized code designed for debugging
-    #  -g        add debugging information
-    #  -Wall     give warnings about *all* issues
-    #  -ffreestanding generate code assuming no operating system
+    #  -std=c99        use the c99 standard
+    #  -Og             generate optimized code designed for debugging
+    #  -g              add debugging information
+    #  -Wall           give warnings about *all* issues
+    #  -ffreestanding  generate code assuming no operating system
 
     button.bin: button.c
         arm-none-eabi-gcc -Og -g -Wall -std=c99 -ffreestanding -c button.c -o button.o
@@ -161,3 +162,11 @@ every time we want to run our program on the Pi.
         rpi-install.py $<
 
 Congratulations! You are now a makefile wizard!✨
+
+If you'd like to learn more, check out
+[a Makefile tutorial](http://www.opussoftware.com/tutorial/TutMakefile.htm),
+[another Makefile tutorial](http://www.delorie.com/djgpp/doc/ug/larger/makefiles.html),
+the
+[CS107 Guide to Makefiles](http://web.stanford.edu/class/cs107/guide_make.html),
+and the
+[GNU Documentation about Compiler Options](https://gcc.gnu.org/onlinedocs/gcc-4.2.2/gcc/C-Dialect-Options.html).
