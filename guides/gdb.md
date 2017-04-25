@@ -68,8 +68,8 @@ The option `-g` assembles the program with debugging information.
 The assembler will place symbol information 
 and line numbers in the `.o` file so that `gdb` can use it.
 
-    % arm-none-eabi-as -g blink.s -o blink.o
-    % arm-none-eabi-gcc -nostdlib blink.o -o blink.elf
+    $ arm-none-eabi-as -g blink.s -o blink.o
+    $ arm-none-eabi-gcc -nostdlib blink.o -o blink.elf
 
 The `blink.elf` file is typically the penultimate step in our build, right 
 before we extract the raw binary instructions into the `blink.bin` that is
@@ -77,7 +77,7 @@ sent to the Pi.  The `elf` version of the file is the one used by the gdb simula
 
 We can now run `blink.elf` using the simulator in `gdb`.
 
-    % arm-none-eabi-gdb blink.elf
+    $ arm-none-eabi-gdb blink.elf
     GNU gdb (GDB) 7.8.1
     Copyright (C) 2014 Free Software Foundation, Inc.
     License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -285,7 +285,14 @@ Run it a bit:
 The value of cpsr will be printed after each executed instruction.
 
 ### Tui mode
-By default, gdb operates in plain-text mode with a single command window. There is also a simple graphical mode that can split your window into various panes. If I use the gdb command `layout asm` followed by `layout reg`, I get the following split window. 
+
+By default, gdb operates in plain-text mode with a single command
+window. There is also a simple graphical mode, enabled with the `-tui`
+option, that can split your window into various panes:
+
+    $ arm-none-eabi-gdb -tui blink.elf
+
+If I use the gdb command `layout asm` followed by `layout reg`, I get the following split window. 
 
 <img title="Tui split-screen" src="/guides/images/tui.png">
 
