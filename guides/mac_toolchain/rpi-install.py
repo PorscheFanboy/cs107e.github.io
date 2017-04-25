@@ -1,100 +1,177 @@
 #!/usr/bin/env python
+
+"""Julie Zelenski 2017.
+Based on earlier rpi-install.py by Pat Hanrahan.
+Edited by Omar Rizwan 2017-04-23.
+
+This bootloader client is used to upload binary image to execute on
+Raspberry Pi.
+
+Communicates over serial port using xmodem protocol.
+
+Should work with:
+- Python 2.7+ and Python 3
+- any version of the on-Pi bootloader
+- macOS and Linux
+
+Maybe Cygwin and Ubuntu on Windows as well.
+
+Dependencies:
+
+    # pip install {pyserial,xmodem}
+
+"""
 from __future__ import print_function
-import sys
-import getopt
-import serial
-import os
+import argparse, logging, os, serial, sys
+from serial.tools import list_ports
 from xmodem import XMODEM
 
-def usage():
-    print( "usage: rpi-install.py [-p] [port] file" )
-    print( " -p   ..... print output from the Pi" )
-    print( " port ..... serial port (optional)" )
-    print( " file ..... binary file to upload" )
+# From https://stackoverflow.com/questions/287871/print-in-terminal-with-colors-using-python
+# Plus Julie's suggestion to push bold and color together.
+class bcolors:
+    RED = '\033[31m'
+    BLUE = '\033[34m'
+    GREEN = '\033[32m'
+    BOLD = '\033[1m'
+    OKBLUE = BOLD + BLUE
+    OKGREEN = BOLD + GREEN
+    FAIL = BOLD + RED
+    ENDC = '\033[0m'
 
-def exists(path):
+def error(shortmsg, msg=""):
+    sys.stderr.write("\n%s: %s\n" % (
+        sys.argv[0],
+        bcolors.FAIL + shortmsg + bcolors.ENDC + "\n" + msg
+    ))
+    sys.exit(1)
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("port", help="serial port", nargs="?")
+    parser.add_argument("file", help="binary file to upload",
+                        type=argparse.FileType('rb'))
+    parser.add_argument('-v', help="verbose logging of serial activity",
+                        action="store_true")
+
+    after = parser.add_mutually_exclusive_group()
+    after.add_argument('-p', help="print output from the Pi after uploading",
+                       action="store_true")
+    after.add_argument('-s', help="open `screen` on the serial port after uploading",
+                       action="store_true")
+
+    args = parser.parse_args()
+
+    logging.getLogger().addHandler(logging.StreamHandler())
+    if args.v: logging.getLogger().setLevel(logging.DEBUG)
+
+    if args.port:
+        portname = args.port
+    else:
+        # The CP2102 units from winter 2014-15 and spring 2016-17 both have
+        # vendor ID 0x10C4 and product ID 0xEA60.
+        try:
+            # pyserial 2.6 in the VM has a bug where grep is case-sensitive.
+            # It also requires us to use [0] instead of .device on the result
+            # to get the serial device path.
+            portname = list_ports.grep(r'(?i)VID:PID=10C4:EA60').next()[0]
+            print('Found serial port:', bcolors.OKBLUE + portname + bcolors.ENDC)
+
+            # We used to just have a preset list --
+            # /dev/tty.SLAB_USBtoUART for macOS + Silicon Labs driver,
+            # /dev/cu.usbserial for Prolific,
+            # /dev/ttyUSB0 for Linux, etc.
+            # Hopefully the device ID-based finder is more reliable.
+
+        except StopIteration:
+            error("Couldn't find serial port", """
+I looked through the serial ports on your computer, and couldn't
+find any port associated with a CP2102 USB-to-serial adapter.
+
+Common issues:
+
+- If you're using a Mac, make sure the Mac CP210x drivers are installed.
+
+- Make sure your USB-to-serial adapter is plugged into your computer.
+
+- If you're using a virtual machine, make sure the adapter is attached
+  to the virtual machine.
+""")
+
     try:
-        os.stat(path)
-    except OSError:
-        return False
-    return True
+        # timeout set at creation of Serial will be used as default for both read/write
+        port = serial.Serial(port=portname, baudrate=115200, timeout=2)
+    except (OSError, serial.serialutil.SerialException):
+        error("The serial port `%s` is not available" % portname, """
+Do you have a `screen` or `rpi-install.py` currently running that's
+hanging onto that port?
+""")
 
-try:
-    opts, args = getopt.getopt(sys.argv[1:], "p")
-except getopt.GetoptError:
-    usage()
-    sys.exit(1)
+    stream = args.file
+    print("Sending `%s` (%d bytes): " % (stream.name, os.stat(stream.name).st_size), end='')
 
-if len(args) < 1:
-    usage()
-    sys.exit(1)
+    def getc(size, timeout=1):
+        ch = port.read(size)
+        # echo 'x' to report failure if read timed out/failed
+        if ch == b'':
+            print('x', end='')
+            sys.stdout.flush()
+        return ch
 
+    def putc(data, timeout=1):
+        n = port.write(data)
+        # echo '.' to report full packet successfully sent
+        if n >= 128:
+            print('.', end='')
+            sys.stdout.flush()
 
-printflag = False
-for opt, arg in opts:
-    if opt == '-p':
-        printflag = True
-
-if len(args) == 2:
-    portname = args[0]
-    filename = args[1]
-else:
-    # common serial ports
-    portname = None
-    if portname is None:
-        name = "/dev/tty.SLAB_USBtoUART"
-        if exists(name): 
-            portname = name
-    if portname is None:
-        name = "/dev/ttyUSB0"
-        if exists(name):
-            portname = name
-    if portname is None:
-        name = "/dev/ttyUSB1"
-        if exists(name):
-            portname = name
-    if portname is None:
-        name = "/dev/ttyS4"
-        if exists(name):
-            portname = name
-
-    filename = args[0]
-
-
-port = serial.Serial(port=portname, baudrate=115200)
-if not port:
-    print(portname, 'not found')
-    sys.exit(1)
-
-if not os.path.isfile(filename):
-    print(filename, 'not found')
-    sys.exit(1)
-
-stream = open(filename, 'rb')
-
-# problem was the timeout=0
-#   needed to wait for NAK
-def getc(size, timeout=1):
-    return port.read(size)
-
-def putc(data, timeout=1):
-    port.write(data)
-
-xmodem = XMODEM(getc, putc)
-
-status = xmodem.send(stream)
-print('sent', status)
-stream.close()
-
-if printflag:
     try:
-        while True:
-            c = getc(1)
-            if c is None:
-                break
-            print(c,end='')
-    except:
-        pass
+        xmodem = XMODEM(getc, putc)
+        success = xmodem.send(stream, retry=5)
+        if not success:
+            error("Send failed (bootloader not listening?)", """
+I waited a few seconds for an acknowledgement from the bootloader
+and didn't hear anything.
 
-sys.exit(int(not status))
+Common issues:
 
+- Make sure you reset the Pi if you already bootloaded a program
+  onto it.
+
+- Check that the TX and RX wires are connected from the adapter to the Pi.
+
+- Make sure TX on the serial adapter is *not* connected to the Pi's TX,
+  and RX is *not* connected to the Pi's RX.
+  (TX should go to RX, and RX should go to TX.)
+
+- Check that 5V and GND are connected from the adapter to the Pi,
+  powering it.
+
+- Make sure the micro-SD card is fully inserted in the Pi.
+
+- Make sure you put the file originally called `bootloader.bin` on the
+  micro-SD card and named it `kernel.img`.
+""")
+    except serial.serialutil.SerialException as ex:
+        error(str(ex))
+    except KeyboardInterrupt:
+        error("Canceled by user pressing Ctrl-C.", """
+You should probably restart the Pi, since you interrupted it mid-load.
+""")
+
+    print(bcolors.OKGREEN + "\nSuccessfully sent!" + bcolors.ENDC)
+    stream.close()
+
+    if args.p:  # Print after sending.
+        try:
+            while True:
+                c = getc(1)
+                if c is None:
+                    break
+                print(c,end='')
+        except:
+            pass
+    elif args.s:  # Run `screen` after sending.
+        sys.exit(os.system('screen %s 115200' % portname))
+
+    sys.exit(0)
