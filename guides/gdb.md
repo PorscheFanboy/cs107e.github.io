@@ -298,6 +298,8 @@ If I use the gdb command `layout asm` followed by `layout reg`, I get the follow
 
 The upper pane displays current values for all registers, the middle pane is my assembly instructions, the bottom pane is my normal gdb command window. If I single-step with `si`, the register values will update automatically (those values that changed are highlighted) and middle pane will follow instruction control flow. This is a super-convenient view of what is happening at the machine level -- try it out!
 
+To learn more about `tui` mode, check out this section in [an external GDB guide](https://beej.us/guide/bggdb/#regasm).
+
 ### More GDB resources
 CS107 has a nice introduction in their [GDB guide](http://web.stanford.edu/class/cs107/guide_gdb.html).
 Looking to learn some fancier tricks? See these articles Julie wrote for a 
