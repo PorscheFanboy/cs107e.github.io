@@ -26,6 +26,9 @@ import argparse, logging, os, serial, sys
 from serial.tools import list_ports
 from xmodem import XMODEM
 
+# This version updated April 26, 2107 and released to students in lab3, brew tap version number 0.5
+VERSION = 0.5
+
 # From https://stackoverflow.com/questions/287871/print-in-terminal-with-colors-using-python
 # Plus Julie's suggestion to push bold and color together.
 class bcolors:
@@ -46,7 +49,7 @@ def error(shortmsg, msg=""):
     sys.exit(1)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="This script sends a binary file to the Raspberry Pi bootloader. Version %s." % VERSION)
 
     parser.add_argument("port", help="serial port", nargs="?")
     parser.add_argument("file", help="binary file to upload",
@@ -74,7 +77,7 @@ if __name__ == "__main__":
             # pyserial 2.6 in the VM has a bug where grep is case-sensitive.
             # It also requires us to use [0] instead of .device on the result
             # to get the serial device path.
-            portname = list_ports.grep(r'(?i)VID:PID=10C4:EA60').next()[0]
+            portname = next(list_ports.grep(r'(?i)VID:PID=10C4:EA60'))[0]
             print('Found serial port:', bcolors.OKBLUE + portname + bcolors.ENDC)
 
             # We used to just have a preset list --
@@ -86,16 +89,8 @@ if __name__ == "__main__":
         except StopIteration:
             error("Couldn't find serial port", """
 I looked through the serial ports on your computer, and couldn't
-find any port associated with a CP2102 USB-to-serial adapter.
-
-Common issues:
-
-- If you're using a Mac, make sure the Mac CP210x drivers are installed.
-
-- Make sure your USB-to-serial adapter is plugged into your computer.
-
-- If you're using a virtual machine, make sure the adapter is attached
-  to the virtual machine.
+find any port associated with a CP2102 USB-to-serial adapter. Is
+your Pi plugged in?
 """)
 
     try:
@@ -131,26 +126,9 @@ hanging onto that port?
         if not success:
             error("Send failed (bootloader not listening?)", """
 I waited a few seconds for an acknowledgement from the bootloader
-and didn't hear anything.
+and didn't hear anything. Do you need to reset your Pi?
 
-Common issues:
-
-- Make sure you reset the Pi if you already bootloaded a program
-  onto it.
-
-- Check that the TX and RX wires are connected from the adapter to the Pi.
-
-- Make sure TX on the serial adapter is *not* connected to the Pi's TX,
-  and RX is *not* connected to the Pi's RX.
-  (TX should go to RX, and RX should go to TX.)
-
-- Check that 5V and GND are connected from the adapter to the Pi,
-  powering it.
-
-- Make sure the micro-SD card is fully inserted in the Pi.
-
-- Make sure you put the file originally called `bootloader.bin` on the
-  micro-SD card and named it `kernel.img`.
+Further help at http://cs107e.github.io/guides/bootloader/#troubleshooting
 """)
     except serial.serialutil.SerialException as ex:
         error(str(ex))
