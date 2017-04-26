@@ -5,43 +5,55 @@ title: Using the console cable and bootloader
 
 *Written by Pat Hanrahan*
 
-In the [SDHC card guide](/guides/sd), you should have installed a bootloader on
-the SDHC card as `kernel.img`. When the Raspberry Pi runs, the bootloader is
-run. The bootloader listens on the serial port for commands to load a program
-into memory on the Pi. After the program is loaded, the bootloader jumps to the
-start address of the program, and the program begins to run. If you want to run
-a new version of your program, you reboot the processor, and download a new
-version of your program.
+During development, you will edit and compile programs on your laptop,
+but when you are ready to execute the program you need to transfer it to the Pi.
+You could do this using a micro-SD card where each re-compile, you then
+copy the freshly compiled program from your laptop onto the card, eject the
+card and insert into Pi, but that process quickly becomes tedious!
 
-So each time you wish to run a new version of your program, you only need to do
+Instead, we will run a __bootloader__. The bootloader is a program
+that runs on the Pi and listens on the serial port for commands and data
+coming from a connected computer. On your laptop, you run a script
+to send your compiled program over the serial port to the waiting 
+bootloader. The bootloader receives the program and writes it to the
+memory of the Pi, a process called "loading" the program. After the
+program is loaded, the bootloader jumps to the start address of the program,
+and the program begins to run. If you want to run a new version of your program, 
+you reboot the Pi, and send a new version of your program to the bootloader.
+
+Each time you wish to run a new version of your program, you only need to do
 two steps:
 
 1.  Reset the Raspberry Pi (by unplugging the Pi from your computer or by
     pushing the reset button if you have soldered one on)
-2.  Run the command to load and start your program
+2.  Use 'rpi-install.py' to send your program to the bootloader
 
 In order to use the bootloader, you need to format an SDHC card with the
 bootloader installed as `kernel.img`. You also need to connect your console
 cable to your laptop and the Raspberry Pi. Finally, you need to run a script to
-send the program to the Pi.
-
-### Install the bootloader on the Pi
+send the program to the Pi. This document will walk you through those steps.
 
 The bootloader we are using was developed by David Welch and modified by Dawson
 Engler. It is a modification of David Welch's bootloader06. 
 If you have some time, we highly
 recommend you explore his [github repository](https://github.com/dwelch67/raspberrypi).
 
-We have already compiled a working `bootloader.bin` for you. It is part of the
-default set of firmware files, and should already be on your SDHC card. To run
-the bootloader, just copy `bootloader.bin` to `kernel.img`. Next time you reset
-the Raspberry Pi, the bootloader will run.
+### Configure Pi's micro-SD card to run the bootloader
+
+You should have previously set up your micro-SD card with the 
+[firmware files](https://github.com/cs107e/cs107e.github.io/tree/master/firmware) 
+as directed in the [SDHC card guide](/guides/sd).
+
+The firmware files include the program `bootloader.bin`. Insert the SD card into your
+laptop and copy `bootloader.bin` to `kernel.img`. Eject the card and install 
+into the micro-SD slot on your Pi. The next (and every subsequent) time that you reset the
+Pi, the bootloader will run.
 
 ### Connect your laptop to the Pi using the console cable
 
 In this course, we will be using a CP2102 USB serial breakout board. The CP2102
 is the chip that converts from a serial interface to a USB interface. On one
-end of the breakout board is a USB Type A connecter. The breakout board plugs
+end of the breakout board is a USB Type A connector. The breakout board plugs
 into any USB port on your laptop. The other end of the console cable contains a
 6 pin header. Two of the pins deliver 5V and GND. They can be used to power the
 Pi; for details, consult the [Powering the Pi Guide](/guides/power).
@@ -71,7 +83,7 @@ to the TX GPIO Pin 8 on the Pi's header.
 The blue wire connects the TX header pin
 to the RX GPIO Pin 10.
 
-### Installing the CP2102 virtual serial port drivers
+### Installing the serial port driver
 
 If you are on a Mac, ensure you have followed the instruction for the console
 drivers in the [Mac toolchain guide](/guides/mac_toolchain). On Windows or
@@ -79,20 +91,57 @@ Linux, you don't need to do anything special here.
 
 ### Load and run your program
 
-We have created a Python program that sends binary files to the bootloader. If
-you have followed all the setup instructions, the program is already installed.
-If you are on a Mac and it is not working for you, be sure you followed the
-latter part of the setup instructions [here](/guides/mac_toolchain).
+Our provided `rpi-install.py` program is used to send a binary
+file to the bootloader.  
 
-To load and run `blink.bin`, simply type:
+To load and run `blink-onpi.bin`, simply type:
 
-    % rpi-install.py blink.bin
-    Sent True
-    %
-
-After a few seconds, you should see the LED blinking.
+    % rpi-install.py blink-onpi.bin 
+	Found serial port: /dev/cu.SLAB_USBtoUART
+	Sending `blink-onpi.bin` (72 bytes): .
+	Successfully sent!
+    
+After a brief pause, you should see the green LED on the Pi slowly blinking.
 
 If you change your program and wish to reload it onto the Pi, 
 you must power cycle the Pi (press the reset button if you have installed 
 one or simply unplug the USB console cable). The Pi will reboot into 
 the bootloader and once again wait for a new program to be loaded.
+
+
+### Troubleshooting <a name=troubleshooting></a>
+
+If you are having trouble using the bootloader to send programs
+to the Pi, work through this checklist to find and resolve
+your issue.
+
+1. Reset Pi and verify bootloader is running by looking for "heartbeat".
+
+	When the bootloader is running, it repeatedly gives 
+	two short flashes of the ACT LED (the green LED on the Pi board).
+	This "da-dum" is the heartbeat that tells you the 
+	bootloader is ready and listening.
+
+	If you don't have a heartbeat, the most common cause is because
+	you have already bootloaded a program and need to reset the Pi. 
+	Do that now!  
+	
+2. If bootloader does not run when you reset Pi, check micro-SD card.
+
+	- Be sure that the micro-SD card is fully inserted in the Pi.
+
+	- Verify the contents of the micro-SD card by inserting into your
+	laptop. It should have a file named `kernel.img` that is a copy
+	of the file originally called `bootloader.bin` from the
+	 [firmware](https://github.com/cs107e/cs107e.github.io/tree/master/firmware) directory.
+
+3. If bootloader is running on Pi, but your laptop can't talk to it, check connections.
+
+	- The TX and RX from your USB-serial breakout board should be connected to
+	 RX and TX (physical pins 8 and 10) on your Pi. 
+	 Remember: USB TX should go to Pi RX, and USB RX should go to Pi TX.
+
+
+
+
+
