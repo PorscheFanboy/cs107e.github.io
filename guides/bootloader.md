@@ -18,25 +18,22 @@ to send your compiled program over the serial port to the waiting
 bootloader. The bootloader receives the program and writes it to the
 memory of the Pi, a process called "loading" the program. After the
 program is loaded, the bootloader jumps to the start address of the program,
-and the program begins to run. If you want to run a new version of your program, 
-you reboot the Pi, and send a new version of your program to the bootloader.
+and the program begins to run. To stop that program and start another,
+you will reset the Pi and use the bootloader again.
 
-Each time you wish to run a new version of your program, you only need to do
-two steps:
+Instead of using an SD card to move programs from your laptop to the Pi, 
+using a bootloader, the cycle to run a new program is just:
 
 1.  Reset the Raspberry Pi (by unplugging the Pi from your computer or by
     pushing the reset button if you have soldered one on)
 2.  Use 'rpi-install.py' to send your program to the bootloader
 
-In order to use the bootloader, you need to format an SDHC card with the
-bootloader installed as `kernel.img`. You also need to connect your console
-cable to your laptop and the Raspberry Pi. Finally, you need to run a script to
-send the program to the Pi. This document will walk you through those steps.
-
 The bootloader we are using was developed by David Welch and modified by Dawson
 Engler. It is a modification of David Welch's bootloader06. 
 If you have some time, we highly
 recommend you explore his [github repository](https://github.com/dwelch67/raspberrypi).
+
+This document will walk you through the steps to use the bootloader.
 
 ### Configure Pi's micro-SD card to run the bootloader
 
@@ -47,7 +44,7 @@ as directed in the [SDHC card guide](/guides/sd).
 The firmware files include the program `bootloader.bin`. Insert the SD card into your
 laptop and copy `bootloader.bin` to `kernel.img`. Eject the card and install 
 into the micro-SD slot on your Pi. The next (and every subsequent) time that you reset the
-Pi, the bootloader will run.
+Pi with that micro-SD card installed, the bootloader will run.
 
 ### Connect your laptop to the Pi using the console cable
 
@@ -122,9 +119,9 @@ your issue.
 	This "da-dum" is the heartbeat that tells you the 
 	bootloader is ready and listening.
 
-	If you don't have a heartbeat, the most common cause is because
-	you have already bootloaded a program and need to reset the Pi. 
-	Do that now!  
+	If your Pi doesn't have a heartbeat, the most common cause is because
+	you have already bootloaded a program and need to reset the Pi to
+	restart the bootloader.	Do that now!  
 	
 2. If bootloader does not run when you reset Pi, check micro-SD card.
 
@@ -138,8 +135,8 @@ your issue.
 3. If bootloader is running on Pi, but your laptop can't talk to it, check connections.
 
 	- The TX and RX from your USB-serial breakout board should be connected to
-	 RX and TX (physical pins 8 and 10) on your Pi. 
-	 Remember: USB TX should go to Pi RX, and USB RX should go to Pi TX.
+	 RX and TX (physical pins 8 and 10) on your Pi.  Remember: TX should go RX and 
+	 vice versa (review the diagram above).
 
 
 
