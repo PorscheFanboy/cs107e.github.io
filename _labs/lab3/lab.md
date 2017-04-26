@@ -261,12 +261,12 @@ decreases as more values are pushed.)
 print out (display) values every time you step.
 This is done with the `display` command.
 
-<!--Let's display what's at the stack pointer in memory right now.
+Let's display what's at the stack pointer in memory right now.
 
 Here is a diagram of the state of memory right after `int y = x + 2;`
 is run in the `binky` function.
 
-![Stack diagram in winky.c:4](images/stack.png)-->
+![Stack diagram in winky.c:4](images/lab3-part1-stack.png)
 
 Let's follow along with the execution by telling gdb to display some
 of this memory as we go.
@@ -350,7 +350,6 @@ Now let's go back down the stack frame for `binky`.
 
     (gdb) down
     #0  binky (x=3) at winky.c:3
-
 
 <!--![Extension Stack Diagram](images/extension-stack.png)-->
 
