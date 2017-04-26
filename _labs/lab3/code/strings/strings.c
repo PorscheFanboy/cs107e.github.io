@@ -19,6 +19,7 @@ char *strcpy(char *dst, const char *src)
 int atoi(const char *str)
 {
     // Convert string of digits to numeric value
+    // Your implementation here!
     return 0;
 }
 

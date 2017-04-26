@@ -266,7 +266,7 @@ Let's display what's at the stack pointer in memory right now.
 Here is a diagram of the state of memory right after `int y = x + 2;`
 is run in the `binky` function.
 
-![Stack diagram in winky.c:4](images/lab3-part1-stack.png)
+![Stack diagram in winky.c:4](images/lab3-part1-stack-2.png)
 
 Let's follow along with the execution by telling gdb to display some
 of this memory as we go.
@@ -367,6 +367,49 @@ It also lets you look at both the C and the assembly language source.
 
 Answer the first question in the [checklist](checklist).
 
+### Stack intuition
+
+Functions often need space (e.g., for variables or to store the return
+address of their caller before they call another function). There's
+nothing special about this space, and we could allocate it as we
+would any other memory.  However,
+functions calls are frequent, so we want them as fast as possible.
+Fortunately, we give
+function calls two properties we can exploit for speed:
+
+(1) when functions return, all allocated memory is considered dead
+
+(2) functions return in LIFO order
+
+As a result
+of optimizing
+for speed, people have converged on using a contiguous array of memory
+(called *stack* because of its LIFO usage).  Roughly speaking it
+works as follows:
+
+1. At program start we allocate a fixed-sized stack and set a
+pointer (the stack pointer) to its beginning at the lowest memory address.
+
+2. At each function call, all the memory the function needs is
+allocated contiguously and all-at-once by simply incrementing
+the stack pointer.
+
+3. At each function call return, all the memory the function
+allocated is then freed all-at-once by simply decrementing
+the stack pointer.
+
+Operating systems generally provide ways to dynamically grow the stack, but we will
+ignore this here.
+
+This organization is such a clear winner that compilers have explicit
+support for it (and do the pointer increment and decrement) and
+architecture manuals provide the rules for how to do so.
+(This basic data structure appears in many other contexts when all the
+data for a given purpose or type can be freed all at once.)
+If you know `malloc()` and `free()` one way to compare this method
+and those functions is that the fastest malloc() you can do is a pointer
+increment and the fastest free() a pointer decrement.
+
 ### Serial communication
 
 First, insert the USB serial breakout board into a USB port on your laptop.
@@ -436,7 +479,10 @@ Change to the directory
 the command `rpi-install.py -s echo.bin`.  (Recall that 
 invoking `rpi-install.py` with the `-s` flag will automatically
 run `screen` after sending the program.) Any characters you now 
-type should be echoed back to your terminal. 
+type should be echoed back to your terminal.
+
+Unplug your loopback jumper from the RX port. What changed?
+
 Use `Ctrl-A` `k` to exit `screen`.
 
 ##### **Test printing to your screen from the Raspberry Pi.**
@@ -504,24 +550,33 @@ Record the answer on the checklist.
 
 ### C-strings
 Change to the `cs107e.github.io/_labs/lab3/code/strings` directory 
-and open the `strings.c` file in your editor. This code is based on
-the C-string program we saw in Monday's lecture.
+and open the `strings.c` file in your editor. If you think it looks familiar, note
+the striking similarity to the C-string program we saw in Monday's lecture.
 
-We have implemented the `strlen` function for you. The code 
-is simple enough that you might feel confident testing it "by inspection" 
-but let's use our unit testing strategy to get reassurance that
+We have implemented the `strlen` function for you! The code 
+is simple enough that you might feel confident testing it "by inspection",
+but let's use our unit testing strategy to make sure that
 the function returns the correct result when actually executing.
+
 The `main` function calls `test_strlen` to run some unit tests that 
 validate that various calls to `strlen` return the correct 
 result. Compile and run this program on the Pi and admire the green light
 of success.
 
-Now it's your turn! The function `strcpy` is supplied in the 
+Now it's your turn to implement `strcpy`!
+
+    char *strcpy(char *dst, const char *src)
+    {
+        // Your turn -- implement strcpy!
+        return NULL;
+    }
+
+The function `strcpy` is supplied in the 
 standard C library (for those spoiled programmers who work on hosted systems),
-but you are going to implement for yourself. If you aren't sure of the 
+but you are going to implement it for your Pi. If you aren't sure of the 
 function's interface, trying reading its man page:
 
-    % man strcpy
+    $ man strcpy
 
 After you have working draft version of `strcpy`, uncomment the call 
 to `test_strcpy` in `main`. 
@@ -542,13 +597,16 @@ in the project directory that contains these four commands:
 
 This configuration file is read when you start gdb. The above commands
 will set up the simulator and put breakpoints on `main()` and `abort()` 
-(`abort` is called when a unit test fails). Start gdb on the `strings`
+(`abort` is called when a unit test fails).
+
+Start gdb on the `strings`
 program and use step/next/print and so on to trace through a run
-of your program executing correctly. 
+of your program executing correctly.
 
 Now edit your code to intentionally 
 plant a bug, such as changing strlen to always return 5. Rebuild and run 
 under the debugger to learn how a unit test failure will be observed.
+
 When `abort` is called, it will valiantly set and clear the GPIO 
 for the red on-Pi LED, but remember there is no Pi here and the simulator
 does not emulate any of the peripheral behavior. Instead of fruitlessly 
@@ -561,18 +619,21 @@ for calls that are not so kosher.
 
 Review the code in the aptly-named `bogus_strlen_calls` function. 
 Get together with your tablemates and analyze the three "bogus" calls.
-For each consider __why__ it is invalid. As a rule, the standard C-string
+For each consider __why__ it is invalid.
+
+As a rule, the standard C-string
 library functions don't offer much in the way of terms of error-reporting.
 The reason for this is not of out of spite or laziness-- it's actually
 not possible for `strlen` to reliably detect that its argument is
 not a valid C-string. Given a bad call, the function is just 
 going to blunder through its execution. With that fact in mind, 
-consider each of the three bogus calls and predict what you 
-think will happen when it is executed.
+for each of the three bogus calls, what will happen when you execute them?
 
 Uncomment the call to `stress_test_strlen` in `main`, rebuild, and run the
 program under gdb. Single step through the call to `bogus_strlen_calls`
-and trace what value is returned from each of the bad calls. Does what
+and trace what value is returned from each of the bad calls.
+
+Does what
 you observe match what you thought would happen? Do you
 understand the behavior you observe?  Continue through the
 rest of the unit tests and you should see a failure on the second test.
@@ -588,18 +649,22 @@ Comment out the call to `stress_test_strlen`, uncomment the call to
 `stress_test_strcpy`, and rebuild.
 
 Review the code for the `sketchy_strcpy_call` function. What exactly is
-it doing that is questionable?  The `stress_test_strcpy` makes three
+it doing that is questionable?
+
+The `stress_test_strcpy` makes three
 calls, two of which execute without harm, but that one in the middle is
 bad news. Just as with `strlen`, `strcpy` has no means to detect or
 report that the arguments it was given are invalid.  And whereas `strlen` 
 was able carry on and silently blunder through __reading__ from an 
 improper memory location, what is going to happen when `strcpy` starts
  __writing__ to one?  Have you and your partner draw a diagram on paper of
-what is happening with the stack memory during this disastrous call. 
-Run under gdb
+what is happening with the stack memory during this disastrous call.
+
+Run under `gdb`
 to trace through the execution. The sketchy call doesn't appear to
 fail the unit test as the program won't hit the breakpoint set on
 `abort`, but yet this test did fail and in a rather spectacular way.
+
 This code exhibits a classic __buffer overflow__ bug where writing
 too much data to a too-small stack buffer overwrites adjacent data
 in the stack frame. What is the critical data stored in the stack that has
@@ -608,54 +673,26 @@ overwritten data result in a bad consequence?
 
 As a final C-string exercise, try your hand at implementing the 
 function `atoi` to convert a string of digit characters to its 
-numeric equivalent. It will help to note that the digits `'0'` through
+numeric equivalent.
+
+    int atoi(const char *str)
+    {
+        // Convert string of digits to numeric value
+        // Your implementation here!
+        return 0;
+    }
+
+It will help to note that the digits `'0'` through
 `'9'` are in sequence in the ASCII character set and that you can add 
 and subtract `char`s (they are effectively one-byte integers).
 
 If you need a little inspiration to take on this task, 
-take note that `atoi` is the stripped-down economy model of `strtol`
-and `strtol` will make an appearance as an extension in the upcoming
+take note that `atoi` is the stripped-down economy model of `strtol`, which
+will make an appearance as an extension in the upcoming
 assignment. Consider this a headstart on earning some of those bonus points!
 
-### Stack intuition
+### Check out with your checklist
 
-Functions often need space (e.g., for variables or to store the return
-address of their caller before they call another function). There's
-nothing special about this space, and we could allocate it as we
-would any other memory.  However,
-functions calls are frequent, so we want them as fast as possible.
-Fortunately, we give
-function calls two properties we can exploit for speed:
-
-(1) when functions return, all allocated memory is considered dead
-
-(2) functions return in LIFO order
-
-As a result
-of optimizing
-for speed, people have converged on using a contiguous array of memory
-(called *stack* because of its LIFO usage).  Roughly speaking it
-works as follows:
-
-1. At program start we allocate a fixed-sized stack and set a
-pointer (the stack pointer) to its beginning at the lowest memory address.
-
-2. At each function call, all the memory the function needs is
-allocated contiguously and all-at-once by simply incrementing
-the stack pointer.
-
-3. At each function call return, all the memory the function
-allocated is then freed all-at-once by simply decrementing
-the stack pointer.
-
-Operating systems generally provide ways to dynamically grow the stack, but we will
-ignore this here.
-
-This organization is such a clear winner that compilers have explicit
-support for it (and do the pointer increment and decrement) and
-architecture manuals provide the rules for how to do so.
-(This basic data structure appears in many other contexts when all the
-data for a given purpose or type can be freed all at once.)
-If you know `malloc()` and `free()` one way to compare this method
-and those functions is that the fastest malloc() you can do is a pointer
-increment and the fastest free() a pointer decrement. 
+Make sure you walk through the [checklist questions](checklist)
+with a TA before you leave. The TA will ensure you are properly credited
+for your work.
