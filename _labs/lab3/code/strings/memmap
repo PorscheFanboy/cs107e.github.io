@@ -13,10 +13,10 @@ SECTIONS
     } > ram
     .data : { *(.data*) } > ram
     .rodata : { *(.rodata*) } > ram
-    __bss_start__ = .;
     .bss : {
-        *(.bss*)
+        __bss_start__ = .;
+        *(.bss) *(COMMON)
+        . = ALIGN(8);
+        __bss_end__ = .;
     } > ram
-    . = ALIGN(8);
-    __bss_end__ = .;
 }
