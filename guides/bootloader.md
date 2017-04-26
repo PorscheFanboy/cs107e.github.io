@@ -106,7 +106,8 @@ one or simply unplug the USB console cable). The Pi will reboot into
 the bootloader and once again wait for a new program to be loaded.
 
 
-### Troubleshooting <a name=troubleshooting></a>
+### Troubleshooting 
+<a name="troubleshooting"></a>
 
 If you are having trouble using the bootloader to send programs
 to the Pi, work through this checklist to find and resolve
