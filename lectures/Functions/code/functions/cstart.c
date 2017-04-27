@@ -11,6 +11,9 @@ extern int __bss_end__;
 
 extern void main();
 
+// Zeroes out the BSS before calling main.
+// Turns on the green ACT LED when done, to show successful completion.
+// This function is called from start.s.
 void _cstart() {
     int *bss = &__bss_start__;
     int *bss_end = &__bss_end__;
@@ -21,9 +24,7 @@ void _cstart() {
 
     main();
 
-    // Once program has run to completion, turn the green ACT LED on
-    // permanently. Then you can distinguish success from a program
-    // just freezing somewhere before it reaches here.
+    // Turn the green ACT LED (GPIO 47).
     *GPIO_FSEL4 = SUCCESS_OUTPUT;
     *GPIO_SET1 = SUCCESS_BIT;
 }
