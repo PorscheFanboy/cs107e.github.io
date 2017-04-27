@@ -137,7 +137,7 @@ strings and numbers into the same format. Two things to note before we start:
      past it, you must cut your output off and make `buf[n - 1]` (your
      n-th character output) a null terminator. (Otherwise, you would be
      trashing some other memory past the end of the buffer.) Note that `n` can
-     zero, and if so, you should not write a null terminator.
+     be zero, and if so, you should not write a null terminator.
 
      These functions should return the number of characters written to
      `buf` if there is room to fit them all. If not, it should return
