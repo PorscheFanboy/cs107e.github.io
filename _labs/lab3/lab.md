@@ -204,7 +204,8 @@ which is `0x8010`.
 
 We can print out the assembly language 
 by disassembling the function `binky`.
-
+    
+    (gdb) disas binky
     Dump of assembler code for function binky:
       0x00008010 <+0>:    mov r12, sp
       0x00008014 <+4>:    push    {r11, r12, lr, pc}
