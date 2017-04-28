@@ -1,17 +1,20 @@
+// uninitialized global and static variables
 int i;
 static int j;
 
+// initialized global and static variables
 int k = 1;
 static int l = 2;
 
-int a[4];
-static int b[4];
+// initialized global and static const variables
+const int m = 3;
+static const int n = 4;
 
-int c[4] = {1, 2, 3, 4};
-static int d[4] = {5, 6, 7, 8};;
-
-void tricky(int x, int y)
+void tricky()
 {
-   b[0] = j = i+a[0]+x;
-   d[0] = l = k+c[0]+y;
+   i = k + n;
+   j = i + 2;
+
+   k = i;
+   l = j;
 }

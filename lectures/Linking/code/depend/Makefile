@@ -1,37 +1,43 @@
 NAME = blink
 
-LIBPI = ../../../../../libpi
-CPPFLAGS = -I$(LIBPI)/include
-ASFLAGS =
-CFLAGS = -g -Wall -Og -std=c99 -ffreestanding $(CPPFLAGS)
-LDFLAGS = -nostdlib -T memmap
- 
-OBJECTS = timer.o gpio.o start.o
+OBJECTS = gpio.o timer.o
+
+CS107E=../../../..
+CFLAGS = -I$(CS107E)/libpi/include -g -Wall -Og -std=c99 -ffreestanding 
+LDFLAGS = -nostdlib -T memmap -L$(CS107E)/libpi/lib
+LDLIBS = -lpi 
 
 all : $(NAME).bin
 
-$(NAME).exe: $(NAME).o $(OBJECTS)
-	arm-none-eabi-ld $(LDFLAGS)  $^ -o $@
-	arm-none-eabi-objdump -d --no-show-raw-insn $@ > $@.list
-
-%.bin: %.exe
+%.bin: %.elf
 	arm-none-eabi-objcopy $< -O binary $@
+
+%.elf: %.o $(OBJECTS) start.o cstart.o
+	arm-none-eabi-ld $(LDFLAGS) $^ $(LDLIBS) -o $@
+	arm-none-eabi-objdump -d $@ > $@.list
 
 %.o: %.c
 	arm-none-eabi-gcc $(CFLAGS) -c $< -o $@
 	arm-none-eabi-gcc -MM $(CFLAGS) -c $< > $*.d
 
 %.o: %.s
-	cpp -P $< | arm-none-eabi-as $(ASFLAGS) -o $@
+	arm-none-eabi-as $< -o $@
 
 %.list: %.o
-	arm-none-eabi-objdump -d --no-show-raw-insn $< > $@
+	arm-none-eabi-objdump -d $< > $@
+
+install: $(NAME).bin
+	rpi-install.py $<
+
+test: test.bin
+	rpi-install.py $<
 
 clean:
-	rm -f *.bin *.exe *.o *.d *.list *~
+	rm -f *.d *.o *.bin *.elf *.list *~
 
-# Targets that aren't filename of build product should be declared "phony" 
-.PHONY: all clean
+.PHONY: all clean install test
+
+.PRECIOUS: %.o %.elf
 
 # include dependency info
 #  "-" suppresses errors

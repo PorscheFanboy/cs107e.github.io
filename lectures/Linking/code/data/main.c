@@ -1,11 +1,12 @@
-#include "tricky.h"
+void tricky();
 
-int main() 
+extern int i;
+extern int k; 
+extern const int m ;
+
+void main()
 {
-   i = 2;
-   k = 3;
-   a[0] = 4;
-   c[0] = 4;
-
-   tricky(1,2);
+    i = 10 + k;
+    k = 11;
+    tricky();
 }
