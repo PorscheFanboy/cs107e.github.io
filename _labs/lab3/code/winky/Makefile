@@ -13,7 +13,7 @@ all : $(NAME).bin
 %.bin: %.elf
 	arm-none-eabi-objcopy $< -O binary $@
 
-%.elf: %.o $(OBJECTS) start.o cstart.o
+%.elf: start.o cstart.o %.o $(OBJECTS) 
 	arm-none-eabi-gcc $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 %.o: %.c
@@ -23,6 +23,9 @@ all : $(NAME).bin
 	arm-none-eabi-as $< -o $@
 
 %.list: %.o
+	arm-none-eabi-objdump -d $< > $@
+
+%.elf.list: %.elf
 	arm-none-eabi-objdump -d $< > $@
 
 install: $(NAME).bin

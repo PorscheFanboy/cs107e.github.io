@@ -3,10 +3,9 @@
 
 size_t strlen(const char *str)
 {
-    const char *start = str;
-    while (*str != '\0') 
-        str++;
-    return str - start;
+    int i;
+    for (i = 0; str[i] != '\0'; i++) ;
+    return i;
 }
 
 char *strcpy(char *dst, const char *src)

@@ -203,7 +203,7 @@ The value of `binky` is the address of the beginning of the function,
 which is `0x8010`.
 
 We can print out the assembly language 
-by disassembling the function `binky`.
+by disassembling the function `binky` using the command `disas binky`.
     
     (gdb) disas binky
     Dump of assembler code for function binky:
