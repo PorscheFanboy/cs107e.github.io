@@ -259,7 +259,7 @@ Because we used the `display` command, gdb will reevaluate and print that
 same expression after each gdb command. In this way, we can monitor what's on
 top of our stack as we step through our program.
 
-<img src="images/winky-stack.pdf" width="300" />
+<a href="images/winky-stack.pdf"><img src="images/winky-stack.pdf" width="300" /></a>
 
 Above is a diagram of the state of memory 
 right before the source line `int y = x + 2;`
