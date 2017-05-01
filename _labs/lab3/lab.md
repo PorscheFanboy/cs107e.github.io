@@ -168,17 +168,12 @@ change as you would expect? It is helpful to note
 that if you're paused at a line,
 you're paused *before* that line has executed. 
 
-To exit `gdb`, type `quit`.
-
 ##### **Using `gdb` to understand assembly language and the stack**
 
-Let's rerun `gdb`, but instead of tracing the C source,
-we will examine the assembly instructions, and keep an
-eye on the current values in the registers.
+gdb also allows you to drop down to the assembly
+instructions and keep an eye on the current values in the registers.
+Let's try that now with the function `binky`.
 
-    $ arm-none-eabi-gdb winky.elf
-    (gdb) target sim
-    (gdb) load
     (gdb) print binky
     $1 = {int (int)} 0x806c <binky>
     (gdb) break binky
@@ -190,18 +185,18 @@ eye on the current values in the registers.
 Note that `binky` is not a variable,
 but rather a function.
 The value of `binky` is the address of the beginning of the function,
-which is `0x806c`. We set a breakpoint on `binky` and then run the
+which is `0x806c`. We set a breakpoint on `binky` and then re-run the
 program. When the breakpoint is hit, gdb stops the program just before 
 executing the instruction at that address. 
 
-We can print out the assembly language 
+We can print out the ARM instructions 
 by disassembling the function `binky` using the command `disas binky`.
     
     (gdb) disas binky
     Dump of assembler code for function binky:
-       0x0000806c <+0>: mov r12, sp
-       0x00008070 <+4>: push    {r11, r12, lr, pc}
-       0x00008074 <+8>: sub r11, r12, #4
+       0x0000806c <+0>:     mov r12, sp
+       0x00008070 <+4>:     push {r11, r12, lr, pc}
+       0x00008074 <+8>:     sub r11, r12, #4
        0x00008078 <+12>:    add r0, r0, #2
        0x0000807c <+16>:    sub sp, r11, #12
        0x00008080 <+20>:    ldm sp, {r11, sp, lr}
@@ -250,10 +245,14 @@ This is done with the `display` command.
 
 Let's display what's at the stack pointer in memory right now.
 
-Here is a diagram of the state of memory right before `int y = x + 2;`
-is run in the `binky` function.
+Here is a [diagram](images/winky-stack.pdf) of the state of memory 
+right before `int y = x + 2;`
+is run in the `binky` function. The complete address space of 
+the `winky` program is given, including the memory where
+the instructions are stored, as well as the contents of the stack.
+Reviewing this diagram can be very helpful in learning what
+is stored where in your program's address space.
 
-![Stack diagram in winky.c:4](images/winky-stack.pdf)
 
 Let's follow along with the execution by telling gdb to display some
 of this memory as we go.
@@ -266,7 +265,7 @@ This has the effect of displaying 4 words (w) going upward in memory,
 beginning at address `0x7ffffb0`. These are the 4 values stored lastmost on the stack.
 
 These 4 words are the content of the stack memory between
-`0x7ffffb0 (the current stack pointer) and
+`0x7ffffb0` (the current stack pointer) and
 `0x7ffffc0` (the stack pointer at the very beginning of `binky`).
 
 The data is printed out in hexadecimal (x).
@@ -354,7 +353,7 @@ by instruction.
 
 The first three instructions are the function _prolog_ which set up the
 stack frame. Which four registers are pushed to the stack to set up the
-APCS frame?  Where in the prolog is the frame pointer `fp` anchored?
+APCS frame?  Where/how in the prolog is the frame pointer `fp` anchored?
 What location in the stack does the `fp` point to?
 
 The fourth instruction is the body of the `binky` function that does the
@@ -364,10 +363,13 @@ add operation. Where does `binky` read its argument from?  Where does `binky`
 The fifth and sixth instructions are the function epilog. The epilog
 is responsible for undoing the stack frame and restoring the
 saved values for all caller-owned registers that were overwritten.
+The `ldm` instruction ("load multiple") is mostly just a more general-purpose 
+variant of `pop`.
 
-The final instruction is the branch exchange that returns control
-to the caller. What is the address of the instruction in `winky`
-that will be executed when `binky` returns?
+The final instruction of `binky` is branch exchange that returns control
+to the caller. Who is the caller of `binky`? What is the address of the 
+instruction in the caller that will be executed when `binky` returns?
+
 
 Once you understand the instruction sequence in `binky`, 
 examine the disassembly for `winky` and `main`. 
