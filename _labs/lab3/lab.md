@@ -112,34 +112,36 @@ and then load the program.
     (gdb) target sim
     Connected to the simulator.
     (gdb) load
-    Loading section .text, size 0xd0 vma 0x8000
+    Loading section .text, size 0xdc vma 0x8000
     Start address 0x8000
-    Transfer rate: 1664 bits in <1 sec.
+    Transfer rate: 1760 bits in <1 sec.
 
 `gdb` allows us to control program execution.
 Let's single step through the program. Follow along
 with the sequence of commands below.
 
     (gdb) break main
-    Breakpoint 1 at 0x8054: file winky.c, line 14.
+    Breakpoint 1 at 0x80b8: file winky.c, line 16.
     (gdb) run
     Starting program: .../lab3/code/winky/winky.elf 
-    Breakpoint 1, main () at winky.c:14
+    Breakpoint 1, main () at winky.c:16
 
 Note the last line in the snippet above. 
-`gdb` has run the program up to line 14 and stopped,
+`gdb` has run the program up to line 16 and stopped,
 because we have set a *breakpoint* at the start of `main`.
 
     (gdb) next
+    18      winky(name);
     (gdb) next
-    (gdb) print y
-    $1 = 7
+    19  }
+    (gdb) print name[1]
+    $1 = 97 'a'
 
 When we typed the `next` command,
 the next line in the program is executed. 
-This line calls the function `winky`,
-which returns the result and assigns it to `y`.
-We then use `print` to see the current value of `y`.
+This line calls the function `winky`.
+We then use `print` to see the value of `name[1]`
+after the call completes.
 
 Sometimes you want to step into the function `winky`.
 To do this, we use `step` instead of `next`.
@@ -151,37 +153,20 @@ and then use `step` to when you hit the breakpoint.
     The program being debugged has been started already.
     Start it from the beginning? (y or n)  y
 
-    Breakpoint 1, main () at winky.c:14
-    14  {
+    Breakpoint 1, main () at winky.c:16
+    16  {
     (gdb) step
+    18      winky(name);
     (gdb) step
-    winky (x=2) at winky.c:9
+    winky (str=str@entry=0x7ffffd8 "") at winky.c:10
 
 We are now stopped at the first line of `winky`.
-Use the following commands to step through the
-function:
-
-    (gdb) print x
-    $2 = 2
-    (gdb) step
-    binky (x=3) at winky.c:5
-    (gdb) print x
-    $3 = 3
-    (gdb) step
-    winky (x=2) at winky.c:11
-    (gdb) print y
-    $4 = 5
-    (gdb) step
-    main () at winky.c:17
-    (gdb) print y
-    $5 = 7
-
-Does the values printed make sense with respect to the code being
-executed? (Don't forget that if you're paused at a line,
-you're paused *before* that line has executed.) We've done some steps here
-without looking at `y` here because `y` stays the same while you're
-still stepping within those functions (and then changes when you get
-out).
+Print the value of `name[1]` before the assignment
+statement, then step through that statement and
+print the value of `name[1]` again. Does the value
+change as you would expect? It is helpful to note 
+that if you're paused at a line,
+you're paused *before* that line has executed. 
 
 To exit `gdb`, type `quit`.
 
@@ -195,65 +180,66 @@ eye on the current values in the registers.
     (gdb) target sim
     (gdb) load
     (gdb) print binky
-    $1 = {int (int)} 0x8010 <binky>
+    $1 = {int (int)} 0x806c <binky>
+    (gdb) break binky
+    Breakpoint 1 at 0x806c: file winky.c, line 3.
+    (gdb) run
+    Breakpoint 1, binky (x=x@entry=9) at winky.c:3
+
 
 Note that `binky` is not a variable,
 but rather a function.
 The value of `binky` is the address of the beginning of the function,
-which is `0x8010`.
+which is `0x806c`. We set a breakpoint on `binky` and then run the
+program. When the breakpoint is hit, gdb stops the program just before 
+executing the instruction at that address. 
 
 We can print out the assembly language 
 by disassembling the function `binky` using the command `disas binky`.
     
     (gdb) disas binky
     Dump of assembler code for function binky:
-      0x00008010 <+0>:    mov r12, sp
-      0x00008014 <+4>:    push    {r11, r12, lr, pc}
-      0x00008018 <+8>:    sub r11, r12, #4
-      0x0000801c <+12>:   add r0, r0, #2
-      0x00008020 <+16>:   sub sp, r11, #12
-      0x00008024 <+20>:   ldm sp, {r11, sp, lr}
-      0x00008028 <+24>:   bx  lr
+       0x0000806c <+0>: mov r12, sp
+       0x00008070 <+4>: push    {r11, r12, lr, pc}
+       0x00008074 <+8>: sub r11, r12, #4
+       0x00008078 <+12>:    add r0, r0, #2
+       0x0000807c <+16>:    sub sp, r11, #12
+       0x00008080 <+20>:    ldm sp, {r11, sp, lr}
+       0x00008084 <+24>:    bx  lr
     End of assembler dump.
 
 Note that the first instruction of `binky` is at the
-address `0x8010`, as we expect.
+address `0x806c`, as we expect.
 
 It is more convenient to display the assembly instructions
 in the tui source pane. We can also display the registers.
 
     (gdb) layout asm
     (gdb) layout reg
-    (gdb) break *0x8010
-    (gdb) run
-
-Note that if we want to stop at a particular address
-we set a breakpoint at the address with a `*` preceeding it.
 
 You should see the following.
 ![gdb layout asm and reg](images/gdb_layout.png)
 
 Note that we are stopped at the first instruction of `binky`.
 What value is in `r0`? Why does `r0` contain that value?
-<!-- Edit this part -->
+
 The register window shows all the register values.
 We can also print a register. Within gdb, we can access a
 register by using the syntax $regname, e.g. `$r0`.
 
     (gdb) print $sp
-    $2 = (void *) 0x7ffffc8
+    $2 = (void *) 0x7ffffc0
     (gdb) stepi
     (gdb) stepi
     (gdb) print $sp
-    $3 = (void *) 0x7ffffb8
+    $3 = (void *) 0x7ffffb0
 
-Why is the initial value of `sp` less than `0x8000000`?
 The `stepi` command executes one assembly language instruction.
 Note that the value of `sp` has decreased by 16
-after the first few instructions in `binky`.
+after executing the first few instructions in `binky`.
 
 In this case, we're seeing that at the very start of `binky`, `$sp =
-0x7ffffc8`, and then it's decreased by 16 after the `push`
+0x7ffffc0`, and then it's decreased by 16 after the `push`
 instruction that writes the four registers that form the APCS frame. 
 (Recall that the stack grows downward; the stack pointer
 decreases as more values are pushed.)
@@ -264,24 +250,24 @@ This is done with the `display` command.
 
 Let's display what's at the stack pointer in memory right now.
 
-Here is a diagram of the state of memory right after `int y = x + 2;`
+Here is a diagram of the state of memory right before `int y = x + 2;`
 is run in the `binky` function.
 
-![Stack diagram in winky.c:4](images/lab3-part1-stack.png)
+![Stack diagram in winky.c:4](images/winky-stack.pdf)
 
 Let's follow along with the execution by telling gdb to display some
 of this memory as we go.
 
     (gdb) display /4xw $sp
     1: x/4xw $sp
-    0x7ffffb8:      0x07ffffdc      0x07ffffc8      0x00008044      0x0000801c
+    0x7ffffb0:      0x07ffffd4      0x07ffffc0      0x000080a8      0x00008078
 
 This has the effect of displaying 4 words (w) going upward in memory,
-beginning at address `0x7ffffb8`. These are the 4 values stored lastmost on the stack.
+beginning at address `0x7ffffb0`. These are the 4 values stored lastmost on the stack.
 
 These 4 words are the content of the stack memory between
-`0x7ffffb8` (the current stack pointer) and
-`0x7ffffc8` (the stack pointer at the very beginning of `binky`).
+`0x7ffffb0 (the current stack pointer) and
+`0x7ffffc0` (the stack pointer at the very beginning of `binky`).
 
 The data is printed out in hexadecimal (x).
 By using this `display` command,  
@@ -291,26 +277,26 @@ the program.
     (gdb) stepi
     (gdb) [RETURN]
     (gdb) [RETURN]
+    (gdb) [RETURN]
 
 Hitting just [RETURN],
 causes `gdb` to repeat the last command (in this case `stepi`).
 
 Watch how the stack changes as you step through the function.
-On which instructions does the value of the stack pointer change? 
-When do the values stored on the stack change?
+On which instructions does the value of the stack pointer change?
 
 Re-run the program and wait for it to stop at your breakpoint on `binky`.
 Use the gdb `backtrace` to show the sequence of function calls leading
 to where we are:
 
     (gdb) backtrace
-    #0  binky (x=3) at winky.c:2
-    #1  0x00008044 in winky (x=2) at winky.c:9
-    #2  0x00008068 in main () at winky.c:15
+    #0  binky (x=x@entry=9) at winky.c:3
+    #1  0x000080a8 in winky (str=str@entry=0x7ffffd8 "") at winky.c:11
+    #2  0x000080d0 in main () at winky.c:18
 
 The backtrace shows that the function `binky` has
-been called by `winky` from line 9,
-which in turn was called by `main` from line 15.
+been called by `winky` from line 11,
+which in turn was called by `main` from line 18.
 The numbers on the left refer to the *frame*.
 The current frame is numbered 0,
 and corresponds to the invocation of function `binky`. 
@@ -318,14 +304,14 @@ Frames for caller functions
 have higher numbers.
 
     (gdb) info frame
-    Stack level 0, frame at 0x7ffffc8:
-    pc = 0x8010 in binky (winky.c:2); saved pc = 0x8044
-    called by frame at 0x7ffffe0
+    Stack level 0, frame at 0x7ffffc0:
+    pc = 0x806c in binky (winky.c:3); saved pc = 0x80a8
+    called by frame at 0x7ffffd8
     source language c.
-    Arglist at 0x7ffffc8, args: x=x@entry=3
-    Locals at 0x7ffffc8, Previous frame's sp is 0x7ffffc8
+    Arglist at 0x7ffffc0, args: x=x@entry=9
+    Locals at 0x7ffffc0, Previous frame's sp is 0x7ffffc0
     (gdb) info args
-    x = 3
+    x = 9
     (gdb) info locals
     y = <optimized out>
 
@@ -337,29 +323,56 @@ assembly instructions to figure it out!)
 We can also inspect the state of our callers.
 
     (gdb) up
-    #1  0x00008044 in winky (x=2) at winky.c:9
+    #1  0x000080a8 in winky (str=str@entry=0x7ffffd8 "") at winky.c:11
 
 This moves up to function #1,
 which is the function `winky` which called `binky`.
 
     (gdb) info args
-    x = 2
+    str = 0x7ffffd8 ""
     (gdb) info locals
-    y = <optimized out>
+    z = <optimized out>
 
 Now let's go back down the stack frame for `binky`.
 
     (gdb) down
-    #0  binky (x=3) at winky.c:3
+    #0  binky (x=x@entry=9) at winky.c:3
 
-<!--![Extension Stack Diagram](images/extension-stack.png)-->
+Disassemble the code for `binky` and trace its operation instruction
+by instruction.
 
-Recall that the `fp` is synonymous with the numbered register `r11`.
-Read this code carefully.
-Make sure you understand where the arguments and local variables
-of `binky` are stored on the stack.
-Also make sure you understand the `sp` and `fp`
-are set in the prologue and restored in the epilogue.
+    (gdb) disassemble binky
+    Dump of assembler code for function binky:
+       0x0000806c <+0>:     mov r12, sp
+       0x00008070 <+4>:     push {r11, r12, lr, pc}
+       0x00008074 <+8>:     sub r11, r12, #4
+       0x00008078 <+12>:    add r0, r0, #2
+       0x0000807c <+16>:    sub sp, r11, #12
+       0x00008080 <+20>:    ldm sp, {r11, sp, lr}
+       0x00008084 <+24>:    bx  lr
+    End of assembler dump.
+
+The first three instructions are the function _prolog_ which set up the
+stack frame. Which four registers are pushed to the stack to set up the
+APCS frame?  Where in the prolog is the frame pointer `fp` anchored?
+What location in the stack does the `fp` point to?
+
+The fourth instruction is the body of the `binky` function that does the
+add operation. Where does `binky` read its argument from?  Where does `binky`
+ write the return value of the function?
+
+The fifth and sixth instructions are the function epilog. The epilog
+is responsible for undoing the stack frame and restoring the
+saved values for all caller-owned registers that were overwritten.
+
+The final instruction is the branch exchange that returns control
+to the caller. What is the address of the instruction in `winky`
+that will be executed when `binky` returns?
+
+Once you understand the instruction sequence in `binky`, 
+examine the disassembly for `winky` and `main`. 
+Identify what portions of the prolog and
+epilog are common to all three functions and what portions differ.
 
 Continue to play around with `gdb`.
 It is a great way to learn ARM assembly language,

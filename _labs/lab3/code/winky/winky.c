@@ -1,18 +1,19 @@
+
 int binky(int x)
 {
-   int y = x + 2;
-   return y;
+    int y = x + 2;
+    return y;
 }
 
-int winky(int x)
+char *winky(char *str)
 {
-   int y = binky(x+1);
-   return x+y;
+    str[1] = 'a';
+    int z = binky(9);
+    return str + z;
 }
 
-int main()
+void main()
 {
-   int y = winky(2);
-   return y;
+    char name[8];
+    winky(name);
 }
-
