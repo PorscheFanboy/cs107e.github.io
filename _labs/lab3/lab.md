@@ -243,35 +243,35 @@ decreases as more values are pushed.)
 print out (display) values every time you step.
 This is done with the `display` command.
 
-Let's display what's at the stack pointer in memory right now.
-
-Here is a [diagram](images/winky-stack.pdf) of the state of memory 
-right before `int y = x + 2;`
-is run in the `binky` function. The complete address space of 
-the `winky` program is given, including the memory where
-the instructions are stored, as well as the contents of the stack.
-Reviewing this diagram can be very helpful in learning what
-is stored where in your program's address space.
-
-
-Let's follow along with the execution by telling gdb to display some
-of this memory as we go.
+Let's display what's at location in memory pointed to by `sp`:
 
     (gdb) display /4xw $sp
     1: x/4xw $sp
     0x7ffffb0:      0x07ffffd4      0x07ffffc0      0x000080a8      0x00008078
 
 This has the effect of displaying 4 words (w) going upward in memory,
-beginning at address `0x7ffffb0`. These are the 4 values stored lastmost on the stack.
+beginning at the address `0x7ffffb0`. What is printed is the 4 values 
+stored lastmost on the stack.  Those four values were placed there by a
+`push` instruction. Examine the disassembly and figure out which four registers
+were pushed.
 
-These 4 words are the content of the stack memory between
-`0x7ffffb0` (the current stack pointer) and
-`0x7ffffc0` (the stack pointer at the very beginning of `binky`).
+Because we used the `display` command, gdb will reevaluate and print that
+same expression after each gdb command. In this way, we can monitor what's on
+top of our stack as we step through our program.
 
-The data is printed out in hexadecimal (x).
-By using this `display` command,  
-the values on `binky`'s stack are printed out as we step through 
-the program.
+<img src="images/winky-stack.pdf" width="300" />
+
+Above is a diagram of the state of memory 
+right before the source line `int y = x + 2;`
+is executed in the `binky` function. (Click on the thumbnail to see the full image). 
+The diagram shows the complete address space of 
+the `winky` program, including the memory where
+the instructions are stored, as well as the contents of the stack.
+Reviewing this diagram can be very helpful in learning what
+is stored where in your program's address space.
+
+Now use `stepi` to move forward from here and watch what happens to the
+stack contents:
 
     (gdb) stepi
     (gdb) [RETURN]
