@@ -253,7 +253,7 @@ strings and numbers into the same format. Two things to note before we start:
 
     Use your `vsnprintf` to implement `printf`,
     which should output characters to the mini uart using `uart_putc` from the
-    `uart` module. You may again assume a maximum string length of 1000 characters.
+    `uart` module. You may again assume a maximum string length of 1024 characters.
 
     ```c
     int printf(char *format, ... );
