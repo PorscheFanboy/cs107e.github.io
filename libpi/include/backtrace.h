@@ -21,8 +21,8 @@
  * before it invoked the callee function.
  */
 struct frame {
-	uintptr_t fn_resume;
-	uintptr_t fn_first;
+    uintptr_t fn_resume;
+    uintptr_t fn_first;
 };
 
 /* Function: backtrace
