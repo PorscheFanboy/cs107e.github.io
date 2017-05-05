@@ -4,6 +4,9 @@
  * Debugging backtrace support
  */
 
+
+#include <stdint.h>
+
 /* Type: struct frame
  * -------------------
  * This struct is used to store the information for a caller
@@ -18,8 +21,8 @@
  * before it invoked the callee function.
  */
 struct frame {
-	unsigned int fn_resume;
-	unsigned int fn_first;
+	uintptr_t fn_resume;
+	uintptr_t fn_first;
 };
 
 /* Function: backtrace
