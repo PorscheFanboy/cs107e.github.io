@@ -40,4 +40,21 @@ void *malloc(size_t sz);
  */
 void free(void *ptr);
 
+
+#ifdef LEAK_DETECTOR
+
+/* Function: leak_report
+ * --------------
+ * Prints a list of all remaining allocations, using this format
+ * for each block:
+ *
+ *     8 bytes are lost, allocated by
+ *     #0 0x8d80 at malloc+140
+ *     #1 0x865c at enqueue+28
+ *     #2 0x8470 at heap_extended+52
+ */
+void leak_report();
+
+#endif
+
 #endif
