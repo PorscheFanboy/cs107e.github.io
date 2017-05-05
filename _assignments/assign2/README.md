@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 'Assignment 2: Implementing a Clock'
+title: 'Assignment 2: Implement a Clock'
 permalink: /assignments/assign2/
 released: true
 ---

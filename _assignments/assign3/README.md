@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 'Assignment 3: Implementing a String Formatting Library'
+title: 'Assignment 3: Implement a String Formatting Library'
 permalink: /assignments/assign3/
 released: true
 ---
