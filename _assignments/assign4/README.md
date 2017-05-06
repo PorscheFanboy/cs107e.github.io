@@ -222,7 +222,7 @@ all this functionality in the file `backtrace.c`.
    > `pc` stored at `fp + 0`. If the trace function then looks at location
    > `pc - 16` and the top 8 bits are set, then we know that there is a
    > function name embedded immediately preceding this location and has
-   > length `((pc[-4]) & 0xff000000)`.
+   > length `((pc[-4]) & ~0xff000000)`.
 
    How cool! Look at the assign4 `Makefile` and see that we've added
    `-mpoke-function-name` to the `CFLAGS` for you, with one
