@@ -6,7 +6,9 @@ title: Assignments
 ### List of assignments
 
 {% for assign in site.assignments %}
+{% unless assign.path contains 'images' %}
 - {% include link.html target=assign %}
+{% endunless %}
 {% endfor %}
 
 ### Frequently asked questions about assignments

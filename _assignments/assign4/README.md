@@ -127,30 +127,40 @@ all this functionality in the file `backtrace.c`.
    [memory diagram](https://cs107e.github.io/labs/lab3/images/winky-stack.pdf)
    from the first exercise of [lab 3](https://cs107e.github.io/labs/lab3) as our
    example stack to backtrace. Reviewing this example now is a helpful way to get 
-   oriented in how a backtrace works. 
+   oriented in how a backtrace works.
+
+   <a href="/labs/lab3/images/winky-stack.pdf"><img src="/labs/lab3/images/winky-stack.png" width="300" /></a>
 
    Read the comments in 
    [backtrace.h](https://github.com/cs107e/cs107e.github.io/blob/master/libpi/include/backtrace.h) 
    above the type definition of `struct frame` to
-   understand the intent of the two fields `fn_resume` and `fn_first`. You are
-   going to harvest the information for these two fields for each stack frame
-   by digging around in the stack memory. Consider filling in the `struct frame`
-   for `winky`, who is the caller of `binky`, using the
-   [diagram](https://cs107e.github.io/labs/lab3/images/winky-stack.pdf). 
-   The value for `fn_resume` for `winky` in the above diagram is `0x80a8`. This is the
-   address of the instruction in `winky` at which control will resume after the
-    `binky` call completes. If the executing function is `binky()` and you 
-    have the current value of the `fp` register,  where/how can you read from the stack
-    to get the information for the `fn_resume` for `winky`?  Again starting from the
-    current value of the `fp` register, how can you work your way back to the `winky` frame 
-    and from there access information to calculate the `fn_first` field  for `winky`?
-    (It may help to re-visit the first question on the 
-    [lab3 checklist](https://cs107e.github.io/labs/lab3/checklist) 
-    for a little bit of foreshadowing about this calculation.)
+   understand the intent of the two fields `fn_resume` and `fn_first`.
+
+   You are going to harvest the information for these two fields for
+   each stack frame by digging around in the stack memory. Consider
+   filling in the `struct frame` for `winky`, who is the caller of
+   `binky`, using the
+   [diagram](https://cs107e.github.io/labs/lab3/images/winky-stack.pdf).
+   The value for `fn_resume` for `winky` in the above diagram is
+   `0x80a8`. This is the address of the instruction in `winky` at
+   which control will resume after the `binky` call completes.
+
+   - If the executing function is `binky()` and you have the current value of
+   the `fp` register, where/how can you read from the stack to get the
+   information for the `fn_resume` for `winky`?
+
+   - Starting from the current value of the `fp` register, how can you
+   work your way back to the `winky` frame and from there access
+   information to calculate the `fn_first` field for `winky`?
+
+   (It may help to re-visit the first question on the 
+   [lab3 checklist](https://cs107e.github.io/labs/lab3/checklist) 
+   for a little bit of foreshadowing about this calculation.)
 
    Figure out how to walk up the stack and fill in a `struct frame` for
    each function call. Note that `backtrace()` should
-   make `f[0]` contain its caller's information, rather than its own.
+   make `f[0]` contain its caller's information, rather than
+   `backtrace()`'s own information.
 
    Handy tip: gcc allows you to embed assembly into
    your C code. You can use this to retrieve the current value of a register
@@ -188,7 +198,7 @@ all this functionality in the file `backtrace.c`.
    writing debugging tools. If you compile your code `-mpoke-function-name`,
    gcc will embed each function's name into the text section, at a
    location preceding the function's first instruction!
-   Let's quote the [gcc documentation](https://gcc.gnu.org/onlinedocs/gcc-4.8.3/gcc/ARM-Options.html#index-mpoke-function-name-1139))
+   Let's quote the [gcc documentation](https://gcc.gnu.org/onlinedocs/gcc-4.8.3/gcc/ARM-Options.html#index-mpoke-function-name-1139):
 
    > `-mpoke-function-name`
    >
@@ -360,10 +370,10 @@ add coalescing of adjacent free blocks, and finish with an upgrade to next fit.
 You should maintain a correctly working allocator through each of these 
  steps, and reap incremental improvement with each upgrade.
 
-(We strongly prefer that you follow our recommendations, but if you want to
+(We strongly advise that you follow our recommendations, but if you want to
 go rogue, you can substitute a different design of your own, 
 as long as it implements the `malloc` module
-interface and achieves similar results.)
+interface and achieves similar results or better.)
 
 Start by reviewing the
 [header file: malloc.h](https://github.com/cs107e/cs107e.github.io/blob/master/libpi/include/malloc.h).
@@ -390,10 +400,10 @@ to understand the basic layout of a heap using block headers.
 
 2. **Implement `malloc()` to service a request by splitting from the free block.**
 
-   Each `malloc()` will split the one free block, by dividing it into two blocks,
-   each with its own header. One block is portioned to the requested 
-   size, the remainder is left in the free block. Subsequent requests will
-   further split the free block.
+   Each `malloc()` will split the one free block, by dividing it into
+   two blocks, each with its own header. One block is portioned to the
+   requested size, while the remainder is left in the free
+   block. Subsequent requests will further split off the front of the free block.
 
 3. **Implement `free()` to update status in block header.**
 
@@ -410,21 +420,26 @@ to understand the basic layout of a heap using block headers.
 
 4. **Upgrade `malloc()` to use the block headers as an implicit free list.**
    
-   Rather than service all requests from the one free block, malloc should
-   instead walk the heap from beginning to end, examining each block header in hopes of
-   finding a free block that can be recycled. To advance
-   through the blocks in the heap, read the size from the block's header 
-   and use the size with some pointer arithmetic to move from one 
-   block header to the next. Searching the heap for free blocks in this way is 
-   traversing an "implicit free list" and taking the first free block large 
-   enough to service the request is known as "first fit ".
+   Rather than service all requests from one free block at the end,
+   malloc should instead walk the heap from beginning to end,
+   examining each block header in hopes of finding a free block that
+   can be recycled.
 
-Now run the tests again. The `heap_operations` test should pass, and you
-should have much higher utilization in the performance test because you are now
-recycling freed blocks!  Your throughput, though, will have taken a nose dive (because of
-all that repeated heap-walking, but we have a plan for that...) 
+   To advance through the blocks in the heap, read the size from the
+   block's header and use the size with some pointer arithmetic to
+   move from one block header to the next. Searching the heap for free
+   blocks in this way is traversing an "implicit free list" and taking
+   the first free block large enough to service the request is known
+   as "first fit ".
+
+Now run the tests again. The `heap_operations` test should pass, and
+you should have much higher utilization in the performance test
+because you are now recycling freed blocks!  Your throughput will have
+taken a nose dive, though (because of all that repeated heap-walking,
+but we have a plan for that...)
 
 #### Coalescing
+
 Can you see a looming problem? What happens if the client repeatedly
 allocates 8-byte chunks until the heap is full, frees all of them, 
 then tries to allocate 32 bytes? The heap contains way more than 32 bytes of
@@ -491,14 +506,14 @@ All pointers returned by `malloc()` should be aligned to 8 bytes,
 which is the size of the largest primitive data type on our system
 (`double`). The most convenient way to follow the alignment rule is
 to simply round up all requested sizes to a total block size (payload
-+ header) that is a multiple of 8 and lay out blocks end to end.
+plus header) that is a multiple of 8, and lay out blocks end to end.
 
 Your allocator should recycle freed memory and achieve at
 least 75 percent utilization.
 
 Your allocator probably won't get the throughput of the bump
 allocator, but we will optimize it to get close: you should be
-able to achieve near 50,000 requests per second on your final allocator.
+able to achieve at least 50,000 requests per second on your final allocator.
 
 Throughout this assignment, consult the `man` page for `malloc()` to
 find out how to deal (or not deal) with edge cases -- what if

@@ -1,8 +1,10 @@
 ---
 title: 'Heap allocator diagrams'
+layout: page
 ---
 
 ### Block payload and header
+
 We refer to the heap space allocated for a client's request as a _block_.
 When the client requests space, the heap must choose a block of
 sufficient size to service the request. The client's data is what is
