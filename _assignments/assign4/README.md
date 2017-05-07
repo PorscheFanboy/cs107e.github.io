@@ -29,6 +29,8 @@ After you finish this assignment, you should
 
 - further understand C data structures and memory layout
 
+- level up your skills wrangling pointers in C
+
 - appreciate the complexity and tradeoffs in implementing a heap allocator
 
 ## Overview
@@ -238,6 +240,13 @@ all this functionality in the file `backtrace.c`.
    lab3 winky program as previous, but changed to compile with the
     `-mpoke-function-name` flag.  Take a look to see where the function 
     names have been inserted into the text section.
+
+   Note that the name string is null-terminated and the terminator is
+   counted in the length. Furthermore, the use of 
+   `.align` causes the length of the name to be rounded up to a 
+   multiple of 4; additional null characters are used as padding. 
+   Thus, a function named `binky` will have its name embedded 
+   as `binky\0\0\0` and length of 8.
 
 3. **Implement `print_backtrace()`.**
 
