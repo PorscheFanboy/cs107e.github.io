@@ -3,7 +3,7 @@ NAME = hello
 LIBPI = ../../../../libpi
 CPPFLAGS = -I$(LIBPI)/include
 ASFLAGS =
-CFLAGS = -g -Wall -Og -std=c99 -ffreestanding $(CPPFLAGS)
+CFLAGS = -g -Wall -Og -std=c99 -ffreestanding $(CPPFLAGS)   -mapcs-frame -fno-omit-frame-pointer
 LDFLAGS = -nostdlib -T memmap -L$(LIBPI)/lib -lgcc
  
 OBJECTS = start.o cstart.o uart.o
