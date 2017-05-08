@@ -200,7 +200,10 @@ all this functionality in the file `backtrace.c`.
    writing debugging tools. If you compile your code `-mpoke-function-name`,
    gcc will embed each function's name into the text section, at a
    location preceding the function's first instruction!
-   Let's quote the [gcc documentation](https://gcc.gnu.org/onlinedocs/gcc-4.8.3/gcc/ARM-Options.html#index-mpoke-function-name-1139):
+   Below is an excerpt from the [gcc documentation](https://gcc.gnu.org/onlinedocs/gcc-4.8.3/gcc/ARM-Options.html#index-mpoke-function-name-1139)
+   about this option.
+   _Note: below we have corrected a few details that are mis-identified in the official doc, 
+   so please use this version rather than refer back to the original._
 
    > `-mpoke-function-name`
    >
