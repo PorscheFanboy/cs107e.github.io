@@ -177,7 +177,6 @@ Let's test it using the program showed in class.
     % cd code/keyboard_test
     % make
     % make install
-    % screen /dev/tty.SLAB_USBtoUART 115200
 
 Type different keys and you should see the scan codes printed
 on your screen. If they are regular alphanumeric keys, you should

@@ -17,7 +17,7 @@ LIBPI_MODULES += $(MODULES)/uart.o $(MODULES)/printf.o
 all : $(NAME).bin
 
 $(NAME).elf: $(NAME).o $(OBJECTS) $(LIBPI_MODULES)
-	arm-none-eabi-ld $^ -o $@ $(LDFLAGS)  
+	arm-none-eabi-gcc $^ -o $@ $(LDFLAGS)  
 	arm-none-eabi-objdump -D $@ > $@.list
 
 %.bin: %.elf
@@ -37,7 +37,7 @@ clean:
 	rm -f *.bin *.elf *.o *.d *.list *~
 
 install: $(NAME).bin
-	rpi-install.py -p $(NAME).bin
+	rpi-install.py -s $(NAME).bin
 
 headers: $(NAME).elf
 	arm-none-eabi-readelf --h $(NAME).elf
