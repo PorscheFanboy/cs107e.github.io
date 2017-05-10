@@ -9,13 +9,13 @@ SECTIONS
     .text : {
         start.o (.text)
         *(.text*)
-        __text_end__ = .;
     } > ram
     .data : { *(.data*) } > ram
     .rodata : { *(.rodata*) } > ram
     __bss_start__ = .;
     .bss : {
         *(.bss*)
+        *(COMMON)
     } > ram
     . = ALIGN(8);
     __bss_end__ = .;
