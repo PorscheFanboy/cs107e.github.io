@@ -6,17 +6,18 @@ CPPFLAGS = -I$(LIBPI)/include
 ASFLAGS =
 CFLAGS = -g -Wall -Og -std=c99 -ffreestanding $(CPPFLAGS)
 LDFLAGS = -nostdlib -T memmap -L$(LIBPI)/lib -lgcc
- 
+
 OBJECTS = start.o cstart.o keyboard.o
-LIBPI_MODULES  = $(MODULES)/memory.o $(MODULES)/gpio.o 
-LIBPI_MODULES += $(MODULES)/gpioextra.o  $(MODULES)/timer.o 
-LIBPI_MODULES += $(MODULES)/led.o $(MODULES)/gpioevent.o 
+LIBPI_MODULES  = $(MODULES)/memory.o $(MODULES)/gpio.o
+LIBPI_MODULES += $(MODULES)/gpioextra.o  $(MODULES)/timer.o
+LIBPI_MODULES += $(MODULES)/led.o $(MODULES)/gpioevent.o
 LIBPI_MODULES += $(MODULES)/uart.o $(MODULES)/printf.o
+LIBPI_MODULES += $(MODULES)/ps2.o
 
 all : $(NAME).bin
 
 $(NAME).elf: $(NAME).o $(OBJECTS) $(LIBPI_MODULES)
-	arm-none-eabi-gcc $^ -o $@ $(LDFLAGS)  
+	arm-none-eabi-gcc $^ -o $@ $(LDFLAGS)
 	arm-none-eabi-objdump -D $@ > $@.list
 
 %.bin: %.elf
@@ -50,7 +51,7 @@ sections:
 segments:
 	arm-none-eabi-readelf --segments $(NAME).elf
 
-# Targets that aren't filename of build product should be declared "phony" 
+# Targets that aren't filename of build product should be declared "phony"
 .PHONY: all clean
 
 # include dependency info
