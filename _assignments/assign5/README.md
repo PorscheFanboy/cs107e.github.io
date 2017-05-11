@@ -45,9 +45,17 @@ In this assignment, you will
     [shell.h](https://github.com/cs107e/cs107e.github.io/blob/master/libpi/include/shell.h)
     for more details about the interfaces you should fulfill.
 
-    You will need to copy your gpio, timer, and printf modules into
-    the code directory. You can alternatively rely on the reference
-    implementations by adding them to LIBPI_REFERENCE_MODULES. You might
+    Starting with this assignment, you'll be building on your prior assignments.
+    This means you'll be re-using your modules. If you have bugs in your modules,
+    however, you can instead use reference implementations written by course staff.
+    You select whether you want your own or the reference module using your
+    Makefile. Modules in LIBPI_STUDENT_MODULES are compiled from source from the
+    local directory. Modules in LIBPI_REFERENCE_MODULES are just linked from
+    libpi/modules.
+
+    By default, the Makefile has you use your own modules. So you 
+    will need to copy your gpio, timer, malloc, and printf modules into
+    the code directory. You might
     want to start by implementing your assignment using the reference
     modules, then once your keyboard driver is working correctly, swap
     in your own modules and check that it still works and doesn't trigger

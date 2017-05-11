@@ -249,7 +249,9 @@ all this functionality in the file `backtrace.c`.
    `.align` causes the length of the name to be rounded up to a 
    multiple of 4; additional null characters are used as padding. 
    Thus, a function named `binky` will have its name embedded 
-   as `binky\0\0\0` and length of 8.
+   as `binky\0\0\0` and length of 8. Given that the name is
+   stored null-terminated, you can access the string in-place and directly
+   pass its address to printf without needing to make a copy of it.
 
 3. **Implement `print_backtrace()`.**
 
