@@ -11,7 +11,7 @@
  * Date: Mar 10, 2016
  */
 
-const int ACT = GPIO_PIN47; // 1 turns it on
-const int PWR = GPIO_PIN35;
+#define ACT GPIO_PIN47 // 1 turns it on
+#define PWR GPIO_PIN35
 
 #endif
