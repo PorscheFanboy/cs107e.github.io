@@ -93,7 +93,7 @@ In this assignment, you will
     **Optional Extra**: In addition to protecting against corrupted bits,
     checking the stop and parity bits is a way to avoid incorrectly
     reading scan codes if your driver becomes desynchronized.  When
-    this hapens, your driver can think a scancode byte starts in the middle
+    this happens, your driver can think a scancode byte starts in the middle
     of a packet from the PS/2 port rather than at the beginning. Use
     your timer code to detect if a falling clock edge occurs more than
     3ms after the previous one, and if so, reset the scancode reader and
