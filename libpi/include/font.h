@@ -33,7 +33,8 @@ int font_get_size();
    pointed by `buf`. Returns 0 on failure and 1 on success.
    Failure is when `buflen` does not equal the value
    returned by font_buflen(), used as a basic sanity
-   check. After this function returns, buf is a width*height
+   check, or if the character is out of the displayable range.
+   If this function returns, buf is a width*height
    image of the pixel, i.e., a char[height][width][depth]
    array. */
 int font_get_char(char ch, char* buf, int buflen);
