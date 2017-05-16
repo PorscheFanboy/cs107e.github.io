@@ -183,8 +183,7 @@ To start, here is a quick quiz:
   the meaning of various C declarations.
 
 * Inspect the code in `code/pointers/pointers.c`.
-  Compile this code using `make`. This will generate an executable that
-  runs on your laptop. Run the code (`./pointers`) and interpret the results.
+  Compile this code using `make`, run it on your Pi, and interpret the results.
 
   Now uncomment the following code to the above example. What happens?
 
