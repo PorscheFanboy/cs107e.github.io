@@ -169,8 +169,8 @@ In this assignment, you will
     allow you to type in and execute commands. You'll do this in
     `shell.c`. There are two functions, `shell_init` and `shell_run`.
 
-    `shell_init` takes one parameter, which specify whether it should
-    output to the serial port or screen.  For this assignment, you can
+    `shell_init` takes one parameter, which specifies whether it should
+    output to the serial port or the screen.  For this assignment, you can
     ignore the output parameter and always have it output to the
     serial port.
 
