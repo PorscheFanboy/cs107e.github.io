@@ -250,6 +250,10 @@ whose bits are 00001100 (`00 001 100`). These are the first 8 bits of
 the top line of the exclamation point: you can see it is two pixels
 wide.
 
+Here's what the actual image looks like:
+
+![Font](images/apple2e-line.bmp)
+
 * Talk with your neighbor: why does pixel_data have size `1330 * 16 / 8`?
 
 The key function is `font_get_char()` which copies a single character
