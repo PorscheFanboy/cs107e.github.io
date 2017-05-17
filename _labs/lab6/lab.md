@@ -250,7 +250,9 @@ whose bits are 00001100 (`00 001 100`). These are the first 8 bits of
 the top line of the exclamation point: you can see it is two pixels
 wide.
 
-Here's what the actual image looks like:
+Here's what the actual image looks like, using green to display an
+'on' pixel in the bitmap. We generated this BMP file directly from
+`font.c`:
 
 ![Font](images/apple2e-line.bmp)
 
