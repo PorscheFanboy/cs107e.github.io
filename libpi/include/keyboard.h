@@ -13,11 +13,10 @@
 void keyboard_init(void);
 
 // Top-level keyboard interface. Read (blocking) a character from
-// the keyboard. Handles shift, caps lock, etc. Should not return
-// non-text characters unless they are translated into the text stream
-// (e..g, control-G is \f). For example, keyboard_read_char should not
-// return arrow key presses.
-//
+// the keyboard. Handles shift, caps lock, etc. If you need to return
+// non-text characters, you can use values > 0x7f (e.g., the
+// keyboard codes below). Some non-text characters do have ASCII
+// representaitons // (e.g., control-G is \f). 
 
 #define KEYBOARD_DOWN  0x82
 #define KEYBOARD_UP    0x88

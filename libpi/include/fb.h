@@ -25,11 +25,8 @@ unsigned fb_get_width(void);
 unsigned fb_get_height(void);
 unsigned fb_get_depth(void);
 unsigned fb_get_pitch(void);
-unsigned fb_get_size(void);
 
 unsigned char* fb_get_draw_buffer(void);
-unsigned char* fb_get_front_buffer(void);
-unsigned char* fb_get_back_buffer(void);
 void fb_swap_buffer(void);
 
 /* Copyright (c) 2016 Stanford University.
