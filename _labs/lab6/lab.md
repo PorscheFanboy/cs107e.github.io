@@ -27,7 +27,7 @@ show the results to the TA.
 ### Lab exercises
 
 To start this lab, pull from `cs107e.github.io` and go into
-the directory `_labs/lab6`. 
+the directory `_labs/lab6`.
 
 #### 1. Set up the Raspberry Pi to output video to a monitor (30 min)
 
@@ -35,7 +35,7 @@ You need an HDMI cable and an HDMI to DVI adapter, which we will
 provide in lab. Attach the HDMI to DVI adapter to one end of HDMI
 cable. Then attach the DVI connector to the monitor. The monitors we
 are using are older and do not have HDMI connectors. Next, attach
-the HDMI cable to the HDMI connector on the Raspberry Pi. Power your 
+the HDMI cable to the HDMI connector on the Raspberry Pi. Power your
 Raspberry Pi, and you should see the following.
 
 ![Raspberry Pi video](images/pifb.png)
@@ -62,12 +62,12 @@ Modify the `grid.c` file in the following two ways:
 
 ##### The GPU mailbox
 
-Recall from [lecture](/lectures/framebuffer/framebuffer.pdf) that the
+Recall from [lecture](/lectures/Framebuffer/Framebuffer.pdf) that the
 CPU communicates with the GPU by sending messages using a *mailbox*.
 The mailbox contains a single message stored as a pointer.
 If the mailbox has a message,
 it is full. If it has no message, it is empty.
-Briefly, this is the communication pattern we'll be using: 
+Briefly, this is the communication pattern we'll be using:
 
 First, the CPU puts a message in the mailbox
 for the GPU to read.
@@ -102,12 +102,12 @@ will include a pointer to a *framebuffer*. This is a
 contiguous block of memory that you can read and write to read and
 write pixels.  The GPU continually refreshes the display based on
 the contents of the framebuffer. If you change the framebuffer,
-the display will be updated automatically. 
+the display will be updated automatically.
 
 Now let's take a look at some code that does this!
 Change into the directory `code/fb`. That directory contains the files:
 
-    $ ls 
+    $ ls
     Makefile	fb-main.c	fb.h		mailbox.h	start.s
     cstart.c	fb.c		mailbox.c	memmap
 
@@ -153,7 +153,7 @@ of the lab.
       modified version of the code from the `fb` directory. The Makefile is modified to
       create two versions of `mailbox.c` each: a version that marks the mailbox
       as volatile, and another version that does not make them volatile.
-      Compare the assembly for the two implementations of mailbox.c. 
+      Compare the assembly for the two implementations of mailbox.c.
       How do they differ? What happens if the first branch in
       the read or write operations isn't taken? Why?
 
@@ -225,9 +225,9 @@ The file `font.c` contains the above image as a C struct.
         unsigned int          width;
         unsigned int          height;
         unsigned int          bits_per_pixel;
-        unsigned char         pixel_data[1330 * 16 / 8]; 
-    } font = { 
-      1330, 16, 1, 
+        unsigned char         pixel_data[1330 * 16 / 8];
+    } font = {
+      1330, 16, 1,
       "\014\000\314\003\060\003\000\360\000\300\000\300\003\000\014\000"
       "\060\000\000\000\000\000\000\000\000\000\017\300\014\000\374\017"
       ...
@@ -310,13 +310,13 @@ Do these type conversions make sense?
 
 * Why is the result of combining an `int32_t` and an `int64_t` an `int64_t`?
 
-* Why is the result of combining an `uint32_t` and an `int64_t` 
+* Why is the result of combining an `uint32_t` and an `int64_t`
 also an `int64_t`?
 
 * Why is the result of a comparison operator like `<` or `==` an `int`?
 For example, `whatis u8<u32` is an `int`.
 
-* Any ideas why C defines the result of 
+* Any ideas why C defines the result of
 combining an `uint32_t` and an `int32_t` to be a `uint32_t`?
 
 Now try this:
