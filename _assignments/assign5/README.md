@@ -50,11 +50,10 @@ In this assignment, you will
     however, you can instead use reference implementations written by course staff.
     You select whether you want your own or the reference module using your
     Makefile. Modules in LIBPI_STUDENT_MODULES are compiled from source from the
-    local directory. Modules in LIBPI_REFERENCE_MODULES are just linked from
-    libpi/modules.
+    local directory. Any module not listed will be taken from the reference libpi.
 
     By default, the Makefile has you use your own modules. So you 
-    will need to copy your gpio, timer, malloc, and printf modules into
+    will need to copy your gpio, timer, malloc, printf, and backtrace modules into
     the code directory. You might
     want to start by implementing your assignment using the reference
     modules, then once your keyboard driver is working correctly, swap
@@ -232,7 +231,7 @@ In this assignment, you will
         echo Hello, world!
         Hello, world!
 
-    _Note: This is very similiar to the way your shell (bash, zsh,
+    _Note: This is very similar to the way your shell (bash, zsh,
     etc.) works!_
 
     Because trying to debug the code that parses a line text into an
@@ -297,15 +296,15 @@ In this assignment, you will
     is a required address, and the second a required number. It sets
     the 4 bytes in memory at `address` to be the 32-bit `value`.
 
-    Example (assume 0xFFFC contains the number 0x12345678):
+    Example (assume 0xFFFC currently contains the number 0x12345678):
 
         peek 0xFFFC 4
         78 56 34 12
 
-        poke 0xFFFC 12345678
+        poke 0xFFFC 0x2244
 
         peek 0xFFFC 4
-        4e 61 bc 00
+        44 22 00 00
 
         poke 0xFFFC 0
 
