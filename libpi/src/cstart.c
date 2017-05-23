@@ -14,6 +14,7 @@ extern int _vectors;
 extern int _vectors_end;
 
 extern void main();
+extern void malloc_init(unsigned);
 
 
 // Zeroes out the BSS and installs the interrupt handler
@@ -39,9 +40,12 @@ void _cstart() {
         *vectorsdst++ = *vectors++;
     }
 
+    malloc_init(0x4000000);
     main();
 
     // Turn the green ACT LED (GPIO 47).
     *GPIO_FSEL4 = SUCCESS_OUTPUT;
     *GPIO_SET1 = SUCCESS_BIT;
 }
+
+void __attribute__ ((weak)) malloc_init(unsigned size) {}
