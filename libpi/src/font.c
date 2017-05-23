@@ -229,6 +229,7 @@ int font_get_char(char ch, char* buf, int buflen) {
         for (int i = 0; i < buflen; i++) {
             buf[i] = 0;
         }
+        return 1;
     } else if (ch <= '~') {
         int index = 0;
         for (int y = 0; y < font_get_height(); y++) {
