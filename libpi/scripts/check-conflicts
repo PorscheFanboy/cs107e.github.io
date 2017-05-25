@@ -1,32 +1,32 @@
 #!/bin/bash
 
-# First script argument is student modules (quoted list of object files)
-# Second script argument is reference modules (ditto)
-# Gathers all global function symbols from first and second lists
-# intersects and reports if any duplicate symbols found
+# Script argument is one or more library/object files
+# Gathers all global function symbols from files
+# and reports if any duplicate symbols found
 # jzelenski Sat Apr 22 19:24:02 PDT 2017
 
 
 fn_symbols() {
    # nm to get defined global symbols, grep for text type, cut to symbol name
-   arm-none-eabi-nm --extern-only --defined-only $@ | grep " T " | cut -d' ' -f3 | sort
+   arm-none-eabi-nm --extern-only --defined-only $@ | grep " T " | cut -d' ' -f3 
 }
 
-echo -n "Checking for function conflicts between your application and libpi ... "
-duplicates=$(comm -1 -2 <(fn_symbols $1) <(fn_symbols $2))
-if test -z $duplicates; then 
+echo -n "Checking for function conflicts in libmypi modules ... "
+duplicates=$(fn_symbols $@ | sort | uniq -d)
+if [ -z "$duplicates" ]; then 
    echo "none found."
    exit 0
 else
    echo
-   tput bold; tput setaf 1;     #  bold, red
-   echo "WARNING: There are duplicate functions defined in both the reference"
-   echo "and student modules. This means you are linking the reference"
+   echo "ERROR: There are duplicate functions defined in both the reference"
+   echo "and student modules. This means you are using the reference"
    echo "implementation of functions that you have also implemented in your code."
    echo "This may cause you to think your functions work when they do not or this"
    echo "might break your code. Be sure that your Makefile has each .o module"
-   echo "listed either in LIBPI_REFERENCE_MODULES or LIBPI_STUDENT_MODULES, not both!"
+   echo "listed once and only once (either in LIBPI_REFERENCE_MODULES or"
+   echo "LIBPI_STUDENT_MODULES, not both!"
    echo "Duplicate functions are:"
+   tput bold; tput setaf 1;     #  red
    echo $duplicates
    tput sgr0;                    # back to normal
    exit 1
