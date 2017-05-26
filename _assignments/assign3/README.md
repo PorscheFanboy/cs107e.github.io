@@ -173,6 +173,8 @@ strings and numbers into the same format. Two things to note before we start:
 
 2.  **Implement basic `snprintf`.**
 
+    <img src="snprintf.png" width="200">
+
     ```c
     int snprintf(char *s, int n, const char *format, ... );
     ```
