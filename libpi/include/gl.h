@@ -23,13 +23,13 @@ void gl_init(unsigned width, unsigned height, unsigned mode);
 unsigned gl_get_width(void);
 unsigned gl_get_height(void);
 
-#define GL_BLACK  0x00000000
-#define GL_WHITE  0x00FFFFFF
-#define GL_RED    0x00FF0000
-#define GL_GREEN  0x0000FF00
-#define GL_BLUE   0x000000FF
-#define GL_AMBER  0x00FFBF00
-#define GL_YELLOW 0x00FFFF00
+#define GL_BLACK  0xFF000000
+#define GL_WHITE  0xFFFFFFFF
+#define GL_RED    0xFFFF0000
+#define GL_GREEN  0xFF00FF00
+#define GL_BLUE   0xFF0000FF
+#define GL_AMBER  0xFFFFBF00
+#define GL_YELLOW 0xFFFFFF00
 
 typedef unsigned color;
 color gl_color(unsigned char r, unsigned char g, unsigned char b);
