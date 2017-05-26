@@ -13,78 +13,78 @@ and to do something creative with your Raspberry Pi.
 You have two weeks to complete the project. 
 There are a few important deliverables:
 
-1. *Project team formation: due end of day Sunday, May 28*
+1. **Project team formation: due end of day Sunday, May 28**
 
-  Form a team of 1 to 3 people. In our experience, 2 is best.
-  Add the Github usernames of your team members to this 
-  [Google form](http://goo.gl/forms/sGdJ1dirG1dm9GRb2) so that we can 
-  create a repository for your team.
+   Form a team of 1 to 3 people. In our experience, 2 is best.
+   Add the Github usernames of your team members to this 
+   [Google form](http://goo.gl/forms/sGdJ1dirG1dm9GRb2) so that we can 
+   create a repository for your team.
 
-2. *Project description: due end of day Thursday, June 1*
+2. **Project description: due end of day Thursday, June 1**
 
-  We will email you after making a repository for your team; that
-  repository will be empty at first. Follow the GitHub instructions on
-  its page to 'create a new repository on the command line' and push
-  to there.
+   We will email you after making a repository for your team; that
+   repository will be empty at first. Follow the GitHub instructions on
+   its page to 'create a new repository on the command line' and push
+   to there.
 
-  Now add a markdown file PROPOSAL.md in that repo.
-  This file is for your project proposal.
-  Edit that file and push it to github.
+   Now add a markdown file PROPOSAL.md in that repo.
+   This file is for your project proposal.
+   Edit that file and push it to github.
 
-  The project proposal should include:
+   The project proposal should include:
 
-  - Name of the project
-  - Team members and their responsibilities
-  - Goal of the project
-  - Milestone for T-1 week
-  - Resources needed
+   - Name of the project
+   - Team members and their responsibilities
+   - Goal of the project
+   - Milestone for T-1 week
+   - Resources needed
 
-  We have a small budget for hardware, 
-  so we can reimburse you for parts (within reason).
-  If you want to buy stuff,
-  please send us email.
-  Be aware that if you need to mail order parts, it can take time,
-  so figure out what you need ASAP and place the order.
-  You should first check the list of sensors we already have 
-  on hand (see below).
+   We have a small budget for hardware, 
+   so we can reimburse you for parts (within reason).
+   If you want to buy stuff,
+   please send us email.
+   Be aware that if you need to mail order parts, it can take time,
+   so figure out what you need ASAP and place the order.
+   You should first check the list of sensors we already have 
+   on hand (see below).
 
-  Each team member should be responsible for a clearly
-  identifiable part of the project.
+   Each team member should be responsible for a clearly
+   identifiable part of the project.
 
-3. *Project labs*
+3. **Project labs**
 
-  We will still have labs the two weeks leading up to the
-  project demonstration.
-  These labs will be a good time to check-in with the
-  course staff; they are eager to help you create a great project.
-  In the second lab, we will check whether you have made
-  your milestone.
-  Please don't wait until the last minute to get started on your project.
+   We will still have labs the two weeks leading up to the
+   project demonstration.
+   These labs will be a good time to check-in with the
+   course staff; they are eager to help you create a great project.
+   In the second lab, we will check whether you have made
+   your milestone.
+   Please don't wait until the last minute to get started on your project.
 
-4. *Project demonstration: Wed June 14, 9am-11:30 am, Gates B21*
+4. **Project demonstration: Wed, June 14, 9 AM-11:30 AM, Gates B21**
 
-  We will have a class demo day for all projects.
-  The demos are scheduled during the final exam period.
-  Each group should prepare a short demonstration of the project.
+   We will have a class demo day for all projects.
+   The demos are scheduled during the final exam period.
+   Each group should prepare a short demonstration of the project.
 
-5. *Project code and writeup: due Wed June 14 at 11:59 pm*
+5. **Project code and writeup: due Wed, June 14 at 11:59 PM**
 
-  You should be using the github repository for coordinating the
-  work amongst your team.
-  As such, you should be regularly checking in and out code.
-  Do the final check-in by 11:59 pm on Wed June 14.
+   You should be using the github repository for coordinating the
+   work amongst your team.
+   As such, you should be regularly checking in and out code.
+   Do the final check-in by 11:59 pm on Wed June 14.
 
-  Create a short writeup about your project
-  and place it in README.md.
-  If you have used code or ideas from other people,
-  please attribute their work.
-  It's fine to use code from online,
-  but you must reference where you got the code,
-  and what changes you made.
-  It should be clear what you did, and what others did.
+   Create a short writeup about your project
+   and place it in README.md.
+   If you have used code or ideas from other people,
+   please attribute their work.
+   It's fine to use code from online,
+   but you must reference where you got the code,
+   and what changes you made.
+   It should be clear what you did, and what others did.
 
-  The writeup should also include a short description of what
-  work was performed by each member of the team.
+   The writeup should also include a short description of what
+   work was performed by each member of the team.
 
 ## Extra materials
 
