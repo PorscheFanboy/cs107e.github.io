@@ -1,8 +1,6 @@
 #include "printf.h"
 #include "fb.h"
 #include "assert.h"
-#include "reboot.h"
-#include "memory.h"
 #include "system.h"
 #include "timer.h"
 
@@ -136,10 +134,10 @@ void write_screen_asm(unsigned char v) {
         printf("running: " #cmd "\n");                  \
         int i;                                          \
         for (i = 0; i < iter; i++) {                    \
-            unsigned start = timer_get_time();		\
+            unsigned start = timer_get_time();          \
             cmd(0x00);                                  \
             cmd(val);                                   \
-            unsigned total = timer_get_time() - start;	\
+            unsigned total = timer_get_time() - start;  \
             printf("took %d ticks\n", total);           \
         }                                               \
     } while (0)
