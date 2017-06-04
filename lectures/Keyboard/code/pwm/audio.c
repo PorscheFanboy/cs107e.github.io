@@ -53,6 +53,10 @@
 #define BCM2835_FULL1 0x1
 
 // Page 108 of the BCM2835 ARM Peripherals guide
+#define BCM2835_CM_MASH0       (0)
+#define BCM2835_CM_MASH1       (1 << 9)
+#define BCM2835_CM_MASH2       (2 << 9)
+#define BCM2835_CM_MASH3       (3 << 9)
 #define BCM2835_CM_ENAB        (1 << 4)
 #define BCM2835_CM_OSCILLATOR  (1)
 
@@ -87,26 +91,23 @@ unsigned waveform_sine[];
 
 
 unsigned int audio_set_clock(unsigned int frequency) {
-  frequency /= 2;
-  frequency *= 8192;
+  frequency *= 4096;
 
   // You specify the PWM clock as a fraction of the 19.2MHz base clock.
   // The fraction is specified in two parts: the integer component
-  // and a fractional component out of 1024. So, for example,
-  // an 8192kHz (representing a 1kHz audio tone) clock is 2.34275;
+  // and a fractional component out of 4096. So, for example,
+  // an 8192MHz (representing a 1kHz audio tone) clock is 2.34275;
   // this is stored as an integer part of
-  // 2 and a fractional part of 352 (0.342 * 1024).
+  // 2 and a fractional part of 1441 (0.342 * 4096).
   unsigned int integer_part = 19200000 / frequency;
-  unsigned int fractional_part = 19200000 % frequency;
-  fractional_part *= 1024;
-  fractional_part /= frequency;
-
+  unsigned int fractional_part = 19200000 - (frequency * integer_part);
+  fractional_part /= (frequency / 4096);
 
   // Fractional part should always be less than 1024 (it's a fraction < 1
   // times 1024, but check to be sure).
   if (integer_part < (1 << 12) &&
       integer_part > 0 &&
-      fractional_part < 1024) {
+      fractional_part < 4096) {
     // Stop the clock
     *(clk + BCM2835_PWMCLK_CNTL) = PM_PASSWORD | (1 << 5);
     // Reset clock
@@ -143,6 +144,7 @@ void audio_send_tone(wave_type_t type, unsigned int hz) {
     // enable (ENAB) + oscillator 
     // raspbian has this as plla
     *(clk + BCM2835_PWMCLK_CNTL) = PM_PASSWORD |
+      BCM2835_CM_MASH3 |
       BCM2835_CM_ENAB |
       BCM2835_CM_OSCILLATOR;
     
