@@ -11,7 +11,7 @@ LIBPI_MODULES = $(LIBPI)/modules/memory.o $(LIBPI)/modules/gpio.o $(LIBPI)/modul
 all : $(NAME).bin
 
 $(NAME).elf: $(NAME).o $(OBJECTS) $(LIBPI_MODULES)
-	arm-none-eabi-ld $^ -o $@ $(LDFLAGS)  
+	arm-none-eabi-gcc $^ -o $@ $(LDFLAGS)  
 	arm-none-eabi-objdump -D $@ > $@.list
 
 %.bin: %.elf
