@@ -2,9 +2,9 @@
 #define SHELL_H
 
 /*
- * Interface to a basic shell. You implement the beginnings of your
- * shell in assignment 5 and complete it (implementing this interface)
- * in assignment 7.
+ * Interface to the CS107E shell. You implement the beginnings
+ * of your shell in assignment 5 and complete it (implementing this
+ * interface) in assignment 7.
  *
  * Author: Philip Levis <pal@cs.stanford.edu>
  * Date: Apr 25 2016
@@ -17,7 +17,7 @@ int shell_init(int graphical);
 void shell_run();
 
 /*
- * Copyright (c) 2016 Stanford University.
+ * Copyright (c) 2017 Stanford University.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

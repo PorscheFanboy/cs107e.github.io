@@ -1,13 +1,18 @@
 NAME = scan
 
 LIBPI = ../../../../libpi
+LIBPIMOD = $(LIBPI)/modules
+
 CPPFLAGS = -I$(LIBPI)/include
 ASFLAGS =
 CFLAGS = -g -Wall -Og -std=c99 -ffreestanding $(CPPFLAGS)
-LDFLAGS = -nostdlib -T memmap -L$(LIBPI)/lib -lgcc
+LDFLAGS = -nostdlib -T memmap -L$(LIBPI)/lib -lgcc 
  
 OBJECTS = start.o cstart.o 
-LIBPI_MODULES = $(LIBPI)/modules/memory.o $(LIBPI)/modules/gpio.o $(LIBPI)/modules/gpioextra.o  $(LIBPI)/modules/timer.o $(LIBPI)/modules/led.o $(LIBPI)/modules/gpioevent.o $(LIBPI)/modules/keyboard-blocking.o $(LIBPI)/modules/uart.o $(LIBPI)/modules/printf.o
+LIBPI_MODULES  = $(LIBPIMOD)/memory.o $(LIBPIMOD)/gpio.o $(LIBPIMOD)/gpioextra.o  
+LIBPI_MODULES += $(LIBPIMOD)/timer.o $(LIBPIMOD)/led.o $(LIBPIMOD)/gpioevent.o 
+LIBPI_MODULES += $(LIBPIMOD)/keyboard-sync.o $(LIBPIMOD)/uart.o $(LIBPIMOD)/printf.o 
+LIBPI_MODULES += $(LIBPIMOD)/ps2.o
 
 all : $(NAME).bin
 
@@ -23,7 +28,7 @@ $(NAME).elf: $(NAME).o $(OBJECTS) $(LIBPI_MODULES)
 	arm-none-eabi-gcc -MM $(CFLAGS) -c $< > $*.d
 
 %.o: %.s
-	cpp -P $< | arm-none-eabi-as $(ASFLAGS) -o $@
+	arm-none-eabi-as $(ASFLAGS) $< -o $@
 
 %.list: %.o
 	arm-none-eabi-objdump -D --no-show-raw-insn $< > $@

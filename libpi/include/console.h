@@ -7,6 +7,7 @@
  * You implement this interface in assignment 6.
  *
  * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
+ * Author: Philip Levis <pal@cs.stanford.edu>
  * Date: 3/24/16
  */
 

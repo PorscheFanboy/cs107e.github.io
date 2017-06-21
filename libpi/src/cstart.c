@@ -1,3 +1,18 @@
+/*
+ * Reference full implementation of C start sequence for CS107E. This
+ * function is called from start.s. _cstart() zeroes out the BSS
+ * (assignment 4) and installs interrupt vectors (assignment 7). It
+ * also calls malloc_init(), but also defines a weak symbol so if the
+ * program does not use malloc then this call does nothing. If main()
+ * returns, it turns on the green ACT LED on the Raspberry Pi board.
+ *
+ * Author: Philip Levis <pal@cs.stanford.edu>
+ * Author: Pat Hanrahan <hanrahan@cs.stanford.edu>
+ * Author: Julie Zelenski <zelenski@cs.stanford.edu>
+ *
+ * Date: 6/20/17
+ */
+
 #define GPIO_FSEL4  ((unsigned int *)0x20200010)
 #define GPIO_SET1   ((unsigned int *)0x20200020)
 #define GPIO_CLR1   ((unsigned int *)0x2020002c)
@@ -49,3 +64,33 @@ void _cstart() {
 }
 
 void __attribute__ ((weak)) malloc_init(unsigned size) {}
+
+/* Copyright (c) 2017 Stanford University.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * - Redistributions of source code must retain the above copyright
+ *   notice, this list of conditions and the following disclaimer.
+ * - Redistributions in binary form must reproduce the above copyright
+ *   notice, this list of conditions and the following disclaimer in the
+ *   documentation and/or other materials provided with the
+ *   distribution.
+ * - Neither the name of the Stanford University nor the names of
+ *   its contributors may be used to endorse or promote products derived
+ *   from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL STANFORD
+ * UNIVERSITY OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ * STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
