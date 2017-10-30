@@ -4,7 +4,7 @@ title: Home
 show_on_index: true
 ---
 
-### Welcome to the Spring 2017 offering of CS107e!
+### Welcome to the Winter 2018 offering of CS107e!
 
 CS107 is the third course in Stanford's introductory programming sequence.
 CS106 provides students 
@@ -43,10 +43,12 @@ All class announcements will be posted on
 
 ### Course Info
 
-  -   **Lectures:** Mon & Fri 11:00 AM-12:20 PM, Room Y2E2 111
-  -   **Labs**: Tue & Wed 6:00 PM-8:00 PM, Gates B21
-  -   **Lecturers**: Julie Zelenski, Pat Hanrahan, and Philip Levis
-  -   **CAs**: Omar Rizwan, Will Crichton, Anna Zeng, Michelle Park
+TBA
+
+  <!-- -   **Lectures:** Mon & Fri 11:00 AM-12:20 PM, Room Y2E2 111 -->
+  <!-- -   **Labs**: Tue & Wed 6:00 PM-8:00 PM, Gates B21 -->
+  <!-- -   **Lecturers**: Julie Zelenski, Pat Hanrahan, and Philip Levis -->
+  <!-- -   **CAs**: Omar Rizwan, Will Crichton, Anna Zeng, Michelle Park -->
 
 ### Office Hours
 
