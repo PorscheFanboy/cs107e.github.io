@@ -39,7 +39,7 @@ where they build a complete hardware-software system.
 ### Announcements
 
 All class announcements will be posted on
-[Piazza](http://piazza.com/stanford/spring2017/cs107e).
+[Piazza](https://piazza.com/stanford/winter2018/cs107e).
 
 ### Course Info
 
