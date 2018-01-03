@@ -20,7 +20,7 @@ CFLAGS += $(ARCHFLAGS) $(CPPFLAGS)
 ASFLAGS = $(ARCHFLAGS) $(CPPFLAGS)
 
 NOTUSED_SRCS = cstart.c interrupt_handlers.c
-SRCS = abort.c system.c mmu.c interrupts.c reboot.c printf.c uart.c timer.c armtimer.c gpio.c gpioextra.c gpioevent.c debounce.c led.c pwm.c tone.c mailbox.c property.c fb.c font.c gl.c keyboard-async.c pmu.c rand.c malloc.c circular.c console.c strtol.c backtrace.c mouse.c paint.c shell.c spi.c i2c.c sd.c fat.c fs.c keyboard-emulator.c ps2.c
+SRCS = abort.c system.c interrupts.c reboot.c printf.c uart.c timer.c armtimer.c gpio.c gpioextra.c gpioevent.c led.c pwm.c mailbox.c fb.c font.c gl.c keyboard-async.c malloc.c circular.c console.c strtol.c backtrace.c mouse.c shell.c keyboard-emulator.c ps2.c
 ASRCS = register.s memory.s vectors.s
 OBJS = ${SRCS:.c=.o} ${ASRCS:.s=.o}
 
