@@ -43,16 +43,16 @@ All class announcements will be posted on
 
 ### Course Info
 
-TBA
+  -   **Lectures:** Mon & Fri 11:30 AM-12:50 PM, Room 124, Building 160
+  -   **Labs**: Tue & Wed 6:30 PM-8:30 PM, Gates B21 
+  -   **Lecturers**: Julie Zelenski, Pat Hanrahan
+  -   **CAs**: Lenny Truong, Mark Miller, Anna Zeng, Michelle Park 
 
-  <!-- -   **Lectures:** Mon & Fri 11:00 AM-12:20 PM, Room Y2E2 111 -->
-  <!-- -   **Labs**: Tue & Wed 6:00 PM-8:00 PM, Gates B21 -->
-  <!-- -   **Lecturers**: Julie Zelenski, Pat Hanrahan, and Philip Levis -->
-  <!-- -   **CAs**: Omar Rizwan, Will Crichton, Anna Zeng, Michelle Park -->
-
+<!--
 ### Office Hours
 
 <iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=2v2vsft4r6n68nd5n3hsiv0qjg%40group.calendar.google.com&amp;color=%235F6B02&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="800" height="400" frameborder="0" scrolling="no"></iframe>
+-->
 
 ### Schedule
 
