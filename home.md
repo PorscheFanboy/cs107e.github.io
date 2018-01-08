@@ -35,6 +35,9 @@ using a keyboard and display.
 Finally, students do a project of their choosing 
 where they build a complete hardware-software system.
 
+For information about the differences between CS107 and CS107e,
+check out this [FAQ](https://web.stanford.edu/class/cs107e/).
+
 
 ### Announcements
 
