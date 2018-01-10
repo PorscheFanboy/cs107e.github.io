@@ -37,6 +37,8 @@ Philip Guo, a former PhD student at Stanford. has produced some nice
 [videos](http://pgbovine.net/command-line-tutorial.htm) that introduce basic
 unix commands.
 
+CS107 also has maintains a nice library of [unix reference documents and videos](http://cs107.stanford.edu/unixref).
+
 ## Unix commands
 
 This tutorial walks you through the use of most basic Unix commands for navigating the file system, viewing files, and reading the manual pages.
