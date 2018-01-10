@@ -32,7 +32,7 @@ clean :
 	rm -f *.a
 	rm -f *~
 
-install: libpiextra.a keyboard-sync.o
+install: libpiextra.a 
 	cp libpiextra.a ../lib
 
 # use archive -D flag to timestamp=zero, binary file will be deterministic
