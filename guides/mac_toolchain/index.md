@@ -86,6 +86,11 @@ to install a few things. These instructions will guide you through those steps.
     installer. Follow the instructions to complete the installation. You will need
     to restart the computer after the installation.
 
+    **NOTE**: Users of the latest macOS (known issue on High Sierra Version
+    10.13.1) may see a message saying "System Extension Blocked". Open the
+    `Security & Privacy` menu in `Settings`. Under the `General` tab, click the
+    `Allow` button next to the message indicating the blocked system extension.
+
 2.  If you are in lab and got your kit, plug the USB breakout board
     into a USB port on your laptop. Check whether the serial port
     exists by looking for the device file:
