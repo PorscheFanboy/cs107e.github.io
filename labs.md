@@ -12,9 +12,9 @@ title: Labs
 {% endfor %}
 
 ### Lab schedule
-Tuesday, 6-8pm
+Tuesday, 6:30-8:30pm
 
-Wednesday, 6-8pm
+Wednesday, 6:30-8:30pm
 
 ### Lab FAQ
 
