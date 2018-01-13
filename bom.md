@@ -1,6 +1,6 @@
 * 1 Raspberry Pi A+
-* 1 4GB SDHC card
-* 1 USB serial cable 
+* 1 8GB SDHC card
+* 1 USB->serial adapter 
 * 1 Breadboard
 * 20 1K resistors (4 transistors, 8 leds, 4 segments)
 * 4 10K resistors (4 buttons)
