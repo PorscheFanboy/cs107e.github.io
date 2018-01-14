@@ -307,7 +307,10 @@ submission pull request, which is covered in the following section.
 
 #### Step 7: Answer some background questions
 Create a file called `background.txt` that contains answers to the following
-questions.
+questions.  Responses to these questions will be graded by a human, so no need
+to follow strict formatting requirements.  However, please ensure that your
+responses are clearly labeled (i.e. we know what question it correspond too)
+and reasonably organized.
 
 1. What is the result of performing a bitwise OR of the following two
    hexadecimal numbers (include the result in decimal): 0x0f OR 0xff. Now left
