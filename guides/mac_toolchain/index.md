@@ -74,7 +74,7 @@ to install a few things. These instructions will guide you through those steps.
 1.  Install the CP210x USB to UART Drivers
 
     [Download Version
-    4](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx)
+    5](https://www.silabs.com/products/mcu/Pages/USBtoUARTBridgeVCPDrivers.aspx)
     of the drivers. Clicking on the download link will download the file
     `Mac_OSX_VCP_Driver.zip`. Opening this file will uncompress and you will
     see a new file, `SiLabsUSBDriverDisk.dmg`. Opening the dmg file, will mount
