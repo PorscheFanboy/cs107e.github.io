@@ -91,11 +91,11 @@ Linux, you don't need to do anything special here.
 Our provided `rpi-install.py` program is used to send a binary
 file to the bootloader.  
 
-To load and run `blink-onpi.bin`, simply type:
+To load and run `blink-actled.bin`, simply type:
 
-    % rpi-install.py blink-onpi.bin 
+    % rpi-install.py blink-actled.bin 
 	Found serial port: /dev/cu.SLAB_USBtoUART
-	Sending `blink-onpi.bin` (72 bytes): .
+	Sending `blink-actled.bin` (72 bytes): .
 	Successfully sent!
     
 After a brief pause, you should see the green LED on the Pi slowly blinking.

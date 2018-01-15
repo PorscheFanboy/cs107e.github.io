@@ -37,33 +37,30 @@ Verify that the card is mounted.
 
 By default, the volume is named `NO NAME`.
 
-- On Linux, the SDHC ...
 
 ### Download and install firmware
 
 Now, download the Raspberry Pi firmware from our [Github
 repository](https://github.com/cs107e/cs107e.github.io/tree/master/firmware).
 
-There should be 5 files.
+There should be 4 files.
 
     % ls firmware
-    blink-onpi.bin   bootloader.bin  start.elf
-    bootcode.bin    config.txt
+    blink-actled.bin   bootcode.bin     bootloader.bin  start.elf     
 
-`bootcode.bin` is the bootloader for the GPU, `start.elf` is the GPU start up
-code, and `kernel.img` is the program run by the Pi. Normally, `kernel.img` is
+`bootcode.bin` is the bootloader for the GPU and `start.elf` is the GPU start up code. Normally, `kernel.img` is
 the linux kernel. In this course, we will run replace the linux kernel with our
 own program.
 
-Notice there are also two programs, `blink-onpi.bin` and
-`bootloader.bin`.  Initially, you should just copy `blink-onpi.bin`
+Notice there are also two programs, `blink-actled.bin` and
+`bootloader.bin`.  Initially, you should just copy `blink-actled.bin`
 to `kernel.img`. Thus, when the Pi boots, it runs a program that
 blinks the on-board activity (ACT) LED connected to GPIO47. This is a
 good way to test whether your Pi is working. If instead, you replace
 `kernel.img` with `bootloader.bin`, the Pi will boot and run a boot
 loader that can be used to upload programs to the Pi. You should
 replace `kernel.img` with `bootloader.bin` after you've tested that
-your Pi works correctly with `blink-onpi.bin`.
+your Pi works correctly with `blink-actled.bin`.
 
 Copy these files onto your SDHC Card.
 
