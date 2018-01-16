@@ -25,9 +25,9 @@ Are you familiar with the following commands?
 5. Do you know how to run a command with different options? Do you know how to
    find documentation about the options to a Unix command?
 6. Are you proficient with Unix text editors such as Emacs or Vi? If not, you
-   should learn one of these editors. Stanford has good tutorials on both
-   [emacs](http://web.stanford.edu/class/cs107/guide_emacs.html) and
-   [vi](http://web.stanford.edu/class/cs107/guide_vim.html).
+   should learn one of these editors. CS107 has some info on
+   [emacs](http://cs107.stanford.edu/guide/emacs.html) and
+   [vi](http://cs107.stanford.edu/guide/vim.html).
 7. Do you know about environment variables such as `PATH`?
    Do you know the purpose of `PATH`? Do you know how to change `PATH`?
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Binary Utilities (binutils)
+toc: true
 ---
 
 This document describes the binary utilities (binutils), the set of tools used for compiling,
@@ -12,13 +13,11 @@ very difficult problems.
 
 This guide refers to each tool with its short name (e.g., ld, as). Typically, on a UNIX/Linux/Darwin
 machine, these names refer to the native tools, tools for that computer. For example, gcc on
-a myth machine is a verion of the Gnu C Compiler for Linux on an x86 processor. Since we're
+a myth machine is a version of the Gnu C Compiler for Linux on an x86 processor. Since we're
 using a laptop to cross-compile for the Raspberry Pi, you want to use the binary utilities
 that are designed to run on your machine but compile for the Raspberry Pi. These tools are
 prefixed with `arm-none-eabi`. So you want to use `arm-none-eabi-ld` not `ld`.
 
-
-## Installing
 
 ### Core utilities
 
@@ -164,11 +163,11 @@ which produces output like this:
 Under `text` you see the size of the actual machine code that makes up your program. Similarly to 
 the symbol types listed under `nm` above, the `data` section is the size of storing your initialized 
 global variables, and `bss` is the size of storing your uninitialized global variables. The `dec` and 
-`hex` numbers indicate the total size (sum of text, data, & bss) in decimal and hexidecimal, 
+`hex` numbers indicate the total size (sum of text, data, & bss) in decimal and hexadecimal, 
 respectively.
 
 The options for the size command are mostly to change the format of the output. For example, to see 
-the section sizes in hexidecimal, use the `-x` option (`size -x test.o`). You can also specify the 
+the section sizes in hexadecimal, use the `-x` option (`size -x test.o`). You can also specify the 
 file type if it is not automatically recognized. For example if you want to know the size of a raw 
 binary file, you could use 
 

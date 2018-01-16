@@ -3,11 +3,12 @@ layout: page
 title: 'Lab 1: Setup the Raspberry Pi'
 permalink: /labs/lab1/
 released: true
+toc: true
 ---
 
 *Lab written by Pat Hanrahan*
 
-### Goals
+## Goals
 
 During this lab you will:
 
@@ -15,7 +16,7 @@ During this lab you will:
 2.  Learn how to use a breadboard with LEDs and buttons.
 3.  Learn how to download and run bare metal programs on the Raspberry Pi.
 
-##### How does lab work?
+## How does lab work?
 
 Before beginning,
 you should find a partner and introduce yourself to one another.
@@ -58,7 +59,7 @@ and the expert guidance of the TA
 is what makes lab time truly special.
 Your sincere participation can really accelerate your learning!
 
-### Prelab preparation
+## Prelab preparation
 
 To prepare for this lab, you should do the following.
 
@@ -117,9 +118,9 @@ a needle-nose pliers (green-handled widget),
 and a multimeter (the orange thing with a display).
 Don't worry about wire and other supplies; we'll provide that.
 
-### Lab exercises
+## Lab exercises
 
-#### 1. Assemble the blink program
+### 1. Assemble blink
 
 All CS107e labs and assignments are distributed and managed as git repositories.
 For assignments, your code will be in your own personal repository 
@@ -144,7 +145,7 @@ Now `cd cs107e.github.io/_labs/lab1/code/blink` and type the commands:
 
 If this works, you are good to go.
 
-#### 2. Inventory your Raspberry Pi kit
+### 2. Inventory your kit
 
 You will receive the official CS107e Raspberry Pi kit when you get to the lab.
 Review the [kit contents](/guides/bom/). Take a moment to identify and inventory all the parts. Make sure your kit is complete.
@@ -152,7 +153,7 @@ Review the [kit contents](/guides/bom/). Take a moment to identify and inventory
 (Recall that a [resistor](https://learn.sparkfun.com/tutorials/resistors)'s band colors tell its resistance: in this case,
 10K or 1K ohms. Check out this [chart and calculator](http://www.digikey.com/en/resources/conversion-calculators/conversion-calculator-resistor-color-code-4-band).)
 
-#### 3. Wire and power your breadboard
+### 3. Power your breadboard
 
 The next step is to wire up your breadboard.
 Below is an example of a breadboard with clean wiring;
@@ -256,7 +257,7 @@ While the LED is lit, make the following measurements with the multimeter.
 Calculate the current flowing through the LED.
 Enter the calculated current on your lab checklist.
 
-#### 4. Powering your breadboard via the Pi
+### 4. Power via the Pi
 
 Now we will rewire things so that we power the Raspberry Pi,
 and also have it provide power to the breadboard.
@@ -294,7 +295,7 @@ Replace your 1K resistor with a 10K resistor. Does the brightness of
 the LED change? (You might want to coordinate with another group so
 you can compare them side by side.) Why?
 
-#### 5. Use the SD card
+### 5. Use the SD card
 
 Your Raspberry Pi kit contains an SDHC card.
 A secure digital (SD) card contains non-volatile memory for storage.
@@ -422,7 +423,7 @@ repeat these steps.
 If the ACT LED doesn't blink after booting, 
 then something is wrong and you may need to replace the Pi with a working one.
 
-#### 6. Blink the breadboard LED
+### 6. Blink breadboard LED
 
 To do this, start by wiring the LED on your breadboard to GPIO 20 (pin 38).
 
@@ -443,7 +444,7 @@ It should now blink the LED on your breadboard.
 
 Hoorah, hoorah!🔥
 
-#### 7. A better way: use the bootloader
+### 7. A better way: bootloader
 
 Each time you change your code, you could repeat this process.
 This would involve
@@ -552,7 +553,7 @@ and the new version will be downloaded and run.
 
 Hoorah, hoorah, hoorah!!
 
-#### 8. Study the blink program
+### 8. Study the blink program
 
     .equ DELAY, 0x3F0000
 
@@ -607,7 +608,7 @@ Do the following exercises:
     human-readable form. You can run `man xxd` to learn more. What are
     the numbers at the beginning of each line `xxd` outputs?)
 
-    Find the first occurence of `e3`. What is the byte offset of `e3`
+    Find the first occurrence of `e3`. What is the byte offset of `e3`
     relative to the start of the file?
 
 -   Change the program such that the blink rate slows down by a factor
@@ -623,7 +624,7 @@ of 2.
     Now perform experiments to determine how many instructions per second the
     Raspberry Pi executes.
 
-#### 9. Run `button` on your Raspberry Pi (optional)
+### 9. Add a button! (optional)
 
 This last part is optional.
 You do not need to use a pushbutton for Assignment 1,
@@ -708,7 +709,7 @@ Broadcom peripheral manual, or ask someone who knows the answer.
 -   How does the Pi know which branch to jump to when it reaches `beq on`?
 
 
-### Hand in your checklist to a TA
+## Checkoff with TA
 
 [Checklist][checklist form]
 

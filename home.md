@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Home
-show_on_index: true
+title: CS107e Winter 2018
+permalink: index.html
 ---
 
 ### Welcome to the Winter 2018 offering of CS107e!
@@ -68,3 +68,5 @@ to Stanford students via
 
 Please read the assigned readings before attending lecture and lab.
 You should also read the [guides](/guides/) for each week.
+
+{% include schedule.html %}

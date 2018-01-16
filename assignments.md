@@ -11,8 +11,8 @@ title: Assignments
 {% endunless %}
 {% endfor %}
 
-### Frequently asked questions about assignments
-
+### Common questions about assignments
+---
 *Written by Pat Hanrahan*
 
 **What is the expected assignment workload?**

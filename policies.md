@@ -2,13 +2,8 @@
 layout: page
 title: Course Policies
 permalink: /policies/
+toc: true
 ---
-
-## Table of Contents
-
-*  [Late Policy](#late-policy)
-*  [Collaboration Policy](#collaboration-policy)
-*  [Collaboration Policy FAQ](#collaboration-policy-faq)
 
 ## Late Policy
 
@@ -66,7 +61,7 @@ but any help must remain within acceptable limits, as detailed in the concrete
 examples given below.
 
 All of you should be familiar with the principles of the [Stanford Honor
-Code](http://web.stanford.edu/class/cs107/collaboration.html). The [CS
+Code](https://communitystandards.stanford.edu/student-conduct-process/honor-code-and-fundamental-standard#honor-code). The [CS
 department Honor Code policy](http://csmajor.stanford.edu/HonorCode.shtml)
 further explains how it applies in CS courses. Students are to uphold their
 obligations to do honorable work and encourage others to do the same. On our
@@ -269,7 +264,7 @@ our respect and appreciation for your honor and efforts by doing
 our part to make absolutely clear our expectations and hold accountable
 those students who act in violation.
 
-## Collaboration Policy FAQ
+## Questions
 
 **Can I include my solution code in my portfolio for internship/scholarship
 applications?**

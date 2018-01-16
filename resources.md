@@ -1,10 +1,11 @@
 ---
 layout: page
-title: Resources
+title: Other resources
 permalink: /resources/
+toc: true
 ---
 
-## Demos & Interactive Resources
+## Demos
 
 * [Raspberry Pi GPIO Pinout](https://pinout.xyz/) website. Nice way to see alternate
   functions by clicking each pin. Also, click Ground and you see all the
@@ -40,13 +41,13 @@ will come in handy in a future lab. This demo teaches you to link bits to charac
 
 ## Informational Resources
 
-#### Raspberry Pi Hardware
+### Raspberry Pi
 
 We are using the Raspberry Pi A+ in class. The A+ is similar to the B+.
 
 * [Raspberry Pi Board Schematics](https://github.com/raspberrypi/documentation/blob/master/hardware/raspberrypi/schematics/README.md)
 
-#### ARM
+### ARM architecture
 
 The Raspberry Pi A+ uses a Broadcom BCM2835 chip. 
 Inside the chip is an ARM1176JFZ-S processor 
@@ -76,7 +77,7 @@ in Chapter 4: ARM Organization and Implementation.
 
 * Excellent [slides](http://twins.ee.nctu.edu.tw/courses/ip_core_02/handout_pdf/Chapter_2.pdf) by Prof. Yen at NCTU on the ARM processor core and instruction sets.
 
-#### ARM Assembly Language
+### ARM Assembly Language
 
 * Carl Burch's
   [Introduction to ARM Assembly Language](http://www.toves.org/books/arm/)
@@ -92,7 +93,7 @@ in Chapter 4: ARM Organization and Implementation.
 
 * [Thinkingeek ARM Assembler for the Raspberry Pi](http://thinkingeek.com/2013/01/09/arm-assembler-raspberry-pi-chapter-1/).
 
-#### Bare Metal Programming
+### Bare Metal Programming
 
 * David Welch's excellent set of [bare metal programming examples](https://github.com/dwelch67/raspberrypi).
 
@@ -102,7 +103,7 @@ in Chapter 4: ARM Organization and Implementation.
 
 * The [Raspberry Pi Bare Metal Forum](http://www.raspberrypi.org/forums/viewforum.php?f=72) has lots of information from experienced developers. Venturing into the forum is a great way to learn advanced techniques. 
 
-#### C Programming Language
+### C Programming Language
 
 * [EssentialC](http://cslibrary.stanford.edu/101)
 

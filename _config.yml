@@ -1,56 +1,13 @@
-# build
 markdown: kramdown
 kramdown:
   input: GFM
   hard_wrap: false
 permalink: pretty
 exclude:
-  - CNAME
-  - Gemfile
-  - LICENSE
-  - Rakefile
   - README.md
-  - vendor/
-  - vnu/
   - libpi/tests
-  - vnu.zip
-sass:
-  sass_dir: noita/_scss
-  style: compressed
-# compress layout in _noita/compress.html
-compress_html:
-  clippings: all
-  endings: all
-  comments: ["<!--", "-->"]
-  ignore:
-    envs: [travis]
 collections:
   assignments:
     output: true
   labs:
     output: true
-# theme
-noita:
-  name: CS107e
-  description: Computer Systems from the Ground Up
-  lang: en
-  favicons:
-    - /assets/2014/04/21/favicon-152.png
-  topbar:
-    toggle: Menu
-    right:
-      - name: Course Description
-        url: /about/
-      - name: Course Policies
-        url: /policies/
-      - name: Assignments
-        url: /assignments/
-      - name: Labs
-        url: /labs/
-      - name: Guides
-        url: /guides/
-      - name: Resources
-        url: /resources/
-      - name: Repository
-        url: https://github.com/cs107e/cs107e.github.io
-        class: small button
