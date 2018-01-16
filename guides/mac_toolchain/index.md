@@ -118,13 +118,26 @@ $ brew install rpi-install
     '/System/Library/Frameworks/Python.framework/Versions/2.7/doc'`,
     don't worry: just keep going with the `brew install rpi-install`.
 
-5.  Check that everything is working by running `rpi-install.py`. You should
+    (If you have trouble with brew not recognizing your python has a valid pyserial/xmodem, try instead the command `brew install rpi-install --ignore-dependencies`)
+
+5.  Check that everything is working by running `rpi-install.py -h`. You should
     see the output below:
 
-    ```
-$ rpi-install.py
-usage: rpi-install.py [-p] [port] file
- -p   ..... print output from the Pi
- port ..... serial port (optional)
- file ..... binary file to upload
-    ```
+~~~
+$ rpi-install.py -h
+usage: rpi-install.py [-h] [-v] [-q] [-t T] [-p | -s] [port] file
+
+This script sends a binary file to the Raspberry Pi bootloader. Version 0.8.
+
+positional arguments:
+  port        serial port
+  file        binary file to upload
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -v          verbose logging of serial activity
+  -q          do not print while uploading
+  -t T        timeout for -p
+  -p          print output from the Pi after uploading
+  -s          open screen on the serial port after uploading
+~~~
