@@ -69,7 +69,7 @@ a.toc-link {
 }
 /* Use cardinal red bar for active link */
 .is-active-link::before {
-     background-color: #8c1515;
+     background-color: #006400;
  }
 
 /* spacing between items */
