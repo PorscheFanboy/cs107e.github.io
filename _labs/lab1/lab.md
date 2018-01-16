@@ -147,7 +147,7 @@ If this works, you are good to go.
 #### 2. Inventory your Raspberry Pi kit
 
 You will receive the official CS107e Raspberry Pi kit when you get to the lab.
-Review the [kit contents](/guides/bom.md). Take a moment to identify and inventory all the parts. Make sure your kit is complete.
+Review the [kit contents](/guides/bom/). Take a moment to identify and inventory all the parts. Make sure your kit is complete.
 
 (Recall that a [resistor](https://learn.sparkfun.com/tutorials/resistors)'s band colors tell its resistance: in this case,
 10K or 1K ohms. Check out this [chart and calculator](http://www.digikey.com/en/resources/conversion-calculators/conversion-calculator-resistor-color-code-4-band).)
