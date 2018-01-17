@@ -130,15 +130,16 @@ so you will be able
 to simply pull the current courseware repo for the class 
 and work off the lab code from there.
 
-Clone the courseware repo: 
+Clone the courseware and lab repos:
 
     $ git clone https://github.com/cs107e/cs107e.github.io
+    $ git clone https://github.com/cs107e/lab1
 
 Pull up the [checklist form](checklist) and have it open in a browser
 so you can jot things down as you go. Only one checklist needs to be
 submitted for both you and your partner.
 
-Now `cd cs107e.github.io/_labs/lab1/code/blink` and type the commands:
+Now `cd lab1/code/blink` and type the commands:
 
     $ arm-none-eabi-as blink.s -o blink.o
     $ arm-none-eabi-objcopy blink.o -O binary blink.bin
@@ -351,7 +352,7 @@ change your shell's current directory to the
 `cs107e.github.io/firmware` folder.
 
     $ pwd
-    /Users/[USERNAME]/cs107e.github.io/_labs/lab1/code/blink
+    /Users/[USERNAME]/lab1/code/blink
     $ cd /Users/[USERNAME]/cs107e.github.io/firmware
 
 (The part of that path before `cs107e.github.io` might be different
@@ -528,7 +529,7 @@ you don't need to do anything special here.**
 
 Let's try the bootloader. In some Terminal shell, change back to the
 directory where you assembled `blink.bin` in step 1. That's
-`cs107e.github.io/_labs/lab1/code/blink/`.
+`lab1/code/blink/`.
 
 Now to load and run `blink.bin`, simply type:
 
