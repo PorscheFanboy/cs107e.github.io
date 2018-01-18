@@ -3,6 +3,7 @@ layout: page
 title: 'Assignment 0: Choose Lab Section, Learn Git'
 permalink: /assignments/assign0/
 released: true
+toc: true
 ---
 
 *Written by Omar Rizwan*
@@ -12,6 +13,8 @@ released: true
 **No late days can be used on this assignment.**
 
 *Welcome to CS107E!*
+
+## Goals
 
 We have two goals for this assignment:
 
@@ -39,22 +42,7 @@ feedback on the design and implementation.  The version control skills that you
 will learn in this course will be invaluable for any future software projects
 that you decide to work on.
 
-### Steps
-
-- [Step 0: Prerequisites](#step-0-prerequisites)
-- [Part 1](#part-1)
-  - [Step 1: Configure Git](#step-1-set-up-git)
-  - [Step 2: Get started with GitHub](#step-2-get-started-with-github)
-- [Part 2](#part-2)
-  - [Step 3: Download the 'starter code'](#step-3-download-the-starter-code)
-  - [Step 4: Indicate your lab preference](#step-4-write-down-your-lab-preference)
-  - [Step 5: Commit your change](#step-5-commit-your-change)
-  - [Step 6: Push to GitHub](#step-6-push-to-github)
-  - [Step 7: Answer some background questions](#step-7-answer-some-background-questions)
-  - [Step 8: Create a pull request (submission)](#step-8-create-a-pull-request-submission)
-- [Afterward: Grader's code review](#afterward-graders-code-review)
-
-#### Step 0: Prerequisites
+## Prerequisites
 
 This assignment assumes basic knowledge of the UNIX command line using an
 operating system such as Linux or macOS including how to edit a text file.
@@ -71,9 +59,9 @@ Students are expected to be familiar with the material covered in the [course
 guides](/guides) which includes information about hardware and the Raspberry Pi
 (we will start working with this in week 2). 
 
-### Part 1
+## Steps
 
-#### Step 1: Configure Git
+### 1: Configure Git
 
 Follow [these instructions](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 to install Git on your Mac or Linux machine
@@ -112,7 +100,7 @@ user.email=myemail@stanford.edu
 
 <img title="git config --list and output" src="images/00-git-config-list.png" height="500">
 
-#### Step 2: Get started with GitHub
+### 2: Get started with GitHub
 
 This classes uses GitHub to host all the assignments. Students will use GitHub
 to download assignments and upload their own solutions for grading.
@@ -121,12 +109,9 @@ When enrolling for this course, you should have provided us with your
 [GitHub](https://github.com) username.  Each student will be given a private
 repository inside the [CS107e organization](https://github.com/cs107e) to use
 for assignments.  Once we have set up your repository, we will send you an
-email which indicates that you are ready to move on to [Part 2](#part-2) of
-this assignment.
+email which indicates that you are ready to move on to the next step.
 
-### Part 2
-
-#### Step 3: Download the 'starter code'
+### 3. Download 'starter code'
 
 **Note**: For the rest of this assignment, **replace all instances of
 `[YOUR-GITHUB-USERNAME]` with your GitHub username**.
@@ -169,7 +154,7 @@ $ ls
 lab.txt
 ```
 
-#### Step 4: Indicate your lab preference
+### 4. Indicate your lab preference
 
 There are two lab sections that meet every week of the quarter:
 
@@ -188,7 +173,7 @@ strings.
 
 Save the file.
 
-#### Step 5: Commit your change
+### 5. Commit your change
 
 Git should now recognize that you have made a change to the starter code.
 Verify this by running `git status`:
@@ -266,7 +251,7 @@ more opportunities you will have to restore previous working states without
 losing as much work.  **We recommend that you commit often and that you write
 detailed commit messages.**
 
-#### Step 6: Push to GitHub
+### 6. Push to GitHub
 
 The previous Git commands recorded the changes to a local copy of your
 repository.
@@ -305,7 +290,7 @@ The `submit-assignX` branches are placeholders used for submission; you should
 not make any changes to them. You will use them as base branches for your
 submission pull request, which is covered in the following section.
 
-#### Step 7: Answer some background questions
+### 7. Answer background questions
 Create a file called `background.txt` that contains answers to the following
 questions.  Responses to these questions will be graded by a human, so no need
 to follow strict formatting requirements.  However, please ensure that your
@@ -327,7 +312,7 @@ and reasonably organized.
 Use the `git` commands you learned in the previous steps to stage this file and
 commit it to your local repository. Then, push your changes to your GitHub.
 
-#### Step 8: Create a pull request (submission)
+### 8. Create a pull request (submission)
 
 In this course, assignment submission is done using GitHub's _pull request_
 feature.  Pull requests provide a summary view of changes made to the code as
@@ -401,7 +386,7 @@ submission for deadlines and late days. For example, creating a pull request at
 11:59 and pushing an extra commit at 12:01 to fix an error from the autochecker
 is considered a day late.
 
-### Afterward: Grader's code review
+## Afterward: Grader's code review
 
 Graders will review code by including line-specific and general comments on the
 pull request page:
