@@ -31,6 +31,7 @@ How many times does the scanner pattern appear?
 
 Check out the [Larson Scanner Kit Demo](https://www.youtube.com/watch?v=yYawDGDsmjk) from evilmadscientist.com.
 
+## Goals
 When you're done with this assignment, you should
 
 - understand ARM assembly language,
@@ -48,7 +49,7 @@ This assignment involves modifying the blink program showed in class.
 To implement a scanner, you will need to control at least 4 LEDs.
 
 ### 1. Wire up your breadboard
-The basic scanner should have a row of 4 LEDs. If you feel ambitious and want to make more interesting patterns, wire up 8 LEDs. Test that all LEDs are correctly wired and light up when powered.
+The basic scanner should have a row of 4 LEDs. If you feel ambitious and want to make more interesting patterns, wire up 8 LEDs. Validate your breadboard wiring by testing that each LED lights up when powered.
 
 ### 2. Connect the LEDs to GPIO 20-23
 The leftmost LED in your scanner should be connected to GPIO 20 of your Raspberry Pi, the second from the left to GPIO 21, and so on, such that the rightmost LED in your scanner is connected to GPIO 23 (or GPIO 27 if using 8 LEDs). Refer to the [Raspberry Pi pinout](https://pinout.xyz/) to map each GPIO to the physical pin so that you correctly wire up the connections.
@@ -77,12 +78,14 @@ the Makefile, you should run `make` from the command line in the directory conta
 
 For now, don't worry about how `make` works. We'll go through Makefiles in-depth in the next lab.
 
-If you build and test the starter program as given, it should blink the leftmost LED of your scanner.  You're now ready to write your scanner program!
+If you build and test the starter program, it should blink the leftmost LED of your scanner on a correctly-wired breadboard.  You're now ready to write your scanner program!
 
 ### 4. Configure scanner GPIOs
-The starter program configures the single pin GPIO 20 and enters an infinite loop to set and clear that pin. Your job is to extend the initialization code to configure all the GPIO pins in your scanner and change the loop to sequentially set and clear each pin in the scanner pattern.
+The starter program is a copy of the `blink.s` you studied in lab1. This program configures the single pin GPIO 20 and enters an infinite loop to set and clear that pin. Carefully review this code and be sure you understand how it accomplishes its tasks. Ask questions if anything is unclear! Your job is to modify this program to instead blink the scanner sequence.  
 
-A good first step is to add code to configure all pins and then test each pin individually by changing the existing loop to blink GPIO 21 or GPIO 22 and so on instead of GPIO 20. Once you have verified that all pins are properly configured, you're now ready to change the loop body to blink the pins in the scanner sequence.
+A good first step is to extend the initialization code to configure all of the GPIOs your scanner uses, not just GPIO 20. Refer to section 6 of the [Broadcom ARM Peripheral](/readings/BCM2835-ARM-Peripherals.pdf) for the details on the GPIO registers.
+
+Be sure to verify that your configuration code is correct. You can test an individual pin by changing the existing loop to blink GPIO 21 or GPIO 22 and so on instead of GPIO 20. Once you have verified that all pins are properly configured, you're now ready to tackle changing the loop body to blink the pins in the scanner sequence.
   
 ### 5. Generate scanner pattern
 The loop will scan back and forth from the GPIO 20 LED to the GPIO 23 LED. Each iteration of the loop still turns on/off one GPIO, but instead of blinking the same GPIO each time, it will blink the next GPIO pin in sequence. If you invest a little bit of cleverness in how the loop advances from pin to pin, you can implement the entire scanner sequence with a fairly tight single loop.
@@ -136,15 +139,12 @@ implementation as your `larson.s` in your repo: you don't need to also
 submit an implementation of the basic assignment. You should get the
 basic assignment working before you start on the extension, though!
 
-## Submit
+## Submit and automated check
 Submit the finished version of your assignment by making a git "pull request", following steps given in the [Assignment 0 writeup](/assignments/assign0/).
-
-## Checks
 
 The automated check here is more likely to fail than in assignment 0,
 since there are more things that can go wrong. In this assignment, the
-automated checker is seeing
-that:
+automated checker is verifying that:
 
 - you have a Makefile (which we've included in the starter code, so
 you should be fine if you keep that as is)
