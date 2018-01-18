@@ -130,9 +130,8 @@ so you will be able
 to simply pull the current courseware repo for the class 
 and work off the lab code from there.
 
-Clone the courseware and lab repos:
+Clone the lab repo:
 
-    $ git clone https://github.com/cs107e/cs107e.github.io
     $ git clone https://github.com/cs107e/lab1
 
 Pull up the [checklist form](checklist) and have it open in a browser
@@ -344,18 +343,18 @@ using it inside Linux.**
 **Don't worry, though: you shouldn't need to modify the SD card after
 this lab, because you can just use the bootloader shown in Part 7.**
 
-Now, we'll use the Raspberry Pi firmware, which is also in our 
-[GitHub repository](https://github.com/cs107e/cs107e.github.io/tree/master/firmware).
+Now, we'll use the Raspberry Pi firmware that was distributed with the lab
+code.  You can also find a master copy of the firmware in the [courseware GitHub
+repository](https://github.com/cs107e/cs107e.github.io/tree/master/firmware).
 
-Right now, you might be in the `blink` folder from step 1. If so, then
-change your shell's current directory to the
-`cs107e.github.io/firmware` folder.
+Right now, you might be in the `blink` folder from step 1. If so, change
+your shell's current directory to the firmware folder.
 
     $ pwd
     /Users/[USERNAME]/lab1/code/blink
-    $ cd /Users/[USERNAME]/cs107e.github.io/firmware
+    $ cd ../../firmware
 
-(The part of that path before `cs107e.github.io` might be different
+(The part of that path before `lab1` might be different
 depending on where exactly you ran `git clone` in the beginning.)
 
 There should be 4 files in that `firmware` folder.
