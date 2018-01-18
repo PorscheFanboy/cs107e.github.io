@@ -8,12 +8,12 @@ $font-family-sans-serif:    Rubik, Arial, Helvetica, sans-serif;
 $font-family-monospace:     Inconsolata, Consolas, Menlo, monospace;
 $font-size-base:            15px;
 
-$dkgreen:#006400;
-$white: #FFFFFF;
+$dkgreen:#060;
+$nearwhite: #ccc;
 
 $navbar-inverse-bg: $dkgreen;
-$navbar-inverse-link-color: $white;
-$navbar-inverse-brand-color: $white;
+$navbar-inverse-link-color: $nearwhite;
+$navbar-inverse-brand-color: $nearwhite;
 
 
 h1.title {
