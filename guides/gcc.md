@@ -5,6 +5,8 @@ title: Guide to Bare Metal Programming with GCC
 
 *Written by Pat Hanrahan*
 
+This guide gives a brief overview of what is unique about compiling C programs to execute in a bare-metal environment.
+
 ### Hosted versus non-hosted (standalone) environments
 A typical program is compiled for a _hosted_ system where it has access to
 the standard libraries and facilities provided by the operating system layer. 
@@ -47,30 +49,17 @@ The `-ffreestanding` option also directs the compiler to not assume that standar
 have their usual definitions. This will prevent the compiler from making optimizations 
 based on assumptions about the behaviors of the standard libraries. For example, 
 in a hosted environment,`gcc` is assured that the available library meets the 
-specification of the language standard. It can transform `printf("hi\n")` into `puts("hi")` 
+specification of the language standard. It can transform `printf("hi")` into `puts("hi")` 
 because it *knows* from the definition of the standard IO library that these two 
-functions are equivalent. In freestanding mode, you could define your own `puts` 
+functions behave equivalently in this case. In freestanding mode, you could define your own `puts` 
 function and your version of `puts` could act completely differently than the standard
  `puts` function, making such a substitution invalid. Thus when `-ffreestanding` is used, 
  `gcc` does not assume a standard library environment and will not make such optimizations. 
 
 It maybe a bit surprising to learn that even when compiling in freestanding mode,
 gcc can emit a call to `memcpy` or `memset`. It uses these routines to
-batch-process a large-ish chunk of data, such as when initializing an array 
-or struct or passing a struct in or out of a function.
-  
-Try adding these two declarations to your code and look at 
-the generated assembly to see the difference between the two:
- 	
- 	char arr[] = {"a", "b", "c"};
- 	char *ptr = "abc";
-
-Only one of these initializations requires `memcpy` -- which one?
-Sketch a memory diagram: where are the characters "abc\0" stored for arr? 
-where are they stored for ptr?  
-
-In some situations, you can rearrange your code to avoid the need for `memcpy` 
-Where unavoidable, you must supply your own implementation of `memcpy`.
+block-copy a large-ish chunk of data, such as when initializing an array 
+or struct or passing a struct in or out of a function. In some situations, you can rearrange your code to avoid the need for block memory transfer, e.g. assign struct fields individually rather copy the entire struct. Where unavoidable, you must supply your own implementation of `memcpy`.
 
 ### Linker options for default libraries and start files
 The linker option 
@@ -87,17 +76,13 @@ functions (`printf`, `strlen` and friends).  The linker option
 
 	-nodefaultlibs
 
-prevents that automatic link, the only libraries linked are exactly those 
-that you explicitly name to the linker using the `-l` flag.
+disables linking with those default libraries; the only libraries linked are exactly those that you explicitly name to the linker using the `-l` flag.
 
 `libgcc.a` is a standard library (linked by default, excluded by `-nodefaultlibs`) 
 that provides internal subroutines to overcome shortcomings of particular machines. 
  For example, the ARM processor does not include a division instruction.  The ARM 
  version of `libgcc.a` includes a division function and the compiler emits 
-calls to that function where needed. If you do not provide an implementation of 
-these functions, 
-a program with code that includes division by a variable will not link. 
-The linker complaint will be something
+calls to that function where needed. A program that attempts to use division and is linked `-nodefaultlibs` will fail to link. The linker error will be something
 akin to
 
 	undefined reference to `__aeabi_idivmod'
@@ -112,9 +97,11 @@ callout that notes this:
 but there are a few exceptions. GCC requires the freestanding environment
  provide `memcpy`, `memmove`, `memset` and `memcmp`.
 
+If your program requires one of these routines, you will need to supply it yourself.
+
 Normally, when a program begins to run, the standard start function is called.
  This function sets up the machine to run the program.
-The most common task performed by start is to initialize default values for 
+A common task performed by start is to initialize default values for 
 any variables in your program and call the `main` function.
 
 The option
