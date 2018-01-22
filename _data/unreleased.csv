@@ -1,34 +1,32 @@
 permalink,title,released
-"/assignments/assign2/","Assignment 2: Implement a Clock",false
 "/assignments/assign3/","Assignment 3: Implement a String Formatting Library",false
 "/assignments/assign4/","Assignment 4: Backtrace and Heap Allocator",false
 "/assignments/assign5/","Assignment 5: Reading the Keyboard",false
-"/assignments/assign6/","Assignment 6: Building a Graphics Library and Console",false
-"/assignments/assign7/","Assignment 7: System Monitor with Interrupts",false
+"/assignments/assign2/","Assignment 2: Implement a Clock",false
 "/assignments/project/","Project Suggestions and Guides",false
-"/labs/lab2/","Lab 2: Below C Level",false
-"/labs/lab3/","Lab 3: Debugging and Testing",false
-"/labs/lab4/","Lab 4: Linking and Loading",false
-"/labs/lab5/","Lab 5: Keyboard Surfin",false
+"/assignments/assign7/","Assignment 7: System Monitor with Interrupts",false
+"/assignments/assign6/","Assignment 6: Building a Graphics Library and Console",false
 "/labs/lab6/","Lab 6: Drawing into the Framebuffer",false
 "/labs/lab7/","Lab 7: Raspberry Pi, Interrupted",false
-"/labs/projectlab1/","Project Lab 1: What is Your Project?",false
 "/labs/projectlab2/","Project Lab 2: How Are You Doing?",false
-"","Computer Arithmetic: Signed and unsigned numbers",false
-"","C-mastery",false
-"","C2: Pointers and Arrays",false
+"/labs/lab5/","Lab 5: Keyboard Surfin",false
+"/labs/lab3/","Lab 3: Debugging and Testing",false
+"/labs/lab4/","Lab 4: Linking and Loading",false
+"/labs/projectlab1/","Project Lab 1: What is Your Project?",false
 "","",false
-"","Functions",false
 "","Interrupts",false
-"","Interrupts and Concurrency",false
-"","I/O: External Peripherals, SPI, PS/2, and PWM",false
-"","Modules and Libraries: Linking",false
-"","Linux and Beyond",false
+"","Sensors",false
 "","Memory Management",false
 "","Performance",false
+"","C-mastery",false
 "","Rust",false
-"","Sensors",false
-"","Communication: Serial protocols and ASCII",false
-"","Performance",false
-"","Testing",false
 "","Wrap Up",false
+"","Testing",false
+"","Interrupts and Concurrency",false
+"","Linux and Beyond",false
+"","Computer Arithmetic: Signed and unsigned numbers",false
+"","Functions",false
+"","Performance",false
+"","I/O: External Peripherals, SPI, PS/2, and PWM",false
+"","Communication: Serial protocols and ASCII",false
+"","Modules and Libraries: Linking",false

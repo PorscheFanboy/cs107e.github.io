@@ -122,16 +122,21 @@ Don't worry about wire and other supplies; we'll provide that.
 
 ### 1. Assemble blink
 
-All CS107e labs and assignments are distributed and managed as git repositories.
-For assignments, your code will be in your own personal repository 
-so that you can push your final code for grading.
-For labs, you will not need to turn in your code,
-so you will be able 
-to simply pull the current courseware repo for the class 
-and work off the lab code from there.
+All CS107e labs and assignments are distributed and managed as git
+repositories.  For assignments, your code will be in your own personal
+repository so that you can push your final code for grading.  For labs, you
+will not need to turn in your code, so you will be able to simply pull the
+public lab repository.
 
-Clone the lab repo:
+To keep things organized, we suggest that you create a directory to
+hold all the repositories for the class:
 
+    $ mkdir cs107e
+    $ cd cs107e
+
+Next, clone the courseware and lab repos:
+
+    $ git clone https://github.com/cs107e/cs107e.github.io.git
     $ git clone https://github.com/cs107e/lab1
 
 Pull up the [checklist form](checklist) and have it open in a browser
@@ -343,19 +348,18 @@ using it inside Linux.**
 **Don't worry, though: you shouldn't need to modify the SD card after
 this lab, because you can just use the bootloader shown in Part 7.**
 
-Now, we'll use the Raspberry Pi firmware that was distributed with the lab
-code.  You can also find a master copy of the firmware in the [courseware GitHub
+Now, we'll use the Raspberry Pi firmware that we provide in the [courseware GitHub
 repository](https://github.com/cs107e/cs107e.github.io/tree/master/firmware).
 
 Right now, you might be in the `blink` folder from step 1. If so, change
 your shell's current directory to the firmware folder.
 
     $ pwd
-    /Users/[USERNAME]/lab1/code/blink
-    $ cd ../../firmware
+    /Users/[USERNAME]/cs107e/lab1/code/blink
+    $ cd /Users/[USERNAME]/cs107e/cs107e.github.io/firmware
 
-(The part of that path before `lab1` might be different
-depending on where exactly you ran `git clone` in the beginning.)
+(The part of that path before `cs107e` might be different depending on where
+you created the directory in the beginning.)
 
 There should be 4 files in that `firmware` folder.
 
@@ -496,7 +500,7 @@ to communicate with the Pi.
 
 At the end of the breakout board is a 6 pin header.
 Two other pins are used for transmitting (TX) and receiving (RX).
-The Pi also has a TX and RX pin (pins 8 and 10) on the GPIO header.
+The Pi also has a TX and RX pin (physical pins 8 and 10) on the GPIO header.
 
 Now connect the TX and RX pins on your Pi 
 to the RX and TX pins on the USB breakout board.
@@ -513,9 +517,9 @@ Don't just follow the picture blindly!
 
 In this configuration, the green wire connects
 the RX header pin on the USB serial breakout board
-to the TX GPIO Pin 8 on the Pi's header.
+to the TX Pin (physical pin 8) on the Pi's header.
 The blue wire connects the TX header pin
-to the RX GPIO Pin 10.
+to the RX Pin (physical pin 10.
 
 We have created a Python program that sends binary files to the bootloader.
 

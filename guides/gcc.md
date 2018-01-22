@@ -20,12 +20,13 @@ By default, `gcc` compiles assuming a hosted environment, since this is the comm
 To properly compile a bare metal program, we need to set the appropriate compiler and 
 linker options to ensure the program is configured to run standalone.
 
-### Compiler option -ffreestanding
+### Compiler option `-ffreestanding`
 This `gcc` option directs the compiler to limit this program to only those features available in the freestanding environment. 
 
 	% arm-none-eabi-gcc -ffreestanding -c blink.c
 
-In freestanding mode, the only available standard header files are: `<float.h>`, `<iso646.h>`, `<limits.h>`, `<stdarg.h>`, 
+In freestanding mode, the only available standard header files are:
+`<float.h>`, `<iso646.h>`, `<limits.h>`, `<stdarg.h>`, 
 `<stdbool.h>`, `<stddef.h>`, and `<stdint.h>` (C99 standard 4.6).
 These headers define the types appropriate for the machine being used, as well 
 as useful constants such as the minimum and maximum values for different types. 
@@ -62,21 +63,15 @@ block-copy a large-ish chunk of data, such as when initializing an array
 or struct or passing a struct in or out of a function. In some situations, you can rearrange your code to avoid the need for block memory transfer, e.g. assign struct fields individually rather copy the entire struct. Where unavoidable, you must supply your own implementation of `memcpy`.
 
 ### Linker options for default libraries and start files
-The linker option 
-
-	-nostdlib
-
-is used to link a program intended to run standalone. `-nostdlib` implies 
+The linker option `-nostdlib is used to link a program intended to run standalone. `-nostdlib` implies 
 the individual options `-nodefaultlibs` and `-nostartfiles`. Below we discuss 
 the two options separately, but the most typical use is just `nostdlib` for one-stop shopping.
 
 When linking a hosted program, standard system libraries such as `libc` are 
 linked by default, giving the program access to all standard 
-functions (`printf`, `strlen` and friends).  The linker option
-
-	-nodefaultlibs
-
-disables linking with those default libraries; the only libraries linked are exactly those that you explicitly name to the linker using the `-l` flag.
+functions (`printf`, `strlen` and friends).  The linker option `-nodefaultlibs`
+disables linking with those default libraries; the only libraries linked are
+exactly those that you explicitly name to the linker using the `-l` flag.
 
 `libgcc.a` is a standard library (linked by default, excluded by `-nodefaultlibs`) 
 that provides internal subroutines to overcome shortcomings of particular machines. 
@@ -104,10 +99,7 @@ Normally, when a program begins to run, the standard start function is called.
 A common task performed by start is to initialize default values for 
 any variables in your program and call the `main` function.
 
-The option
-
-    -nostartfiles
-
+The option `-nostartfiles`
 instructs the linker to not use the standard system startup functions nor 
 link the code containing those functions.
 
