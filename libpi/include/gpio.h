@@ -1,12 +1,6 @@
 #ifndef GPIO_H
 #define GPIO_H
 
-#include "bcm.h"
-
-#define GPIO_BASE (BCM_BASE+0x200000)
-
-#define GPIO_MAX 53
-
 /*
  * Functions for Raspberry Pi GPIO. You implement this interface in
  * assignment 2.
@@ -15,6 +9,20 @@
  *         Philip Levis <pal@cs.stanford.edu>
  *
  * Date: Jan 24, 2016
+ * Edited by Mark Miller, Anna Zeng, Jan 21, 2018
+ */
+
+// Maximum number of GPIO pins available through software
+#define GPIO_MAX 53
+
+// GPIO pin mappings for UART
+#define GPIO_TX 14
+#define GPIO_RX 15
+
+/*
+ * These enumerated values are used to represent the different GPIO pins.
+ * What makes an enumeration better than the number it represents? Why do we 
+ * do this?
  */
 enum {
     GPIO_PIN_FIRST = 0,
@@ -75,8 +83,10 @@ enum {
     GPIO_PIN_LAST =  53
 };
 
-void gpio_init(void);
-
+/*
+ * These enumerations give names for the functions of each GPIO pin. See the
+ * Broadcom chip manual for more details, in particular Chapter 6: GPIO.
+ */
 enum {
     GPIO_FUNC_INPUT   = 0,
     GPIO_FUNC_OUTPUT  = 1,
@@ -88,18 +98,58 @@ enum {
     GPIO_FUNC_ALT5    = 2,
     GPIO_FUNC_INVALID = 8 // Only returned for invalid pins
 };
+
+
+/*
+ * Initialize the GPIO code module. For assignment 2, this does nothing.
+ * However, all libpi peripheral modules require an init, so it is included
+ * for consistency's sake.
+ */
+void gpio_init(void);
+
+/*
+ * Set a GPIO function for GPIO pin number `pin`. Does not affect
+ * other pins.
+ *
+ * @param pin      the GPIO pin number to initialize
+ * @param function the GPIO function to set for the pin
+ */
 void gpio_set_function(unsigned pin, unsigned func);
+
+/*
+ * Get the function for GPIO pin number `pin`. Should not affect
+ * any registers.
+ *
+ * @param pin the GPIO pin number to read the function of
+ * @return    the current function of the specified pin
+ */
 unsigned gpio_get_function(unsigned pin);
 
+/*
+ * Commonly used functions to set input or output pins.
+ *
+ * @param pin the GPIO pin number to set the function of
+ */
 void gpio_set_input(unsigned pin);
 void gpio_set_output(unsigned pin);
 
+/*
+ * Sets GPIO pin number `pin` to high (1) or low (0). This
+ * function assumes the pin is already in output mode.
+ *
+ * @param pin   the pin number to set or clear
+ * @param val   1 if the pin should be set, 0 otherwise
+ */
 void gpio_write(unsigned pin, unsigned val);
+
+/*
+ * Get the value (1 for on, 0 for off) for GPIO pin number `pin`. Should not 
+ * affect any registers.
+ *
+ * @param pin the GPIO pin number to read the value of
+ * @return    the value of the specified pin
+ */
 unsigned gpio_read(unsigned pin);
-
-#define GPIO_TX 14
-#define GPIO_RX 15
-
 
 /*
  * Copyright (c) 2017 Stanford University.

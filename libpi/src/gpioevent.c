@@ -1,6 +1,10 @@
+#include "bcm.h"
 #include "memory.h"
 #include "gpio.h"
 #include "gpioevent.h"
+
+// Base address for GPIO peripheral addresses
+#define GPIO_BASE (BCM_BASE+0x200000)
 
 #define GPIO_EVENT_DETECT_STATUS       (GPIO_BASE + 0x40)
 #define GPIO_RISING_EDGE_ENABLE        (GPIO_BASE + 0x4C)
