@@ -1,20 +1,30 @@
+# Makefile to build program from single ASM or C file
+# We will talk more about Makefiles soon!
 
-all : blink.bin 
+CFLAGS = -Og -g -Wall -std=c99 -ffreestanding 
+LDFLAGS = -nostdlib -e main
 
-%.bin: %.o
+all : blink.bin
+
+%.bin: %.elf
 	arm-none-eabi-objcopy $< -O binary $@
+
+%.elf: %.o
+	arm-none-eabi-gcc $(LDFLAGS) $< -o $@
+
+%.o: %.c
+	arm-none-eabi-gcc $(CFLAGS) -c $< -o $@
 
 %.o: %.s
 	arm-none-eabi-as $< -o $@
 
 %.list: %.o
-	arm-none-eabi-objdump -d $< > $@
+	arm-none-eabi-objdump --no-show-raw-insn -d $< > $@
 
 install: blink.bin
 	rpi-install.py $<
 
 clean:
-	rm -f *.o *.bin *.elf *.list
+	rm -f *.o *.bin *.elf *.list *~
 
 .PHONY: all clean
-.PRECIOUS: %.o %.elf

@@ -1,20 +1,18 @@
-# A simple makefile for building program composed of C/asm source files.
-# Builds for ARM target using cross-development toolchain. 
-# Refer to CS107E guide to Make for more information on makefiles
 
-CFLAGS = -g -Wall -Og -std=c99 -ffreestanding 
-LDFLAGS = -nostdlib -T memmap
-LDLIBS = 
+NAME = echo
 
-all : example.bin framed.bin example.list framed.list
+CS107E=../../../..
+CFLAGS = -I$(CS107E)/libpi/include -g -Wall -Og -std=c99 -ffreestanding 
+LDFLAGS = -nostdlib -T memmap -L$(CS107E)/libpi/lib
+LDLIBS = -lpi
+
+all : $(NAME).bin
 
 %.bin: %.elf
 	arm-none-eabi-objcopy $< -O binary $@
 
 %.elf: %.o start.o cstart.o
 	arm-none-eabi-gcc $(LDFLAGS) $^ $(LDLIBS) -o $@
-
-framed.o: CFLAGS += -mapcs-frame -fno-omit-frame-pointer
 
 %.o: %.c
 	arm-none-eabi-gcc $(CFLAGS) -c $< -o $@
