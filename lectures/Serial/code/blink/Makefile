@@ -1,8 +1,8 @@
 NAME = blink
 
-CS107E=../../../..
-CFLAGS = -I$(CS107E)/libpi/include -g -Wall -Og -std=c99 -ffreestanding 
-LDFLAGS = -nostdlib -T memmap -L$(CS107E)/libpi/lib
+CS107E = ../../../../cs107e
+CFLAGS = -I$(CS107E)/include -g -Wall -Og -std=c99 -ffreestanding 
+LDFLAGS = -nostdlib -T memmap -L$(CS107E)/lib
 LDLIBS = -lpi
 
 all : $(NAME).bin

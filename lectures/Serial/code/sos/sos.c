@@ -14,8 +14,8 @@ void main(void)
 	
 	while (1) {
 		gpio_write(pin, 1);
-		delay_ms(DELAY_MS);
+		timer_delay_ms(DELAY_MS);
 		gpio_write(pin, 0);
-		delay_ms(DELAY_MS);
+		timer_delay_ms(DELAY_MS);
 	}
 }

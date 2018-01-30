@@ -1,5 +1,5 @@
-#include "gpio.h"
 #include "timer.h"
+#include "gpio.h"
 #include "printf.h"
 
 void main(void)
@@ -11,6 +11,6 @@ void main(void)
         printf("Take one down and pass it around, %d bottles of beer on the wall.\n\r", 
             num);
         num--;
-        delay_ms(100);
+        timer_delay(1);
     }
 }

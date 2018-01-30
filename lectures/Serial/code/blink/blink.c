@@ -13,10 +13,8 @@ void main(void)
 	
 	while (1) {
 		gpio_write(pin, 1);
-		//timer_delay_ms(SECOND);
-		delay_ms(SECOND);
+		timer_delay_ms(SECOND);
 		gpio_write(pin, 0);
-		//timer_delay_ms(SECOND);
-		delay_ms(SECOND);
+		timer_delay_ms(SECOND);
 	}
 }

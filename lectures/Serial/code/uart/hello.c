@@ -3,7 +3,7 @@
 
 void putchar(int c)
 {
-    uart_putc(c);
+    uart_putchar(c);
 }
 
 void puts(char *s)
@@ -17,6 +17,6 @@ void main (void)
     uart_init();
     while(1) {
         puts( "hello, laptop\n" );
-        delay(1);
+        timer_delay(1);
     }
 }

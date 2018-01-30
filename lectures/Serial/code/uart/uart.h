@@ -9,8 +9,8 @@
  */
 
 void uart_init(void);
-int uart_getc(void);
-void uart_putc(unsigned c);
+int uart_getchar(void);
+void uart_putchar(unsigned c);
 void uart_flush(void);
 
 #endif

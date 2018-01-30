@@ -1,4 +1,3 @@
-#include "bcm.h"
 #include "gpio.h"
 #include "uart.h"
 
@@ -68,14 +67,14 @@ void uart_init(void) {
     uart->cntl = MINI_UART_CNTL_TX_ENABLE | MINI_UART_CNTL_RX_ENABLE;;
 }
 
-int uart_getc(void) {
+int uart_getchar(void) {
     while (!(uart->lsr & MINI_UART_LSR_RX_READY)) ;
     return uart->data & 0xFF;
 }
 
-void uart_putc(unsigned c) {
+void uart_putchar(unsigned c) {
     if (c == '\n')
-        uart_putc('\r');
+        uart_putchar('\r');
     while (!(uart->lsr & MINI_UART_LSR_TX_EMPTY)) ;
     uart->data = c;
 }
