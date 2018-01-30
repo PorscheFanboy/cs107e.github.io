@@ -9,6 +9,7 @@ const int pin = 20;
 
 void main(void)
 {
+    timer_init();
 	gpio_init();
 	gpio_set_output(pin);
 	

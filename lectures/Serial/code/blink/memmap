@@ -7,7 +7,7 @@ MEMORY
 SECTIONS
 {
     .text : {
-        *(.text.startup)
+        start.o (.text)
         *(.text*)
     } > ram
     .data : { *(.data*) } > ram

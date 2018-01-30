@@ -39,7 +39,7 @@ struct UART {
 static volatile struct UART *uart = (struct UART*) MINI_UART_BASE;
 
 void uart_init(void) {
-    volatile int *aux = (volatile int*)AUX_ENABLES;;
+    volatile int *aux = (volatile int*)AUX_ENABLES;
 
     *aux = AUX_ENABLE; // turn on mini-uart
 
@@ -64,7 +64,7 @@ void uart_init(void) {
     gpio_set_function(GPIO_TX, GPIO_FUNC_ALT5);
     gpio_set_function(GPIO_RX, GPIO_FUNC_ALT5);
 
-    uart->cntl = MINI_UART_CNTL_TX_ENABLE | MINI_UART_CNTL_RX_ENABLE;;
+    uart->cntl = MINI_UART_CNTL_TX_ENABLE | MINI_UART_CNTL_RX_ENABLE;
 }
 
 int uart_getchar(void) {
@@ -72,11 +72,12 @@ int uart_getchar(void) {
     return uart->data & 0xFF;
 }
 
-void uart_putchar(unsigned c) {
+int uart_putchar(int c) {
     if (c == '\n')
         uart_putchar('\r');
     while (!(uart->lsr & MINI_UART_LSR_TX_EMPTY)) ;
     uart->data = c;
+    return c;
 }
 
 void uart_flush(void) {
