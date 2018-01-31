@@ -57,7 +57,7 @@ etc    include    lib    src
 
 
 ## Lab and Assignment Repositories
-Cloning lab repositories should be done in the `cs107e_home` directory.
+Cloning lab and assignment repositories should be done in the `cs107e_home` directory.
 
 ```
 $ git clone https://github.com/cs107e/lab1
