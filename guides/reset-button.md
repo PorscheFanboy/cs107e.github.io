@@ -5,7 +5,9 @@ title: Creating a reset button on the Pi
 
 *Written by Anna Zeng*
 
-To reboot the Pi without unplugging and replugging in the USB-to-Serial Dongle, we will make use of the reset pins on the Pi. To do so, we will solder the headers to the spot circled in red, then use jumpers to connect both ends to a button.
+To reboot the Pi without unplugging and replugging in the USB-to-Serial Dongle, we will make use of the reset pins on the Pi.
+In this guide, we will solder the headers to the spot circled in red, then use jumpers to connect both ends to a button.
+(Or, really, anything that triggers a reset like a switch, the DTR pin, etc.)
 
 [<img title="Things you will need" src="/guides/images/reset.pin.ingredients.jpg" width="400">](/guides/images/reset.pin.ingredients.jpg)
 
@@ -32,3 +34,5 @@ Now connect the pins to a button on your breadboard like so:
 [<img title="Button connected to reset" src="/guides/images/reset.pin.button.jpg" width="400">](/guides/images/reset.pin.button.jpg)
 
 Whenever you push a button and release it, you will restart the Raspberry Pi!
+
+Instead of connecting to a button with that jumper cable, you can connect one of the pins you soldered to the DTR pin on your USB-to-Serial dongle. We have updated `rpi-install.py` to automatically trigger your Pi to restart, by pulling the DTR pin to ground.
