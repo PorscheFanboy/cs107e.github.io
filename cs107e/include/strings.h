@@ -27,7 +27,7 @@ void *memcpy(void *dst, const void *src, size_t n);
 int strlen(const char *s);
 
 /*
- * Lexicographically compare the null-terminated strings `s1` and s2`.
+ * Lexicographically compare the null-terminated strings `s1` and `s2`.
  *
  * Returns an integer value greater than, equal to, or less than 0, according
  * as the string `s1` is greater than, equal to, or less than the string `s2`.
@@ -36,21 +36,20 @@ int strlen(const char *s);
 int strcmp(const char *s1, const char *s2);
 
 /*
- * Convert the string `str` to an `unsigned integer`. `str` should be in base
- * 10.  Does not support padding.
- *
- * Returns the result of the conversion as an `unsigned integer`
- */
-unsigned int strtou(const char *str, char **endptr);
-
-/*
  * Size-bounded string concatenation. Append the null-terminated string `src`
  * to the end of `dst`. Appends at most `dstsize - strlen(dst) - 1` bytes, and
- * null-terimnates the result.
+ * null-terminates the result.
  *
  * Returns the initial length of `dst` plus the length of `src`.
  */
 int strlcat(char *dst, const char *src, int dstsize);
 
+/*
+ * Convert the string `str` to an `unsigned integer`. `str` should be in base
+ * 10.  Does not support padding.
+ *
+ * Returns the result of the conversion as an `unsigned integer`
+ */
+unsigned int strtou(const char *str, char **endptr, int base);
 
 #endif

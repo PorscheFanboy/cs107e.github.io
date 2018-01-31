@@ -51,7 +51,7 @@ int vsnprintf(char *buf, int bufsize, const char *format, va_list args);
  * Returns the number of characters written if it fits in the buffer, or the
  * number of characters it would have written if there were space.
  */
-int snprintf(char *buf, int bufsize, char *format, ...) __attribute__ ((format (printf, 3, 4)));
+int snprintf(char *buf, int bufsize, const char *format, ...) __attribute__ ((format (printf, 3, 4)));
 
 /* `format` is a character string which contains plain characters (copied to
  * the UART), character escape sequences (converted and copied to the UART),
