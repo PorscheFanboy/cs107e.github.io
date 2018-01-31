@@ -9,7 +9,6 @@
 //
 // Author: Philip Levis
 // Date: 6/20/2017
-.section .text.startup
 .globl _start
 _start:
     mov r0, #0xD2  // Interrupts
