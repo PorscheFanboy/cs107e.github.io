@@ -18,6 +18,7 @@ menu_item: true
 4. [Installing a Ubuntu virtual machine on Windows](vmware)
 5. [Using the console cable and bootloader](bootloader)
 6. [Installing a reset button](reset-button)
+7. [Setting up the course directory structure](directory-structure)
 
 ## Tools
 
