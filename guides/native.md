@@ -18,14 +18,17 @@ implementation with our own. Create a file `uart_native.c` like so:
 
 void uart_init() {}
 
-int uart_getc() { return 0; }
+int uart_getchar() { 
+    return getchar();
+}
 
-void uart_putc(unsigned c) {
-  putc(c, stdout);
+int uart_putchar(int c) {
+    putchar(c);
+    return c;
 }
 
 void uart_flush() {
-  fflush(stdout);
+    fflush(stdout);
 }
 ```
 
@@ -55,10 +58,10 @@ functions in printf.c to add the prefix "my_", e.g. `printf` -> `my_printf`.
 We will accomplish this by adding rules to our Makefile:
 
 ```
-CFLAGS_NATIVE = -I$(CS107E)/libpi/include -g -Wall -std=c99
+CFLAGS_NATIVE = -I$(CS107E)/include -g -Wall -std=c99
 ALIASES = -D vsnprintf=my_vsnprintf -D snprintf=my_snprintf -D printf=my_printf
 my_printf.h:
-	gcc $(CFLAGS_NATIVE) $(ALIASES) -E $(CS107E)/libpi/include/printf.h -o $@
+	gcc $(CFLAGS_NATIVE) $(ALIASES) -E $(CS107E)/include/printf.h -o $@
 printf_native.o: printf.c
 	gcc $(CFLAGS_NATIVE) $(ALIASES) printf.c -c -o $@
 test_native.bin: my_printf.h printf_native.o

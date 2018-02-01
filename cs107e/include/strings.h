@@ -36,6 +36,19 @@ int strlen(const char *s);
 int strcmp(const char *s1, const char *s2);
 
 /*
+ * Convert the string `str` to an `unsigned integer`. The `base` argument
+ * indicates whether `str` is expressed in decimal (base 10) or hexadecimal
+ * (base 16). No other values for base are supported. This version does
+ * not skip over space characters, nor allow leading minus for negative.
+ * Conversion stops at the first character that is is not a valid digit
+ * in the given base. If endptr is not NULL, stores the address of the
+ * first invalid character in *endptr.
+ *
+ * Returns the result of the conversion as an `unsigned integer`
+ */
+unsigned int strtou(const char *str, char **endptr, int base);
+
+/*
  * Size-bounded string concatenation. Append the null-terminated string `src`
  * to the end of `dst`. Appends at most `dstsize - strlen(dst) - 1` bytes, and
  * null-terminates the result.
@@ -43,13 +56,5 @@ int strcmp(const char *s1, const char *s2);
  * Returns the initial length of `dst` plus the length of `src`.
  */
 int strlcat(char *dst, const char *src, int dstsize);
-
-/*
- * Convert the string `str` to an `unsigned integer`. `str` should be in base
- * 10.  Does not support padding.
- *
- * Returns the result of the conversion as an `unsigned integer`
- */
-unsigned int strtou(const char *str, char **endptr, int base);
 
 #endif

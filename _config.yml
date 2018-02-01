@@ -4,8 +4,7 @@ kramdown:
   hard_wrap: false
 permalink: pretty
 exclude:
-  - README.md
-  - libpi/tests
+  - /cs107e/
 collections:
   assignments:
     output: true
