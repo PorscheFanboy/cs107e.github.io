@@ -35,9 +35,11 @@ development and debugging techniques, just like you learned in lab. Don't scrimp
 
 ## Get started
 
+First make sure your directory structure matches the layout detailed in [our guide](/guides/directory-structure).
+
 Navigate to your copy of the `cs107e.github.io` repository and do a `git pull` to be sure you have the latest files.
 
-Now clone your `assign3` repository branch as you have done in previous assignments. Make sure you clone it in the same directory as your copy of the `cs107e.github.io` repository.   
+Now clone your `assign3` repository branch as you have done in previous assignments. Make sure you clone it in the same directory as your copy of the `cs107e.github.io` repository (the `cs107e_home` directory if you're following our directory structure guide).   
 
 Assuming you intend to use the code that you wrote last week, also copy your `gpio.c` and `timer.c` files from `assign2` into the `assign3` directory. Read the `Makefile` in the assign3 starter project for more information on how to reuse modules written for previous assignments.
 
