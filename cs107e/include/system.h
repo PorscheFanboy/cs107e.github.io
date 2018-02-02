@@ -28,11 +28,11 @@ void system_disable_icache(void);
 
 void system_invalidate_cache(void);
 void system_clean_cache(void);
-void system_clean_invalidate_cache(void);
+void system_clean_and_invalidate_cache(void);
 
 void system_invalidate_dcache(void);
 void system_clean_dcache(void);
-void system_clean_invalidate_dcache(void);
+void system_clean_and_invalidate_dcache(void);
 
 void system_invalidate_icache(void);
 
@@ -56,6 +56,8 @@ void system_set_tlb_base(unsigned base);
 
 void system_start_mmu(unsigned base, unsigned flags);
 void system_stop_mmu(void);
+void system_enable_mmu(void);
+void system_disable_mmu(void);
 
 /**
  * @fn void dmb(void)
