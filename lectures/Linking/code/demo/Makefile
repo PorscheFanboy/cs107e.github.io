@@ -15,12 +15,6 @@ all : $(APPLICATION).bin
 	arm-none-eabi-gcc $(LDFLAGS) $^ $(LDLIBS) -o $@
 	arm-none-eabi-objdump --no-show-raw-insn -d $@ > $@.list
 
-%.es: %.c
-	arm-none-eabi-gcc $(CFLAGS) -S $< -o $@
-
-%.ei: %.c
-	arm-none-eabi-gcc $(CFLAGS) -E $< -o $@
-
 %.o: %.c
 	arm-none-eabi-gcc $(CFLAGS) -c $< -o $@
 	arm-none-eabi-objdump --no-show-raw-insn -d $@ > $@.list
@@ -28,10 +22,8 @@ all : $(APPLICATION).bin
 %.o: %.s
 	arm-none-eabi-as $< -o $@
 
-
 install: $(APPLICATION).bin
 	rpi-install.py $<
-
 
 clean:
 	rm -f *.o *.i *.bin *.elf *.list *~ clock.s gpio.s timer.s data.s
