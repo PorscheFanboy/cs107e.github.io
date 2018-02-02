@@ -15,7 +15,7 @@ void *memset(void *s, int c, size_t n);
  * Copy `n` bytes from the memory area `src` to the memory area `dst`. If `dst`
  * and `src` overlap, behavior is undefined.
  *
- * Returns the original value of `dst`.
+ * Returns its first argument: `dst`.
  */
 void *memcpy(void *dst, const void *src, size_t n);
 
