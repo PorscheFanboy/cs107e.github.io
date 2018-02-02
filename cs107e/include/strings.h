@@ -50,11 +50,11 @@ unsigned int strtou(const char *str, char **endptr, int base);
 
 /*
  * Size-bounded string concatenation. Append the null-terminated string `src`
- * to the end of `dst`. Appends at most `dstsize - strlen(dst) - 1` bytes, and
+ * to the end of `dst`. Appends at most `maxsize - strlen(dst) - 1` bytes, and
  * null-terminates the result.
  *
  * Returns the initial length of `dst` plus the length of `src`.
  */
-int strlcat(char *dst, const char *src, int dstsize);
+int strlcat(char *dst, const char *src, int maxsize);
 
 #endif
