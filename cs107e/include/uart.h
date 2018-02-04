@@ -38,4 +38,9 @@ int uart_putchar(int ch);
  */
 void uart_flush(void);
 
+/*
+ * Returns 1 if there is a character ready to be read, 0 otherwise.
+ */
+int uart_haschar(void);
+
 #endif
