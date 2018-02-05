@@ -1,6 +1,6 @@
 ---
 layout: page
-title: CS107e Winter 2018
+title: Winter 2018
 permalink: index.html
 ---
 
