@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/cs107e/staff.svg?token=BftLM4kSr1QfgPspi6aF&branch=master)](https://travis-ci.com/cs107e/staff)
+
 This site is hosted at [http://cs107e.github.io/](http://cs107e.github.io/).
 
 To test locally:
