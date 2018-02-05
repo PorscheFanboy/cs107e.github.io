@@ -18,7 +18,8 @@ Each question below is a diagnostic question for each section of the lab. Try an
    `main` function. (Use the `main` diagram from
    [lab3](http://cs107e.github.io/labs/lab3/images/stack_abs.html) as a guide.)
 
-3. How does the bootloader work? As a group, try to collectively annotate `bootloader.c`.
+3. How does the bootloader work? As a group, collectively add comments to `bootloader.c` explaining
+   what it does.
 
 4. Why can't `tokenize` or `strndup` declare space for input strings in their stack frames?
 
