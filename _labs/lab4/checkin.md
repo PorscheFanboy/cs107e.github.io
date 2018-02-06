@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 'Lab 4: Linking and Loading Checklist'
+title: 'Lab 4: Linking and Loading Check-in'
 permalink: /labs/lab4/checkin/
 ---
 
