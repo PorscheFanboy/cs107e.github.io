@@ -1,4 +1,4 @@
-CS107E = ../../../../cs107e
+CS107E=../../../../cs107e
 CFLAGS = -I$(CS107E)/include -Wall -O2 -std=c99 -ffreestanding
 LDFLAGS = -nostdlib -T memmap -L$(CS107E)/lib
 LDLIBS = -lpi
