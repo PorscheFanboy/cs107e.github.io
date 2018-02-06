@@ -6,7 +6,7 @@ title: Labs
 ### List of labs
 
 {% for lab in site.labs %}
-{% unless lab.path contains 'checklist' %}
+{% unless lab.path contains 'checklist' or lab.path contains 'checkin' %}
 - {% include link.html target=lab %}
 {% endunless %}
 {% endfor %}
