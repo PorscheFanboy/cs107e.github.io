@@ -18,13 +18,6 @@
  */
 void *malloc(size_t nbytes);
 
-/* Function: calloc
- * ----------------
- * Calls malloc to fulfill a request for a total of nbytes*nelems
- * bytes and fills the allocated meomry with bytes of value zero.
- */
-void *calloc(size_t nbytes, size_t nelems);
-
 /* Function: free
  * --------------
  * Deallocates the memory at an address. The ptr
@@ -48,21 +41,5 @@ void free(void *ptr);
  * the behavior is undefined.
  */
 void *realloc(void *old_ptr, size_t new_size);
-
-/* Function: malloc_check
- * ----------------------
- * If you are not doing the extension, you can leave this function
- * as-is (prints a message that check is unvailable).  For the 
- * extension, this function will search the heap and report on every 
- * in-use block with damaged red zones. Use this format like this
- * for each damaged block:
- *
- *    Address 0x00009f98 has damaged red zone(s): [457e107e] [107e107e
- *    Block of size 5 bytes, alllocated by
- *    #0 0x00008a0c at malloc+176
- *    #1 0x000084dc at heap_redzones+80
- *    #2 0x00008544 at main+
- */
-void malloc_check (void);
 
 #endif
