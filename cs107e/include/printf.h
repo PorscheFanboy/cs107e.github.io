@@ -56,6 +56,8 @@ int snprintf(char *buf, int bufsize, const char *format, ...) __attribute__ ((fo
 /* `format` is a character string which contains plain characters (copied to
  * the UART), character escape sequences (converted and copied to the UART),
  * and form specifications (cause printing of the next successive argument).
+ *
+ * Returns the number of characters written to the output.
  */
 int printf(const char *format, ...) __attribute__ ((format (printf, 1, 2)));
 

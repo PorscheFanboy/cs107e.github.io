@@ -1,35 +1,29 @@
 #ifndef MALLOC_H
 #define MALLOC_H
+
 /*
- * Dynamic memory allocation/deallocation
+ * Functions for dynamic allocation.
+ *
+ * Author: Julie Zelenski <zelenski@cs.stanford.edu>
+ * Mon Feb  5 20:02:27 PST 2018
  */
-
 #include <stddef.h> // for size_t
-
-
-/* Function: malloc_init
- * ---------------------
- * Initializes the heap to its starting empty state.
- * This function must be called by a client before 
- * making any allocation requests. 
- * Total is the total number of bytes that the heap
- * should reserve to service requests. A heap of
- * 1-2 MB (or less) will typically suffice for our programs.
- * Note that malloc_init can also be used to reset
- * the heap back to the empty state (invalidates all 
- * existing blocks).
- */
-void malloc_init(size_t total);
 
 
 /* Function: malloc
  * ----------------
  * Services a dynamic alloation request. Returns the 
- * address of a block of at least sz contiguous bytes
+ * address of a block of at least nybtes contiguous bytes
  * or NULL if the request cannot be satisifed.
  */
-void *malloc(size_t sz);
+void *malloc(size_t nbytes);
 
+/* Function: calloc
+ * ----------------
+ * Calls malloc to fulfill a request for a total of nbytes*nelems
+ * bytes and fills the allocated meomry with bytes of value zero.
+ */
+void *calloc(size_t nbytes, size_t nelems);
 
 /* Function: free
  * --------------
@@ -40,21 +34,35 @@ void *malloc(size_t sz);
  */
 void free(void *ptr);
 
-
-#ifdef LEAK_DETECTOR
-
-/* Function: leak_report
- * --------------
- * Prints a list of all remaining allocations, using this format
- * for each block:
- *
- *     8 bytes are lost, allocated by
- *     #0 0x8d80 at malloc+140
- *     #1 0x865c at enqueue+28
- *     #2 0x8470 at heap_extended+52
+/* Function: realloc
+ * -----------------
+ * Changes the size of the allocation pointed to be old_ptr
+ * to new_size and returns ptr. If there is not enough
+ * room to enlarge the memory allocation pointed to by old_ptr,
+ * realloc() creates a new allocation, copies as much of the
+ * old data pointed to by ptr as will fit to the new allocation,
+ * frees the old allocation, and returns a pointer to the
+ * allocated memory.  The old_ptr argument is expected to an
+ * address that was previously return by malloc and has not
+ * yet been freed. If this precondition is not satisified,
+ * the behavior is undefined.
  */
-void leak_report(void);
+void *realloc(void *old_ptr, size_t new_size);
 
-#endif
+/* Function: malloc_check
+ * ----------------------
+ * If you are not doing the extension, you can leave this function
+ * as-is (prints a message that check is unvailable).  For the 
+ * extension, this function will search the heap and report on every 
+ * in-use block with damaged red zones. Use this format like this
+ * for each damaged block:
+ *
+ *    Address 0x00009f98 has damaged red zone(s): [457e107e] [107e107e
+ *    Block of size 5 bytes, alllocated by
+ *    #0 0x00008a0c at malloc+176
+ *    #1 0x000084dc at heap_redzones+80
+ *    #2 0x00008544 at main+
+ */
+void malloc_check (void);
 
 #endif
