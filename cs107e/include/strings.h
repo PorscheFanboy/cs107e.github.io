@@ -40,11 +40,15 @@ int strcmp(const char *s1, const char *s2);
  * indicates whether `str` is expressed in decimal (base 10) or hexadecimal
  * (base 16). No other values for base are supported. This version does
  * not skip over space characters, nor allow leading minus for negative.
- * Conversion stops at the first character that is is not a valid digit
- * in the given base. If endptr is not NULL, stores the address of the
- * first invalid character in *endptr.
+ * It converts all characters of string `str`, stopping early if it 
+ * encounters a character that is not a valid digit in `base`. 
+ * If `endptr` is not NULL, *endptr is assigned the address of the character
+ * in `str` where conversion stopped. This is either the address of the
+ * first invalid character in `str` or the address of the terminating null
+ * in `str` if all characters are valid digits.
  *
- * Returns the result of the conversion as an `unsigned integer`
+ * Returns the result of the conversion as an `unsigned integer`, 0 is
+ * returned if the first character of `str` or `base` is invalid.
  */
 unsigned int strtou(const char *str, char **endptr, int base);
 
