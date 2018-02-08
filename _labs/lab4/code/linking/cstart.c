@@ -7,7 +7,8 @@ extern void main(void);
 // _cstart zeroes out the BSS section and then calls main.
 // After main() completes, turns on the green ACT LED as
 // a sign of successful execution.
-void _cstart(void) {
+void _cstart(void) 
+{
     int *bss = &__bss_start__;
     int *bss_end = &__bss_end__;
 
@@ -19,7 +20,7 @@ void _cstart(void) {
 
     // Turn on the green ACT LED (GPIO 47)
     volatile unsigned int *GPIO_FSEL4  = (unsigned int *)0x20200010;
-    volatile unsigned int *GPIO_SET1 =   (unsigned int *)0x20200020;
-    *GPIO_FSEL4 = (1 << ((47-40)*3));
-    *GPIO_SET1 = (1 << (47-32));
+    volatile unsigned int *GPIO_SET1   = (unsigned int *)0x20200020;
+    *GPIO_FSEL4 = (1 << ((47%10)*3));
+    *GPIO_SET1 =  (1 << (47%32));
 }
