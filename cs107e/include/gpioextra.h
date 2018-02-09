@@ -14,32 +14,24 @@
 
 
 /*
- * These enumerated values establish symbolic names for each of 
- * possible GPIO pin pull-up/down states.
- */
-enum {
-    GPIO_PUD_DISABLE  = 0,
-    GPIO_PUD_PULLDOWN = 1,
-    GPIO_PUD_PULLUP   = 2,
-};
-
-/*
- * Set the pull-up/down state for GPIO pin number `pin`.
+ * Set pull state of GPIO pin number `pin` to pull-up.
  *
- * @param pin      the GPIO pin number to enable pull-up/down
- * @param pud      the pull-up/down state to set for the pin
- *
- * If `pin` or `pud` is invalid, does nothing.
- */
-void gpio_set_pud(unsigned int pin, unsigned int pud);
-
-/*
- * Convenience functions for setting a pin to GPIO_PUD_PULLUP or
- * GPIO_PUD_PULLDOWN. The implementation calls `gpio_set_pud`.
- *
- * @param pin the GPIO pin number to set the pull-up/down state
+ * If `pin` is invalid, does nothing.
  */
 void gpio_set_pullup(unsigned int pin);
+
+/*
+ * Set pull state of GPIO pin number `pin` to pull-down.
+ *
+ * If `pin` is invalid, does nothing.
+ */
 void gpio_set_pulldown(unsigned int pin);
+
+/*
+ * Set pull state of GPIO pin number `pin` to none (will float).
+ *
+ * If `pin` is invalid, does nothing.
+ */
+void gpio_set_pullnone(unsigned int pin);
 
 #endif
