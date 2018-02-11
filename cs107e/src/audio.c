@@ -7,13 +7,16 @@
 
 void audio_init(void) 
 {
+  // turn on GPIO pins 40 and 45 which are used for audio on the Pi
   gpio_set_function( 40, GPIO_FUNC_ALT0 );
   gpio_set_function( 45, GPIO_FUNC_ALT0 );
   timer_delay_ms(2);
 
+  // Set the PWM clock to 9600000 Hz
   pwm_clock( 19200000/2 ); // 9600000 Hz
   timer_delay_ms(2);
 
+  // Enable PWM, use SIGMADELTA mode, and use the FIFOs
   pwm_set_mode( 0, 1, PWM_SIGMADELTA, 1 ); 
   pwm_set_mode( 1, 1, PWM_SIGMADELTA, 1 );
 
