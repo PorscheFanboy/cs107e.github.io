@@ -1,115 +1,83 @@
 #ifndef PS2_H
 #define PS2_H
 
-/* Useful constants and lookup tables for PS/2 scan codes. This
- * file allows you to refer to scan codes by their associated character
- * (e.g., KEY_C) as well as provides three tables that specify whether
- * a scan code is associated with a printable character (e.g., 'c') rather
- * than control keys (e.g., shift).
- * 
+/* This module declares constants for interacting with a PS/2
+ * keyboard, including a useful array that serves as a lookup table
+ * to access information about the keys and their associated
+ * characters.
+ *
+ * Each entry in the array corresponds to one key on the keyboard.
+ * Each key generates a unique PS/2 scan code. The array is organized
+ * in order of scan code. A scan code can be used as an index to
+ * access the ASCII character (and shifted character) associated with
+ * that key. For a key that is not associated with a printable character,
+ * its entry stores a constant byte from the ps2_codes enumeration below.
+ *
  * You will use this interface in assignment 5 to implement a keyboard
  * driver.
  *
- * Author: Philip Levis
- * Date:   6/20/17
+ * Author: Julie Zelenski <zelenski@cs.stanford.edu>
+ * Date:   Feb 2018
  */ 
 
+typedef struct {
+    unsigned char ch;
+    unsigned char shift_ch;
+} ps2_key_t;
 
- 
-extern const int is_char[];
-extern const char shift_char_from_scan[];
-extern const char char_from_scan[];
+extern ps2_key_t const ps2_keys[];
 
-
-
-#define MAX_KEYS 128
-
-#define PS2_CODE_RELEASE     0xF0
-#define PS2_CODE_EXTEND      0xE0
-
-#define KEY_A                0x1C
-#define KEY_B                0x32
-#define KEY_C                0x21
-#define KEY_D                0x23
-#define KEY_E                0x24
-#define KEY_F                0x2B
-#define KEY_G                0x34
-#define KEY_H                0x33
-#define KEY_I                0x43
-#define KEY_J                0x3B
-#define KEY_K                0x42
-#define KEY_L                0x4B
-#define KEY_M                0x3A
-#define KEY_N                0x31
-#define KEY_O                0x44
-#define KEY_P                0x4D
-#define KEY_Q                0x15
-#define KEY_R                0x2D
-#define KEY_S                0x1B
-#define KEY_T                0x2C
-#define KEY_U                0x3C
-#define KEY_V                0x2A
-#define KEY_W                0x1D
-#define KEY_X                0x22
-#define KEY_Y                0x35
-#define KEY_Z                0x1A
-#define KEY_0                0x45
-#define KEY_1                0x16
-#define KEY_2                0x1E
-#define KEY_3                0x26
-#define KEY_4                0x25
-#define KEY_5                0x2E
-#define KEY_6                0x36
-#define KEY_7                0x3D
-#define KEY_8                0x3E
-#define KEY_9                0x46
-#define KEY_BACKQUOTE        0x0E
-#define KEY_MINUS            0x4E
-#define KEY_EQUAL            0x55
-#define KEY_BACKSLASH        0x5D
-#define KEY_BACKSPACE        0x66
-#define KEY_SPACE            0x29
-#define KEY_TAB              0x0D
-#define KEY_CAPS             0x58
-#define KEY_LEFT_SHIFT       0x12
-#define KEY_LEFT_CONTROL     0x14
-#define KEY_LEFT_ALT         0x11
-#define KEY_RIGHT_SHIFT      0x59
-#define KEY_ENTER            0x5A
-#define KEY_ESC              0x76
-#define KEY_F1               0x05
-#define KEY_F2               0x06
-#define KEY_F3               0x04
-#define KEY_F4               0x0C
-#define KEY_F5               0x03
-#define KEY_F6               0x0B
-#define KEY_F8               0x0A
-#define KEY_F9               0x01
-#define KEY_F10              0x09
-#define KEY_F11              0x78
-#define KEY_F12              0x07
-#define KEY_SCROLL           0x7E
-#define KEY_LEFT_BRACKET     0x54
-#define KEY_NUM              0x77
-#define KEY_KEYPAD_TIMES     0x7C
-#define KEY_KEYPAD_MINUS     0x7B
-#define KEY_KEYPAD_PLUS      0x79
-#define KEY_KEYPAD_PERIOD    0x71
-#define KEY_KEYPAD_0         0x70
-#define KEY_KEYPAD_1         0x69
-#define KEY_KEYPAD_2         0x72
-#define KEY_KEYPAD_3         0x7A
-#define KEY_KEYPAD_4         0x6B
-#define KEY_KEYPAD_5         0x73
-#define KEY_KEYPAD_6         0x74
-#define KEY_KEYPAD_7         0x6C
-#define KEY_KEYPAD_8         0x75
-#define KEY_KEYPAD_9         0x7D
-#define KEY_RIGHT_BRACKET    0x5B
-#define KEY_SEMICOLON        0x4C
-#define KEY_QUOTE            0x52
-#define KEY_COMMA            0x41
-#define KEY_PERIOD           0x49
-#define KEY_DIVIDE           0x4A
+/* Since regular chars have ASCII values that are all <= 0x7F,
+ * we assign codes >= 0x90 to the non-char keys.
+ */
+enum ps2_codes {
+    PS2_KEY_NONE = 0,
+    PS2_CODE_RELEASE = 0xF0,
+    PS2_CODE_EXTEND = 0xE0,
+    PS2_KEY_SHIFT = 0x90,   
+    PS2_KEY_ALT,    // values assigned in increasing sequence from here
+    PS2_KEY_CTRL,
+    PS2_KEY_CAPS_LOCK,
+    PS2_KEY_ENTER,
+    PS2_KEY_ESC,
+    PS2_KEY_F1,
+    PS2_KEY_F2,
+    PS2_KEY_F3,
+    PS2_KEY_F4,
+    PS2_KEY_F5,
+    PS2_KEY_F6,
+    PS2_KEY_F7,
+    PS2_KEY_F8,
+    PS2_KEY_F9,
+    PS2_KEY_F10,
+    PS2_KEY_F11,
+    PS2_KEY_F12,
+    PS2_KEY_NUM_LOCK,
+    PS2_KEY_NUMPAD_0,
+    PS2_KEY_NUMPAD_1,
+    PS2_KEY_NUMPAD_2,
+    PS2_KEY_NUMPAD_3,
+    PS2_KEY_NUMPAD_4,
+    PS2_KEY_NUMPAD_5,
+    PS2_KEY_NUMPAD_6,
+    PS2_KEY_NUMPAD_7,
+    PS2_KEY_NUMPAD_8,
+    PS2_KEY_NUMPAD_9,
+    PS2_KEY_NUMPAD_PLUS,
+    PS2_KEY_NUMPAD_MINUS,
+    PS2_KEY_NUMPAD_TIMES,
+    PS2_KEY_NUMPAD_PERIOD,
+    PS2_KEY_HOME,
+    PS2_KEY_PAGE_UP,
+    PS2_KEY_PAGE_DOWN,
+    PS2_KEY_INSERT,
+    PS2_KEY_DELETE,
+    PS2_KEY_END,
+    PS2_KEY_SCROLL_LOCK,
+    PS2_KEY_ARROW_UP,
+    PS2_KEY_ARROW_DOWN,
+    PS2_KEY_ARROW_LEFT,
+    PS2_KEY_ARROW_RIGHT
+};
 
 #endif

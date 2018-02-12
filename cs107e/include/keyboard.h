@@ -1,6 +1,8 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
+#include "ps2.h"
+
 /*
  * High-level interface to reading ASCII bytes from a keyboard.
  * You implement this interface in assignments 5 and 7.
@@ -10,64 +12,57 @@
  * Date: April 5, 2016
  */
 
-void keyboard_init(void);
-
-// Top-level keyboard interface. Read (blocking) a character from
-// the keyboard. Handles shift, caps lock, etc. If you need to return
-// non-text characters, you can use values > 0x7f (e.g., the
-// keyboard codes below). Some non-text characters do have ASCII
-// representaitons // (e.g., control-G is \f). 
-
-#define KEYBOARD_DOWN  0x82
-#define KEYBOARD_UP    0x88
-#define KEYBOARD_LEFT  0x84
-#define KEYBOARD_RIGHT 0x86
-char keyboard_read_char(void);
-
-// You do not have to implement right control or right alt: these keys
-// are in the extended (0xE0) key set; they're included here for
-// completeness, or if you are adventurous.
-enum {
-    KEY_MOD_NONE        = 0x0,  // No modifiers on
-
-    KEY_MOD_LEFT_SHIFT  = 0x1,  // Left shift is down
-    KEY_MOD_RIGHT_SHIFT = 0x2,  // Right shift is down
-    KEY_MOD_SHIFT       = 0x3,  // Bitmask for testing either shift
-
-    KEY_MOD_LEFT_CTRL   = 0x4,  // Left control
-    KEY_MOD_RIGHT_CTRL  = 0x8,  // Right control (not required)
-    KEY_MOD_CTRL        = 0xC,  // Bit mask for testing either control
-
-    KEY_MOD_LEFT_ALT    = 0x10, // Left alt
-    KEY_MOD_RIGHT_ALT   = 0x20, // Right alt (not required)
-    KEY_MOD_ALT         = 0x30, // Bit mask for testing either alt
-
-    KEY_MOD_CAPS        = 0x40, // Caps lock is active
+enum keyboard_modifiers {
+    KEYBOARD_MOD_SCROLL_LOCK = 1 << 0,
+    KEYBOARD_MOD_NUM_LOCK = 1 << 1,
+    KEYBOARD_MOD_CAPS_LOCK = 1 << 2,
+    KEYBOARD_MOD_SHIFT = 1 << 3,
+    KEYBOARD_MOD_ALT = 1 << 4,
+    KEYBOARD_MOD_CTRL = 1 << 5,
 };
 
-typedef struct {
-    unsigned char modifiers; // From KEY_MOD above
-    unsigned char code;      // PS/2 code of key
-} key_press_t;
+void keyboard_init(void);
 
-// Third level keyboard interface. Returns (blocking) which
-// key has been pressed. Modifiers keys (CTRL, ALT. SHIFT, CAPS) are
-// not passed as key presses, instead their state is reported
-// in the modifiers field of press. Control keys (arrows) are returned
-// as their
-key_press_t keyboard_read_press(void);
+// Top-level keyboard interface. Read (blocking) next key down from
+// the keyboard. Handles shift, caps lock, etc. If you need to return
+// non-text characters, you can use values > 0x7f (e.g., the
+// keyboard codes defined in ps2.h).
+
+unsigned char keyboard_read_next(void);
+
 
 typedef struct {
-    unsigned char down; // up = 0, down = 1,
-    unsigned char code; // PS/2 code of key
+    unsigned char seq[3];   // contains sequence of raw scan code bytes
+    int seq_len;            // number of bytes in raw sequence
+    ps2_key_t key;          // which key on keyboard (see ps2.h for table)
+    unsigned int action;    // either KEYBOARD_ACTION_UP or KEYBOARD_ACTION_DOWN
+    unsigned int modifiers; // modifiers in effect for event
 } key_event_t;
 
-// Second-level keyboard interface. Returns (blocking) the result of
-// a full PS2 event, which key and whether it is up or down.
+/*
+ * Middle-level keyboard interface. Returns (blocking) the result of
+ * a full PS2 event, which key and whether it is up or down.
+ * key has been pressed. Modifiers keys (CTRL, ALT. SHIFT, CAPS) are
+ * not passed as key presses, instead their state is reported
+ * in the modifiers field. This function calls keyboard_read_sequence.
+ */
 key_event_t keyboard_read_event(void);
 
-// Bottom level keyboard interface. Read (blocking) a single scan code
-// byte from the PS/2 keyboard.
-int keyboard_read_scancode(void);
+
+/* Bottom level keyboard interface, part 2. Reads sequence of
+ * scan codes corresponding to a key action (i.e. either an key
+ * down or key up. The sequence may be a single byte (action was a 
+ * simple key down), could be two bytes (action was a key up
+ * or key down for extended scan code), or three bytes (action was a
+ * key up for an extended scan code). The function stores the scan 
+ * code bytes into the array and returns the number of bytes 
+ * written to the array. This function calls keyboard_read_scancode.
+ */
+int keyboard_read_sequence(unsigned char seq[]);
+
+/* Bottom level keyboard interface. Read (blocking) a single scan code
+ * byte from the PS/2 keyboard.
+ */
+unsigned char keyboard_read_scancode(void);
 
 #endif
