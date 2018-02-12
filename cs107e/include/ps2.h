@@ -11,13 +11,13 @@
  * in order of scan code. A scan code can be used as an index to
  * access the ASCII character (and shifted character) associated with
  * that key. For a key that is not associated with a printable character,
- * its entry stores a constant byte from the ps2_codes enumeration below.
+ * its entry stores a constant code from the ps2_codes enumeration below.
  *
  * You will use this interface in assignment 5 to implement a keyboard
  * driver.
  *
  * Author: Julie Zelenski <zelenski@cs.stanford.edu>
- * Date:   Feb 2018
+ * Date:   February 2018
  */ 
 
 typedef struct {
