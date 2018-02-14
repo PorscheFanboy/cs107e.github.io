@@ -14,6 +14,6 @@ void main ( void )
     pwm_set_mode( 0, 1, PWM_MARKSPACE, 0 );
 
     pwm_set_range( 0, 200 ); // 200000 / 200 = 1Khz
-    pwm_set_width( 0, 40 );  // 25% duty cycle
+    pwm_set_width( 0, 50 );  // 25% duty cycle
 }
 
