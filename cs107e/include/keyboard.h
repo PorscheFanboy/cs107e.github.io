@@ -14,6 +14,12 @@
  * Date:   Februrary 2018
  */
 
+
+enum keyboard_action {
+    KEYBOARD_ACTION_DOWN,
+    KEYBOARD_ACTION_UP
+};
+
 /* 
  * These bit flags are used for the state of the various modifiers
  * on the keyboard.
@@ -27,15 +33,10 @@ enum keyboard_modifiers {
     KEYBOARD_MOD_CTRL = 1 << 5,
 };
 
-enum keyboard_action {
-    KEYBOARD_ACTION_DOWN,
-    KEYBOARD_ACTION_UP
-};
-
 typedef struct {
     unsigned char seq[3];   // sequence of raw scan code bytes
     int seq_len;            // number of bytes in sequence
-    ps2_key_t key;          // which key on keyboard (see ps2.h for table)
+    ps2_key_t key;          // entry taken from ps2_keys table (see ps2.h)
     unsigned int action;    // either KEYBOARD_ACTION_UP or KEYBOARD_ACTION_DOWN
     unsigned int modifiers; // modifiers in effect, composed of above bit flags
 } key_event_t;
@@ -45,6 +46,7 @@ typedef struct {
  * `keyboard_init`: Required initialization for keyboard
  *
  * The keyboard must first be initialized before any key events can be read.
+ * The PS/2 clock line should be connected to GPIO_PIN23 and data line to GPIO_PIN24.
  */
 void keyboard_init(void);
 
@@ -57,8 +59,8 @@ void keyboard_init(void);
  * for shift and caps lock.
  *
  * Characters returned that have value <= 0x7f '~' are printable ascii
- * characters. Character values >= 0x80 are used for the keys, such as
- * arrow and function keys, that are not associated with an ascii character.
+ * characters. Character values >= 0x90 are returned for those keys that are
+ * are not associated with an ascii character (e.g. arrow and function keys).
  * See the ps2_codes defined in ps2.h for constants used for those keys.
  * This function calls `keyboard_read_event`.
  */
@@ -70,11 +72,11 @@ unsigned char keyboard_read_next(void);
  *
  * The function reads (blocking) the next key action from the keyboard.
  * Returns a `key_event_t` struct that represents the key event.  The
- * struct includes the raw scan code sequence, the action (up or down),
- * the keyboard key, and the state of the modifier flags in effect.
- * Note that a press or release of a modifier key (CTRL, ALT. SHIFT, etc)
- * is not returned as a key event. Instead those press/releases change
- * the state of the modifiers reported with subsequent key events.
+ * struct includes the sequence of raw scan codes, the action (up or down),
+ * and the state of the modifier flags in effect. If this event is a
+ * a key down or up for a modifier key (CTRL, ALT, SHIFT, etc.), the
+ * modifiers field in the event contains the state of the modifiers
+ * after having incorporated this key action.
  * This function calls `keyboard_read_sequence`.
  */
 key_event_t keyboard_read_event(void);

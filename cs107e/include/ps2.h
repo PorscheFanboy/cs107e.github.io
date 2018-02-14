@@ -9,9 +9,10 @@
  * Each entry in the array corresponds to one key on the keyboard.
  * Each key generates a unique PS/2 scan code. The array is organized
  * in order of scan code. A scan code can be used as an index to
- * access the ASCII character (and shifted character) associated with
- * that key. For a key that is not associated with a printable character,
- * its entry stores a constant code from the ps2_codes enumeration below.
+ * access the ASCII character associated with that key. The `other_ch`
+ * is the shifted char or 0 if this key has no shifted char. For a key 
+ * that is not associated with a printable character, its char will
+ * be represented by a code from the ps2_codes enumeration below.
  *
  * You will use this interface in assignment 5 to implement a keyboard
  * driver.
@@ -22,7 +23,7 @@
 
 typedef struct {
     unsigned char ch;
-    unsigned char shift_ch;
+    unsigned char other_ch;
 } ps2_key_t;
 
 extern ps2_key_t const ps2_keys[];
