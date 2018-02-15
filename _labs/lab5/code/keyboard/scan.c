@@ -16,8 +16,8 @@ void main(void)
         printf("Scan code sequence: ");
         for (int i = 0; i < len; i++)
             printf("%02x ", seq[i]);
-        // if first scan code of sequence corresponds to printable ascii char, show it
-        unsigned char ch = ps2_keys[seq[0]].ch;
+        // if last scan code of sequence corresponds to printable ascii char, show it
+        unsigned char ch = ps2_keys[seq[len-1]].ch;
         if (ch >= ' ' && ch <= '~') printf("(ascii '%c')", ch);
         printf("\n");
     }
