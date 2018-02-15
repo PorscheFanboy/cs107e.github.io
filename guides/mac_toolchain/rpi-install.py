@@ -26,8 +26,8 @@ import argparse, logging, os, serial, sys, time
 from serial.tools import list_ports
 from xmodem import XMODEM
 
-# Prepared for winter quarter 2017-18
-VERSION = "0.8"
+# Updated during winter quarter 2017-18
+VERSION = "0.9"
 
 # From https://stackoverflow.com/questions/287871/print-in-terminal-with-colors-using-python
 # Plus Julie's suggestion to push bold and color together.
@@ -59,7 +59,7 @@ if __name__ == "__main__":
     parser.add_argument('-q', help="do not print while uploading",
                         action="store_true")
     parser.add_argument('-t', help="timeout for -p",
-                        action="store", type=int, default=100)
+                        action="store", type=int, default=-1)
 
     after = parser.add_mutually_exclusive_group()
     after.add_argument('-p', help="print output from the Pi after uploading",
@@ -161,21 +161,30 @@ You should probably restart the Pi, since you interrupted it mid-load.
     printq(bcolors.OKGREEN + "\nSuccessfully sent!" + bcolors.ENDC)
     stream.close()
 
-    start = time.time()
+    last_comm = time.time()
     if args.p:  # after sending, -p will loop and echo every char received
         try:
             while True:
-                if time.time() - start > args.t:
+                if args.t > 0 and time.time() - last_comm > args.t:
+                    printq("\nrpi-install.py: waited %d seconds with no data received from Pi. Detaching." % args.t)
                     break
 
                 c = getc(1)
-                if c == b'\x04': break  # End of transmission.
+                if c == b'\x04':   # End of transmission.
+                    printq("\nrpi-install.py: received EOT from Pi. Detaching.")
+                    break
                 if c is None: continue
+                last_comm = time.time()
 
-                print(c.decode(),end='')
-        except:
+                print(c.decode('ascii', 'replace'), end='')
+                sys.stdout.flush()
+        except Exception as ex:
+            print(ex)
             pass
+
     elif args.s:  # after sending, -s will exec `screen`, name the session so can find it later
-        sys.exit(os.system('screen -S rpi %s 115200' % portname))
+        screen_cmd = "rpi-install.py: screen -S rpi %s 115200" % (portname)
+        printq(screen_cmd)
+        sys.exit(os.system(screen_cmd))
 
     sys.exit(0)
