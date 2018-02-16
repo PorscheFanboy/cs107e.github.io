@@ -27,7 +27,7 @@ from serial.tools import list_ports
 from xmodem import XMODEM
 
 # Updated during winter quarter 2017-18
-VERSION = "0.9"
+VERSION = "0.91"
 
 # From https://stackoverflow.com/questions/287871/print-in-terminal-with-colors-using-python
 # Plus Julie's suggestion to push bold and color together.
@@ -183,8 +183,8 @@ You should probably restart the Pi, since you interrupted it mid-load.
             pass
 
     elif args.s:  # after sending, -s will exec `screen`, name the session so can find it later
-        screen_cmd = "rpi-install.py: screen -S rpi %s 115200" % (portname)
-        printq(screen_cmd)
+        screen_cmd = "screen -S rpi %s 115200" % (portname)
+        printq("rpi-install.py: %s" % screen_cmd)
         sys.exit(os.system(screen_cmd))
 
     sys.exit(0)
