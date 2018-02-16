@@ -18,8 +18,7 @@ title: Assignments
 **What is the expected assignment workload?**
 
 There are 7 assignments over the quarter, one per week.
-Assignments involve writing approximately 100 lines of code,
-and should be doable in 10 hours.
+Students in previous quarters report spending between 10 and 20 hours completing each assignment.
 The assignments generally build on each other,
 so it is hard to skip an assignment.
 The last assignment will be a project, 
