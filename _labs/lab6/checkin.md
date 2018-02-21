@@ -20,8 +20,8 @@ Each question below is a diagnostic question for each section of the lab. Try an
 5. What is the difference between the following two lines of code?
 
    		char *a = "Hello, world\n";
-   		char a[]= "Hello, world\n";
+   		char b[]= "Hello, world\n";
 
-6. Why does pixel_data have size `1330 * 16 / 8`?
+6. Why does pixel_data have size `95 * 14 * 16 / 8`?
 
 Before leaving the lab, check in with a TA and discuss any challenges to answering the questions in the lab. If you do not feel confident about your responses, please ask us about it too!

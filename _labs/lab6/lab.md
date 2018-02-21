@@ -39,12 +39,10 @@ To prepare for lab, do the following:
 
 ### 1. Connect your Raspberry Pi to a monitor (30 min)
 
-The first step is connect your Raspberry Pi to a monitor.
-To do this you need an HDMI cable and an HDMI to DVI adapter,
-Attach the HDMI to DVI adapter to one end of HDMI cable.
-The attach HDMI to DVI adapter to the monitor
-(the monitors are using are older and do not have HDMI connectors),
-and the HDMI cable to the HDMI connector on the Raspberry Pi.
+The first step is to connect your Raspberry Pi to a monitor.
+To do this, you need an HDMI cable and an HDMI-to-DVI adapter. (The monitors we are using are older and do not have HDMI connectors).
+Attach the HDMI-to-DVI adapter to the monitor's DVI port and
+connect the HDMI cable to the adapter and the HDMI port on the Raspberry Pi.
 Power your Raspberry Pi, and you should see the following.
 
 ![Raspberry Pi video](images/pifb.png)
@@ -241,7 +239,7 @@ In the provided font library, the characters are stored in a single
 image that's a little different from the image above.
 The characters are stored in a single line (not 3).
 The first character stored on the left is '`!`', whose ASCII value is 33 (0x21).
-The last character is ASCII value 127 (0x7e), delete, which is displayed as to the little checkerboard.
+The last character is ASCII value 127 (0x7e), delete, which is displayed as the little checkerboard.
 The font contains 95 characters in total.
 The characters are all the same size,
 14 pixels wide and 16 pixels tall.
@@ -296,7 +294,7 @@ We generated this BMP file directly from `font.c`:
 
 ![Font](images/apple2e-line.bmp)
 
-* Talk with your neighbor: why does pixel_data have size `1330 * 16 / 8`?
+* Talk with your neighbor: why does pixel_data have size `95 * 14 * 16 / 8`?
 
 The key function is `font_get_char()` which copies a single character
 from the font image into a buffer. It transforms the bits of the image into an array of bytes, one byte per pixel. Read this function carefully,
