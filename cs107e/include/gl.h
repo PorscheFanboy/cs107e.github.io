@@ -37,20 +37,20 @@ void gl_init(unsigned int width, unsigned int height, unsigned int mode);
  *
  * @return    the width in pixels
  */
-unsigned gl_get_width(void);
+unsigned int gl_get_width(void);
 
 /*
  * Get the current height in pixels of the framebuffer.
  *
  * @return    the height in pixels
  */
-unsigned gl_get_height(void);
+unsigned int gl_get_height(void);
 
 /*
  * Define a type for color. We use BGRA colors, where each color
  * component R, B, G, orprobably A is a single unsigned byte.
  */
-typedef unsigned color;
+typedef unsigned int color;
 
 /*
  * Define some common colors ...
@@ -129,7 +129,7 @@ color gl_read_pixel(int x, int y);
  *                with ASCII values between '!' and '~' are drawn.
  * @param c  the color of the character
  */
-void gl_draw_char(int x, int y, char ch, color c);
+void gl_draw_char(int x, int y, int ch, color c);
 
 /*
  * Draw a string.
@@ -148,14 +148,14 @@ void gl_draw_string(int x, int y, char* string, color c);
  *
  * @return the character height in pixels
  */
-unsigned gl_get_char_height(void);
+unsigned int gl_get_char_height(void);
 
 /*
  * Get the width in pixels of a single character glyph.
  *
  * @return the character width in pixels
  */
-unsigned gl_get_char_width(void);
+unsigned int gl_get_char_width(void);
 
 
 /*
