@@ -4,8 +4,9 @@
 /*
  * Functions for a simple bare metal Raspberry Pi graphics library
  * that draws pixels, text, lines, triangles, and rectangles. Builds
- * on the framebuffer library fb.[ch] for frame buffer access and
- * configuration; trying to use both simultaneously is discouraged.
+ * on the lower-level framebuffer library fb.[ch] for framebuffer 
+ * access and configuration; trying to use both fb and gl
+ * simultaneously is discouraged.
  *
  * You implement this module in assignment 6 (rectangles are required,
  * lines and triangles are an extension).
@@ -16,41 +17,185 @@
 
 #include "fb.h"
 
-#define GL_SINGLEBUFFER FB_SINGLEBUFFER
-#define GL_DOUBLEBUFFER FB_DOUBLEBUFFER
+enum { GL_SINGLEBUFFER = FB_SINGLEBUFFER, GL_DOUBLEBUFFER = FB_DOUBLEBUFFER };
 
-void gl_init(unsigned width, unsigned height, unsigned mode);
+/*
+ * Initialize the graphic library. This function will call fb_init in turn 
+ * to initialize the framebuffer. The framebuffer will be initialzed to
+ * 4-byte depth (32 bits per pixel).
+ *
+ * @param width  the requested width in pixels of the framebuffer
+ * @param height the requested height in pixels of the framebuffer
+ * @param mode   whether the framebuffer should be
+ *                      single buffered (GL_SINGLEBUFFER)
+ *                      or double buffered (GL_DOUBLEBUFFER)
+ */
+void gl_init(unsigned int width, unsigned int height, unsigned int mode);
+
+/*
+ * Get the current width in pixels of the framebuffer.
+ *
+ * @return    the width in pixels
+ */
 unsigned gl_get_width(void);
+
+/*
+ * Get the current height in pixels of the framebuffer.
+ *
+ * @return    the height in pixels
+ */
 unsigned gl_get_height(void);
 
-#define GL_BLACK  0xFF000000
-#define GL_WHITE  0xFFFFFFFF
-#define GL_RED    0xFFFF0000
-#define GL_GREEN  0xFF00FF00
-#define GL_BLUE   0xFF0000FF
-#define GL_AMBER  0xFFFFBF00
-#define GL_YELLOW 0xFFFFFF00
-
+/*
+ * Define a type for color. We use BGRA colors, where each color
+ * component R, B, G, orprobably A is a single unsigned byte.
+ */
 typedef unsigned color;
+
+/*
+ * Define some common colors ...
+ *
+ * Note that colors are BGRA, where B is the first byte in memory
+ * and the least significant byte in the unsigned word.
+ */
+#define GL_BLACK   0xFF000000
+#define GL_WHITE   0xFFFFFFFF
+#define GL_RED     0xFFFF0000
+#define GL_GREEN   0xFF00FF00
+#define GL_BLUE    0xFF0000FF
+#define GL_CYAN    0xFF00FFFF
+#define GL_MAGENTA 0xFFFF00FF
+#define GL_YELLOW  0xFFFFFF00
+#define GL_AMBER   0xFFFFBF00
+
+/*
+ * Returns a color composed of the specified red, green, and
+ * blue components.
+ *
+ * @param r  the red component of the color
+ * @param g  the green component of the color
+ * @param b  the green component of the color
+ *
+ * @return    the color as a single value of type color.
+ */
 color gl_color(unsigned char r, unsigned char g, unsigned char b);
 
+/*
+ * Clear all the pixels in the framebuffer to the given color.
+ *
+ * @param c  the color drawn into the framebuffer
+ */
 void gl_clear(color c);
+
+/*
+ * Swap the front and back buffers. The front buffer will be displayed,
+ * and the back buffer will be the current draw buffer.
+ */
 void gl_swap_buffer(void);
 
+/*
+ * Draw a single pixel in color `c`. A pixel is not drawn if its 
+ * location lies outside the bounds of the framebuffer.
+ *
+ * @param x  the x location of the pixel.
+ * @param y  the y location of the pixel.
+ * @param c  the color c of the pixel
+ */
 void gl_draw_pixel(int x, int y, color c);
+
+/*
+ * Read a single pixel.  If the pixel location is outside the bounds
+ * of the framebuffer, zero is returned.
+ *
+ * @param x  the x location of the pixel.
+ * @param y  the y location of the pixel.
+ *
+ * @return    the color at that location.
+ */
 color gl_read_pixel(int x, int y);
 
-#define GL_FONT_DEFAULT 0
-#define GL_FONT_ALT1    1
-#define GL_FONT_ALT2    2
-void gl_select_font(int font);
-void gl_draw_char(int x, int y, char letter, color c);
+/*
+ * The following functions draw characters and strings.
+ */
+
+/*
+ * Draw a single character. This function only draws pixels that
+ * are inside the framebuffer. The character is clipped to the
+ * left, right, top and bottom sides of the framebuffer.
+ *
+ * @param x  the x location of the top left corner of the character glyph.
+ * @param y  the y location of the top left corner of the character glyph.
+ * @param ch  the character to be drawn, e.g. 'a'. Only characters
+ *                with ASCII values between '!' and '~' are drawn.
+ * @param c  the color of the character
+ */
+void gl_draw_char(int x, int y, char ch, color c);
+
+/*
+ * Draw a string.
+ *
+ * @param x  the x location of the top left corner of the string.
+ * @param y  the y location of the top left corner of the string.
+ * @param string  the NULL-terminated string to be drawn. Characters
+ *                are drawn left to right.
+ * @param c  the color c of the character
+ */
 void gl_draw_string(int x, int y, char* string, color c);
+
+
+/*
+ * Get the height in pixels of a single character glyph.
+ *
+ * @return the character height in pixels
+ */
 unsigned gl_get_char_height(void);
+
+/*
+ * Get the width in pixels of a single character glyph.
+ *
+ * @return the character width in pixels
+ */
 unsigned gl_get_char_width(void);
 
+
+/*
+ * Draw a filled rectangle. All pixels inside the rectangle are drawn.
+ * The rectangle is clipped to the left, right, top and bottom sides 
+ * of the framebuffer.
+ *
+ * @param x  the x location of the upper left corner of the rectangle
+ * @param y  the y location of the upper left corner of the rectangle
+ * @param w  the width of the rectangle
+ * @param h  the height of the rectangle
+ * @param c   the color c of the rectangle
+ */
+void gl_draw_rect(int x, int y, int w, int h, color c);
+
+/*
+ * Draw a line segment. The line is clipped to the left, right, 
+ * top and bottom sides of the framebuffer.
+ *
+ * @param x1  the x location of vertex 1
+ * @param y1  the y location of vertex 1
+ * @param x2  the x location of vertex 2
+ * @param y2  the y location of vertex 2
+ * @param c   the color c of the line
+ */
 void gl_draw_line(int x1, int y1, int x2, int y2, color c);
+
+/*
+ * Draw a filled triangle. All pixels inside the triangle are drawn.
+ * The triangle is clipped to the left, right, top and bottom sides 
+ * of the framebuffer.
+ *
+ * @param x1  the x location of vertex 1
+ * @param y1  the y location of vertex 1
+ * @param x2  the x location of vertex 2
+ * @param y2  the y location of vertex 2
+ * @param x3  the x location of vertex 3
+ * @param y3  the y location of vertex 3
+ * @param c   the color c of the triangle
+ */
 void gl_draw_triangle(int x1, int y1, int x2, int y2, int x3, int y3, color c);
-void gl_draw_rect(int x1, int y1, int width, int height, color c);
 
 #endif

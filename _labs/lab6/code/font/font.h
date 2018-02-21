@@ -4,7 +4,7 @@
 /*
  * Functions that provide bitmaps of ASCII characters.
  *
- * Each character is represented as an image that has
+ * Each character is represnted as an image that has
  * font_get_height() rows and font_get_width() columns.
  * Each pixel of the image is represented as one byte.
  * The byte for a white pixel is 0xFF, and the byte for 
