@@ -360,6 +360,11 @@ void font_set_font(font_t *f)
     g_font = f;
 }
 
+const font_t *font_get_font(void)
+{
+    return g_font;
+}
+
 /* The pixel height of a character. */
 int font_get_height(void) 
 {

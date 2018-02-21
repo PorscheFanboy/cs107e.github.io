@@ -23,6 +23,15 @@ typedef struct  {
     unsigned char pixel_data[];
 } font_t;
 
+
+/*          
+ * Get the current font.
+ */  
+const font_t *font_get_font(void);
+
+/*          
+ * Set the current font.
+ */  
 void font_set_font(font_t * f);
 
 /*          
@@ -62,4 +71,3 @@ int font_get_size(void);
 int font_get_char(char ch, unsigned char buf[], int buflen);
 
 #endif
-
