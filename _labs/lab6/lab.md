@@ -201,7 +201,7 @@ To start, here is a quick self-test:
   Think about what operations you can do to one versus the other.
 
       char *a = "Hello, world\n";
-      char a[]= "Hello, world\n":
+      char a[]= "Hello, world\n";
 
 * What is the difference between the following two declarations?
 
