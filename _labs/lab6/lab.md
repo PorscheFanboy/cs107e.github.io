@@ -214,18 +214,6 @@ To start, here is a quick self-test:
 * Inspect the code in `code/pointers/pointers.c`.
   Compile this code using `make`, run it on your Pi, and interpret the results.
 
-  Now uncomment the following code to the above example. What happens?
-
-      int (*e)[2] = { {0, 1}, {2, 3}};
-      printf("e = %08x\n", (unsigned)e );
-      printf("e[0] = %08x\n", (unsigned)e[0] );
-      printf("e[1] = %08x\n", (unsigned)e[1] );
-
-  What happens in the next two lines?
-
-      printf("e[0][0] = %08x\n", (unsigned)e[0][0] );
-      printf("e[1][0] = %08x\n", (unsigned)e[1][0] );
-
 
 ### 4. Fonts (20 min)
 
