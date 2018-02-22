@@ -8,8 +8,8 @@
  * access and configuration; trying to use both fb and gl
  * simultaneously is discouraged.
  *
- * You implement this module in assignment 6 (rectangles are required,
- * lines and triangles are an extension).
+ * You implement this module in assignment 6 (text and rectangles are 
+ * required, lines and triangles are an extension).
  *
  * Author: Philip Levis <pal@cs.stanford.edu>
  * Date: Mar 23 2016
@@ -48,7 +48,8 @@ unsigned int gl_get_height(void);
 
 /*
  * Define a type for color. We use BGRA colors, where each color
- * component R, B, G, orprobably A is a single unsigned byte.
+ * component R, B, G, or A is a single unsigned byte. The least
+ * signficant byte is the B component, and A is most significant.
  */
 typedef unsigned int color;
 
@@ -70,13 +71,14 @@ typedef unsigned int color;
 
 /*
  * Returns a color composed of the specified red, green, and
- * blue components.
+ * blue components. The alpha component of the color will be
+ * set to 0xff (fully opaque).
  *
  * @param r  the red component of the color
  * @param g  the green component of the color
  * @param b  the green component of the color
  *
- * @return    the color as a single value of type color.
+ * @return   the color as a single value of type color.
  */
 color gl_color(unsigned char r, unsigned char g, unsigned char b);
 
@@ -88,14 +90,17 @@ color gl_color(unsigned char r, unsigned char g, unsigned char b);
 void gl_clear(color c);
 
 /*
- * Swap the front and back buffers. The front buffer will be displayed,
- * and the back buffer will be the current draw buffer.
+ * Swap the front and back buffers. The draw buffer is moved to the 
+ * front (displayed) and the front buffer is moved to the back
+ * (becomes the draw buffer).
+ *
+ * If not in double-buffer mode, this function has no effect.
  */
 void gl_swap_buffer(void);
 
 /*
- * Draw a single pixel in color `c`. A pixel is not drawn if its 
- * location lies outside the bounds of the framebuffer.
+ * Draw a single pixel in color `c`. If the pixel location is
+ * outside the bounds of framebuffer, it is not drawn. 
  *
  * @param x  the x location of the pixel.
  * @param y  the y location of the pixel.
@@ -136,7 +141,7 @@ void gl_draw_char(int x, int y, int ch, color c);
  *
  * @param x  the x location of the top left corner of the string.
  * @param y  the y location of the top left corner of the string.
- * @param string  the NULL-terminated string to be drawn. Characters
+ * @param string  the null-terminated string to be drawn. Characters
  *                are drawn left to right.
  * @param c  the color c of the character
  */
@@ -167,7 +172,7 @@ unsigned int gl_get_char_width(void);
  * @param y  the y location of the upper left corner of the rectangle
  * @param w  the width of the rectangle
  * @param h  the height of the rectangle
- * @param c   the color c of the rectangle
+ * @param c  the color c of the rectangle
  */
 void gl_draw_rect(int x, int y, int w, int h, color c);
 
@@ -180,6 +185,10 @@ void gl_draw_rect(int x, int y, int w, int h, color c);
  * @param x2  the x location of vertex 2
  * @param y2  the y location of vertex 2
  * @param c   the color c of the line
+ *
+ * This function is not part of the basic requirements.
+ * You can leave this function unimplemented if you are 
+ * not doing the extension.
  */
 void gl_draw_line(int x1, int y1, int x2, int y2, color c);
 
@@ -195,6 +204,10 @@ void gl_draw_line(int x1, int y1, int x2, int y2, color c);
  * @param x3  the x location of vertex 3
  * @param y3  the y location of vertex 3
  * @param c   the color c of the triangle
+ *
+ * This function is not part of the basic requirements.
+ * You can leave this function unimplemented if you are 
+ * not doing the extension.
  */
 void gl_draw_triangle(int x1, int y1, int x2, int y2, int x3, int y3, color c);
 

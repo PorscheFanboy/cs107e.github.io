@@ -61,19 +61,23 @@ unsigned int fb_get_depth(void);
 unsigned int fb_get_pitch(void);
 
 /*
- * Get a pointer to the start address of the portion of the framebuffer
- * currently being drawn into. This address points to an array of size
- * pitch*height bytes.  
+ * Get the start address of the portion of the framebuffer currently
+ * being drawn into. This address is the start of an array of size
+ * pitch*height bytes.  If in single buffering mode, the address
+ * returned will not change as there is only one buffer in use.
+ * In double buffering mode, the returned address differs based on 
+ * which buffer is currently being used as the draw buffer.
  *
- * The address of the draw buffer can change when in double buffering mode.
- *
- * @return    the current draw buffer address
+ * @return    the address of the current draw buffer
  */
 unsigned char* fb_get_draw_buffer(void);
 
 /*
- * Swap the front and back buffers. The front buffer will be displayed,
- * and the back buffer will become the current draw buffer.
+ * Swap the front and back buffers. The draw buffer is moved to the 
+ * front (displayed) and the front buffer is moved to the back
+ * (becomes the draw buffer).
+ *
+ * If not in double buffering mode, this function has no effect.
  */
 void fb_swap_buffer(void);
 

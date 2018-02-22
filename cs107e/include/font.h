@@ -7,8 +7,8 @@
  * Each character is represented as an image that has
  * font_get_height() rows and font_get_width() columns.
  * Each pixel of the image is represented as one byte.
- * The byte for a white pixel is 0xFF, and the byte for 
- * black pixel is 0x00.
+ * The byte for an "on" pixel is 0xFF, and the byte for 
+ * "off" pixel is 0x00.
  *
  * You do not have to implement this interface: the source code for
  * its implementation is provided as part of assignment 6.
