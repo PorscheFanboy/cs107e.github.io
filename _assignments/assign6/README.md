@@ -130,12 +130,16 @@ The console module uses the text-drawing functions of the graphics library to pr
 
 The last two functions parallel the existing `uart_putchar` and `printf` routines. Instead of writing the output to the serial uart, the console version draws the output on the graphical display.
 
-Internally, the console tracks a text buffer containing all of the lines of text on display, most likely using some sort of two-dimensional array  The console keeps track of the current cursor position.
-When asked to print a character to the console, you add it to
-the text buffer at the current cursor position, increment the current
-cursor position, and refresh the display.  If there are too many characters to fit on this row, you should automatically wrap around to the next
-line of text.  As you wrap around on the last line of text (the
-one displayed on the bottom), scroll the text upwards, that is, shift all the lines up by one. The top line scrolls off and the bottommost line now contains the new text.
+Internally, the console tracks a text buffer containing all the lines of text
+that are currently on the display, typically using some sort of two-dimensional
+array.  The console also keeps track of the current cursor position.
+When asked to print a character to the console, you add it to the text buffer
+at the current cursor position, increment the current cursor position, and
+refresh the display.  If there are too many characters to fit on this row, you
+should automatically wrap around to the next line of text.  As you wrap around
+on the last line of text (the one displayed on the bottom), scroll the text
+upwards, that is, shift all the lines up by one. The top line scrolls off and
+the bottommost line now contains the new text.
 
 When processing characters, interpret the following special characters:
 
