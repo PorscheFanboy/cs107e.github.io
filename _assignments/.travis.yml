@@ -21,3 +21,5 @@ after_script:
 branches:
     except:
         - submit-assign4
+        - submit-assign5
+        - submit-assign6
