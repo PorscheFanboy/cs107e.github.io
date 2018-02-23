@@ -24,6 +24,7 @@ void main(void)
       line[index] = 0;
     }
     gl_clear(GL_BLACK);
+    gl_clear(GL_BLACK);
     gl_draw_string(20, 20, line, GL_WHITE);
     gl_swap_buffer();
   }
