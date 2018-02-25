@@ -4,7 +4,12 @@
 # This assumes git has been pulled.
 
 rpi_install_source="cs107e.github.io/guides/mac_toolchain/rpi-install.py"
-rpi_install_dest="/home/rpi/bin/rpi-install.py"
+
+if [ -z "$1" ]; then
+  rpi_install_dest="/home/rpi/bin/rpi-install.py"
+else
+  rpi_install_dest="$1";
+fi
 
 if [ ! -f "$rpi_install_source" ]; then
   echo "rpi-install was not found. Are you running this script from the same directory that cs107e.github.io is in?" 
