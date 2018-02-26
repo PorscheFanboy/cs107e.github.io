@@ -37,27 +37,29 @@ rb_t *rb_new(void);
  * Check if ring buffer is currently empty.
  *
  * @param   `rb` the ring buffer to check
- * @return  0 if rb is empty, non-zero otherwise.
+ * @return  true if rb is empty, false otherwise
  */
-int rb_empty(rb_t *rb);
+bool rb_empty(rb_t *rb);
 
 /* 
- * Check if ring buffer is currently full. When full, elements
- * must first be dequeued before further elements can be enqueued.
+ * Check if ring buffer is currently full. When full, existing
+ * elements must first be dequeued before further elements can 
+ * be enqueued.
  *
  * @param   `rb` the ring buffer to check
- * @return  0 if rb is full, non-zero otherwise.
+ * @return  true if rb is full, false otherwise
  */
-int rb_full(rb_t *rb);
+bool rb_full(rb_t *rb);
 
 /*
  * Add an element to the back of ring buffer. If full, the 
  * element is not enqueued.
  *
- * @param   `rb` the ring buffer to check
- * @return  1 if the elem was successfully enqueued, 0 otherwise.
+ * @param   `rb` the ring buffer to enqueue to
+ * @param   `elem` the element to enqueue
+ * @return  true if elem was successfully enqueued, false otherwise
  */
-int rb_enqueue(rb_t *rb, int elem);
+bool rb_enqueue(rb_t *rb, int elem);
 
 /* 
  * If the ring buffer is not empty, remove frontmost element,
@@ -65,8 +67,9 @@ int rb_enqueue(rb_t *rb, int elem);
  * no changes are made to either the ring buffer or *p_elem and
  * the return value is false. 
  *
- * @param   `rb` the ring buffer to check
- * @return   whethere an element was dequeued and written to *p_elem
+ * @param    `rb` the ring buffer to dequeue from
+ * @param    `p_elem` address at which to store the dequeued element
+ * @return   true if an element was written to *p_elem, false otherwise
  */
 bool rb_dequeue(rb_t *rb, int *p_elem);
 
