@@ -24,7 +24,7 @@ extern void main();
 // _cstart zeroes out the BSS section and then calls main.
 // After main() completes, turns on the green ACT LED as
 // a sign of successful execution.
-void _cstart() {
+void _cstart(void) {
     int *bss = &__bss_start__;
     int *bss_end = &__bss_end__;
 

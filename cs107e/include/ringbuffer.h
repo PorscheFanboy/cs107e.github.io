@@ -1,6 +1,8 @@
 #ifndef RB_H
 #define RB_H
 
+#include <stdbool.h>
+
 /*
  * This module defines a ring buffer data structure that provides
  * a fixed-length FIFO (first-in-first-out) queue of int elements.
@@ -58,14 +60,14 @@ int rb_full(rb_t *rb);
 int rb_enqueue(rb_t *rb, int elem);
 
 /* 
- * Removes element from the front of ring buffer and returns it. 
- * If empty, spins and waits (blocks) until an element is 
- * enqueued, and then removes and returns it. If you do not
- * wish to block, check !rb_empty before calling rb_dequeue.
+ * If the ring buffer is not empty, remove frontmost element,
+ * store into *p_elem, and return true. If ring buffer is empty,
+ * no changes are made to either the ring buffer or *p_elem and
+ * the return value is false. 
  *
  * @param   `rb` the ring buffer to check
- * @return   the element dequeued
+ * @return   whethere an element was dequeued and written to *p_elem
  */
-int rb_dequeue(rb_t *rb);
+bool rb_dequeue(rb_t *rb, int *p_elem);
 
 #endif

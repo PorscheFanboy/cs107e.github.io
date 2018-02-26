@@ -115,4 +115,15 @@ int keyboard_read_sequence(unsigned char seq[]);
  */
 unsigned char keyboard_read_scancode(void);
 
+
+/*
+ * `keyboard_use_interrupts`
+ *
+ * Change keyboard from default polling behavior to instead configure interrupts 
+ * for gpio events. After setting keyboard to use interrupts, need to
+ * also globally enable interrupts at system level.
+ */
+void keyboard_use_interrupts(void);
+
+
 #endif

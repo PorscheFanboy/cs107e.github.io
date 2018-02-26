@@ -1,8 +1,9 @@
+#include "assert.h"
+#include "pi.h"
 #include "armtimer.h"
 #include "gpio.h"
-#include "interrupts.h"
-#include "pi.h"
 #include "uart.h"
+#include "interrupts.h"
 #include "printf.h"
 
 // should not get called.
@@ -36,8 +37,9 @@ void main(void)
     armtimer_enable();      // enable timer
 
     armtimer_enable_interrupt();
-    interrupts_enable_basic(INTERRUPTS_BASIC_ARM_TIMER_IRQ); 
-    system_enable_interrupts(); 
+    assert( interrupts_attach_handler_for_basic(interrupt_handler, 
+        INTERRUPTS_BASIC_ARM_TIMER_IRQ) );    
+    interrupts_global_enable(); 
 
 	int last = 0;
 	while(1) {
