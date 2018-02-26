@@ -9,7 +9,7 @@ void main(void)
   gpio_init();
   keyboard_init();
 
-  gl_init(1280, 960, GL_DOUBLEBUFFER);
+  gl_init(1280, 1024, GL_DOUBLEBUFFER);
 
   char line[MAXLINE+1];
   unsigned int index = 0;
@@ -23,6 +23,8 @@ void main(void)
       line[index++] = ch;
       line[index] = 0;
     }
+    gl_clear(GL_BLACK);
+    gl_clear(GL_BLACK);
     gl_clear(GL_BLACK);
     gl_clear(GL_BLACK);
     gl_draw_string(20, 20, line, GL_WHITE);

@@ -1,4 +1,4 @@
-NAME = main
+NAME = button
 
 CS107E= ../../../../cs107e
 CFLAGS = -I$(CS107E)/include -g -Wall -Og -std=c99 -ffreestanding
@@ -24,7 +24,7 @@ all : $(NAME).bin
 	arm-none-eabi-objdump --no-show-raw-insn -d $< > $@
 
 install: $(NAME).bin
-	rpi-install.py $<
+	rpi-install.py -p $<
 
 clean:
 	rm -f *.o *.bin *.elf *.list *~
