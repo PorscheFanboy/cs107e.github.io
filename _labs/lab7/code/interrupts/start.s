@@ -1,4 +1,4 @@
-// The deference full assembly start sequence for CS107E.
+// The reference full assembly start sequence for CS107E.
 // This sets up the stack and other execution context for
 // interrupt mode, fast interrupt mode, and supervisor mode
 // before branching to _cstart (in cstart.c). It sets up the
