@@ -41,7 +41,6 @@ void armtimer_enable(void);
  */
 void armtimer_disable(void);
 
-
 /*
  * `armtimer_enable_interrupts`
  *
@@ -66,6 +65,8 @@ void armtimer_disable_interrupts(void);
 unsigned int armtimer_get_count(void);
 
 /*
+ * `armtimer_check_overflow`
+ *
  * Returns whether an overflow event has occurred (i.e. 
  * countdown has reached zero).
  * The return value is 1 if overflow event has occurred and 
@@ -74,17 +75,23 @@ unsigned int armtimer_get_count(void);
 unsigned int armtimer_check_overflow(void);
 
 /*
+ * `armtimer_clear_event`
+ *
  * Clears event status. Any previous overflow event is cleared.
  */
 void armtimer_clear_event(void);
 
 /*
+ * `armtimer_check_and_clear_overflow`
+ *
  * Returns whether an overflow event occurred and clears the
  * event.
  */
 unsigned int armtimer_check_and_clear_overflow(void);
 
 /*
+ * `armtimer_check_interrupt`
+ *
  * Returns whether an interrupt was generated (i.e. overflow 
  * event has occurred and interrupts are enabled).
  * The return value is 1 if interrupt has occurred and 
@@ -93,6 +100,8 @@ unsigned int armtimer_check_and_clear_overflow(void);
 unsigned int armtimer_check_interrupt(void);
 
 /*
+ * `armtimer_check_and_clear_interrupt`
+ *
  * Returns whether an interrupt was generated and clears the
  * event.
  */

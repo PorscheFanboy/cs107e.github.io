@@ -76,7 +76,7 @@ typedef unsigned int color;
  *
  * @param r  the red component of the color
  * @param g  the green component of the color
- * @param b  the green component of the color
+ * @param b  the blue component of the color
  *
  * @return   the color as a single value of type color.
  */
