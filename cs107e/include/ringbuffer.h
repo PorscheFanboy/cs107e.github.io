@@ -7,8 +7,9 @@
  * This module defines a ring buffer data structure that provides
  * a fixed-length FIFO (first-in-first-out) queue of int elements.
  *
- * Safe if 1 reader (main program, usually) and 1 writer (interrupt handler,
- * usually) are accessing simultaneously.
+ * The queue is designed to allow concurrent access by 1 reader (rb_dequeue)
+ * and 1 writer (rb_enqueue). The writer is typically the interrupt handler,
+ * who is enqueuing data to be dequeued by the main program, the reader.
  *
  * Author: Philip Levis <pal@cs.stanford.edu>
  * Author: Jule Zelenski <zelenski@cs.stanford.edu>
@@ -34,7 +35,7 @@ typedef volatile struct ringbuffer rb_t;
 rb_t *rb_new(void);
 
 /* 
- * Check if ring buffer is currently empty.
+ * Check if a ring buffer is currently empty.
  *
  * @param   `rb` the ring buffer to check
  * @return  true if rb is empty, false otherwise
@@ -42,7 +43,7 @@ rb_t *rb_new(void);
 bool rb_empty(rb_t *rb);
 
 /* 
- * Check if ring buffer is currently full. When full, existing
+ * Check if a ring buffer is currently full. When full, existing
  * elements must first be dequeued before further elements can 
  * be enqueued.
  *
@@ -52,8 +53,8 @@ bool rb_empty(rb_t *rb);
 bool rb_full(rb_t *rb);
 
 /*
- * Add an element to the back of ring buffer. If full, the 
- * element is not enqueued.
+ * Add an element to the back of a ring buffer. If the ring buffer
+ * is full, no changes are made and false is returned.
  *
  * @param   `rb` the ring buffer to enqueue to
  * @param   `elem` the element to enqueue
@@ -63,7 +64,7 @@ bool rb_enqueue(rb_t *rb, int elem);
 
 /* 
  * If the ring buffer is not empty, remove frontmost element,
- * store into *p_elem, and return true. If ring buffer is empty,
+ * store into *p_elem, and return true. If the ring buffer is empty,
  * no changes are made to either the ring buffer or *p_elem and
  * the return value is false. 
  *
