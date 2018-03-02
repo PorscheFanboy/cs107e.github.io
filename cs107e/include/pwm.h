@@ -19,19 +19,29 @@ void pwm_init(void);
  *
  * @param frequency      the frequency of the PWM clock
 */
-void pwm_clock(int frequency);
+void pwm_set_clock(int frequency);
 
 /*
  * Set the PWM mode.
  *
  * @param chan      the PWM channel - either 0 or 1
- * @param enable    disable(=0) or enable=(=1) the channel.
- * @param markspace use MARKSPACE mode or SIGMADELTA mode
- * @param usefifo   usefifo or not
+ * @param markspace use PWM_MARKSPACE mode or PWM_SIGMADELTA mode
  */
 #define PWM_SIGMADELTA 0
 #define PWM_MARKSPACE  1
-void pwm_set_mode(int chan, int enable, int markspace, int usefifo);
+void pwm_set_mode(int chan, int markspace);
+
+/*
+ * Set the PWM mode.
+ *
+ * @param chan      the PWM channel - either 0 or 1
+ * @param usefifo   usefifo or not
+ */
+void pwm_set_fifo(int chan, int usefifo);
+void pwm_clear_fifo(void);
+
+void pwm_enable(int chan);
+void pwm_disable(int chan);
 
 /*
  * Set the PWM range for the given channel
@@ -65,6 +75,6 @@ void pwm_write(int value);
  * need to wait until the channel is not full before writing a new value.
  */
 #define PWM_FULL1 0x01
-int pwm_get_status(void);
+unsigned int pwm_get_status(void);
 
 #endif

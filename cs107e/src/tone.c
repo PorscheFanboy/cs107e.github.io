@@ -8,12 +8,15 @@
  */
 void tone(int freq) {
     if (freq == 0) {
-        pwm_set_mode(0, 0, 1, 0);
-        pwm_set_mode(1, 0, 1, 0);
+        pwm_disable(0);
+        pwm_disable(1);
         return;
     }
-    pwm_set_mode(0, 1, PWM_MARKSPACE, 0); // PWM0, enable, MARKSPACE, NOFIFO
-    pwm_set_mode(1, 1, PWM_MARKSPACE, 0); // PWM1, enable, MARKSPACE, NOFIFO
+    pwm_set_mode(0, PWM_MARKSPACE); // PWM0, MARKSPACE
+    pwm_set_mode(1, PWM_MARKSPACE); // PWM1, MARKSPACE
+
+    pwm_enable(0);
+    pwm_enable(1);
 
     // assumes pwm_clock(F_AUDIO)
     int divisor = F_AUDIO / freq;
