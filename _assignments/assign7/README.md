@@ -74,6 +74,8 @@ Implement `keyboard_handler` to first do something very simple as we did in lab,
 Test this simple version of the handler by editing `main()` to enable global
 interrupts and then go into a loop that prints the value of the global counter whenever it changes. Each scancode should generate a total of 11 interrupts, one for each bit: start bit followed by 8 data bits and the parity and stop bits. A typed key should send 3 scancodes (one for key down, two for key up) for a total of 33 interrupts. Use this as a test case to verify that your code correctly generates and receives interrupts.
 
+Remember that when an interrupt handler is called, all other operations are on hold (including any other interrupts), so the handler needs to operate lean and mean. It should quickly process and clear the event so as to return control back to the main program without delay.
+
 ### 2) Gather a PS/2 scancode
 Rather than just counting interrupts, `keyboard_handler` needs to respond to the falling clock event by reading a bit from the PS/2 data line. Because the handler reads a single bit at a time, you
 will need to store the bits as they come until you've received a full byte. Review your existing bit-reading code in `keyboard_read_scancode` and work out how to move that code into `keyboard_handler` and re-formulate it to process one bit per interrupt. Be sure to retain the logic to synchronize on the start bit and verify the parity and stop bits.
