@@ -22,14 +22,10 @@ There are a few important deliverables:
 
 2. **Project description: due 11:59pm Thursday, March 8**
 
-   We will email you after making a repository for your team; that
-   repository will be empty at first. Follow the GitHub instructions on
-   its page to create a new repository on the command line' and push
-   to there.
-
-   Now add a markdown file PROPOSAL.md in that repo.
-   This file is for your project proposal.
-   Edit that file and push it to github.
+   You should receive an email from GitHub indicating that your repository has
+   been initialized. The initial repository will contain a single file:
+   `proposal.md`. Clone your project repository and edit this file to add your
+   project proposal. When you are finished, push it to GitHub.
 
    The project proposal should include:
 
