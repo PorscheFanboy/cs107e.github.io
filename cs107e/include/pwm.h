@@ -32,7 +32,7 @@ void pwm_set_clock(int frequency);
 void pwm_set_mode(int chan, int markspace);
 
 /*
- * Set the PWM mode.
+ * Set the PWM fifo..
  *
  * @param chan      the PWM channel - either 0 or 1
  * @param usefifo   usefifo or not
@@ -40,6 +40,11 @@ void pwm_set_mode(int chan, int markspace);
 void pwm_set_fifo(int chan, int usefifo);
 void pwm_clear_fifo(void);
 
+/*
+ * Enable or disable PWM.
+ *
+ * @param chan      the PWM channel - either 0 or 1
+ */
 void pwm_enable(int chan);
 void pwm_disable(int chan);
 

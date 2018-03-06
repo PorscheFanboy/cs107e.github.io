@@ -4,20 +4,21 @@
  */
 
 #include "gpio.h"
+#include <stdint.h>
 #include "uart.h"
 
 struct UART {
-    unsigned data; // I/O Data
-    unsigned ier;  // Interrupt enable
-    unsigned iir;  // Interrupt identify and fifo enables/clears
-    unsigned lcr;  // line control register
-    unsigned mcr;  // modem control register
-    unsigned lsr;  // line status register
-    unsigned msr;  // modem status register
-    unsigned scratch;
-    unsigned cntl; // control register
-    unsigned stat; // status register
-    unsigned baud; // baud rate register
+    uint32_t data; // I/O Data
+    uint32_t ier;  // Interrupt enable
+    uint32_t iir;  // Interrupt identify and fifo enables/clears
+    uint32_t lcr;  // line control register
+    uint32_t mcr;  // modem control register
+    uint32_t lsr;  // line status register
+    uint32_t msr;  // modem status register
+    uint32_t scratch;
+    uint32_t cntl; // control register
+    uint32_t stat; // status register
+    uint32_t baud; // baud rate register
 } ;
 
 // AUX bits
