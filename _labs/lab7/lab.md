@@ -177,8 +177,7 @@ When you're done, take a moment to verify your understanding:
 Add a second button circuit to your breadboard, another copy of your first button circuit. Connect the two buttons to two different GPIO pins. Configure your Pi so it has an interrupt on either a falling or rising edge of either GPIO pin -- that is, whenever the state of either button
 changes.
 
-In the interrupt handler, clear any pending events and handle the event from
-each button if `gpio_check_and_clear_event` returns 1 for that pin.  Maintain
+In the interrupt handler, determine which pin had the event by checking for a return value of 1 for `gpio_check_and_clear_event` on that pin.  Maintain
 a separate counter and ring buffer for each button. For each time a button is pressed or
 released, increase its counter by 1 and enqueue the current count on its ring buffer.
 
