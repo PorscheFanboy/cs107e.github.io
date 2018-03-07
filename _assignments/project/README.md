@@ -109,6 +109,38 @@ do operating-system-like things, like maybe run programs off the card,
 or store large data files without having to copy them over the
 bootloader every time, or save documents.
 
+### Part Suppliers
+
+Here are some good vendors for electronics hardware.
+
+* [Jameco](https://www.jameco.com/) 
+Jameco has a great selection of electronic parts.
+They are also located in Burlingame near SFO. 
+If you order from them,
+normal mail via the postal service will arrive the next day.
+If you have a car, 
+you can also drive up there and pick up parts at the *Will Call*.
+
+* [Pololu](https://www.pololu.com/)
+Has a wide selection of parts for robotics,
+including sensors and motor drivers.
+They also document their parts very well.
+
+* [Adafruit](https://www.adafruit.com/)
+Limor Fried has founded a company devoted that caters
+to makers of all types.
+Besides building great products,
+they also have extensive tutorials and learning guides.
+
+* [Sparkfun](https://www.sparkfun.com/)
+Another great source for hobbiest electronics.
+
+For basic electronics such as transistors, op-amps,
+you should also check out 
+[lab64](https://ee.stanford.edu/student-resources/lab64),
+the EE Department Maker Space.
+
+
 ## Past projects
 
 Here are some projects from past years:
