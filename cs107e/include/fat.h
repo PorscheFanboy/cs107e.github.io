@@ -1,6 +1,8 @@
 #ifndef FAT_H
 #define FAT_H
 
+#include <stdbool.h>
+
 /*
  * Partition record and FAT layer. Second level of abstraction.
  * Reads the first FAT32 partition listed in the MBR (no FAT12 or
@@ -12,7 +14,8 @@
 
 typedef unsigned cluster_t;
 
-void fat_init(void);
+// Return true if successful, false otherwise
+bool fat_init(void);
 
 cluster_t fat_root_cluster(void);
 

@@ -21,7 +21,4 @@ unsigned GETCPSR(void);
 void SETSPSR(unsigned spsr);
 unsigned GETSPSR(void);
 
-void system_enable_interrupts(void);
-void system_disable_interrupts(void);
-
 #endif

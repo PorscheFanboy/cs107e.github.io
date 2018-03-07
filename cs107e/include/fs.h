@@ -1,6 +1,8 @@
 #ifndef FS_H
 #define FS_H
 
+#include <stdbool.h>
+
 typedef struct {
     char name[256];
 
@@ -8,7 +10,7 @@ typedef struct {
     unsigned size;
 } dir_read_entry_t;
 
-void fs_init(void);
+bool fs_init(void);
 
 typedef struct dir dir_t;
 
