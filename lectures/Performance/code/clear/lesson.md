@@ -7,6 +7,8 @@ First, before going straight into optimization, let's take a look at our set-up 
 
  - What do we want to optimize for? SPEED.
 
+ - Any bets as to how much faster we'll get?
+
 COOL! Let's see how you can optimize this.
 
  1. You can optimize without even changing the code! Let's set compiler flags now.
