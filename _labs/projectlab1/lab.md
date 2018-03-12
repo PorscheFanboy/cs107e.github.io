@@ -15,9 +15,9 @@ During this lab, you will be working on your final project for this class! We ad
 
 For the first time this quarter, we will not have a guided lab exploring some incredibly compelling, engaging aspect of computer systems with your trusty Raspberry Pi. You will now begin your own journey through systems programming! Remember, you can refer to the [project page](/assignments/project) for more information on the project itself.
 
-## TA Check Off
+## TA Check In
 
-At the end of the lab period, be sure to confirm the following items to check off with the TA:
+At the end of the lab period, be sure to confirm the following items with the TA:
 
 * What is the gist of your project?
 
