@@ -235,7 +235,7 @@ This is termed a *fixed-width* font.
 The character `' '` (space) is ASCII value 32 (0x20) 
 and is handled specially (since it draws nothing).
 
-Take a look at the files `font.h` and `font.c` in `code/font`.
+Take a look at the files `font.h` and `font.c` (these files are published in the [cs107e include and src](https://github.com/cs107e/cs107e.github.io/blob/master/cs107e/) directories).
 
 The file `font.h` declares a C struct for representing a font and the `font.c` contains the above image as a C struct.
 
