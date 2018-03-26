@@ -13,9 +13,9 @@ repo's test page on CircleCI, which should show an entry for each time
 you've pushed so far.
 
 <img title="Watching the CircleCI project."
-src="/guides/images/ci-watch-project.png" width="500">
+src="../images/ci-watch-project.png" width="500">
 
-<img title="CI page for assignments repo." src="/guides/images/ci-repo.png" width="500">
+<img title="CI page for assignments repo." src="../images/ci-repo.png" width="500">
 
 Then you can also click the Details link in the test result in your
 pull request (which you might want to make early -- you can always
@@ -28,11 +28,11 @@ The results page shows the result of testing one particular solution
 you pushed. You might need to scroll down to 'tests/run.sh' and dig
 around to find the output if something like `make` failed.
 
-<img title="make failure output." src="/guides/images/ci-output.png"
+<img title="make failure output." src="../images/ci-output.png"
 width="600">
 
 You can even download the larson.bin that was generated on the test
 machine, although hopefully it's exactly the same as the one you're
 building on your computer!
 
-<img title="Build artifacts." src="/guides/images/ci-artifacts.png" width="500">
+<img title="Build artifacts." src="../images/ci-artifacts.png" width="500">

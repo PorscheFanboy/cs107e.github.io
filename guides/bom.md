@@ -22,7 +22,7 @@ The kit comes in a plastic sandwich box, and contains the following parts:
 
 You will also need male-male jumpers in various lengths (these aren't included in the kit; you should grab these as you need them in lab)
 
-<img src="/images/kit.jpg" width="800">
+<img src="../images/kit.jpg" width="800">
 
 
 

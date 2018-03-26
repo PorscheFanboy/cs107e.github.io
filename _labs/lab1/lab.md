@@ -306,12 +306,12 @@ Your Raspberry Pi kit contains an SDHC card.
 A secure digital (SD) card contains non-volatile memory for storage.
 The HC in SDHC stands for high capacity.
 
-<img title="Kingston SDHC Card" src="/images/kingston.sdhc.jpg" width="200">
+<img title="Kingston SDHC Card" src="/guides/images/kingston.sdhc.jpg" width="200">
 
 The Raspberry Pi runs the software on the SDHC card 
 inserted in the SD card holder on the bottom of the Pi.
 
-<img title="SDHC Card" src="/images/pi.sd.jpg" width="200">
+<img title="SDHC Card" src="/guides/images/pi.sd.jpg" width="200">
 
 Most laptops contain a SD card slot.
 To copy software to the SDHC card,
@@ -319,7 +319,7 @@ you need to mount it on your laptop.
 To do this, insert the SDHC card into the SD card holder,
 and then insert the holder into your laptop's SD card slot.
 
-![SD holder](/images/mac.sd.jpg)
+![SD holder](/guides/images/mac.sd.jpg)
 
 **Some laptops do not contain a SD card slot.
 If your laptop does not contain an SD card slot,
@@ -329,7 +329,7 @@ using your partner's laptop.**
 When you insert the SDHC card it should mount automatically.
 You should see it show up in your file explorer.
 
-<img title="SD Finder" src="/images/mac.finder.jpg" width="500">
+<img title="SD Finder" src="/guides/images/mac.finder.jpg" width="500">
 
 Another way to cerify that the card is mounted is to list 
 the mounted Volumes. If you're on a Mac:
@@ -513,7 +513,7 @@ The proper connections are shown below.
 Note that your USB breakout board may have pins in different positions.
 Don't just follow the picture blindly!
 
-![Console cable](/images/console.cable.zoom.jpg)
+![Console cable](/guides/images/console.cable.zoom.jpg)
 
 In this configuration, the green wire connects
 the RX header pin on the USB serial breakout board

@@ -11,24 +11,24 @@ Your Raspberry Pi kit contains a Kingston SDHC card. A secure digital (SD) card
 contains non-volatile memory for storage. The HC in SDHC stands for high
 capacity.
 
-![Kingston SDHC Card](/images/kingston.sdhc.jpg)
+![Kingston SDHC Card](../images/kingston.sdhc.jpg)
 
 The Raspberry Pi runs the software on the SDHC card installed in the SD card
 holder on the bottom of the printed circuit board.
 
-![SDHC Card](/images/pi.sd.jpg)
+![SDHC Card](../images/pi.sd.jpg)
 
 ### Mounting the SDHC Card in your laptop
 
 Most laptops contain a SD slot. You need to insert the SDHC card into your
 laptop, and mount the file system.
 
-![SDHC holder](/images/mac.sd.jpg)
+![SDHC holder](../images/mac.sd.jpg)
 
 When you insert the SDHC card it should mount automatically. You should see it
 show up in your finder along with other mounted file systems.
 
-![SD Finder](/images/mac.finder.jpg)
+![SD Finder](../images/mac.finder.jpg)
 
 Verify that the card is mounted.
 
