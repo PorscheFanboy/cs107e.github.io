@@ -45,14 +45,8 @@ To earn credit,
 you need to arrive on-time and actively participate for the full lab period.
 We are hopeful the lab period will be enough time to work through all exercises,
 but what you don't finish, we encourage you to complete on your own.
-At the end of the lab period,
-you submit your checkoff sheet to the lab leader 
-so your participation can be recorded.
-When turning in a checkoff sheet,
-you are asserting that you (and any partner named)
-fully participated in the lab.
-It is considered a violation of the Honor Code 
-to misrepresent your or a peer's participation.
+During the lab, we ask that you periodically check-in with the course staff, so we can see how you're doing and help resolve any issues that come up. This check-in also serves as our way of tracking your participation.
+
 
 **What is the lab collaboration policy?**
 
@@ -83,6 +77,6 @@ please come to the other session if possible. If you
 miss a lab entirely,
 you must still complete the exercises on your own.
 
-Many of the labs go over material for that weeks assignment. 
-If you miss a lab, you may have trouble doing the assignment.
+Many of the labs go over material for that week's assignment. 
+If you skip a lab, you may have trouble doing the assignment.
 

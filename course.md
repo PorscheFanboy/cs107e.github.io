@@ -19,7 +19,6 @@ Topics covered include:
   -   the C programming language
   -   compilation, linking and loading
   -   debugging
-  -   networking
   -   memory organization and management
   -   controlling peripherals: GPIO, graphics, sound, and keyboards
 

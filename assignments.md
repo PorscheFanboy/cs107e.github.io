@@ -26,8 +26,6 @@ and you will have two weeks to do the project.
 The final project is more open-ended than the assignments,
 and most students will spend more than 20 hours on their final project.
 
-Starting early and making steady progress has been a generally more successful tactic than cramming the work into a last-minute all-nighter.
-
 **What programming environment and tools are used?**
 
 Students will use their own laptop for the assignments.
@@ -50,7 +48,7 @@ and become proficient using the unix shell.
 Assignments are distributed to students as `git` repositories.
 Students edit, compile, and debug their assignments on their laptop.
 When they are finished, 
-they hand in the assignment by commiting their files 
+they hand in the assignment by committing their files 
 into their personal git repository 
 and creating a pull-request.
 
@@ -74,6 +72,8 @@ Code policies, and offer specific examples of its application to CS107E
 coursework in our [course collaboration
 policy](/policies/#collaboration-policy).
 
+The final project can be done solo or in teams of 2 or 3. If working in a team, all partners are expected to contribute equally to the effort.
+
 **How do I submit an assignment?**
 
 Assignments are submitted online using `git`. 
@@ -94,11 +94,8 @@ to help you improve your code quality.
 Please incorporate our feedback into future assignments;
 it will improve your grade and more importantly your coding style.
 
-Assignments will have a basic part and various extensions. 
-You are expected to do the basic part of each assignment,
-and some of the extensions.
-Each part, basic and extension, is worth 5 points.
-You can do as many extensions as you want to accumulate more points.
+Assignments will have a basic part (typically scored out of 10 points) and various extensions (worth 3-5 points depending on how challenging).  You are expected to do the basic part of each assignment, and attempt some of the extensions.
+You can do as many extensions as you want to accumulate additional points.
 
 If we are unable to compile your assignment as is, through some fault
 of yours (for example, if your assignment fails to compile on CI and
@@ -117,22 +114,15 @@ The last assignment requires you to use code from
 many of the previous assignments.
 To encourage you to complete all assignments and fix any bugs within them,
 if you hand-in the last assignment using only your own code,
-we will give you 5 bonus points.
+we will award you bonus points for building a complete working system. 
 
-Grades will be assigned using the following criteria:
+Course grades will be assigned using the following criteria:
 
-**A.** All laboratories and basic part of assignments must be completed
-and be fully functional.
-You also need to get the 5 point bonus for using all your own code.
-Your code quality grades should average somewhere 
-between the [ok] and [+] buckets.
-In addition, you must do at least 3 extensions and your final 
-project must be outstanding.
+**A.** All labs attended. Excellent assignments: each submission is complete and fully functional on the basic part of the assignment and 3 or more of the assignment extensions were attempted and successfully completed.
+You also need to get the full system bonus for using all your own code on the last assignment. Your code quality grades should average toward the [+] bucket.  Final project must be outstanding.
 
-**B.** All laboratories and basic part of assignments must be completed
-and functional.
-Your code quality grades should average in the [ok] bucket,
-and you must complete a good final project.
+**B.** All labs attended. Solid assignments: each submission is complete and functional on the basic part of the assignment.
+Your code quality grades should average at/above the [ok] bucket. Good final project.
 
 **C and below.** All work is not completed satisfactorily.
 
